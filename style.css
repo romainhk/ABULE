@@ -1,0 +1,107 @@
+body {
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-image: url(images/fond.jpg);
+    background-attachment: fixed;
+    }
+
+h1 {
+    border: 4px outset #006600;
+    /*font-family: Berlin Sans FB Demi;*/
+    margin: 0.5em 15%;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.2em;
+    background-position: center;
+    background-image: url(images/fond_titre.jpg);
+    color: white;
+    }
+
+h2 {
+    font-weight: bold;
+    }
+
+ul {
+    margin-left: 1ex;
+    list-style-type: square;
+    }
+
+.banniere {
+    margin: 1em 10%;
+    text-align: center;
+    }
+
+    /*
+     * Menu
+     */
+.menu {
+    border-style: inset outset;
+    border-color: #381c00 #663300;
+    border-width: 4px;
+    width: 19%;
+    background-color: white;
+    opacity: 0.55;
+    padding: 2px;
+    display: block;
+    float: left;
+    }
+
+.menu h2 {
+    border: 4px outset #003300;
+    margin: 10px;
+    /*font-family: Berlin Sans FB Demi;*/
+    font-weight: bold;
+    text-align: center;
+    color: #003300;
+    font-size: 1.2em;
+    font-variant: small-caps;
+    opacity: 1.0;
+    }
+
+.menu ul {
+    /*font-family: Berlin Sans FB;*/
+    margin: 0 0;
+    text-transform: capitalize;
+    color: #009900;
+    font-size: 1.1em;
+    list-style-type: circle;
+    }
+
+.menu li {
+    margin: 0 0.5ex 0 0.5ex;
+    opacity: 1.0;
+    }
+
+    /*
+     * Corps
+     */
+p:first-letter {
+    margin-left: 1em;
+    }
+
+.corps {
+    float: right;
+    display: block;
+    width: 77%;
+    padding: 8px;
+    border: 4px double #663300;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-image: url(images/incrustation_bambou.jpg);
+    font-size: 1.2em;
+    /*font-family: Comic Sans MS;*/
+    text-align: left;
+    color: #003300;
+    }
+
+.contact {
+    clear: both;
+    border: 1px solid #663300;
+    margin: 10px auto;
+    background-color: white;
+    /*font-family: Aharoni;*/
+    color: black;
+    text-align: right;
+    }
+
