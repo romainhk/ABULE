@@ -1,26 +1,26 @@
 @font-face {
-    font-family: Dream Orphanage;
+    font-family: "Dream Orphanage";
     src: url('dream_orphanage_rg.ttf');
     }
 
 body {
     background-repeat: no-repeat;
     background-position: left top;
-    background-image: url(images/fond.jpg);
+    background-image: url('images/fond.jpg');
     background-attachment: fixed;
     }
 
 h1 {
+    margin: 0.5em 15%;
     border: 4px outset #006600;
     /*font-family: Berlin Sans FB Demi;*/
     font-family: "Dream Orphanage", "DejaVu Sans Condensed", sans-serif;
-    margin: 0.5em 15%;
     font-weight: bold;
     text-align: center;
     font-size: 2.2em;
-    background-position: center;
-    background-image: url(images/fond_titre.jpg);
     color: white;
+    background-position: center;
+    background-image: url('images/fond_titre.jpg');
     }
 
 h2 {
@@ -34,47 +34,44 @@ ul {
     }
 
 .banniere {
-    margin: 1em 5%;
-    text-align: center;
+    margin: 1em 15%;
     border-style: outset;
     border-color: #663300 #381c00 #381c00 #663300;
     border-width: 4px;
     background-color: white;
-    min-width: 960px;
     opacity: 0.9;
+    text-align: center;
     }
 
     /*
      * Menu
      */
 .menu {
+    position: absolute;
+    width: 230px;
+    padding: 2px;
+    margin: 0 1ex 1ex 1em;
     border-style: inset outset;
     border-color: #381c00 #663300;
     border-width: 4px;
-    width: 230px;
-/*    min-width: 210px;*/
-    padding: 2px;
-    margin: 1ex;
     background-color: white;
-    opacity: 0.7;
-    display: block;
-    float: left;
+    opacity: 0.75;
     }
 
 .menu h2 {
-    border: 4px outset #003300;
     margin: 10px;
+    border: 4px outset #003300;
     /*font-family: Berlin Sans FB Demi;*/
     font-family: serif;
+    font-variant: small-caps;
     text-align: center;
     color: #003300;
-    font-variant: small-caps;
     }
 
 .menu ul {
+    margin: 0 0;
     /*font-family: Berlin Sans FB;*/
     font-family: serif;
-    margin: 0 0;
     text-transform: capitalize;
     color: #009900;
     font-size: 1.1em;
@@ -93,11 +90,12 @@ p:first-letter {
     }
 
 .corps {
-    padding: 1ex;
+    padding: 1.5ex;
+    min-height: 610px;
     background-color: white;
     background-repeat: no-repeat;
     background-position: right bottom;
-    background-image: url(images/incrustation_bambou.jpg);
+    background-image: url('images/incrustation_bambou.jpg');
     font-size: 1.2em;
     /*font-family: Comic Sans MS;*/
     font-family: cursive;
@@ -106,17 +104,15 @@ p:first-letter {
     }
 
 .bord {
-    float: right;
-    display: block;
-    width: 75%;
     margin: 1ex;
+    margin-right: 1em;
+    margin-left: 280px;
     border: 4px double #663300;
     }
 
 .contact {
-    clear: both;
     border: 1px solid #663300;
-    margin: 1ex;
+    margin: 1em;
     padding: 1px 1ex;
     background-color: white;
     /*font-family: Aharoni;*/
