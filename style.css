@@ -3,24 +3,16 @@
     src: url('dream_orphanage_rg.ttf');
     }
 
+@font-face {
+    font-family: "Howies Funhouse";
+    src: url('Howie_s_Funhouse.ttf');
+    }
+
 body {
     background-repeat: no-repeat;
     background-position: left top;
     background-image: url('images/fond.jpg');
     background-attachment: fixed;
-    }
-
-h1 {
-    margin: 0.5em 15%;
-    border: 4px outset #006600;
-    /*font-family: Berlin Sans FB Demi;*/
-    font-family: "Dream Orphanage", "DejaVu Sans Condensed", sans-serif;
-    font-weight: bold;
-    text-align: center;
-    font-size: 2.2em;
-    color: white;
-    background-position: center;
-    background-image: url('images/fond_titre.jpg');
     }
 
 h2 {
@@ -34,12 +26,12 @@ ul {
     }
 
 .banniere {
-    margin: 1em 15%;
+    margin: 1em 20%;
     border-style: outset;
     border-color: #663300 #381c00 #381c00 #663300;
     border-width: 4px;
     background-color: white;
-    opacity: 0.9;
+    opacity: 0.95;
     text-align: center;
     }
 
@@ -62,7 +54,7 @@ ul {
     margin: 10px;
     border: 4px outset #003300;
     /*font-family: Berlin Sans FB Demi;*/
-    font-family: serif;
+    font-family: "Dream Orphanage", serif;
     font-variant: small-caps;
     text-align: center;
     color: #003300;
@@ -71,7 +63,7 @@ ul {
 .menu ul {
     margin: 0 0;
     /*font-family: Berlin Sans FB;*/
-    font-family: serif;
+    font-family: "Dream Orphanage", serif;
     text-transform: capitalize;
     color: #009900;
     font-size: 1.1em;
@@ -80,6 +72,11 @@ ul {
 
 .menu li {
     margin: 0 0.5ex 0 0.5ex;
+    }
+
+.menu img {
+    width: 110px;
+    margin: 25px 58px 8px;
     }
 
     /*
@@ -91,22 +88,36 @@ p:first-letter {
 
 .corps {
     padding: 1.5ex;
-    min-height: 610px;
+    min-height: 580px;
     background-color: white;
     background-repeat: no-repeat;
     background-position: right bottom;
     background-image: url('images/incrustation_bambou.jpg');
-    font-size: 1.2em;
     /*font-family: Comic Sans MS;*/
-    font-family: cursive;
+    font-family: "Howies Funhouse", cursive;
+    font-size: 1.2em;
     text-align: left;
     color: #003300;
     }
 
+.corps h1 {
+    margin: 0.5em 15%;
+    padding: 3px;
+    border: 4px outset #006600;
+    background-position: right top;
+    background-image: url('images/fond_titre.jpg');
+    max-width: 910px;
+    max-height: 260px;
+    /*font-family: Berlin Sans FB Demi;*/
+    font-family: "Dream Orphanage", "DejaVu Sans Condensed", sans-serif;
+    font-weight: bold;
+    font-size: 2.2em;
+    text-align: center;
+    color: white;
+    }
+
 .bord {
-    margin: 1ex;
-    margin-right: 1em;
-    margin-left: 280px;
+    margin: 1ex 1em 1ex 280px;
     border: 4px double #663300;
     }
 
@@ -117,7 +128,6 @@ p:first-letter {
     background-color: white;
     /*font-family: Aharoni;*/
     font-family: serif;
-    color: black;
     text-align: right;
+    color: black;
     }
-
