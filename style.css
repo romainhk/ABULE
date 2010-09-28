@@ -1,11 +1,11 @@
 @font-face {
     font-family: "Dream Orphanage";
-    src: url('dream_orphanage_rg.ttf');
+    src: url('polices/dream_orphanage_rg.ttf');
     }
 
 @font-face {
     font-family: "Howies Funhouse";
-    src: url('Howie_s_Funhouse.ttf');
+    src: url('polices/Howie_s_Funhouse.ttf');
     }
 
 body {
@@ -126,8 +126,7 @@ p:first-letter {
     margin: 1em;
     padding: 1px 1ex;
     background-color: white;
-    /*font-family: Aharoni;*/
-    font-family: serif;
+    font-family: "Howies Funhouse", sans-serif;
     text-align: right;
     color: black;
     }
