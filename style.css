@@ -69,19 +69,18 @@ ul {
     margin: 0 0;
     /*font-family: Berlin Sans FB;*/
     font-family: "AlteHaasGrotesk Bold", serif;
-    text-transform: capitalize;
-    color: #009900;
     list-style-type: circle;
     }
 
 .menu li {
+    color: #009900;
     font-size: medium;
-    margin: 0 0.5ex 0 0.5ex;
+    margin: 0 0.5ex 0 0.2ex;
     }
 
 .menu img {
     width: 110px;
-    margin: 25px 58px 8px;
+    margin: 15px 58px 4px;
     }
 
     /*
@@ -93,7 +92,7 @@ p:first-letter {
 
 .corps {
     padding: 1.5ex;
-    min-height: 32em;
+    min-height: 50em;
     background-color: white;
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -128,7 +127,7 @@ p:first-letter {
 
 .contact {
     border: 1px solid #663300;
-    margin: 1em;
+    margin: 1ex;
     padding: 1px 1ex;
     background-color: white;
     font-family: "Howies Funhouse", sans-serif;
