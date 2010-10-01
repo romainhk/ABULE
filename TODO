@@ -1,0 +1,14 @@
+CHOSE QU'IL RESTE À FAIRE (DANS L'ORDRE, DE PRÉFÉRENCE)
+
+* bannière en une seule image ? (mettre les bambou en miroir)
+
+* régler de le soucis de la taille du menu et du corps (chevauchement avec la barre "contact")
+
+* faire un petit logo pour le bookmark
+
+* conversion de l'index en php
+** remplissage des pages
+
+* vérifier que le navigateur web supporte css 3 : get_browser()
+** faire un message d'avertissement et un css sans css 3
+
