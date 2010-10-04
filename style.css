@@ -45,7 +45,7 @@ ul {
      */
 .menu {
     position: absolute;
-    width: 230px;
+    width: 26ex;
     padding: 2px;
     margin: 0 1ex 1ex 1em;
     border-style: inset outset;
@@ -80,7 +80,7 @@ ul {
 
 .menu img {
     width: 110px;
-    margin: 15px 58px 4px;
+    margin: 13px 6.5ex 3px;
     }
 
     /*
@@ -92,7 +92,7 @@ p:first-letter {
 
 .corps {
     padding: 1.5ex;
-    min-height: 50em;
+    min-height: 60ex;
     background-color: white;
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -121,7 +121,7 @@ p:first-letter {
     }
 
 .bord {
-    margin: 1ex 1em 1ex 280px;
+    margin: 1ex 1em 1ex 31ex;
     border: 4px double #663300;
     }
 
