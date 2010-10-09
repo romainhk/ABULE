@@ -1,12 +1,12 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: "AlteHaasGrotesk Bold";
+    font-family: "AHG Bold";
     src: url('polices/AlteHaasGroteskBold.ttf');
     }
 
 @font-face {
-    font-family: "AlteHaasGrotesk";
+    font-family: "AHG";
     src: url('polices/AlteHaasGroteskRegular.ttf');
     }
 
@@ -17,7 +17,7 @@
 
 body {
     background-repeat: no-repeat;
-    background-position: left top;
+    background-position: center top;
     background-image: url('images/fond.jpg');
     background-attachment: fixed;
     margin: 0;
@@ -34,7 +34,7 @@ ul {
     }
 
 .banniere {
-    margin: 1em 15%;
+    margin: 1em;
     border-style: outset;
     border-color: #663300 #381c00 #381c00 #663300;
     border-width: 4px;
@@ -51,39 +51,45 @@ ul {
     width: 26ex;
     padding: 2px;
     margin: 0 1ex 1ex 1em;
+    min-height: 730px;
     border-style: inset outset;
     border-color: #381c00 #663300;
     border-width: 4px;
     background-color: white;
-    opacity: 0.75;
+    opacity: 0.55;
     }
 
 .menu h2 {
     margin: 10px;
     border: 4px outset #003300;
     /*font-family: Berlin Sans FB Demi;*/
-    font-family: "AlteHaasGrotesk Bold", serif;
+    font-family: "AHG Bold", serif;
     font-variant: small-caps;
     text-align: center;
     color: #003300;
     }
 
 .menu ul {
-    margin: 0 0;
+    margin: 0;
+    padding: 0;
     /*font-family: Berlin Sans FB;*/
-    font-family: "AlteHaasGrotesk Bold", serif;
-    list-style-type: circle;
+    font-family: "AHG Bold", serif;
+    text-align: center;
+    list-style: none;
     }
 
 .menu li {
     color: #009900;
     font-size: medium;
-    margin: 0 0.5ex 0 0.2ex;
     }
 
 .menu img { /* Le logo */
     width: 110px;
-    margin: 13px 6.5ex 3px;
+    margin: 13px 6.5ex 0;
+    }
+
+.menu a:link {
+    color: #009900;
     }
 
     /*
@@ -93,9 +99,15 @@ p:first-letter {
     margin-left: 1em;
     }
 
+.bord {
+    margin: 1ex 1em 1ex 31ex;
+    border: 4px double #663300;
+    max-width: 128ex;
+    }
+
 .corps {
     padding: 1.5ex;
-    min-height: 60ex;
+    min-height: 700px;
     background-color: white;
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -105,6 +117,7 @@ p:first-letter {
     font-size: medium;
     text-align: left;
     color: #003300;
+    overflow: auto;
     }
 
 .corps h1 {
@@ -116,22 +129,18 @@ p:first-letter {
     max-width: 905px;
     max-height: 255px;
     /*font-family: Berlin Sans FB Demi;*/
-    font-family: "AlteHaasGrotesk Bold", "DejaVu Sans Condensed", sans-serif;
+    font-family: "AHG Bold", "DejaVu Sans Condensed", sans-serif;
     font-weight: bold;
     font-size: xx-large;
     text-align: center;
     color: white;
     }
 
-.bord {
-    margin: 1ex 1em 1ex 31ex;
-    border: 4px double #663300;
-    }
-
-.contact {
+.pied {
     border: 1px solid #663300;
-    margin: 1ex 1em;
+    margin: 1ex 1em 0.5ex;
     padding: 1px 1ex;
+    max-width: 136ex;
     background-color: white;
     font-family: "Howies Funhouse", sans-serif;
     text-align: right;

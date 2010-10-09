@@ -1,11 +1,25 @@
 CHOSE QU'IL RESTE À FAIRE (DANS L'ORDRE, DE PRÉFÉRENCE)
 
-* bannière en une seule image ? (mettre les bambou en miroir)
+* revoir la bannière :
+**mettre les bambou en miroir
+**logo centré, bambous centrés sur les espaces gauche et droit libres
+
+* bien centrer le logo du menu
+
+* si large limiter ou pas la largeur (à valider)
+
+* rapetisser l'image incrustée dans le corps ?
+
+* vérifier l'usage des polices (taille, famille)
+
+* ajouter un dégradé - steeve
+
+* hack sur la transparance du menu (à valider)
 
 * conversion de l'index en php
-** remplissage des pages
+** remplissage des pages => webmaster
 
 * vérifier que le navigateur web supporte css 3 : get_browser()
-** faire un message d'avertissement et un css sans css 3
+** faire un message d'avertissement et un css 2.1
 ** faire une feuille de style pour IE et navigateurs sans css3.
 
