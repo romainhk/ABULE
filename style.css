@@ -88,9 +88,12 @@ ul {
     font-size: medium;
     }
 
-.menu img { /* Le logo */
+.menu img { /* Le logo du menu */
+    display: block;
     width: 110px;
-    margin: 13px 6.5ex 0;
+/*    margin: 13px 6.5ex 0;*/
+    margin: 1ex auto 0px;
+    text-align: center;
     }
 
 .menu a:link {
