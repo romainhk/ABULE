@@ -34,6 +34,7 @@ ul {
     }
 
 .banniere {
+    position: relative;
     margin: 1em;
     border-style: outset;
     border-color: #663300 #381c00 #381c00 #663300;
@@ -41,6 +42,10 @@ ul {
     background-color: white;
     opacity: 0.95;
     text-align: center;
+    }
+.superpose {
+    /*position: absolute;*/
+    z-index:1;
     }
 
     /*
