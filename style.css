@@ -43,9 +43,13 @@ ul {
     opacity: 0.95;
     text-align: center;
     }
+
 .superpose {
-    /*position: absolute;*/
-    z-index:1;
+    position: absolute;
+    width: 100%;
+    }
+.superpose img {
+    z-index: 1;
     }
 
     /*
@@ -126,6 +130,7 @@ p:first-letter {
     text-align: left;
     color: #003300;
     overflow: auto;
+    z-index: 5;
     }
 
 .corps h1 {
