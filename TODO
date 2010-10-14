@@ -2,7 +2,7 @@ CHOSE QU'IL RESTE À FAIRE (DANS L'ORDRE, DE PRÉFÉRENCE)
 
 === CSS
 * revoir la bannière :
-**logo centré, bambous centrés sur les espaces gauche et droit libres : début de soluce (marche pas pour les petits écrans)
+**logo centré, bambous centrés sur les espaces gauche et droit libres : début de soluce (superposition inversée pour les petits écrans)
 => http://forum.alsacreations.com/topic-4-27921-1-Superposition-dimages-en-CSS.html
 
 * si large, limiter ou pas la largeur (à valider)
@@ -11,7 +11,11 @@ CHOSE QU'IL RESTE À FAIRE (DANS L'ORDRE, DE PRÉFÉRENCE)
 
 * ajouter un dégradé -> steeve
 
-* hack sur la transparance du menu (à valider)
+* hack sur la transparance du menu (à valider) FAIT
+
+* horloge avec des aiguilles
+
+* menu à droite : contact, horloge, news
 
 === PHP
 * conversion de l'index en php

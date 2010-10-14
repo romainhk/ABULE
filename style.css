@@ -57,15 +57,28 @@ ul {
      */
 .menu {
     float: left;
+    width: 26ex;
+    height: 738px;
+    margin-left: 1em;
+    }
+
+.menufond {
+    height: 100%;
+    background-color: white;
+    opacity: 0.55;
+    z-index: 1;
+    }
+
+.menucont {
+    position: absolute;
     width: 25ex;
-    padding: 2px;
-    margin: 0 1ex 1ex 1em;
     height: 730px;
+    padding: 2px;
     border-style: inset outset;
     border-color: #381c00 #663300;
     border-width: 4px;
-    background-color: white;
-    opacity: 0.55;
+    background-color: transparent;
+    z-index: 3;
     }
 
 .menu h2 {
