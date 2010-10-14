@@ -33,6 +33,9 @@ ul {
     list-style-type: square;
     }
 
+    /*
+     * Bannière
+     */
 .banniere {
     position: relative;
     margin: 1em;
@@ -42,6 +45,17 @@ ul {
     background-color: white;
     opacity: 0.95;
     text-align: center;
+    }
+.bannieregauche {
+    float:left;
+    width:38%;
+    }
+.bannieredroite {
+    float:right;
+    width:38%;
+    }
+.bannieredroite img {
+    -moz-transform: matrix(-1,0,0,1,0,0);
     }
 
 .superpose {
@@ -111,6 +125,7 @@ ul {
 /*    margin: 13px 6.5ex 0;*/
     margin: 1ex auto 0px;
     text-align: center;
+    opacity: 0.8;
     }
 
 .menu a:link {
@@ -132,7 +147,7 @@ p:first-letter {
     }
 
 .corps {
-    height: 701px; /* 29px d'écart ?! */
+    height: 701px; /* 29px d'écart avec menu ?! */
     padding: 1.5ex;
     background-color: white;
     background-repeat: no-repeat;
@@ -148,7 +163,7 @@ p:first-letter {
     }
 
 .corps h1 {
-    margin: 0.5em 15% 1em;
+    margin: 0.2em 15% 0.8em;
     padding: 3px;
     border: 4px outset #006600;
     background-position: right top;
@@ -162,6 +177,7 @@ p:first-letter {
     text-align: center;
     color: white;
     }
+
 
 .pied {
     border: 1px solid #663300;
