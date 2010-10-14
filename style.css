@@ -56,11 +56,11 @@ ul {
      * Menu
      */
 .menu {
-    position: absolute;
-    width: 26ex;
+    float: left;
+    width: 25ex;
     padding: 2px;
     margin: 0 1ex 1ex 1em;
-    min-height: 730px;
+    height: 730px;
     border-style: inset outset;
     border-color: #381c00 #663300;
     border-width: 4px;
@@ -112,14 +112,15 @@ p:first-letter {
     }
 
 .bord {
-    margin: 1ex 1em 1ex 31ex;
+    margin: 0ex 1em 1ex 30ex;
     border: 4px double #663300;
-    max-width: 128ex;
+  /*  max-width: 128ex;*/
+    height: 734px;
     }
 
 .corps {
+    height: 701px; /* 29px d'écart ?! */
     padding: 1.5ex;
-    min-height: 707px;
     background-color: white;
     background-repeat: no-repeat;
     background-position: right bottom;
