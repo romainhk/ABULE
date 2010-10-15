@@ -16,7 +16,7 @@
     }
 
 body {
-    background-repeat: no-repeat;
+   /* background-repeat: no-repeat;*/
     background-position: center top;
     background-image: url('images/fond.jpg');
     background-attachment: fixed;
@@ -71,7 +71,7 @@ ul {
      */
 .menu {
     float: left;
-    width: 26ex;
+    width: 25ex;
     height: 738px;
     margin-left: 1em;
     }
@@ -85,7 +85,7 @@ ul {
 
 .menucont {
     position: absolute;
-    width: 25ex;
+    width: 24ex;
     height: 730px;
     padding: 2px;
     border-style: inset outset;
@@ -140,7 +140,7 @@ p:first-letter {
     }
 
 .bord {
-    margin: 0ex 1em 1ex 30ex;
+    margin: 0ex 1em 1ex 29ex;
     border: 4px double #663300;
   /*  max-width: 128ex;*/
     height: 734px;
@@ -183,7 +183,7 @@ p:first-letter {
     border: 1px solid #663300;
     margin: 1ex 1em 0.5ex;
     padding: 1px 1ex;
-    max-width: 136ex;
+  /*  max-width: 136ex;*/
     background-color: white;
     font-family: "Howies Funhouse", sans-serif;
     text-align: right;
