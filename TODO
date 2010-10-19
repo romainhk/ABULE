@@ -1,22 +1,20 @@
-CHOSE QU'IL RESTE À FAIRE (DANS L'ORDRE, DE PRÉFÉRENCE)
-
 === CSS
 * revoir la bannière :
-**logo centré, bambous centrés sur les espaces gauche et droit libres : début de soluce (superposition inversée pour les petits écrans)
+**logo centré, bambous centrés sur les espaces gauche et droit libres : soluce partielle (bambous au dessus pour les petits écrans)
 => http://forum.alsacreations.com/topic-4-27921-1-Superposition-dimages-en-CSS.html
 
 * si large, limiter ou pas la largeur (à valider)
 ** adapter le fond en conséquence
 
-* vérifier l'usage des polices (taille, famille)
+* vérifier l'usage des polices (taille, famille) => mailé
 
 * ajouter un dégradé comme fond général (au lieu du blanc) -> steeve
 
 * hack sur la transparance du menu (à valider) FAIT
 
-* horloge avec des aiguilles
+* menu à droite : contact, horloge, news ?
 
-* menu à droite : contact, horloge, news
+* horloge avec des aiguilles : html5/js, ou applet ?
 
 === PHP
 * conversion de l'index en php
@@ -25,4 +23,7 @@ CHOSE QU'IL RESTE À FAIRE (DANS L'ORDRE, DE PRÉFÉRENCE)
 * vérifier que le navigateur web supporte css 3 : get_browser()
 ** faire un message d'avertissement et un css 2.1
 ** faire une feuille de style pour IE et navigateurs sans css3.
+
+=== Autre
+* compléter la LICENCE et les méta-tags
 
