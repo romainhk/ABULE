@@ -3,18 +3,19 @@
 **logo centré, bambous centrés sur les espaces gauche et droit libres : soluce partielle (bambous au dessus pour les petits écrans)
 => http://forum.alsacreations.com/topic-4-27921-1-Superposition-dimages-en-CSS.html
 
-* si large, limiter ou pas la largeur (à valider)
-** adapter le fond en conséquence
+* bordure de chaque coté du site
 
 * vérifier l'usage des polices (taille, famille) => mailé
 
-* ajouter un dégradé comme fond général (au lieu du blanc) -> steeve
+* ajouter un dégradé comme fond général (au lieu du blanc) sur la bannière et le corps -> steeve
 
-* hack sur la transparance du menu (à valider) FAIT
+* menu à droite : contact, horloge, news, rss
 
-* menu à droite : contact, horloge, news ?
+* agrandir les images quand on clique dessus
 
-* horloge avec des aiguilles : html5/js, ou applet ?
+* horloge avec des aiguilles en applet (horloge de maureen + fond logo-menu)
+
+* préchargement (lowres ?) sur le background (dégradé vert-vert)
 
 === PHP
 * conversion de l'index en php
@@ -23,6 +24,12 @@
 * vérifier que le navigateur web supporte css 3 : get_browser()
 ** faire un message d'avertissement et un css 2.1
 ** faire une feuille de style pour IE et navigateurs sans css3.
+
+* ABULE + titre de chaque page
+
+* mode admin : permet de compléter une page
+** éditeur intégré
+** lien "éditer la page" à ajouter
 
 === Autre
 * compléter la LICENCE et les méta-tags
