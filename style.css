@@ -37,13 +37,13 @@ ul {
      * Bannière
      */
 .banniere {
+	min-width: 900px;
     position: relative;
     margin: 1em;
     border-style: outset;
     border-color: #663300 #381c00 #381c00 #663300;
     border-width: 4px;
     background-color: white;
-    opacity: 0.95;
     text-align: center;
     }
 .bannieregauche {
@@ -70,29 +70,24 @@ ul {
      * Menu
      */
 .menu {
-    float: left;
-    width: 25ex;
-    height: 738px;
-    margin-left: 1em;
-    }
-
-.menufond {
-    height: 100%;
-    background-color: white;
-    opacity: 0.55;
-    z-index: 1;
-    }
-
-.menucont {
-    position: absolute;
-    width: 24ex;
-    height: 730px;
+    width: 14%;
+    height: 740px;
+	min-width: 140px;
+	background-image: url('images/menufd.png');
+	background-repeat: repeat;
     padding: 2px;
     border-style: inset outset;
     border-color: #381c00 #663300;
     border-width: 4px;
-    background-color: transparent;
-    z-index: 3;
+    }
+
+.menu img { /* Le logo du menu */
+    display: block;
+    width: 110px;
+/*    margin: 13px 6.5ex 0;*/
+    margin: 2ex auto 0px;
+    text-align: center;
+    opacity: 0.8;
     }
 
 .menu h2 {
@@ -118,20 +113,26 @@ ul {
     color: #009900;
     font-size: medium;
     }
-
-.menu img { /* Le logo du menu */
-    display: block;
-    width: 110px;
-/*    margin: 13px 6.5ex 0;*/
-    margin: 1ex auto 0px;
-    text-align: center;
-    opacity: 0.8;
-    }
-
+	
+.menu a {
+    text-decoration: none;
+	}
 .menu a:link {
     color: #009900;
+	}
+.menu a:hover {
+	font-style: italic;
     }
-
+.menu h2 a:visited {
+    color: #009900;
+    }
+.menu h2 a:link {
+    color: #003300;
+    }
+.menu li a:visited {
+    color: #003300;
+    }
+	
     /*
      * Corps
      */
@@ -140,15 +141,16 @@ p:first-letter {
     }
 
 .bord {
-    margin: 0ex 1em 1ex 29ex;
+    margin: 0ex auto 1ex;
     border: 4px double #663300;
   /*  max-width: 128ex;*/
-    height: 734px;
+    height: 744px;
+	width: 65%;
     }
 
 .corps {
-    height: 701px; /* 29px d'écart avec menu ?! */
-    padding: 1.5ex;
+    height: 96.5%; /* 27px d'écart avec menu ?! */
+    padding: 1.5%;
     background-color: white;
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -159,7 +161,6 @@ p:first-letter {
     text-align: left;
     color: #003300;
     overflow: auto;
-    z-index: 5;
     }
 
 .corps h1 {
