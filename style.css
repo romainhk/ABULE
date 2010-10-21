@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
 @font-face {
-    font-family: "AHG Bold";
-    src: url('polices/AlteHaasGroteskBold.ttf');
+    font-family: "Qlassik";
+    src: url('polices/Qlassik_TB.ttf');
     }
 
 @font-face {
-    font-family: "AHG";
-    src: url('polices/AlteHaasGroteskRegular.ttf');
+    font-family: "Qlassik B";
+    src: url('polices/QlassikBold_TB.ttf');
     }
 
 @font-face {
@@ -87,24 +87,25 @@ ul {
 /*    margin: 13px 6.5ex 0;*/
     margin: 2ex auto 0px;
     text-align: center;
-    opacity: 0.8;
+    opacity: 0.75;
     }
 
 .menu h2 {
     margin: 10px;
     border: 4px outset #003300;
     /*font-family: Berlin Sans FB Demi;*/
-    font-family: "AHG Bold", serif;
+    font-family: "Qlassik B", sans-serif;
     font-variant: small-caps;
     text-align: center;
     color: #003300;
+    font-size: medium;
     }
 
 .menu ul {
     margin: 0;
     padding: 0;
     /*font-family: Berlin Sans FB;*/
-    font-family: "AHG Bold", serif;
+    font-family: "Qlassik", sans-serif;
     text-align: center;
     list-style: none;
     }
@@ -114,6 +115,8 @@ ul {
     font-size: medium;
     }
 	
+    /* Liens
+     */
 .menu a {
     text-decoration: none;
 	}
@@ -122,15 +125,16 @@ ul {
 	}
 .menu a:hover {
 	font-style: italic;
+    text-decoration: underline;
     }
 .menu h2 a:visited {
-    color: #009900;
+    color: #003300;
     }
 .menu h2 a:link {
     color: #003300;
     }
 .menu li a:visited {
-    color: #003300;
+    color: #009900;
     }
 	
     /*
@@ -172,7 +176,7 @@ p:first-letter {
     max-width: 905px;
     max-height: 255px;
     /*font-family: Berlin Sans FB Demi;*/
-    font-family: "AHG Bold", "DejaVu Sans Condensed", sans-serif;
+    font-family: "Qlassik B", "DejaVu Sans Condensed", sans-serif;
     font-weight: bold;
     font-size: xx-large;
     text-align: center;
