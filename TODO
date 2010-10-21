@@ -1,9 +1,5 @@
 === CSS
-* revoir la bannière :
-**logo centré, bambous centrés sur les espaces gauche et droit libres : soluce partielle (bambous au dessus pour les petits écrans)
-=> http://forum.alsacreations.com/topic-4-27921-1-Superposition-dimages-en-CSS.html
-
-* bordure de chaque coté du site
+* bordure de chaque coté du site => 3%
 
 * ajouter un dégradé comme fond général (au lieu du blanc) sur la bannière et le corps -> steeve
 
@@ -11,11 +7,11 @@
 
 * agrandir les images quand on clique dessus
 
-* horloge avec des aiguilles en applet (horloge de maureen + fond logo-menu)
+* horloge avec des aiguilles en applet (horloge de maureen + fond logo-menu) => reste le fond
 
-* préchargement (lowres ?) sur le background (dégradé vert-vert)
+* préchargement sur le background (dégradé vert-vert)
 
-=== PHP
+=== PHP/js
 * conversion de l'index en php
 ** remplissage des pages -> webmaster
 
@@ -28,6 +24,8 @@
 * mode admin : permet de compléter une page
 ** éditeur intégré
 ** lien "éditer la page" à ajouter
+
+* lowsrc sur les images ? => js
 
 === Autre
 * compléter la LICENCE et les méta-tags

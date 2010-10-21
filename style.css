@@ -39,7 +39,7 @@ ul {
 .banniere {
 	min-width: 900px;
     position: relative;
-    margin: 1em;
+    margin: 1em 3%;
     border-style: outset;
     border-color: #663300 #381c00 #381c00 #663300;
     border-width: 4px;
@@ -149,7 +149,7 @@ p:first-letter {
     border: 4px double #663300;
   /*  max-width: 128ex;*/
     height: 744px;
-	width: 65%;
+	width: 62%;
     }
 
 .corps {
@@ -186,7 +186,7 @@ p:first-letter {
 
 .pied {
     border: 1px solid #663300;
-    margin: 1ex 1em 0.5ex;
+    margin: 1ex 3% 0.5ex;
     padding: 1px 1ex;
   /*  max-width: 136ex;*/
     background-color: white;
