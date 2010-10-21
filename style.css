@@ -105,7 +105,7 @@ ul {
     margin: 0;
     padding: 0;
     /*font-family: Berlin Sans FB;*/
-    font-family: "Qlassik", sans-serif;
+    font-family: "Qlassik", "DejaVu Sans Condensed", sans-serif;
     text-align: center;
     list-style: none;
     }
@@ -176,13 +176,27 @@ p:first-letter {
     max-width: 905px;
     max-height: 255px;
     /*font-family: Berlin Sans FB Demi;*/
-    font-family: "Qlassik B", "DejaVu Sans Condensed", sans-serif;
+    font-family: "Qlassik B", sans-serif;
     font-weight: bold;
     font-size: xx-large;
     text-align: center;
     color: white;
     }
 
+.corps img {
+    width: 200px;
+    vertical-align: top;
+    float: left;
+    margin: 1ex;
+    }
+
+.corps img:hover {
+    position: absolute;
+    width: 80%;
+    top: 0px;
+    left: 0px;
+    z-index: 5;
+    }
 
 .pied {
     border: 1px solid #663300;
