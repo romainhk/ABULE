@@ -1,15 +1,11 @@
 === CSS
-* bordure de chaque coté du site => 3%
+* bordure de chaque coté du site => 4%
 
 * ajouter un dégradé comme fond général (au lieu du blanc) sur la bannière et le corps -> steeve
 
-* menu à droite : contact, horloge, news, rss
-
-* agrandir les images quand on clique dessus => première idée
+* agrandir les images quand on clique dessus => première idée simpliste
 
 * horloge avec des aiguilles en applet (horloge de maureen + fond logo-menu) => reste le fond
-
-* préchargement sur le background (dégradé vert-vert)
 
 === PHP/js
 * conversion de l'index en php
@@ -21,11 +17,13 @@
 
 * ABULE + titre de chaque page
 
-* mode admin : permet de compléter une page
+* mode admin : permet de compléter une page (session)
 ** éditeur intégré
 ** lien "éditer la page" à ajouter
 
 * lowsrc sur les images ? => js
+
+* menu à droite : contact, horloge, news, rss => quels news, quels flux ?
 
 === Autre
 * compléter la LICENCE et les méta-tags

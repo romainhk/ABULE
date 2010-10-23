@@ -16,11 +16,11 @@
     }
 
 body {
+    margin: 0;
    /* background-repeat: no-repeat;*/
     background-position: center top;
     background-image: url('images/fond.jpg');
     background-attachment: fixed;
-    margin: 0;
     }
 
 h2 {
@@ -33,13 +33,13 @@ ul {
     list-style-type: square;
     }
 
-    /*
+    /* **********
      * Bannière
      */
 .banniere {
-	min-width: 900px;
     position: relative;
-    margin: 1em 3%;
+    margin: 1ex 0;
+	min-width: 900px;
     border-style: outset;
     border-color: #663300 #381c00 #381c00 #663300;
     border-width: 4px;
@@ -47,12 +47,12 @@ ul {
     text-align: center;
     }
 .bannieregauche {
-    float:left;
-    width:38%;
+    float: left;
+    width: 38%;
     }
 .bannieredroite {
-    float:right;
-    width:38%;
+    float: right;
+    width: 38%;
     }
 .bannieredroite img {
     -moz-transform: matrix(-1,0,0,1,0,0);
@@ -66,19 +66,19 @@ ul {
     z-index: 1;
     }
 
-    /*
+    /* **********
      * Menu
      */
 .menu {
     width: 14%;
     height: 740px;
 	min-width: 140px;
-	background-image: url('images/menufd.png');
-	background-repeat: repeat;
     padding: 2px;
     border-style: inset outset;
     border-color: #381c00 #663300;
     border-width: 4px;
+	background-image: url('images/menufd.png');
+	background-repeat: repeat;
     }
 
 .menu img { /* Le logo du menu */
@@ -93,26 +93,24 @@ ul {
 .menu h2 {
     margin: 10px;
     border: 4px outset #003300;
-    /*font-family: Berlin Sans FB Demi;*/
     font-family: "Qlassik B", sans-serif;
     font-variant: small-caps;
     text-align: center;
-    color: #003300;
     font-size: medium;
+    color: #003300;
     }
 
 .menu ul {
     margin: 0;
     padding: 0;
-    /*font-family: Berlin Sans FB;*/
     font-family: "Qlassik", "DejaVu Sans Condensed", sans-serif;
     text-align: center;
     list-style: none;
     }
 
 .menu li {
-    color: #009900;
     font-size: medium;
+    color: #009900;
     }
 	
     /* Liens
@@ -120,24 +118,24 @@ ul {
 .menu a {
     text-decoration: none;
 	}
-.menu a:link {
-    color: #009900;
-	}
 .menu a:hover {
 	font-style: italic;
     text-decoration: underline;
     }
-.menu h2 a:visited {
+.menu a:link {
+    color: #009900;
+	}
+.menu h2 a:link {
     color: #003300;
     }
-.menu h2 a:link {
+.menu h2 a:visited {
     color: #003300;
     }
 .menu li a:visited {
     color: #009900;
     }
 	
-    /*
+    /* **********
      * Corps
      */
 p:first-letter {
@@ -145,21 +143,19 @@ p:first-letter {
     }
 
 .bord {
-    margin: 0ex auto 1ex;
-    border: 4px double #663300;
-  /*  max-width: 128ex;*/
     height: 744px;
-	width: 62%;
+    margin: 0px auto;
+    border: 4px double #663300;
+	width: 67%;
     }
 
 .corps {
-    height: 96.5%; /* 27px d'écart avec menu ?! */
+    height: 96.5%;
     padding: 1.5%;
     background-color: white;
     background-repeat: no-repeat;
     background-position: right bottom;
     background-image: url('images/incrustation_bambou.jpg');
-    /*font-family: Comic Sans MS;*/
     font-family: "Howies Funhouse", cursive;
     font-size: medium;
     text-align: left;
@@ -175,7 +171,6 @@ p:first-letter {
     background-image: url('images/fond_titre.jpg');
     max-width: 905px;
     max-height: 255px;
-    /*font-family: Berlin Sans FB Demi;*/
     font-family: "Qlassik B", sans-serif;
     font-weight: bold;
     font-size: xx-large;
@@ -185,9 +180,9 @@ p:first-letter {
 
 .corps img {
     width: 200px;
-    vertical-align: top;
-    float: left;
     margin: 1ex;
+    float: left;
+    vertical-align: top;
     }
 
 .corps img:hover {
@@ -198,11 +193,11 @@ p:first-letter {
     z-index: 5;
     }
 
+
 .pied {
-    border: 1px solid #663300;
-    margin: 1ex 3% 0.5ex;
+    margin: 1ex 0 0.5ex;
     padding: 1px 1ex;
-  /*  max-width: 136ex;*/
+    border: 1px solid #663300;
     background-color: white;
     font-family: "Howies Funhouse", sans-serif;
     text-align: right;
