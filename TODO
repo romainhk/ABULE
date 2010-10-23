@@ -1,11 +1,13 @@
 === CSS
-* bordure de chaque coté du site => 4%
+* bordure de chaque coté du site => 4% (à valider)
 
 * ajouter un dégradé comme fond général (au lieu du blanc) sur la bannière et le corps -> steeve
 
 * agrandir les images quand on clique dessus => première idée simpliste
 
 * horloge avec des aiguilles en applet (horloge de maureen + fond logo-menu) => reste le fond
+
+* horloge digitale javascript en dessous => js de steeve
 
 === PHP/js
 * conversion de l'index en php

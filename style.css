@@ -17,6 +17,8 @@
 
 body {
     margin: 0;
+    background-color: #85af43;
+    color: #003300;
    /* background-repeat: no-repeat;*/
     background-position: center top;
     background-image: url('images/fond.jpg');
@@ -77,8 +79,10 @@ ul {
     border-style: inset outset;
     border-color: #381c00 #663300;
     border-width: 4px;
+    background-color: transparent;
 	background-image: url('images/menufd.png');
 	background-repeat: repeat;
+    color: #009900;
     }
 
 .menu img { /* Le logo du menu */
@@ -106,13 +110,9 @@ ul {
     font-family: "Qlassik", "DejaVu Sans Condensed", sans-serif;
     text-align: center;
     list-style: none;
+    font-size: medium;
     }
 
-.menu li {
-    font-size: medium;
-    color: #009900;
-    }
-	
     /* Liens
      */
 .menu a {
@@ -167,6 +167,7 @@ p:first-letter {
     margin: 0.2em 15% 0.8em;
     padding: 3px;
     border: 4px outset #006600;
+    background-color: #009900;
     background-position: right top;
     background-image: url('images/fond_titre.jpg');
     max-width: 905px;
