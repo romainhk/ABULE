@@ -1,10 +1,13 @@
-Il faut choisir une licence pour 
-* le code
-* les images
-Le fond d'écran provient de www.ndesignportfolio.com
+## Code source
+Le code html/php/javascript a été créé par Steeve et Romain "hk".
+Il est sous licence GNU/GPLv3 (?).
 
-### Polices
+## Images
+Le fond d'écran provient de http://www.ndesignportfolio.com
+
+## Polices de caractères
 La police "Qlassik" est un freeware (Voir dans le sous-repertoire 
 "polices" : thebend.txt)
-La police "Howie's Funhouse" est distribuée gratuitement.
+La police "Howie's Funhouse" est distribuée gratuitement par KozacDesign.
 
+(si ok, ajouter l'entête de la licence GPL)
