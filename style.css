@@ -64,9 +64,6 @@ ul {
     position: absolute;
     width: 100%;
     }
-.superpose img {
-    z-index: 1;
-    }
 
     /* **********
      * Menu
@@ -190,6 +187,8 @@ p:first-letter {
     width: 80%;
     top: 0px;
     left: 0px;
+    margin-left:10%;
+    margin-top:7%;
     z-index: 5;
     }
 
@@ -200,6 +199,7 @@ p:first-letter {
     border: 1px solid #663300;
     background-color: white;
     font-family: "Howies Funhouse", sans-serif;
+    font-size: x-small;
     text-align: right;
     color: black;
     }
