@@ -82,6 +82,8 @@ ul {
     background-color: transparent;
 	background-image: url('images/menufd.png');
 	background-repeat: repeat;
+    font-family: "Qlassik", "DejaVu Sans Condensed", sans-serif;
+    font-size: medium;
     color: #009900;
     }
 
@@ -100,17 +102,14 @@ ul {
     font-family: "Qlassik B", sans-serif;
     font-variant: small-caps;
     text-align: center;
-    font-size: medium;
     color: #003300;
     }
 
 .menu ul {
     margin: 0;
     padding: 0;
-    font-family: "Qlassik", "DejaVu Sans Condensed", sans-serif;
     text-align: center;
     list-style: none;
-    font-size: medium;
     }
 
     /* Liens
@@ -180,7 +179,7 @@ p:first-letter {
     }
 
 .corps img {
-    width: 200px;
+    width: 220px;
     margin: 1ex;
     float: left;
     vertical-align: top;
