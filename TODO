@@ -17,9 +17,12 @@
 
 * ABULE + titre de chaque page
 
+* page php static ou dynamique ? (au pire : bench)
+
 * mode admin : permet de compléter une page (session)
 ** éditeur intégré
 ** lien "éditer la page" à ajouter
+** permettre l'ajout et la suppression de page (menu dynamique)
 
 * lowsrc sur les images ? => js
 
