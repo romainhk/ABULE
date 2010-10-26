@@ -15,5 +15,5 @@ function horloge() {
     if (minute<10) minute="0"+minute;
     if (seconde<10) seconde="0"+seconde;
     document.getElementById("horloge").innerHTML = jour+" "+nbjour+" "+mois+" "+year+"<br />"+heure+":"+minute+":"+seconde;
-    setTimeout("horloge()",1000);
+    setTimeout("horloge()",990);
 }

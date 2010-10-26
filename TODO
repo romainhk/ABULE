@@ -7,8 +7,6 @@
 
 * horloge avec des aiguilles en applet (horloge de maureen + fond logo-menu) => reste le fond
 
-* horloge digitale javascript en dessous => js de steeve
-
 === PHP/js
 * conversion de l'index en php ; contenu en blob mysql
 ** remplissage des pages -> webmaster
