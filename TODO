@@ -7,13 +7,15 @@
 
 * horloge avec des aiguilles en applet (horloge de maureen + fond logo-menu) => reste le fond
 
+* faire une feuille de style légère pour IE et navigateurs sans css3.
+** sans dégradé, images jpg, sans horloge flash
+
 === PHP/js
 * conversion de l'index en php ; contenu en blob mysql
 ** remplissage des pages -> webmaster
 
 * vérifier que le navigateur web supporte css 3 : get_browser()
 ** faire un message d'avertissement et un css 2.1
-** faire une feuille de style pour IE et navigateurs sans css3.
 
 * ABULE + titre de chaque page
 
