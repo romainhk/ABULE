@@ -1,5 +1,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
+<?php
+# BDD
+$mycnf = parse_ini_file("mycnf");
+$db = mysql_connect($mycnf['host'], $mycnf['user'], $mycnf['password']);
+if (!$db) {
+    die('Imposible de se connecter : ' . mysql_error($db));
+}
+mysql_select_db('site_abule', $db);
+
+function sauvegarder($nom, $contenu) {
+    /* Ajoute une page dans la BDD */
+    $req = 'INSERT INTO page (nom, contenu) VALUES ("'+$nom+'", "'+$contenu+'")';
+    $ret = mysql_query($req, $db)
+        or die("<br/>Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    //TODO update, valeur de retour
+}
+
+function charger($nom) {
+    /* Récupérer une page depuis la BDD */
+    //TODO sql, affichage
+}
+
+#echo $_SERVER['HTTP_USER_AGENT'];
+#echo var_dump(get_browser(NULL, TRUE));
+?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
   <head>
     <title>L´ABULE</title>
@@ -65,6 +90,7 @@
     </div>
     <div class="bord">
         <div class="corps">
+            <!-- Injecter le contenu de la base à partir d'ici -->
             <h1>Présentation de l´Association</h1>
             <p>L´ABULE est une association étudiante qui a pour objectif d´animer
             les départements de Biologie, Géologie et Environnement de l´Université

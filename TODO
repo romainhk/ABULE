@@ -21,7 +21,8 @@
 
 * ABULE + titre de chaque page
 
-* page php static ou dynamique ? (au pire : bench)
+* page php statique ou dynamique ? (au pire : bench)
+** si statique, faire une page de maintenance pour forcer la maj
 
 * mode admin : permet de compléter une page (session)
 ** éditeur intégré
