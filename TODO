@@ -1,21 +1,23 @@
 === CSS
 * bordure de chaque coté du site => 4% (à valider)
 
-* ajouter un dégradé comme fond général (au lieu du blanc) sur la bannière et le corps -> steeve
-
 * agrandir les images quand on clique dessus => première idée simpliste (css hover)
+** utiliser plutôt "lightbox"
 
-* horloge avec des aiguilles en applet (horloge de maureen + fond logo-menu) => reste le fond
-
-* faire une feuille de style légère pour IE et navigateurs sans css3.
-** sans dégradé, images jpg, sans horloge flash
+* séparer les style sur plusieurs feuilles :
+** une générique : style.css
+** une telle qu'on le veux (css3.0) : styleplus.css
+** une légère pour IE et navigateurs sans css3 : stylemoins.css
+*** sans dégradé, images jpg, sans horloge flash
 
 === PHP/js
-* conversion de l'index en php ; contenu en blob mysql
-** remplissage des pages -> webmaster
+* conversion de l'index en php ; contenu (en varchar?) dans la bdd
+** stockage des images à part en blob ( table "image"-(nom, blob) )
 
-* vérifier que le navigateur web supporte css 3 : get_browser()
-** faire un message d'avertissement et un css 2.1
+* vérifier que le navigateur web supporte css 3 :
+*... get_browser() -> browscat externe à spécifier dans le php.ini : http://browsers.garykeith.com/downloads.asp
+*... sinon, parser $_SERVER['HTTP_USER_AGENT']
+** ajouter un message d'avertissement (en bas ?)
 
 * ABULE + titre de chaque page
 
@@ -28,7 +30,7 @@
 
 * lowsrc sur les images ? => js
 
-* menu à droite : contact, horloge, news, rss => quels news, quels flux ?
+* menu à droite : contact, news, rss => quels news, quels flux ?
 
 === Autre
 * compléter la LICENCE et les méta-tags => (à valider)
