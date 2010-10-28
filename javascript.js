@@ -1,20 +1,21 @@
 date = new Object();
 date.lmois=new Array("janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre");
 date.ljour=new Array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
+date.maintenant = new Date();
+date.year=date.maintenant.getFullYear();
+date.mois=date.lmois[date.maintenant.getMonth()];
 
 function horloge() {
-    var maintenant = new Date();
-    var year=maintenant.getFullYear();
-    var nbjour=maintenant.getDate();
-    var heure=maintenant.getHours();
-    var minute=maintenant.getMinutes();
-    var seconde=maintenant.getSeconds();
+    date.maintenant = new Date();
+    var nbjour=date.maintenant.getDate();
+    var heure=date.maintenant.getHours();
+    var minute=date.maintenant.getMinutes();
+    var seconde=date.maintenant.getSeconds();
 
-    var mois=date.lmois[maintenant.getMonth()];
-    var jour=date.ljour[maintenant.getDay()];
+    var jour=date.ljour[date.maintenant.getDay()];
     if (minute<10) minute="0"+minute;
     if (seconde<10) seconde="0"+seconde;
-    document.getElementById("horloge").innerHTML = jour+" "+nbjour+" "+mois+" "+year+"<br />"+heure+":"+minute+":"+seconde;
-    setTimeout("horloge()",990);
+    document.getElementById("horloge").innerHTML = jour+" "+nbjour+" "+date.mois+" "+date.year+" "+heure+":"+minute+":"+seconde;
+    setTimeout("horloge()",998);
 }
 
