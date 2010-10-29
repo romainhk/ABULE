@@ -64,7 +64,7 @@ if ($browser->cssversion > 2) {
     <script type="text/javascript" src="js/lightbox.js"></script>
   </head>
 
-  <body onLoad="horloge()">
+  <body onload="horloge()">
   <div style="margin:0 4%">
     <div class="banniere">
         <div class="superpose">
