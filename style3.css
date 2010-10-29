@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "Qlassik";
+    src: url('polices/Qlassik_TB.ttf');
+    }
+
+@font-face {
+    font-family: "Qlassik B";
+    src: url('polices/QlassikBold_TB.ttf');
+    }
+
+@font-face {
+    font-family: "Howies Funhouse";
+    src: url('polices/Howie_s_Funhouse.ttf');
+    }
+
+.menu {
+    font-family: "Qlassik", "DejaVu Sans Condensed", sans-serif;
+    }
+
+.menu h2 {
+    font-family: "Qlassik B", sans-serif;
+    }
+
+.menu img {
+    opacity: 0.75;
+    }
+
+.corps {
+    font-family: "Howies Funhouse", cursive;
+    }
+
+.corps h1 {
+    font-family: "Qlassik B", sans-serif;
+    }
+
+.pied {
+    font-family: "Howies Funhouse", sans-serif;
+    }
+

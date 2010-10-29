@@ -22,8 +22,18 @@ function charger($nom) {
     //TODO sql, affichage
 }
 
-#echo $_SERVER['HTTP_USER_AGENT'];
-#echo var_dump(get_browser(NULL, TRUE));
+/* Choix des feuilles de style à utiliser
+ */
+$browser = get_browser(NULL, FALSE);
+if ($browser->cssversion > 2) {
+    $styleprime = "style3";
+} else {
+    //TODO créer style2
+    $styleprime = "style2";
+    if ($browser->cssversion <= 1) {
+        echo "Votre navigateur web est trop ancien";
+    }
+}
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
   <head>
@@ -40,6 +50,7 @@ function charger($nom) {
     <meta name="Revisit-after" content="17 days" />
     <meta name="Robots" content="all, follow, index" />
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo $styleprime; ?>.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
     <script src="javascript.js" type="text/javascript"></script>
   </head>

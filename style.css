@@ -1,20 +1,5 @@
 @charset "UTF-8";
 
-@font-face {
-    font-family: "Qlassik";
-    src: url('polices/Qlassik_TB.ttf');
-    }
-
-@font-face {
-    font-family: "Qlassik B";
-    src: url('polices/QlassikBold_TB.ttf');
-    }
-
-@font-face {
-    font-family: "Howies Funhouse";
-    src: url('polices/Howie_s_Funhouse.ttf');
-    }
-
 body {
     margin: 0;
     background-color: #85af43;
@@ -84,7 +69,7 @@ ul {
     background-image: url('images/ecologie.gif'),url('images/menufd.png');
     background-repeat: no-repeat,repeat;
 	background-position:center 20px,top;
-    font-family: "Qlassik", "DejaVu Sans Condensed", sans-serif;
+    font-family: sans-serif;
     font-size: medium;
     color: #009900;
     }
@@ -95,13 +80,12 @@ ul {
 /*    margin: 13px 6.5ex 0;*/
     margin: 2ex auto 0px;
     text-align: center;
-    opacity: 0.75;
     }
 
 .menu h2 {
     margin: 10px;
     border: 4px outset #003300;
-    font-family: "Qlassik B", sans-serif;
+    font-family: sans-serif;
     font-weight: bold;
     font-variant: small-caps;
     text-align: center;
@@ -164,7 +148,7 @@ p:first-letter {
 	background-image: url('images/incrustation_bambou.png'),url('images/dbd.jpg'),url('images/dbg.jpg'),url('images/dhd.jpg'),url('images/dhg.jpg'),url('images/dh.jpg'),url('images/dg.jpg'),url('images/db.jpg'),url('images/dd.jpg');
     background-repeat: no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
     background-position: right bottom,right bottom,left bottom,right top,left top,top,left,bottom,right;
-    font-family: "Howies Funhouse", cursive;
+    font-family: cursive;
     font-size: medium;
     text-align: left;
     color: #003300;
@@ -180,7 +164,7 @@ p:first-letter {
     background-image: url('images/fond_titre.jpg');
     max-width: 905px;
     max-height: 255px;
-    font-family: "Qlassik B", sans-serif;
+    font-family: sans-serif;
     font-weight: bold;
     font-size: xx-large;
     text-align: center;
@@ -210,7 +194,7 @@ p:first-letter {
     padding: 1px 1ex;
     border: 1px solid #663300;
     background-color: white;
-    font-family: "Howies Funhouse", sans-serif;
+    font-family: sans-serif;
     font-size: x-small;
     text-align: right;
     color: black;
