@@ -2,20 +2,19 @@
 * bordure de chaque coté du site => 4% (à valider)
 
 * séparer les style sur plusieurs feuilles :
-** une générique : style.css
-** une telle qu'on le veux (css3.0) : styleplus.css
-** une légère pour IE et navigateurs sans css3 : stylemoins.css
+** une générique css2.1 : style.css
+** une telle qu'on le veux (css3.0) : style3.css
+** une légère pour IE et navigateurs css2.0 et inférieur : style2.css
 *** sans dégradé, images jpg, sans horloge flash
 
+
 === PHP/js
-* conversion de l'index en php ; contenu (en varchar?) dans la bdd
-** stockage des images à part en blob ( table "image"-(nom, blob) )
+* conversion de l'index en php (FAIT)
+** stockage des images à part en blob ( table "image".(nom, blob) )
 
 * vérifier que le navigateur web supporte css 3 :
 *... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
 ** ajouter un message d'avertissement (en bas ?)
-
-* ABULE + titre de chaque page
 
 * page php statique ou dynamique ? (au pire : bench)
 ** si statique, faire une page de maintenance pour forcer la maj
@@ -29,6 +28,11 @@
 
 * menu à droite : contact, news, rss => quels news, quels flux ?
 
+
 === Autre
-* compléter la LICENCE et les méta-tags => (à valider)
+* LICENCE et méta-tags => (à valider)
+
+
+=== Images
+* mettre en français closelabel(, nextlabel et prevlabel)
 
