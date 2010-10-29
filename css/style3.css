@@ -1,16 +1,16 @@
 @font-face {
     font-family: "Qlassik";
-    src: url('polices/Qlassik_TB.ttf');
+    src: url('../polices/Qlassik_TB.ttf');
     }
 
 @font-face {
     font-family: "Qlassik B";
-    src: url('polices/QlassikBold_TB.ttf');
+    src: url('../polices/QlassikBold_TB.ttf');
     }
 
 @font-face {
     font-family: "Howies Funhouse";
-    src: url('polices/Howie_s_Funhouse.ttf');
+    src: url('../polices/Howie_s_Funhouse.ttf');
     }
 
 .menu {

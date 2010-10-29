@@ -1,9 +1,6 @@
 === CSS
 * bordure de chaque coté du site => 4% (à valider)
 
-* agrandir les images quand on clique dessus => première idée simpliste (css hover)
-** utiliser plutôt "lightbox"
-
 * séparer les style sur plusieurs feuilles :
 ** une générique : style.css
 ** une telle qu'on le veux (css3.0) : styleplus.css
@@ -15,8 +12,7 @@
 ** stockage des images à part en blob ( table "image"-(nom, blob) )
 
 * vérifier que le navigateur web supporte css 3 :
-*... get_browser() -> browscat externe à spécifier dans le php.ini : http://browsers.garykeith.com/downloads.asp
-*... sinon, parser $_SERVER['HTTP_USER_AGENT']
+*... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
 ** ajouter un message d'avertissement (en bas ?)
 
 * ABULE + titre de chaque page

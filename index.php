@@ -49,10 +49,14 @@ if ($browser->cssversion > 2) {
     <meta name="Rev" content="labulecalais@gmail.com" />
     <meta name="Revisit-after" content="17 days" />
     <meta name="Robots" content="all, follow, index" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo $styleprime; ?>.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/<?php echo $styleprime; ?>.css" />
+    <link rel="stylesheet" type="text/css" href="css/lightbox.css" media="screen" />
     <link rel="icon" type="image/png" href="favicon.png" />
-    <script src="javascript.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/general.js"></script>
+    <script type="text/javascript" src="js/prototype.js"></script>
+    <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
+    <script type="text/javascript" src="js/lightbox.js"></script>
   </head>
 
   <body onLoad="horloge()">
@@ -117,7 +121,7 @@ if ($browser->cssversion > 2) {
                 sensibilisation, projets, ... pour l´environnement</li>
             </ul>
             <p>
-            <img src="images/imagetest.jpg" alt="imagedetest" />
+            <a href="images/imagetest.jpg" rel="lightbox"><img src="images/imagetest.jpg" alt="imagedetest" /></a>
             Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
             <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
