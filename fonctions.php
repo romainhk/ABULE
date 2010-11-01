@@ -4,17 +4,16 @@
  */
 function sauvegarder($db, $nom, $contenu) {
     /* Ajoute une page dans la BDD */
-    //TODO pas fini
     $req = 'INSERT INTO page (nom, contenu) VALUES ("'.$nom.'", "'.$contenu.'")';
     $ret = mysql_query($req, $db);
     if (!$ret) {
         if (mysql_errno($db) == 1062) { # la page existe dégà
             modifier($db, $nom, $contenu);
         } else {
-            die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+            return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
         }
     }
-    //TODO valeur de retour ?
+    return FALSE;
 }
 
 function modifier($db, $nom, $contenu) {
@@ -30,6 +29,10 @@ function charger($db, $nom) {
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     $f = mysql_fetch_row($ret);
-    return $f[0];
+    if (isset($f[0])) {
+        return $f[0];
+    } else {
+        return FALSE;
+    }
 }
 ?>

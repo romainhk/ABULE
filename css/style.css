@@ -193,3 +193,8 @@ p:first-letter {
     text-align: right;
     color: black;
     }
+.avertissement {
+    margin: 0.4ex 0;
+    font-size: small;
+    color: red;
+    }
