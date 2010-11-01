@@ -2,7 +2,7 @@
 /*
  * Fonction d'accès sur la BDD
  */
-function sauvegarder($db, $nom, $contenu) {
+function bdd_sauvegarder($db, $nom, $contenu) {
     /* Ajoute une page dans la BDD */
     $req = 'INSERT INTO page (nom, contenu) VALUES ("'.$nom.'", "'.$contenu.'")';
     $ret = mysql_query($req, $db);
@@ -16,14 +16,14 @@ function sauvegarder($db, $nom, $contenu) {
     return FALSE;
 }
 
-function modifier($db, $nom, $contenu) {
+function bdd_modifier($db, $nom, $contenu) {
     /* Modifier une page dans la BDD */
     $req = 'UPDATE page SET contenu="'.$contenu.'" WHERE nom="'.$nom.'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
 }
 
-function charger($db, $nom) {
+function bdd_charger($db, $nom) {
     /* Récupérer une page depuis la BDD */
     $req = 'SELECT contenu FROM page WHERE nom="'.$nom.'"';
     $ret = mysql_query($req, $db)

@@ -1,35 +1,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <?php
-header('Content-type: text/html; charset=utf-8');
+//header('Content-type: text/html; charset=utf-8');
 /*
  * BDD
  */
 $mycnf = parse_ini_file("mycnf");
 $db = mysql_connect($mycnf['host'], $mycnf['user'], $mycnf['password']);
 if (!$db) {
-    die('Imposible de se connecter : ' . mysql_error($db));
+    die('Imposible de se connecter à la base : ' . mysql_error($db));
 }
 mysql_select_db('site_abule', $db);
 mysql_query('SET NAMES UTF8', $db);
 
 require('fonctions.php');
-$avertissements = array(); //Avertissements/Erreurs à reporter à l'usager
 
 /*
  * Passage de paramètres GET
  */
+$page = 'index';
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
-} else {
-    $page = 'index';
 }
 
 //TODO inclure un menu.php ici qui génèrera le menu
 
 /* 
  * Sélection des feuilles de style à utiliser
+ * Messages d'avertissements
  */
+$avertissements = array(); //Avertissements/Erreurs à reporter à l'usager
 //TODO un tableau de styles ?
 $browser = get_browser(NULL, FALSE);
 if ($browser->cssversion > 2) {
@@ -37,8 +37,13 @@ if ($browser->cssversion > 2) {
 } else {
     $styleprime = "style2";
     if ($browser->cssversion <= 1) {
-        array_push($avertissements, "Votre navigateur web est trop ancien");
+        array_push($avertissements, 
+            "Votre navigateur web (".$browser->browser.'-'.$browser->version.") est trop ancien.");
     }
+}
+if (!$browser->javascript) {
+    array_push($avertissements, 
+        "Le javascript n'est pas activé ; certains éléments ne s'afficheront mal/pas.");
 }
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
@@ -80,7 +85,7 @@ if ($browser->cssversion > 2) {
     </div>
     <div class="menu" style="float:left;">
 		<span style="height:180px;display:block;"></span>
-        <h2><a href="index.html">Accueil</a></h2>
+        <h2><a href="?page=index">Accueil</a></h2>
         <h2><a href="">Présentation de l´Association</a></h2>
         <h2>Événements</h2>
         <ul>
@@ -94,6 +99,7 @@ if ($browser->cssversion > 2) {
         </ul>
         <h2><a href="">À découvrir</a></h2>
         <h2><a href="?page=Liens">Liens</a></h2>
+        <h2><a href="?page=Admin">Admin</a></h2><!-- A n'afficher que si une session ouverte -->
     </div>
     <div class="menu" style="float:right;">
 		<span style="height:43px;display:block;"></span>
@@ -112,13 +118,14 @@ if ($browser->cssversion > 2) {
     <div class="bord">
         <div class="corps">
 <?php 
-$c = charger($db, $page);
+# Contenu
+$c = bdd_charger($db, $page);
 if ($c) echo $c;
 ?>
         </div>
     </div>
     <div class="pied">
-        Copyright - "Contactez-nous" : labulecalais@gmail.com
+        <a href="">Copyright</a> - "Contactez-nous" : labulecalais@gmail.com
     </div>
     <div style="text-align:center;">
         <a href="http://validator.w3.org/check?uri=referer"><img
@@ -131,7 +138,8 @@ if ($c) echo $c;
             alt="CSS Valide !" /></a>
     </div>
     <?php
-    # Messages d'erreur
+# Messages d'erreur
+//TODO faire une vrai mise en page (icone que l'on survole pour voir le mess ?)
 if (count($avertissements)>0) {
     echo '<ul class="avertissement">';
     foreach ($avertissements as $a) {
