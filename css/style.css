@@ -17,9 +17,9 @@ ul {
     list-style-type: square;
     }
 
-    /* **********
-     * Bannière
-     */
+/* **********
+ * Bannière
+ */
 .banniere {
     position: relative;
     margin: 1ex 0;
@@ -46,9 +46,9 @@ ul {
     width: 100%;
     }
 
-    /* **********
-     * Menu
-     */
+/* **********
+ * Menu
+ */
 .menu {
     width: 14%;
     height: 740px;
@@ -115,9 +115,9 @@ ul {
     text-align: center;
     }
     
-    /* **********
-     * Corps
-     */
+/* **********
+ * Corps
+ */
 p:first-letter {
     margin-left: 1em;
     }
@@ -178,6 +178,8 @@ p:first-letter {
     color: black;
     }
 
+    /* Lien "modifier"
+     */
 .modifier {
     font-size: x-small;
     float: right;

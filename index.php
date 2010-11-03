@@ -11,6 +11,9 @@ $page = 'index';
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
+if (!strcmp($page, 'modifier') {
+    //TODO Lancer le script de modification de page
+}
 
 //TODO inclure un menu.php ici qui génèrera le menu
 
@@ -35,9 +38,21 @@ if (!$browser->javascript) {
         "Le javascript n'est pas activé ; certains éléments ne s'afficheront mal/pas.");
 }
 
+/*
+ * Contenu html
+ */
+# Styles
 $les_styles = "";
 foreach ($styles as $s) {
     $les_styles = $les_styles."    <link rel=\"stylesheet\" type=\"text/css\" href=\"css/$s.css\" />\n";
+}
+# Messages d'erreur
+$les_erreurs = "";
+if (count($avertissements)>0) {
+    foreach ($avertissements as $av) {
+        $les_erreurs = $les_erreurs.str_repeat(" ",8).'<img src="images/important.png" alt="'
+            .$av.'" longdesc="?page=erreurs" style="height:31px;" />'."\n";
+    }
 }
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
@@ -130,15 +145,7 @@ if ($c) echo $c;
             style="border:0; width:88px; height:31px"
             src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
             alt="CSS Valide !" /></a>
-        <?php
-# Messages d'erreur
-if (count($avertissements)>0) {
-    foreach ($avertissements as $av) {
-        echo str_repeat(" ",8).'<img src="images/important.png" alt="'
-            .$av.'" longdesc="?page=erreurs" style="height:31px;" />'."\n";
-    }
-}
-    ?>
+<?php echo $les_erreurs; ?>
     </div>
   </div>
   </body>

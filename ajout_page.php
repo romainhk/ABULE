@@ -5,6 +5,7 @@
 require_once('db.php');
 require('fonctions.php');
 
+# Paramètres
 if (isset($_POST['nom']) and strcmp($_POST['nom'], '')) {
     $nom = $_POST['nom'];
 } else {
@@ -16,6 +17,7 @@ if (isset($_POST['contenu'])) {
     $contenu = $_POST['contenu'];
 }
 
+# Traitement
 $req = 'SELECT COUNT(nom) FROM page WHERE nom="'.$nom.'"';
 $ret = mysql_query($req, $db);
 if ($ret) {
