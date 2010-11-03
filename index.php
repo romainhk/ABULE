@@ -113,26 +113,6 @@ foreach ($styles as $s) {
 # Contenu
 $c = bdd_charger($db, $page);
 if ($c) echo $c;
-/*
-<h1>Formulaires Admin</h1>
-<form method="post" action="ajout_page.php">
-<fieldset>
-<legend>Ajouter une page</legend>
-<table>
-<tr>
-    <td><label for="nom">Nom de la page :</label></td>
-    <td><input type="text" name="nom" size="25" /></td>
-<tr/><tr>
-    <td><label for="contenu">Contenu html :</label></td>
-    <td><textarea name="contenu" rows="8" cols="65">Contenu html de la page</textarea></td>
-<tr/><tr>
-    <td colspan="2" style="text-align:right;">
-    <input type="submit" value="Ajouter" accesskey="g" /></td>
-</tr>
-</table>
-</fieldset>
-</form>
-*/
 ?>
         </div>
     </div>
@@ -148,18 +128,16 @@ if ($c) echo $c;
             style="border:0; width:88px; height:31px"
             src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
             alt="CSS Valide !" /></a>
-    </div>
-    <?php
+        <?php
 # Messages d'erreur
-//TODO faire une vrai mise en page (icone que l'on survole pour voir le mess ?)
 if (count($avertissements)>0) {
-    echo '<ul class="avertissement">';
-    foreach ($avertissements as $a) {
-        echo "\t<li>$a</li>\n";
+    foreach ($avertissements as $av) {
+        echo str_repeat(" ",8).'<img src="images/important.png" alt="Un problème sur la page" longdesc="'
+                .$av.'" style="height:31px;" />'."\n";
     }
-    echo "</ul>";
 }
     ?>
+    </div>
   </div>
   </body>
 </html>
