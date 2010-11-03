@@ -109,6 +109,8 @@ foreach ($styles as $s) {
     </div>
     <div class="bord">
         <div class="corps">
+            <!-- A n'afficher que si une session ouverte -->
+            <span class="modifier"><a href="?page=modifier&cible=<?php echo $page; ?>">Modifier</a></span>
 <?php 
 # Contenu
 $c = bdd_charger($db, $page);

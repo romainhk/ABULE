@@ -177,10 +177,17 @@ p:first-letter {
     text-align: right;
     color: black;
     }
-.avertissement {
-    margin: 0.4ex 0;
-    font-size: small;
-    color: red;
+
+.modifier {
+    font-size: x-small;
+    float: right;
+    margin: 0.4ex;
+    }
+.modifier a {
+    color: #009900;
+    }
+.modifier a:visited {
+    color: #009900;
     }
 
 /*
