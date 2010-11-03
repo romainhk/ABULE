@@ -132,8 +132,8 @@ if ($c) echo $c;
 # Messages d'erreur
 if (count($avertissements)>0) {
     foreach ($avertissements as $av) {
-        echo str_repeat(" ",8).'<img src="images/important.png" alt="Un problème sur la page" longdesc="'
-                .$av.'" style="height:31px;" />'."\n";
+        echo str_repeat(" ",8).'<img src="images/important.png" alt="'
+            .$av.'" longdesc="?page=erreurs" style="height:31px;" />'."\n";
     }
 }
     ?>
