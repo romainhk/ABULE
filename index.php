@@ -31,7 +31,7 @@ if (isset($_GET['page'])) {
  */
 $avertissements = array(); //Avertissements/Erreurs à reporter à l'usager
 //TODO un tableau de styles ?
-$browser = get_browser(NULL, FALSE);
+$browser = get_browser($_SERVER["HTTP_USER_AGENT"], FALSE);
 if ($browser->cssversion > 2) {
     $styleprime = "style3";
 } else {
