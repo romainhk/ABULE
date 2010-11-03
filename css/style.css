@@ -5,10 +5,6 @@ body {
     background-color: #85af43;
     color: #003300;
    /* background-repeat: no-repeat;*/
-    background-position: center top;
-    background-image: url('../images/fond.jpg'),url('../images/fd.jpg');
-    background-attachment: fixed;
-	background-repeat: no-repeat,repeat-x;
     }
 
 h2 {
@@ -31,10 +27,6 @@ ul {
     border-style: outset;
     border-color: #663300 #381c00 #381c00 #663300;
     border-width: 4px;
-    background-color: white;
-	background-image: url('../images/dbd.jpg'),url('../images/dbg.jpg'),url('../images/dhd.jpg'),url('../images/dhg.jpg'),url('../images/dh.jpg'),url('../images/dg.jpg'),url('../images/db.jpg'),url('../images/dd.jpg');
-    background-repeat: no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
-    background-position: right bottom,left bottom,right top,left top,top,left,bottom,right;
     text-align: center;
     }
 .bannieregauche {
@@ -65,10 +57,6 @@ ul {
     border-style: inset outset;
     border-color: #381c00 #663300;
     border-width: 4px;
-    background-color: transparent;
-    background-image: url('../images/ecologie.gif'),url('../images/menufd.png');
-    background-repeat: no-repeat,repeat;
-	background-position:center 20px,top;
     font-family: sans-serif;
     font-size: medium;
     color: #009900;
@@ -144,10 +132,6 @@ p:first-letter {
 .corps {
     height: 96.5%;
     padding: 1.5%;
-    background-color: white;
-	background-image: url('../images/incrustation_bambou.png'),url('../images/dbd.jpg'),url('../images/dbg.jpg'),url('../images/dhd.jpg'),url('../images/dhg.jpg'),url('../images/dh.jpg'),url('../images/dg.jpg'),url('../images/db.jpg'),url('../images/dd.jpg');
-    background-repeat: no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
-    background-position: right bottom,right bottom,left bottom,right top,left top,top,left,bottom,right;
     font-family: cursive;
     font-size: medium;
     text-align: left;
