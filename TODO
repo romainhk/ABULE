@@ -15,6 +15,10 @@
 * vérifier que le navigateur web supporte css 3 :
 *... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
 
+* pouvoir ajouter une page (par formulaire pour le moment)
+* pouvoir modifier une page
+* pouvoir supprimer une page ?
+
 * page php statique ou dynamique ? (au pire : bench)
 ** si statique, faire une page de maintenance pour forcer la maj
 

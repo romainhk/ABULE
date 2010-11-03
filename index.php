@@ -1,18 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <?php
-//header('Content-type: text/html; charset=utf-8');
-/*
- * BDD
- */
-$mycnf = parse_ini_file("mycnf");
-$db = mysql_connect($mycnf['host'], $mycnf['user'], $mycnf['password']);
-if (!$db) {
-    die('Imposible de se connecter à la base : ' . mysql_error($db));
-}
-mysql_select_db('site_abule', $db);
-mysql_query('SET NAMES UTF8', $db);
-
+require('db.php');
 require('fonctions.php');
 
 /*
@@ -30,20 +19,25 @@ if (isset($_GET['page'])) {
  * Messages d'avertissements
  */
 $avertissements = array(); //Avertissements/Erreurs à reporter à l'usager
-//TODO un tableau de styles ?
+$styles = array( "style", "lightbox" ); //Les styles css à utiliser
 $browser = get_browser($_SERVER["HTTP_USER_AGENT"], FALSE);
 if ($browser->cssversion > 2) {
-    $styleprime = "style3";
+    array_push($styles, "style3");
 } else {
-    $styleprime = "style2";
+    array_push($styles, "style2");
     if ($browser->cssversion <= 1) {
         array_push($avertissements, 
-            "Votre navigateur web (".$browser->browser.'-'.$browser->version.") est trop ancien.");
+            "Votre navigateur web (".$browser->browser.' '.$browser->version.") est trop ancien.");
     }
 }
 if (!$browser->javascript) {
     array_push($avertissements, 
         "Le javascript n'est pas activé ; certains éléments ne s'afficheront mal/pas.");
+}
+
+$les_styles = "";
+foreach ($styles as $s) {
+    $les_styles = $les_styles."    <link rel=\"stylesheet\" type=\"text/css\" href=\"css/$s.css\" />\n";
 }
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
@@ -60,9 +54,7 @@ if (!$browser->javascript) {
     <meta name="Rev" content="labulecalais@gmail.com" />
     <meta name="Revisit-after" content="17 days" />
     <meta name="Robots" content="all, follow, index" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/<?php echo $styleprime; ?>.css" />
-    <link rel="stylesheet" type="text/css" href="css/lightbox.css" media="screen" />
+<?php echo $les_styles; ?>
     <link rel="icon" type="image/png" href="favicon.png" />
     <script type="text/javascript" src="js/general.js"></script>
     <script type="text/javascript" src="js/prototype.js"></script>
@@ -121,6 +113,26 @@ if (!$browser->javascript) {
 # Contenu
 $c = bdd_charger($db, $page);
 if ($c) echo $c;
+/*
+<h1>Formulaires Admin</h1>
+<form method="post" action="ajout_page.php">
+<fieldset>
+<legend>Ajouter une page</legend>
+<table>
+<tr>
+    <td><label for="nom">Nom de la page :</label></td>
+    <td><input type="text" name="nom" size="25" /></td>
+<tr/><tr>
+    <td><label for="contenu">Contenu html :</label></td>
+    <td><textarea name="contenu" rows="8" cols="65">Contenu html de la page</textarea></td>
+<tr/><tr>
+    <td colspan="2" style="text-align:right;">
+    <input type="submit" value="Ajouter" accesskey="g" /></td>
+</tr>
+</table>
+</fieldset>
+</form>
+*/
 ?>
         </div>
     </div>

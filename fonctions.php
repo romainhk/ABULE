@@ -2,13 +2,14 @@
 /*
  * Fonction d'accès sur la BDD
  */
-function bdd_sauvegarder($db, $nom, $contenu) {
+function bdd_sauvegarder($db, $nom, $contenu, $forcer=FALSE) {
     /* Ajoute une page dans la BDD */
-    $req = 'INSERT INTO page (nom, contenu) VALUES ("'.$nom.'", "'.$contenu.'")';
+    $san_contenu = htmlspecialchars($contenu);
+    $req = 'INSERT INTO page (nom, contenu) VALUES ("'.$nom.'", "'.$san_contenu.'")';
     $ret = mysql_query($req, $db);
     if (!$ret) {
-        if (mysql_errno($db) == 1062) { # la page existe dégà
-            modifier($db, $nom, $contenu);
+        if (mysql_errno($db) == 1062 and $forcer) { # la page existe dégà
+            bdd_modifier($db, $nom, $san_contenu);
         } else {
             return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
         }
@@ -30,7 +31,7 @@ function bdd_charger($db, $nom) {
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     $f = mysql_fetch_row($ret);
     if (isset($f[0])) {
-        return $f[0];
+        return htmlspecialchars_decode($f[0]);
     } else {
         return FALSE;
     }
