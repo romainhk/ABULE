@@ -2,9 +2,13 @@
 /*
  * Fonction d'accès sur la BDD
  */
+
+// Ajoute une page dans la BDD
 function bdd_sauvegarder($db, $nom, $contenu, $forcer=FALSE) {
-    /* Ajoute une page dans la BDD */
+    // $forcer permet de forcer la mise à jour si la page existe déjà
+    $contenu = preg_replace("/<?php.*?>/", '', $contenu);
     $san_contenu = htmlspecialchars($contenu);
+
     $req = 'INSERT INTO page (nom, contenu) VALUES ("'.$nom.'", "'.$san_contenu.'")';
     $ret = mysql_query($req, $db);
     if (!$ret) {
@@ -17,15 +21,15 @@ function bdd_sauvegarder($db, $nom, $contenu, $forcer=FALSE) {
     return FALSE;
 }
 
+// Modifier une page dans la BDD
 function bdd_modifier($db, $nom, $contenu) {
-    /* Modifier une page dans la BDD */
     $req = 'UPDATE page SET contenu="'.$contenu.'" WHERE nom="'.$nom.'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
 }
 
+// Récupérer une page depuis la BDD
 function bdd_charger($db, $nom) {
-    /* Récupérer une page depuis la BDD */
     $req = 'SELECT contenu FROM page WHERE nom="'.$nom.'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));

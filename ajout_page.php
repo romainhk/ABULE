@@ -2,6 +2,7 @@
 /*
  * Traitement du formulaire d'ajout de page
  */
+//TODO faire pour que les valeurs de retour "fonctionnent", s'affichent à la place de la page d'origine (ajax ?)
 require_once('db.php');
 require('fonctions.php');
 

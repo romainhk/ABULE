@@ -4,34 +4,33 @@
 * séparer les style sur plusieurs feuilles :
 ** une générique css2.1 : style.css
 ** une telle qu'on le veux (css3.0) : style3.css
-** une légère pour IE et navigateurs css2.0 et inférieur : style2.css
+** une légère pour IE et navigateurs css2.0 et inférieur
 *** sans dégradé, images jpg, sans horloge flash
 
 
 === PHP/js
-* conversion de l'index en php (FAIT)
-** stockage des images à part en blob ( table "image".(nom, blob) )
-
 * vérifier que le navigateur web supporte css 3 :
 *... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
 
 * pouvoir ajouter une page (par formulaire pour le moment)
 * pouvoir modifier une page
-* pouvoir supprimer une page ?
+* pouvoir supprimer une page
 * liste des pages -> pouvoir en modifier une
+
+* stockage des images à part en blob ( table "image" -v )
+
+* mode admin : permet de compléter une page (session)
+** éditeur js intégré
+** journal de connexion (pour vérification)
 
 * page php statique ou dynamique ? (au pire : bench)
 ** si statique, faire une page de maintenance pour forcer la maj
 
-* mode admin : permet de compléter une page (session)
-** éditeur intégré
-** lien "éditer la page" à ajouter
-** permettre l'ajout et la suppression de page (menu dynamique)
-** journal de connexion (pour vérification)
-
-* lowsrc sur les images ? => js
-
 * menu à droite : contact, news, rss => quels news, quels flux ?
+
+
+=== BDD
+* site_abule.image > (nom, blob, alt, taille) ?
 
 
 === Autre

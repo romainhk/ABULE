@@ -11,8 +11,17 @@ $page = 'index';
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
-if (!strcmp($page, 'modifier') {
-    //TODO Lancer le script de modification de page
+$action = 'lire';
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+}
+
+/*
+ * Action
+ */
+if (!strcmp($action, 'lire')) {
+    //TODO verifier que la session est ouverte
+    //TODO si action=modifier, lancer le script de modification de page
 }
 
 //TODO inclure un menu.php ici qui génèrera le menu
@@ -48,7 +57,7 @@ foreach ($styles as $s) {
 }
 # Messages d'erreur
 $les_erreurs = "";
-if (count($avertissements)>0) {
+if (count($avertissements) > 0) {
     foreach ($avertissements as $av) {
         $les_erreurs = $les_erreurs.str_repeat(" ",8).'<img src="images/important.png" alt="'
             .$av.'" longdesc="?page=erreurs" style="height:31px;" />'."\n";
@@ -125,7 +134,7 @@ if (count($avertissements)>0) {
     <div class="bord">
         <div class="corps">
             <!-- A n'afficher que si une session ouverte -->
-            <span class="modifier"><a href="?page=modifier&cible=<?php echo $page; ?>">Modifier</a></span>
+            <span class="modifier"><a href="?page=<?php echo $page; ?>&action=modifier">Modifier</a></span>
 <?php 
 # Contenu
 $c = bdd_charger($db, $page);
@@ -134,7 +143,7 @@ if ($c) echo $c;
         </div>
     </div>
     <div class="pied">
-        <a href="">Copyright</a> - "Contactez-nous" : labulecalais@gmail.com
+        <a href="">Copyright</a> - <a href="">Contactez-nous</a>
     </div>
     <div style="text-align:center;">
         <a href="http://validator.w3.org/check?uri=referer"><img
