@@ -84,6 +84,7 @@ if (count($avertissements) > 0) {
     <script type="text/javascript" src="js/prototype.js"></script>
     <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
+	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
   </head>
 
   <body onload="horloge()">
@@ -139,6 +140,37 @@ if (count($avertissements) > 0) {
 # Contenu
 $c = bdd_charger($db, $page);
 if ($c) echo $c;
+/*
+<h1>Formulaires Admin</h1>
+<form method="post" action="ajout_page.php">
+<fieldset>
+<legend>Ajouter une page</legend>
+<ul>
+    <li><label for="nom">Nom de la page :</label>
+    <input type="text" name="nom" size="25" /></li>
+    <li><label for="contenu">Contenu :</label></li>
+</ul>
+    <textarea class="ckeditor" cols="80" id="contenu" name="contenu" rows="12">&lt;h1&gt;Titre de la page&lt;/h1&gt;&#10;Contenu de la page...</textarea>
+    <script type="text/javascript">
+    //<![CDATA[
+    CKEDITOR.replace( 'contenu',
+    {
+        toolbar:
+    [
+        [ 'Source' ], 
+        [ 'Bold', 'Italic', 'Underline', 'Strike' ],
+        [ 'Styles', 'Format' ],
+        [ 'Image', 'Table', 'SpecialChar', 'Smiley' ],
+        [ 'Find', 'Replace', '-', 'ShowBlocks', 'Maximize' ]
+    ]
+    });
+    //]]>
+	</script>
+    <div style="text-align:right;">
+    <input type="submit" value="Ajouter" accesskey="g" /></div>
+</fieldset>
+</form>
+*/
 ?>
         </div>
     </div>

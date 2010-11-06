@@ -198,6 +198,9 @@ p:first-letter {
 fieldset {
 	margin: 1ex auto;
     }
+fieldset ul li {
+    margin-top: 0.5ex;
+    }
 legend {
 	font-size: Large;
     color: #009900;
@@ -206,7 +209,7 @@ label {
 	font-size: medium;
     }
 input[type="submit"] {
-    margin-top: 0.5ex;
+    margin-top: 0.8ex;
     font-weight: 600;
     }
 
