@@ -17,9 +17,6 @@
 
 * stockage des images à part en blob ( table "image" -v )
 
-* formulaire d'ajout/modification :
-** rendre compatible avec lightbox : ajouter le rel=""
-
 * mode admin : permet de compléter une page (session)
 ** éditeur js intégré
 ** journal de connexion (pour vérification)
@@ -39,6 +36,7 @@
 === Autre
 * LICENCE et méta-tags => (à valider)
 
+* https ?
 
 === Images
 * mettre en français closelabel(, nextlabel et prevlabel)

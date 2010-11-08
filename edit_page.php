@@ -26,7 +26,10 @@ $req = 'SELECT COUNT(nom) FROM page WHERE nom="'.$nom.'"';
 $ret = mysql_query($req, $db);
 if ($ret) {
     $f = mysql_fetch_row($ret);
-    if ($f[0] == 0) {
+    if ($f[0] == 0 or $forcer) {
+        // Liens lightbox
+        $contenu = preg_replace("/(<a href=\"[^>]+) rel=\"lightbox\"(><img )/", '$1$2', $contenu);
+        $contenu = preg_replace("/(<a href=\"[^>]+)(><img )/", '$1 rel="lightbox"$2', $contenu);
         echo "Ajout de la page $nom avec : ".htmlentities($contenu).".<br/>\n";
         bdd_sauvegarder($db, $nom, $contenu, $forcer);
     } else {

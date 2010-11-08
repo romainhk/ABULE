@@ -15,7 +15,7 @@ if (!strcmp($action, 'ajouter')) {
 <ul>
 <?php
     if ($modification) {
-        echo "<li>Nom de la page : « $page ».";
+        echo "<li>Nom de la page : « $page ».<input type=\"hidden\" name=\"nom\" value=\"$page\" />\n";
         echo '<input type="hidden" name="modifier" value="foo" /></li>';
     } else {
         echo '<li><label for="nom">Nom de la page :</label>'
@@ -42,6 +42,6 @@ if (!strcmp($action, 'ajouter')) {
     //]]>
 	</script>
     <div style="text-align:right;">
-    <input type="submit" value="Ajouter" accesskey="g" /></div>
+    <input type="submit" value="<?php echo ucfirst($action); ?>" accesskey="g" /></div>
 </fieldset>
 </form>

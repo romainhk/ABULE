@@ -155,7 +155,11 @@ if (strcmp($action, 'lire')) {
     # Pas d'action : simple chargement du contenu
     echo "<span class=\"modifier\"><a href=\"?page=$page&action=modifier\">Modifier</a></span>\n";
     $c = bdd_charger($db, $page);
-    if ($c) echo $c;
+    if ($c) {
+        echo $c;
+    } else {
+        echo "<p>Impossible de charger la page $page</p>\n";
+    }
 }
 ?>
         </div>
