@@ -2,7 +2,6 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <?php
 require('db.php');
-require('fonctions.php');
 
 /*
  * Passage de paramètres GET
@@ -15,7 +14,6 @@ $action = 'lire';
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
-
 
 //TODO inclure un menu.php ici qui génèrera le menu
 
@@ -110,6 +108,9 @@ if (count($avertissements) > 0) {
         <h2><a href="">À découvrir</a></h2>
         <h2><a href="?page=Liens">Liens</a></h2>
         <h2><a href="?page=\&action=ajouter">Admin</a></h2><!-- A n'afficher que si une session ouverte -->
+        <ul>
+            <li><a href="?page=\&action=lister">Liste des pages</a></li>
+        </ul>
         <h2><a href="?page=test">Test</a></h2>
     </div>
     <div class="menu" style="float:right;">
@@ -138,15 +139,20 @@ if (strcmp($action, 'lire')) {
     switch ($action) {
     case 'modifier':
         $prechargement = bdd_charger($db, $page);
+        $vue = 'edit_page_form';
         break;
     case 'ajouter':
         $prechargement = '&lt;h1&gt;Titre de la page&lt;/h1&gt;&#10;Contenu de la page...';
+        $vue = 'edit_page_form';
+        break;
+    case 'lister':
+        $vue = 'liste_page';
     default:
         break;
     }
-    require('form_edit_page.php');
+    require("$vue.php");
 } else {
-    # Pas d'action : chargement du contenu simple
+    # Pas d'action : simple chargement du contenu
     echo "<span class=\"modifier\"><a href=\"?page=$page&action=modifier\">Modifier</a></span>\n";
     $c = bdd_charger($db, $page);
     if ($c) echo $c;

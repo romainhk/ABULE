@@ -4,7 +4,6 @@
  */
 //TODO faire pour que les valeurs de retour "fonctionnent", s'affichent à la place de la page d'origine (ajax ?)
 require_once('db.php');
-require('fonctions.php');
 
 # Paramètres
 if (isset($_POST['nom']) and strcmp($_POST['nom'], '')) {

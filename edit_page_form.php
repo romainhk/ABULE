@@ -1,4 +1,7 @@
 <?php
+/*
+ * Formulaire d'ajout/modification de page
+ */
 if (!strcmp($action, 'ajouter')) {
     $modification = False;
 } else {
@@ -12,11 +15,13 @@ if (!strcmp($action, 'ajouter')) {
 <ul>
 <?php
     if ($modification) {
-        echo "<li>Nom de la page : « $page ».</li>";
+        echo "<li>Nom de la page : « $page ».";
+        echo '<input type="hidden" name="modifier" value="foo" /></li>';
     } else {
         echo '<li><label for="nom">Nom de la page :</label>'
             ."\n    ".'<input type="text" name="nom" size="25" /></li>';
     }
+    echo "\n";
 ?>
     <li><label for="contenu">Contenu :</label></li>
 </ul>
@@ -37,7 +42,6 @@ if (!strcmp($action, 'ajouter')) {
     //]]>
 	</script>
     <div style="text-align:right;">
-    <?php if ($modification) echo '<input type="hidden" name="modifier" value="foo" />'; ?>
     <input type="submit" value="Ajouter" accesskey="g" /></div>
 </fieldset>
 </form>

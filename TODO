@@ -13,7 +13,7 @@
 *... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
 
 * pouvoir supprimer une page
-* liste des pages -> pouvoir en modifier une
+* liste des pages (FAIT) -> pouvoir en modifier une
 
 * stockage des images à part en blob ( table "image" -v )
 
@@ -28,6 +28,8 @@
 ** si statique, faire une page de maintenance pour forcer la maj
 
 * menu à droite : contact, news, rss => quels news, quels flux ?
+
+* page "erreurs.html" pour les longdesc
 
 
 === BDD
