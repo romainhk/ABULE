@@ -12,11 +12,13 @@
 * vérifier que le navigateur web supporte css 3 :
 *... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
 
-* pouvoir modifier une page
 * pouvoir supprimer une page
 * liste des pages -> pouvoir en modifier une
 
 * stockage des images à part en blob ( table "image" -v )
+
+* formulaire d'ajout/modification :
+** rendre compatible avec lightbox : ajouter le rel=""
 
 * mode admin : permet de compléter une page (session)
 ** éditeur js intégré

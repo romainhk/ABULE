@@ -16,13 +16,6 @@ if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
 
-/*
- * Action
- */
-if (!strcmp($action, 'lire')) {
-    //TODO verifier que la session est ouverte
-    //TODO si action=modifier, lancer le script de modification de page
-}
 
 //TODO inclure un menu.php ici qui génèrera le menu
 
@@ -116,7 +109,8 @@ if (count($avertissements) > 0) {
         </ul>
         <h2><a href="">À découvrir</a></h2>
         <h2><a href="?page=Liens">Liens</a></h2>
-        <h2><a href="?page=Admin">Admin</a></h2><!-- A n'afficher que si une session ouverte -->
+        <h2><a href="?page=\&action=ajouter">Admin</a></h2><!-- A n'afficher que si une session ouverte -->
+        <h2><a href="?page=test">Test</a></h2>
     </div>
     <div class="menu" style="float:right;">
 		<span style="height:43px;display:block;"></span>
@@ -134,43 +128,29 @@ if (count($avertissements) > 0) {
     </div>
     <div class="bord">
         <div class="corps">
-            <!-- A n'afficher que si une session ouverte -->
-            <span class="modifier"><a href="?page=<?php echo $page; ?>&action=modifier">Modifier</a></span>
 <?php 
-# Contenu
-$c = bdd_charger($db, $page);
-if ($c) echo $c;
 /*
-<h1>Formulaires Admin</h1>
-<form method="post" action="ajout_page.php">
-<fieldset>
-<legend>Ajouter une page</legend>
-<ul>
-    <li><label for="nom">Nom de la page :</label>
-    <input type="text" name="nom" size="25" /></li>
-    <li><label for="contenu">Contenu :</label></li>
-</ul>
-    <textarea class="ckeditor" cols="80" id="contenu" name="contenu" rows="12">&lt;h1&gt;Titre de la page&lt;/h1&gt;&#10;Contenu de la page...</textarea>
-    <script type="text/javascript">
-    //<![CDATA[
-    CKEDITOR.replace( 'contenu',
-    {
-        toolbar:
-    [
-        [ 'Source' ], 
-        [ 'Bold', 'Italic', 'Underline', 'Strike' ],
-        [ 'Styles', 'Format' ],
-        [ 'Image', 'Table', 'SpecialChar', 'Smiley' ],
-        [ 'Find', 'Replace', '-', 'ShowBlocks', 'Maximize' ]
-    ]
-    });
-    //]]>
-	</script>
-    <div style="text-align:right;">
-    <input type="submit" value="Ajouter" accesskey="g" /></div>
-</fieldset>
-</form>
-*/
+ * Action
+ */
+if (strcmp($action, 'lire')) {
+    //TODO verifier que la session est ouverte
+    $prechargement = "";
+    switch ($action) {
+    case 'modifier':
+        $prechargement = bdd_charger($db, $page);
+        break;
+    case 'ajouter':
+        $prechargement = '&lt;h1&gt;Titre de la page&lt;/h1&gt;&#10;Contenu de la page...';
+    default:
+        break;
+    }
+    require('form_edit_page.php');
+} else {
+    # Pas d'action : chargement du contenu simple
+    echo "<span class=\"modifier\"><a href=\"?page=$page&action=modifier\">Modifier</a></span>\n";
+    $c = bdd_charger($db, $page);
+    if ($c) echo $c;
+}
 ?>
         </div>
     </div>

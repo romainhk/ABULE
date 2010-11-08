@@ -1,6 +1,6 @@
 <?php
 /*
- * Traitement du formulaire d'ajout de page
+ * Traitement du formulaire d'ajout/de modification d'une page
  */
 //TODO faire pour que les valeurs de retour "fonctionnent", s'affichent à la place de la page d'origine (ajax ?)
 require_once('db.php');
@@ -17,6 +17,10 @@ $contenu = "";
 if (isset($_POST['contenu'])) {
     $contenu = $_POST['contenu'];
 }
+$forcer = False;
+if (isset($_POST['modifier'])) {
+    $forcer = True;
+}
 
 # Traitement
 $req = 'SELECT COUNT(nom) FROM page WHERE nom="'.$nom.'"';
@@ -25,7 +29,7 @@ if ($ret) {
     $f = mysql_fetch_row($ret);
     if ($f[0] == 0) {
         echo "Ajout de la page $nom avec : ".htmlentities($contenu).".<br/>\n";
-        bdd_sauvegarder($db, $nom, $contenu);
+        bdd_sauvegarder($db, $nom, $contenu, $forcer);
     } else {
         echo "La page existe déjà<br/>\n";
         break;
