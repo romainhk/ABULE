@@ -1,215 +1,214 @@
 @charset "UTF-8";
 
 body {
-    margin: 0;
-    background-color: #85af43;
-    color: #003300;
-   /* background-repeat: no-repeat;*/
-    }
+    margin:0;
+    background-color:#85af43;
+    color:#003300;
+   /* background-repeat:no-repeat;*/
+}
 
 h2 {
-    font-weight: bolder;
-    font-size: large;
-    }
+    font-weight:bolder;
+    font-size:large;
+}
 
 ul {
-    margin-left: 1ex;
-    list-style-type: square;
-    }
+    margin-left:1ex;
+    list-style-type:square;
+}
 
 /* **********
  * Bannière
  */
 .banniere {
-    position: relative;
-    margin: 1ex 0;
-    min-width: 900px;
-    border-style: outset;
-    border-color: #663300 #381c00 #381c00 #663300;
-    border-width: 4px;
-    text-align: center;
-    }
+    position:relative;
+    margin:1ex 0;
+    min-width:900px;
+    border-style:outset;
+    border-color:#663300 #381c00 #381c00 #663300;
+    border-width:4px;
+    text-align:center;
+}
 .bannieregauche {
-    float: left;
-    width: 38%;
-    }
+    float:left;
+    width:38%;
+}
 .bannieredroite {
-    float: right;
-    width: 38%;
-    }
+    float:right;
+    width:38%;
+}
 .bannieredroite img {
-    -moz-transform: matrix(-1,0,0,1,0,0);
-    }
+    -moz-transform:matrix(-1,0,0,1,0,0);
+}
 
 .superpose {
-    position: absolute;
-    width: 100%;
-    }
+    position:absolute;
+    width:100%;
+}
 
 /* **********
  * Menu
  */
 .menu {
-    width: 14%;
-    height: 740px;
-    min-width: 140px;
-    padding: 2px;
-    border-style: inset outset;
-    border-color: #381c00 #663300;
-    border-width: 4px;
-    font-family: sans-serif;
-    font-size: medium;
-    color: #009900;
-    }
+    width:14%;
+    height:740px;
+    min-width:140px;
+    padding:2px;
+    border-style:inset outset;
+    border-color:#381c00 #663300;
+    border-width:4px;
+    font-family:sans-serif;
+    font-size:medium;
+    color:#009900;
+}
 
 .menu img { /* Le logo du menu */
-    display: block;
-    width: 110px;
-/*    margin: 13px 6.5ex 0;*/
-    margin: 2ex auto 0px;
-    text-align: center;
-    }
+    display:block;
+    width:110px;
+/*    margin:13px 6.5ex 0;*/
+    margin:2ex auto 0px;
+    text-align:center;
+}
 
 .menu h2 {
-    margin: 10px;
-    border: 4px outset #003300;
-    font-family: sans-serif;
-    font-weight: bold;
-    font-variant: small-caps;
-    text-align: center;
-    color: #003300;
-    }
+    margin:10px;
+    border:4px outset #003300;
+    font-family:sans-serif;
+    font-weight:bold;
+    font-variant:small-caps;
+    text-align:center;
+    color:#003300;
+}
 
 .menu ul {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    list-style: none;
-    }
+    margin:0;
+    padding:0;
+    text-align:center;
+    list-style:none;
+}
 
-    /* Liens
-     */
+    /* Liens */
 .menu a {
-    text-decoration: none;
-    }
+    text-decoration:none;
+}
 .menu a:hover {
-    font-style: italic;
-    text-decoration: underline;
-    }
+    font-style:italic;
+    text-decoration:underline;
+}
 .menu a:link {
-    color: #009900;
-    }
+    color:#009900;
+}
 .menu h2 a:link {
-    color: #003300;
-    }
+    color:#003300;
+}
 .menu h2 a:visited {
-    color: #003300;
-    }
+    color:#003300;
+}
 .menu li a:visited {
-    color: #009900;
-    }
+    color:#009900;
+}
 
 #horloge {
-    display: block;
-    margin: 0 auto 1ex;
-    text-align: center;
-    }
+    display:block;
+    margin:0 auto 1ex;
+    text-align:center;
+}
     
 /* **********
  * Corps
  */
 p:first-letter {
-    margin-left: 1em;
-    }
+    margin-left:1em;
+}
 
 .bord {
-    height: 744px;
-    margin: 0px auto;
-    border: 4px double #663300;
-    width: 67%;
-    }
+    height:744px;
+    margin:0px auto;
+    border:4px double #663300;
+    width:67%;
+}
 
 .corps {
-    height: 96.5%;
-    padding: 1.5%;
-    font-family: cursive;
-    font-size: medium;
-    text-align: left;
-    color: #003300;
-    overflow: auto;
-    }
+    height:96.5%;
+    padding:1.5%;
+    font-family:cursive;
+    font-size:medium;
+    text-align:left;
+    color:#003300;
+    overflow:auto;
+}
 
 .corps h1 {
-    margin: 0.2em 15% 0.8em;
-    padding: 3px;
-    border: 4px outset #006600;
-    background-color: #009900;
-    background-position: right top;
-    background-image: url('../images/fond_titre.jpg');
-    max-width: 905px;
-    max-height: 255px;
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: xx-large;
-    text-align: center;
-    color: white;
-    }
+    margin:0.2em 15% 0.8em;
+    padding:3px;
+    border:4px outset #006600;
+    background-color:#009900;
+    background-position:right top;
+    background-image:url('../images/fond_titre.jpg');
+    max-width:905px;
+    max-height:255px;
+    font-family:sans-serif;
+    font-weight:bold;
+    font-size:xx-large;
+    text-align:center;
+    color:white;
+}
 
 .corps img {
-    width: 220px;
-    margin: 1ex;
-    float: left;
-    vertical-align: top;
-    }
+    width:220px;
+    margin:1ex;
+    float:left;
+    vertical-align:top;
+}
 
 .corps a img {
-    border: none;
-    }
+    border:none;
+}
 
 
 .pied {
-    margin: 1ex 0 0.5ex;
-    padding: 1px 1ex;
-    border: 1px solid #663300;
-    background-color: white;
-    font-family: sans-serif;
-    font-size: x-small;
-    text-align: right;
-    color: black;
-    }
+    margin:1ex 0 0.5ex;
+    padding:1px 1ex;
+    border:1px solid #663300;
+    background-color:white;
+    font-family:sans-serif;
+    font-size:x-small;
+    text-align:right;
+    color:black;
+}
 
     /* Lien "modifier"
      */
 .modifier {
-    font-size: x-small;
-    float: right;
-    margin: 0.4ex;
-    }
+    font-size:x-small;
+    float:right;
+    margin:0.4ex;
+}
 .modifier a {
-    color: #009900;
-    }
+    color:#009900;
+}
 .modifier a:visited {
-    color: #009900;
-    }
+    color:#009900;
+}
 
 /*
  * Formulaire
  */
 fieldset {
-	margin: 1ex auto;
-    }
+	margin:1ex auto;
+}
 fieldset ul li {
-    margin-top: 0.5ex;
-    }
+    margin-top:0.5ex;
+}
 legend {
-	font-size: Large;
-    color: #009900;
-    }
+	font-size:Large;
+    color:#009900;
+}
 label {
-	font-size: medium;
-    }
+	font-size:medium;
+}
 input[type="submit"] {
-    margin-top: 0.8ex;
-    font-weight: 600;
-    }
+    margin-top:0.8ex;
+    font-weight:600;
+}
 

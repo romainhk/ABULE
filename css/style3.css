@@ -1,61 +1,56 @@
 @font-face {
-    font-family: "Qlassik";
-    src: url('../polices/Qlassik_TB.ttf');
-    }
-
+    font-family:"Qlassik";
+    src:url('../polices/Qlassik_TB.ttf');
+}
 @font-face {
-    font-family: "Qlassik B";
-    src: url('../polices/QlassikBold_TB.ttf');
-    }
-
+    font-family:"Qlassik B";
+    src:url('../polices/QlassikBold_TB.ttf');
+}
 @font-face {
-    font-family: "Howies Funhouse";
-    src: url('../polices/Howie_s_Funhouse.ttf');
-    }
+    font-family:"Howies Funhouse";
+    src:url('../polices/Howie_s_Funhouse.ttf');
+}
 
 body{
-    background-position: center top;
-    background-image: url('../images/fond.jpg'),url('../images/fd.jpg');
-    background-attachment: fixed;
-	background-repeat: no-repeat,repeat-x;
+    background-position:center top;
+    background-image:url('../images/fond.jpg'),url('../images/fd.jpg');
+    background-attachment:fixed;
+	background-repeat:no-repeat,repeat-x;
 }
 	
 .banniere {
-    background-color: white;
-	background-image: url('../images/dbd.jpg'),url('../images/dbg.jpg'),url('../images/dhd.jpg'),url('../images/dhg.jpg'),url('../images/dh.jpg'),url('../images/dg.jpg'),url('../images/db.jpg'),url('../images/dd.jpg');
-    background-repeat: no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
-    background-position: right bottom,left bottom,right top,left top,top,left,bottom,right;
+    background-color:white;
+	background-image:url('../images/dbd.jpg'),url('../images/dbg.jpg'),url('../images/dhd.jpg'),url('../images/dhg.jpg'),url('../images/dh.jpg'),url('../images/dg.jpg'),url('../images/db.jpg'),url('../images/dd.jpg');
+    background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
+    background-position:right bottom,left bottom,right top,left top,top,left,bottom,right;
 }
 	
 .menu {
-    font-family: "Qlassik", "DejaVu Sans Condensed", sans-serif;
-    background-color: transparent;
-    background-image: url('../images/ecologie.gif'),url('../images/menufd.png');
-    background-repeat: no-repeat,repeat;
+    font-family:"Qlassik", "DejaVu Sans Condensed", sans-serif;
+    background-color:transparent;
+    background-image:url('../images/ecologie.gif'),url('../images/menufd.png');
+    background-repeat:no-repeat,repeat;
 	background-position:center 20px,top;
-    }
-
+}
 .menu h2 {
-    font-family: "Qlassik B", sans-serif;
-    }
-
+    font-family:"Qlassik B", sans-serif;
+}
 .menu img {
-    opacity: 0.75;
-    }
+    opacity:0.75;
+}
 
 .corps {
-    font-family: "Howies Funhouse", cursive;
-    background-color: white;
-	background-image: url('../images/incrustation_bambou.png'),url('../images/dbd.jpg'),url('../images/dbg.jpg'),url('../images/dhd.jpg'),url('../images/dhg.jpg'),url('../images/dh.jpg'),url('../images/dg.jpg'),url('../images/db.jpg'),url('../images/dd.jpg');
-    background-repeat: no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
-    background-position: right bottom,right bottom,left bottom,right top,left top,top,left,bottom,right;
-    }
-
+    font-family:"Howies Funhouse", cursive;
+    background-color:white;
+	background-image:url('../images/incrustation_bambou.png'),url('../images/dbd.jpg'),url('../images/dbg.jpg'),url('../images/dhd.jpg'),url('../images/dhg.jpg'),url('../images/dh.jpg'),url('../images/dg.jpg'),url('../images/db.jpg'),url('../images/dd.jpg');
+    background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
+    background-position:right bottom,right bottom,left bottom,right top,left top,top,left,bottom,right;
+}
 .corps h1 {
-    font-family: "Qlassik B", sans-serif;
-    }
+    font-family:"Qlassik B", sans-serif;
+}
 
 .pied {
-    font-family: "Howies Funhouse", sans-serif;
-    }
+    font-family:"Howies Funhouse", sans-serif;
+}
 
