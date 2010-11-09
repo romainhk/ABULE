@@ -1,5 +1,5 @@
 ## Code source
-Sauf mention contraire, le code html/css/php/javascript a été écri par Steeve et Romain "hk".
+Sauf mention contraire, le code html/css/php/javascript a été écrit par Steeve et Romain "hk".
 Il est sous licence GNU/GPLv3 (?).
 
 (si ok, ajouter l'entête de la licence GPL)
@@ -7,7 +7,7 @@ Il est sous licence GNU/GPLv3 (?).
 #### Javascript
 Lightbox (v2.04) est un javascript permettant de présenter les images.
 Sources et images sont distribuées par Lokesh Dhakar sous licence CC-BY 2.5
-http://www.lokeshdhakar.com/projects/lightbox2/
+Site : http://www.lokeshdhakar.com/projects/lightbox2/
 
 #### CKeditor
 CKeditor est un éditeur html écrit en javascript.
@@ -17,11 +17,11 @@ Il est sous multi-licence GPLv2/LPGL2.1/MPL1.1 (voir "ckeditor/LICENSE.html").
 Le fond d'écran provient de http://www.ndesignportfolio.com
 
 L'icône "important.png" est sous licence LGPLv2.1.
-Elle provient de http://commons.wikimedia.org/wiki/File:Crystal_Clear_filesystem_file_important.png
+L'original est disponible à l'adresse http://commons.wikimedia.org/wiki/File:Crystal_Clear_filesystem_file_important.png
 
 ## Polices de caractères
-La police "Qlassik" des titres est un freeware (Voir dans le sous-repertoire 
+La police "Qlassik" utilisé pour les titres est un freeware (Voir dans le sous-repertoire 
 "polices" : thebend.txt)
 
-La police "Howie's Funhouse" du corps est distribuée gratuitement par KozacDesign.
+La police "Howie's Funhouse" utilisé pour le corps est distribuée gratuitement par KozacDesign.
 

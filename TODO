@@ -12,13 +12,9 @@
 * vérifier que le navigateur web supporte css 3 :
 *... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
 
-* pouvoir supprimer une page
-* liste des pages (FAIT) -> pouvoir en modifier une
-
 * stockage des images à part en blob ( table "image" -v )
 
-* mode admin : permet de compléter une page (session)
-** éditeur js intégré
+* mode admin : mode session
 ** journal de connexion (pour vérification)
 
 * page php statique ou dynamique ? (au pire : bench)
@@ -26,7 +22,9 @@
 
 * menu à droite : contact, news, rss => quels news, quels flux ?
 
-* page "erreurs.html" pour les longdesc
+* page "erreurs.php" pour les longdesc
+
+* ckeditor : il ajoute un \n\t après les ouvertures de <p>, <li>... !
 
 
 === BDD

@@ -60,8 +60,16 @@ function bdd_lister($db) {
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     while($row = mysql_fetch_array($ret)) {
+    //TODO tri alphabétique sans casse
        array_push($r, $row[0]);
     }
     return $r;
+}
+
+// Supprimer un page
+function bdd_supprimer($db, $nom) {
+    $req = 'DELETE FROM page WHERE nom="'.$nom.'"';
+    $ret = mysql_query($req, $db)
+       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
 }
 ?>

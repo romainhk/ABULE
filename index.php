@@ -37,6 +37,7 @@ if (!$browser->javascript) {
     array_push($avertissements, 
         "Le javascript n'est pas activé ; certains éléments ne s'afficheront mal/pas.");
 }
+//TODO message mode admin sans js
 
 /*
  * Contenu html
@@ -107,9 +108,11 @@ if (count($avertissements) > 0) {
         </ul>
         <h2><a href="">À découvrir</a></h2>
         <h2><a href="?page=Liens">Liens</a></h2>
-        <h2><a href="?page=\&action=ajouter">Admin</a></h2><!-- A n'afficher que si une session ouverte -->
+        <h2>Admin</h2><!-- A n'afficher que si une session ouverte -->
         <ul>
             <li><a href="?page=\&action=lister">Liste des pages</a></li>
+            <li><a href="?page=\&action=ajouter">Ajouter</a></li>
+            <li><a href="?page=\&action=supprimer">Supprimer</a></li>
         </ul>
         <h2><a href="?page=test">Test</a></h2>
     </div>
@@ -135,18 +138,15 @@ if (count($avertissements) > 0) {
  */
 if (strcmp($action, 'lire')) {
     //TODO verifier que la session est ouverte
-    $prechargement = "";
     switch ($action) {
     case 'modifier':
-        $prechargement = bdd_charger($db, $page);
-        $vue = 'edit_page_form';
-        break;
     case 'ajouter':
-        $prechargement = '&lt;h1&gt;Titre de la page&lt;/h1&gt;&#10;Contenu de la page...';
-        $vue = 'edit_page_form';
+        $vue = 'admin_add_mod';
         break;
     case 'lister':
-        $vue = 'liste_page';
+    case 'supprimer':
+        $vue = 'admin_liste_suppr';
+        break;
     default:
         break;
     }

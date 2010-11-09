@@ -7,4 +7,8 @@ CKEDITOR.editorConfig = function( config )
 {
     config.language = 'fr';
 	config.uiColor = '#85E97E';
+    //Ces 3 là fonctionnent réellement ?
+    config.resize_minHeight = 400;
+    config.autoGrow_minHeight = 400;
+    config.tabSpaces = 2;
 };

@@ -1,3 +1,6 @@
+/*
+ * Horloge
+ */
 date = new Object();
 date.lmois=new Array("janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre");
 date.ljour=new Array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
@@ -19,3 +22,12 @@ function horloge() {
     setTimeout("horloge()",998);
 }
 
+/*
+ * Suppression
+ */
+abule = new Object();
+abule.suppr = "";
+function conf_suppr() {
+    conf = window.confirm("Êtes-vous sûre de vouloir supprimer la page « "+abule.suppr+" » ?");
+    return conf;
+}
