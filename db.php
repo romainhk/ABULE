@@ -4,6 +4,7 @@
  */
 $mycnf = parse_ini_file("mycnf");
 $db = mysql_connect($mycnf['host'], $mycnf['user'], $mycnf['password']);
+unset($mycnf);
 if (!$db) {
     die('Imposible de se connecter à la base : '.mysql_error($db));
 }
@@ -66,10 +67,12 @@ function bdd_lister($db) {
     return $r;
 }
 
-// Supprimer un page
+// Supprime une page
 function bdd_supprimer($db, $nom) {
-    $req = 'DELETE FROM page WHERE nom="'.$nom.'"';
-    $ret = mysql_query($req, $db)
-       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    if (strcmp($nom, '')) {
+        $req = 'DELETE FROM page WHERE nom="'.$nom.'"';
+        $ret = mysql_query($req, $db)
+           or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    } else die("Aucune page sélectionnée");
 }
 ?>
