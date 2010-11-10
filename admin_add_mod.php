@@ -11,7 +11,7 @@ if (!strcmp($action, 'ajouter')) {
     $prechargement = bdd_charger($db, $page);
 }
 ?>
-<h1>Administration</h1>
+<h1>Maintenance</h1>
 <form method="post" action="edit_page.php">
 <fieldset>
 <legend><?php echo ucfirst($action); ?> une page</legend>

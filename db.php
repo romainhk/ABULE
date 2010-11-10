@@ -2,7 +2,7 @@
 /*
  * Connexion à la base de données
  */
-$mycnf = parse_ini_file("mycnf");
+$mycnf = parse_ini_file("../mycnf");
 $db = mysql_connect($mycnf['host'], $mycnf['user'], $mycnf['password']);
 unset($mycnf);
 if (!$db) {

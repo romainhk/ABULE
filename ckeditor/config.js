@@ -11,4 +11,7 @@ CKEDITOR.editorConfig = function( config )
     config.resize_minHeight = 400;
     config.autoGrow_minHeight = 400;
     config.tabSpaces = 2;
+
+    config.startupMode = 'source';
+    //config.htmlEncodeOutput = true;
 };

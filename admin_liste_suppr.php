@@ -8,7 +8,7 @@ if (isset($_POST['nom'])) {
     bdd_supprimer($db, $_POST['nom']);
 }
 $liste = bdd_lister($db);
-echo "<h1>".ucfirst($action)." des pages</h1>\n";
+echo "<h1>Administration</h1>\n";
 
 if (!strcmp($action, 'lister')) {
     echo "<ul>\n";
@@ -19,7 +19,7 @@ if (!strcmp($action, 'lister')) {
 } else {
     # Supprimer
     echo '<form action="" method="post" onSubmit="return conf_suppr();">'."\n";
-    echo "<fieldset><legend>Choisissez</legend>\n";
+    echo "<fieldset><legend>Choisissez une page</legend>\n";
     echo '<select name="nom" size="1" onChange="abule.suppr=this.value">';
     echo '<option selected="selected" value="">...</option>'."\n";
     foreach ($liste as $l) {

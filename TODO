@@ -26,7 +26,9 @@
 
 * page "erreurs.php" pour les longdesc
 
-* ckeditor : il ajoute un \n\t après les ouvertures de <p>, <li>... !
+* ckeditor : il ajoute un \n\t après les ouvertures de <p>, <li>... ! (vient du mode preview)
+
+* https ?
 
 
 === BDD
@@ -35,8 +37,7 @@
 
 === Autre
 * LICENCE et méta-tags => (à valider)
-
-* https ?
+** convertir LICENCE en html
 
 === Images
 * mettre en français closelabel(, nextlabel et prevlabel)

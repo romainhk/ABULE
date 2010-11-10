@@ -9,8 +9,7 @@ require_once('db.php');
 if (isset($_POST['nom']) and strcmp($_POST['nom'], '')) {
     $nom = $_POST['nom'];
 } else {
-    echo "Nom de page inconnu<br/>\n";
-    break;
+    die("Nom de page inconnu");
 }
 $contenu = "";
 if (isset($_POST['contenu'])) {
@@ -28,17 +27,18 @@ if ($ret) {
     $f = mysql_fetch_row($ret);
     if ($f[0] == 0 or $forcer) {
         // Liens lightbox
-        $contenu = preg_replace("/(<a href=\"[^>]+) rel=\"lightbox\"(><img )/", '$1$2', $contenu);
-        $contenu = preg_replace("/(<a href=\"[^>]+)(><img )/", '$1 rel="lightbox"$2', $contenu);
+        $contenu = preg_replace('/(<a href=\"[^>]+) rel=\"lightbox\"(>\s*<img )/', '$1$2', $contenu);
+        $contenu = preg_replace('/(<a href=\"[^>]+)(>\s*<img )/', '$1 rel="lightbox"$2', $contenu);
+        // CKeditor ajoute des espacements en trop entre les balises
+        //echo preg_replace('/(<[^/>][^>]*>)\s+(.)/', '$1$2', $contenu)."<br>";
+
         echo "Ajout de la page $nom avec : ".htmlentities($contenu).".<br/>\n";
         bdd_sauvegarder($db, $nom, $contenu, $forcer);
     } else {
-        echo "La page existe déjà<br/>\n";
-        break;
+        die("La page existe déjà");
     }
 } else {
-    echo "Problème lors de l'ajout<br/>\n";
-    break;
+    die("Problème lors de l'ajout");
 }
 
 echo "L'ajout s'est bien passé<br/>\n";
