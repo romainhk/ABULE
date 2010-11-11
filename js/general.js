@@ -19,7 +19,7 @@ function horloge() {
     if (minute<10) minute="0"+minute;
     if (seconde<10) seconde="0"+seconde;
     document.getElementById("horloge").innerHTML = jour+" "+nbjour+" "+date.mois+" "+date.year+" "+heure+":"+minute+":"+seconde;
-    setTimeout("horloge()",998);
+    setTimeout("horloge()",999);
 }
 
 /*

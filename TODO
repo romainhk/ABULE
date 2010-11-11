@@ -7,12 +7,9 @@
 ** une légère pour IE et navigateurs css2.0 et inférieur
 *** sans dégradé, images jpg, sans horloge flash
 
-
 === PHP/js
 * vérifier que le navigateur web supporte css 3 :
 *... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
-
-* stockage des images à part en blob ( table "image" -v )
 
 * mode admin : mode session
 ** journal de connexion (pour vérification)
@@ -26,14 +23,18 @@
 
 * page "erreurs.php" pour les longdesc ?
 
-* ckeditor : il ajoute un \n\t après les ouvertures de <p>, <li>... ! (vient du mode preview)
-
 * https ?
 
+=== CKEditor
+* ckfinder est pas terrible comme browser : 
+http://docs.cksource.com/CKEditor_3.x/Developers_Guide/File_Browser_%28Uploader%29/Custom_File_Browser
+* pouvoir uploader des fichiers aussi
+
+* il ajoute un \n\t après les ouvertures de <p>, <li>... ! (vient du mode preview)
+* le mode source désactive les autres bouttons !
 
 === BDD
-* site_abule.image > (nom, blob, alt, taille) ?
-
+* site_abule.fichier : alt, taille ?
 
 === Autre
 * LICENCE et méta-tags => (à valider)

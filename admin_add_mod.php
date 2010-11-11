@@ -40,7 +40,9 @@ if (!strcmp($action, 'ajouter')) {
         [ 'Styles', 'Format' ],
         [ 'Image', 'Table', 'SpecialChar', 'Smiley' ],
         [ 'Find', 'Replace', '-', 'ShowBlocks', 'Maximize' ]
-    ]
+    ],
+    filebrowserBrowseUrl : 'browser.php',
+    filebrowserUploadUrl : 'uploader.php'
     });
     //]]>
 	</script>
