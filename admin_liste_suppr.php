@@ -8,7 +8,7 @@ if (isset($_POST['nom'])) {
     bdd_supprimer($db, $_POST['nom']);
 }
 $liste = bdd_lister($db);
-echo "<h1>Administration</h1>\n";
+echo "<h1>Maintenance</h1>\n";
 
 if (!strcmp($action, 'lister')) {
     echo "<ul>\n";

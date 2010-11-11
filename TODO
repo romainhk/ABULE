@@ -24,7 +24,7 @@
 
 * menu à droite : contact, news, rss => quels news, quels flux ?
 
-* page "erreurs.php" pour les longdesc
+* page "erreurs.php" pour les longdesc ?
 
 * ckeditor : il ajoute un \n\t après les ouvertures de <p>, <li>... ! (vient du mode preview)
 
@@ -40,5 +40,5 @@
 ** convertir LICENCE en html
 
 === Images
-* mettre en français closelabel(, nextlabel et prevlabel)
+* mettre en français closelabel
 

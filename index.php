@@ -1,12 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <?php
+setlocale(LC_TIME, 'fr_FR', 'fra', 'french');
 require('db.php');
 
 /*
  * Passage de paramètres GET
  */
-$page = 'index';
+$page = 'Accueil';
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 }
@@ -52,13 +53,13 @@ $les_erreurs = "";
 if (count($avertissements) > 0) {
     foreach ($avertissements as $av) {
         $les_erreurs = $les_erreurs.str_repeat(" ",8).'<img src="images/important.png" alt="'
-            .$av.'" longdesc="?page=erreurs" style="height:31px;" />'."\n";
+            .$av.'" style="height:31px;" />'."\n";
     }
 }
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
   <head>
-    <title>L´ABULE<?php if(strcmp($page, 'index')) echo " · $page"; ?></title>
+    <title>L´ABULE<?php echo " · $page"; ?></title>
     <meta http-equiv="Content-language" content="fr" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
@@ -94,7 +95,7 @@ if (count($avertissements) > 0) {
     </div>
     <div class="menu" style="float:left;">
 		<span style="height:180px;display:block;"></span>
-        <h2><a href="?page=index">Accueil</a></h2>
+        <h2><a href="?page=Accueil">Accueil</a></h2>
         <h2><a href="">Présentation de l´Association</a></h2>
         <h2>Événements</h2>
         <ul>
@@ -141,16 +142,15 @@ if (strcmp($action, 'lire')) {
     switch ($action) {
     case 'modifier':
     case 'ajouter':
-        $vue = 'admin_add_mod';
+        require('admin_add_mod.php');
         break;
     case 'lister':
     case 'supprimer':
-        $vue = 'admin_liste_suppr';
+        require('admin_liste_suppr.php');
         break;
     default:
         break;
     }
-    require("$vue.php");
 } else {
     # Pas d'action : simple chargement du contenu
     echo "<span class=\"modifier\"><a href=\"?page=$page&action=modifier\">Modifier</a></span>\n";
@@ -158,7 +158,8 @@ if (strcmp($action, 'lire')) {
     if ($c) {
         echo $c;
     } else {
-        echo "<p>Impossible de charger la page $page</p>\n";
+        echo "<p>Impossible de charger la page « $page ».</p>\n";
+        echo '<script language="javascript">setTimeout("document.location.href=\'?page=Accueil\'", 600);</script>';
     }
 }
 ?>

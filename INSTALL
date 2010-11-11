@@ -1,0 +1,19 @@
+Pour installer le site de l'ABULE
+* télécharger l'archive sur son dépôt publique :
+https://github.com/romainhk/ABULE
+* décompresser l'archive
+* créer un fichier "mycnf" au même niveau que le dossier ABULE ; celui-ci doit contenir 
+les informations de connexion à la base de données. Voici la structure de base du fichier :
+[client]
+user=
+password=
+host=
+* déclarer le dossier ABULE dans le daemon http (apache ou autre)
+* charger la base de données du site :
+** avec phpmyadmin, créer une base de donnée "site_abule"
+** puis importer le fichier "structure.sql"
+
+Pour personnaliser l'éditeur html (ckeditor), il suffit de modifier le fichier 
+"ckeditor/config.js". Les options disponibles sont précisées dans la documentation de ckeditor :
+http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html
+

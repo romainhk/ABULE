@@ -5,13 +5,13 @@
 $prechargement = "";
 if (!strcmp($action, 'ajouter')) {
     $modification = False;
-    $prechargement = '&lt;h1&gt;Titre de la page&lt;/h1&gt;&#10;Contenu de la page...';
+    $prechargement = '&lt;h1&gt;Titre de la page&lt;/h1&gt;&#10;&lt;p&gt;Contenu de la page...&lt;/p&gt;';
 } else {
     $modification = True;
     $prechargement = bdd_charger($db, $page);
 }
 ?>
-<h1>Maintenance</h1>
+<h1>Édition</h1>
 <form method="post" action="edit_page.php">
 <fieldset>
 <legend><?php echo ucfirst($action); ?> une page</legend>
