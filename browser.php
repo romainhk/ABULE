@@ -2,8 +2,7 @@
 /*
  * Lister et sélectionner un fichier binaire dans la bdd
  */
-require('db.php');
-echo "Browser php<br>\n";
+require_once('db.php');
 // anonymous function number
 $funcNum = $_GET['CKEditorFuncNum'] ;
 // instance name
@@ -16,10 +15,17 @@ $message = '';
  
 echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>$CKEditor - $funcNum<br>\n";
 
+/*
 $req = 'SELECT * FROM fichier';
 $ret = mysql_query($req, $db)
    or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
 while($row = mysql_fetch_array($ret)) {
     echo $row['nom']."<br>\n";
+}
+ */
+foreach (scandir('uploads/') as $sd) {
+    if (!preg_match('/^\./', $sd) and !preg_match('/^index/', $sd)) {
+        echo $sd.'<br>';
+    }
 }
 ?>

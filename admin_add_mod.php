@@ -42,7 +42,9 @@ if (!strcmp($action, 'ajouter')) {
         [ 'Find', 'Replace', '-', 'ShowBlocks', 'Maximize' ]
     ],
     filebrowserBrowseUrl : 'browser.php',
-    filebrowserUploadUrl : 'uploader.php'
+    filebrowserUploadUrl : 'uploader.php',
+    filebrowserWindowWidth : '640',
+    filebrowserWindowHeight : '480'
     });
     //]]>
 	</script>

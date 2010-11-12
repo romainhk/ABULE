@@ -13,6 +13,7 @@ echo "<h1>Maintenance</h1>\n";
 if (!strcmp($action, 'lister')) {
     echo "<ul>\n";
     foreach ($liste as $l) {
+        //TODO ajouter des liens direct vers ces pages
         echo "<li>$l</li>\n";
     }
     echo "</ul>\n";

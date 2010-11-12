@@ -34,7 +34,7 @@ http://docs.cksource.com/CKEditor_3.x/Developers_Guide/File_Browser_%28Uploader%
 * le mode source désactive les autres bouttons !
 
 === BDD
-* site_abule.fichier : alt, taille ?
+* site_abule.fichier : alt, taille ? -> uploads/ plutôt ?
 
 === Autre
 * LICENCE et méta-tags => (à valider)
