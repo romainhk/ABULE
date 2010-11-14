@@ -19,11 +19,9 @@
 * page php statique ou dynamique ? (au pire : bench)
 ** si statique, faire une page de maintenance pour forcer la maj
 
-* menu à droite : contact, news, rss => quels news, quels flux ?
+* menu à droite : contact, news => quels news, quels flux ?
 
 * page "erreurs.php" pour les longdesc ?
-
-* https ?
 
 === CKEditor
 * ckfinder est pas terrible comme browser : 

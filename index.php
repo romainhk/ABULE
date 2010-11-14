@@ -18,6 +18,25 @@ if (isset($_GET['action'])) {
 
 //TODO inclure un menu.php ici qui génèrera le menu
 
+// Ouvre un flux rss et en fait une présentation
+function charger_rss($nbmax) {
+    if ($flux = simplexml_load_file('http://linuxfr.org/backend/~patrick_g/journal/rss20.rss')) {
+        $ret = '<ul>';
+        $donnee = $flux->channel;
+        $i = 0;
+        foreach($donnee->item as $val) {
+            if ( $i < $nbmax ) {
+                $ret = $ret.'<li>'.date("d/m/Y",strtotime($val->pubDate))
+                    .' - <a href="'.$val->link.'">'.$val->title."</a></li>\n";
+              //$ret = $ret.'<br/>'.$val->description.'</li>';
+                $i++;
+            } else break;
+        }
+        $ret = $ret."</ul>\n";
+    } else $ret = 'Erreur de lecture du flux RSS';
+    return $ret;
+}
+
 /* 
  * Sélection des feuilles de style à utiliser
  * Messages d'avertissements
@@ -128,8 +147,9 @@ if (count($avertissements) > 0) {
         <ul>
             <li><a href="">Contact</a></li>
             <li><a href="">Forum</a></li>
-            <li><a href="">News rss</a></li>
         </ul>
+        <h2>News rss</h2>
+        <?php echo charger_rss(3); ?>
     </div>
     <div class="bord">
         <div class="corps">
