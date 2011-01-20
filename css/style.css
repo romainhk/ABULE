@@ -113,7 +113,17 @@ ul {
     margin:0 auto 1ex;
     text-align:center;
 }
-    
+
+/* 
+ * Connexion
+ */
+.connect p {
+    text-align: center;
+}
+.connect input {
+    max-width: 150px;
+}
+
 /* **********
  * Corps
  */
