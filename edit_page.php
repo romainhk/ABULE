@@ -29,8 +29,6 @@ if ($ret) {
         // Liens lightbox
         $contenu = preg_replace('/(<a href=\"[^>]+) rel=\"lightbox\"(>\s*<img )/', '$1$2', $contenu);
         $contenu = preg_replace('/(<a href=\"[^>]+)(>\s*<img )/', '$1 rel="lightbox"$2', $contenu);
-        // CKeditor ajoute des espacements en trop entre les balises
-        //echo preg_replace('/(<[^/>][^>]*>)\s+(.)/', '$1$2', $contenu)."<br>";
 
         echo "Ajout de la page $nom avec : ".htmlentities($contenu).".<br/>\n";
         bdd_sauvegarder($db, $nom, $contenu, $forcer);

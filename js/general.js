@@ -18,12 +18,12 @@ function horloge() {
     var jour=date.ljour[date.maintenant.getDay()];
     if (minute<10) minute="0"+minute;
     if (seconde<10) seconde="0"+seconde;
-    document.getElementById("horloge").innerHTML = jour+" "+nbjour+" "+date.mois+" "+date.year+" "+heure+":"+minute+":"+seconde;
+    document.getElementById("horloge").innerHTML = jour+" "+nbjour+"&nbsp;"+date.mois+" "+date.year+" "+heure+":"+minute+":"+seconde;
     setTimeout("horloge()",999);
 }
 
 /*
- * Suppression
+ * Confirmation de la suppression d'une page
  */
 abule = new Object();
 abule.suppr = "";

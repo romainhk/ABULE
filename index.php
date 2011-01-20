@@ -129,7 +129,7 @@ if (count($avertissements) > 0) {
         </ul>
         <h2><a href="">À découvrir</a></h2>
         <h2><a href="?page=Liens">Liens</a></h2>
-        <h2>Admin</h2><!-- A n'afficher que si une session ouverte -->
+        <h2>Admin</h2><!--            A n'afficher que si une session ouverte        -->
         <ul>
             <li><a href="?page=\&action=lister">Liste des pages</a></li>
             <li><a href="?page=\&action=ajouter">Ajouter</a></li>
@@ -179,7 +179,7 @@ if (strcmp($action, 'lire')) {
     if ($c) {
         echo $c;
     } else {
-        echo "<p>Impossible de charger la page « $page ».</p>\n";
+        echo "<p>Impossible de charger la page « $page »... Redirection</p>\n";
         echo '<script language="javascript">setTimeout("document.location.href=\'?page=Accueil\'", 600);</script>';
     }
 }

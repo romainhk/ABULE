@@ -9,9 +9,10 @@ Lightbox (v2.04) est un javascript permettant de présenter les images.
 Sources et images sont distribuées par Lokesh Dhakar sous licence CC-BY 2.5
 Site : http://www.lokeshdhakar.com/projects/lightbox2/
 
-#### CKeditor
-CKeditor est un éditeur html écrit en javascript.
-Il est sous multi-licence GPLv2/LPGL2.1/MPL1.1 (voir "ckeditor/LICENSE.html").
+#### Edit area
+Edit erea est un éditeur html écrit en javascript opensource.
+Il est sous multi-licence LGPL/BSD/Apache2 (voir "edit_area/license_....txt").
+Site : http://sourceforge.net/projects/editarea/
 
 #### RSS
 Merci à Crocxx pour son lecteur RSS simple :

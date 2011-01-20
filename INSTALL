@@ -13,7 +13,3 @@ host=
 ** avec phpmyadmin, créer une base de donnée "site_abule"
 ** puis importer le fichier "structure.sql"
 
-Pour personnaliser l'éditeur html (ckeditor), il suffit de modifier le fichier 
-"ckeditor/config.js". Les options disponibles sont précisées dans la documentation de ckeditor :
-http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html
-
