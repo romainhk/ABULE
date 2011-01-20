@@ -28,26 +28,21 @@ if (!strcmp($action, 'ajouter')) {
 ?>
     <li><label for="contenu">Contenu :</label></li>
 </ul>
-<textarea class="ckeditor" cols="80" id="contenu" name="contenu" rows="12"><?php echo $prechargement; ?></textarea>
-    <script type="text/javascript">
-    //<![CDATA[
-    CKEDITOR.replace( 'contenu',
-    {
-        toolbar:
-    [
-        [ 'Source' ], 
-        [ 'Bold', 'Italic', 'Underline', 'Strike' ],
-        [ 'Styles', 'Format' ],
-        [ 'Image', 'Table', 'SpecialChar', 'Smiley' ],
-        [ 'Find', 'Replace', '-', 'ShowBlocks', 'Maximize' ]
-    ],
-    filebrowserBrowseUrl : 'browser.php',
-    filebrowserUploadUrl : 'uploader.php',
-    filebrowserWindowWidth : '640',
-    filebrowserWindowHeight : '480'
-    });
-    //]]>
-	</script>
+<textarea class="editor" cols="80" id="editeur" name="contenu" rows="12"><?php echo $prechargement; ?></textarea>
+<script language="javascript" type="text/javascript" src="edit_area/edit_area_full.js"></script>
+<script language="javascript" type="text/javascript">
+editAreaLoader.init({
+	id : "editeur"	        // textarea id
+    ,language: "fr"
+	,syntax: "html"		    // syntax to be uses for highgliting
+	,start_highlight: true		// to display with highlight mode on start-up
+    ,font_size: 11
+    ,cursor_position: "auto"
+    ,allow_resize: "both"
+    ,min_width: 600
+    ,word_wrap: true
+});
+</script>
     <div style="text-align:right;">
     <input type="submit" value="<?php echo ucfirst($action); ?>" accesskey="g" /></div>
 </fieldset>

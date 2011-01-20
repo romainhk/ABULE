@@ -11,6 +11,7 @@ $liste = bdd_lister($db);
 echo "<h1>Maintenance</h1>\n";
 
 if (!strcmp($action, 'lister')) {
+    # Lister
     echo "<ul>\n";
     foreach ($liste as $l) {
         //TODO ajouter des liens direct vers ces pages

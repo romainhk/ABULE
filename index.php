@@ -55,7 +55,7 @@ if ($browser->cssversion > 2) {
 }
 if (!$browser->javascript) {
     array_push($avertissements, 
-        "Le javascript n'est pas activé ; certains éléments ne s'afficheront mal/pas.");
+        "Le javascript n'est pas activé ; certains éléments s'afficheront mal ou pas du tout.");
 }
 //TODO message mode admin sans js
 
@@ -96,7 +96,6 @@ if (count($avertissements) > 0) {
     <script type="text/javascript" src="js/prototype.js"></script>
     <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
-	<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
   </head>
 
   <body onload="horloge()">
@@ -111,7 +110,9 @@ if (count($avertissements) > 0) {
             </div>
         </div>
         <img src="images/logo.png" alt="Logo de l'ABULE" height="200" width="250" style="text-align:center;" />
-    </div>
+    </div><!--
+## Menu gauche
+    -->
     <div class="menu" style="float:left;">
 		<span style="height:180px;display:block;"></span>
         <h2><a href="?page=Accueil">Accueil</a></h2>
@@ -184,7 +185,9 @@ if (strcmp($action, 'lire')) {
 }
 ?>
         </div>
-    </div>
+    </div><!--
+## Pied de page : © et messages d'erreur
+    -->
     <div class="pied">
         <a href="">Copyright</a> - <a href="">Contactez-nous</a>
     </div>
