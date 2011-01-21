@@ -44,5 +44,5 @@ if ($ret) {
 }
 
 # L'ajout s'est bien passé
-redirection($nom);
+redirection($nom, 100);
 ?>

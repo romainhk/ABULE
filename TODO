@@ -23,8 +23,9 @@
 * page "erreurs.php" pour les longdesc ?
 
 === Editeur
-* upload d'images !!!!!
-* pouvoir uploader des fichiers aussi
+* upload intégré à l'éditeur !!
+
+* browser de fichiers !
 
 === BDD
 * site_abule.fichier : alt, taille ? -> uploads/ plutôt ? !!

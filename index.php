@@ -122,7 +122,8 @@ if (count($avertissements) > 0) {
         echo '<h2>Admin</h2>';
         echo '<ul><li><a href="?page=\&action=lister">Liste des pages</a></li>';
         echo '<li><a href="?page=\&action=ajouter">Ajouter</a></li>';
-        echo '<li><a href="?page=\&action=supprimer">Supprimer</a></li></ul>';
+        echo '<li><a href="?page=\&action=supprimer">Supprimer</a></li>';
+        echo '<li><a href="?page=\&action=uploader">Upload</a></li></ul>';
     }
 ?>
         <h2><a href="?page=test">Test</a></h2>

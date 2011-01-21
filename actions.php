@@ -19,6 +19,9 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         session_destroy();
         redirection($page);
         break;
+    case 'uploader':
+        require('uploader.php');
+        break;
     default:
         break;
     }
