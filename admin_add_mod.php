@@ -34,8 +34,8 @@ if (!strcmp($action, 'ajouter')) {
 editAreaLoader.init({
 	id : "editeur"	        // textarea id
     ,language: "fr"
-	,syntax: "html"		    // syntax to be uses for highgliting
-	,start_highlight: true		// to display with highlight mode on start-up
+	,syntax: "html"		    // syntax highgliting
+	,start_highlight: true		// highlight mode on start-up
     ,font_size: 11
     ,cursor_position: "auto"
     ,allow_resize: "both"

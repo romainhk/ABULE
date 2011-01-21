@@ -2,6 +2,7 @@
 /*
  * Gestion des actions disponibles pour l'index et inclusion du corps
  */
+require_once('fonctions.php');
 if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     switch ($action) {
     case 'modifier':
@@ -16,7 +17,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         // Fermeture de la session
         $_SESSION = array();
         session_destroy();
-        echo '<script language="javascript">setTimeout("document.location.href=\'?page='.$page.'\'", 1);</script>';
+        redirection($page);
         break;
     default:
         break;
@@ -31,7 +32,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         echo $c;
     } else {
         echo "<p>Impossible de charger la page « $page ». Redirection en cours...</p>\n";
-        echo '<script language="javascript">setTimeout("document.location.href=\'?page=Accueil\'", 500);</script>';
+        redirection('Accueil', 500);
     }
 }
 ?>

@@ -17,7 +17,8 @@ if (isset($_POST['submit'])) {
             if (isset($_GET['page'])) {
                 $page = $_GET['page'];
             } else { $page = 'Accueil'; }
-            echo '<script language="javascript">setTimeout("document.location.href=\'?page='.$page.'\'", 1);</script>';
+            require_once('fonctions.php');
+            redirection($page);
         }
     }
 }

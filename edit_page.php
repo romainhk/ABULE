@@ -4,6 +4,7 @@
  */
 //TODO faire pour que les valeurs de retour "fonctionnent", s'affichent à la place de la page d'origine (ajax ?)
 require_once('db.php');
+require_once('fonctions.php');
 
 # Paramètres
 if (isset($_POST['nom']) and strcmp($_POST['nom'], '')) {
@@ -31,7 +32,10 @@ if ($ret) {
         $contenu = preg_replace('/(<a href=\"[^>]+)(>\s*<img )/', '$1 rel="lightbox"$2', $contenu);
 
         echo "Ajout de la page $nom avec : ".htmlentities($contenu).".<br/>\n";
-        bdd_sauvegarder($db, $nom, $contenu, $forcer);
+        $r = bdd_sauvegarder($db, $nom, $contenu, $forcer);
+        if ($r) {
+            die($r);
+        }
     } else {
         die("La page existe déjà");
     }
@@ -39,5 +43,6 @@ if ($ret) {
     die("Problème lors de l'ajout");
 }
 
-echo "L'ajout s'est bien passé<br/>\n";
+# L'ajout s'est bien passé
+redirection($nom);
 ?>

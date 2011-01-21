@@ -4,6 +4,7 @@
 session_start();
 setlocale(LC_TIME, 'fr_FR', 'fra', 'french');
 require('db.php');
+require('fonctions.php');
 
 /*
  * Passage de paramètres GET
@@ -18,25 +19,6 @@ if (isset($_GET['action'])) {
 }
 
 //TODO inclure un menu.php ici qui génèrera le menu
-
-// Ouvre un flux rss et en fait une présentation
-function charger_rss($nbmax) {
-    if ($flux = simplexml_load_file('http://linuxfr.org/backend/~patrick_g/journal/rss20.rss')) {
-        $ret = '<ul>';
-        $donnee = $flux->channel;
-        $i = 0;
-        foreach($donnee->item as $val) {
-            if ( $i < $nbmax ) {
-                $ret = $ret.'<li>'.date("d/m/Y",strtotime($val->pubDate))
-                    .' - <a href="'.$val->link.'">'.$val->title."</a></li>\n";
-              //$ret = $ret.'<br/>'.$val->description.'</li>';
-                $i++;
-            } else break;
-        }
-        $ret = $ret."</ul>\n";
-    } else $ret = 'Erreur de lecture du flux RSS';
-    return $ret;
-}
 
 /* 
  * Sélection des feuilles de style à utiliser

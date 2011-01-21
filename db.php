@@ -12,7 +12,6 @@ if (!$db) {
 mysql_select_db('site_abule', $db);
 mysql_query('SET NAMES UTF8', $db);
 
-
 /*
  * Fonction d'accès sur la BDD
  */
