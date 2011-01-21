@@ -11,8 +11,7 @@
 * vérifier que le navigateur web supporte css 3 :
 *... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
 
-* mode admin : mode session !!!!
-** journal de connexion (pour vérification)
+* session : journal de connexion (pour vérification)
 
 * sécuriser l'accès à la bdd et "mycnf" (htaccess ?) !!!!
 

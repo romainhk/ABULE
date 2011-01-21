@@ -1,11 +1,5 @@
 <?php
-session_start();
-
-// Fermeture de la session
-if ((isset($_GET['action'])) && ($_GET['action'] == 'logout')) {
-    $_SESSION = array();
-    session_destroy();
-}
+#start() et destroy() sont dans index.php
 
 if (isset($_POST['submit'])) {
     // Login
@@ -18,6 +12,12 @@ if (isset($_POST['submit'])) {
         $data = mysql_fetch_assoc($req);
         if ($pass == $data['mdp']) {
             $_SESSION['login'] = $login;
+
+            #REDIRECTION
+            if (isset($_GET['page'])) {
+                $page = $_GET['page'];
+            } else { $page = 'Accueil'; }
+            echo '<script language="javascript">setTimeout("document.location.href=\'?page='.$page.'\'", 1);</script>';
         }
     }
 }
@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
 if (isset($_SESSION['login'])) {
     // Nom et bouton logout
     echo '<ul><li>Bonjour '.$_SESSION['login']."</li>\n";
-    echo '<li><a href="index.php?action=logout" title="Déconnexion">Se déconnecter</a></li></ul>';
+    echo '<li><a href="index.php?action=logout" title="Déconnexion"><i>Se déconnecter</i></a></li></ul>';
 } else {
     // Formulaire de connexion
     echo '<form class="connect" id="conn" method="post" action=""><ul>'."\n";

@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <?php
+session_start();
 setlocale(LC_TIME, 'fr_FR', 'fra', 'french');
 require('db.php');
 
@@ -56,8 +57,11 @@ if ($browser->cssversion > 2) {
 if (!$browser->javascript) {
     array_push($avertissements, 
         "Le javascript n'est pas activé ; certains éléments s'afficheront mal ou pas du tout.");
+    if (isset($_SESSION['login'])) {
+        array_push($avertissements, 
+            "Le javascript est indispensable pour le mode administrateur.");
+    }
 }
-//TODO message mode admin sans js
 
 /*
  * Contenu html
@@ -75,6 +79,8 @@ if (count($avertissements) > 0) {
             .$av.'" style="height:31px;" />'."\n";
     }
 }
+
+///////////////////////////////   Contenu Html  /////////////////////////////////////////
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
   <head>
@@ -129,8 +135,7 @@ if (count($avertissements) > 0) {
         </ul>
         <h2><a href="">À découvrir</a></h2>
         <h2><a href="?page=Liens">Liens</a></h2>
-<?php
-    session_start();
+        <?php #PHP
     if (isset($_SESSION['login'])) {
         echo '<h2>Admin</h2>';
         echo '<ul><li><a href="?page=\&action=lister">Liste des pages</a></li>';
@@ -153,46 +158,16 @@ if (count($avertissements) > 0) {
             <li><a href="">Forum</a></li>
         </ul>
         <h2>News rss</h2>
-        <?php echo charger_rss(3); ?>
+        <?php #PHP
+echo charger_rss(3); ?>
         <h2>Connexion</h2>
-        <?php require("membres.php"); ?>
+        <?php #PHP
+require("membres.php"); ?>
     </div>
     <div class="bord">
         <div class="corps">
-<?php 
-/*
- * Action
- */
-if (strcmp($action, 'lire')) {
-    //TODO verifier que la session est ouverte
-    switch ($action) {
-    case 'modifier':
-    case 'ajouter':
-        require('admin_add_mod.php');
-        break;
-    case 'lister':
-    case 'supprimer':
-        require('admin_liste_suppr.php');
-        break;
-    case 'logout':
-        require('membres.php?action=logout');
-        // TODO : la déconnection mène à une page vide...
-        break;
-    default:
-        break;
-    }
-} else {
-    # Pas d'action : simple chargement du contenu
-    echo "<span class=\"modifier\"><a href=\"?page=$page&action=modifier\">Modifier</a></span>\n";
-    $c = bdd_charger($db, $page);
-    if ($c) {
-        echo $c;
-    } else {
-        echo "<p>Impossible de charger la page « $page »... Redirection</p>\n";
-        echo '<script language="javascript">setTimeout("document.location.href=\'?page=Accueil\'", 600);</script>';
-    }
-}
-?>
+        <?php #PHP
+require("actions.php"); ?>
         </div>
     </div><!--
 ## Pied de page : © et messages d'erreur
@@ -209,7 +184,8 @@ if (strcmp($action, 'lire')) {
             style="border:0; width:88px; height:31px"
             src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
             alt="CSS Valide !" /></a>
-<?php echo $les_erreurs; ?>
+        <?php #PHP
+echo $les_erreurs; ?>
     </div>
   </div>
   </body>

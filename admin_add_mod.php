@@ -40,6 +40,7 @@ editAreaLoader.init({
     ,cursor_position: "auto"
     ,allow_resize: "both"
     ,min_width: 600
+    ,min_height: 500
     ,word_wrap: true
 });
 </script>
