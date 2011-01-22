@@ -28,7 +28,7 @@ if (!strcmp($action, 'ajouter')) {
 ?>
     <li><label for="contenu">Contenu :</label></li>
 </ul>
-<textarea class="editor" cols="80" id="editeur" name="contenu" rows="12"><?php echo $prechargement; ?></textarea>
+<textarea cols="80" id="editeur" name="contenu" rows="12"><?php echo $prechargement; ?></textarea>
 <script language="javascript" type="text/javascript" src="edit_area/edit_area_full.js"></script>
 <script language="javascript" type="text/javascript">
 editAreaLoader.init({
@@ -42,6 +42,8 @@ editAreaLoader.init({
     ,min_width: 600
     ,min_height: 500
     ,word_wrap: true
+    ,end_toolbar: "|,filebrowser"
+    ,plugins: "filebrowser"
 });
 </script>
     <div style="text-align:right;">

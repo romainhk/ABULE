@@ -31,7 +31,6 @@ if (isset($_GET['statut'])) {
 if (isset($_GET['err']) and !empty($_GET['err'])) {
     $err = $_GET['err'];
 } else { $err = ''; }
-echo $statut.$err;
 $les_statut = array( 'Ok',
         "Problème lors de l'upload",
         "Format de fichier non autorisée",
@@ -61,9 +60,9 @@ if (isset($_FILES['upload']) and !empty($_FILES['upload'])) {
         $statut = 3;
         $err = $taille;
     } else {
-        $path = getcwd().'/'.$dossier.retirer_accents(basename($nom));
+        $path = $dossier.retirer_accents(basename($nom));
         $err = $path;
-        if (!move_uploaded_file($tmp_name, $path)) {
+        if (!move_uploaded_file($tmp_name, getcwd().'/'.$path)) {
             $statut = 4;
         } else {
             # Upload réussi !
@@ -86,7 +85,7 @@ if ($statut > 0) {
 </form>
 <?php
 if ($statut == 0) {
-    echo "<p>Le fichier est accessible à l'adresse : <tt>$err</tt></p>";
+    echo "<p>Le fichier est maintenant accessible à l'adresse : <tt>$err</tt></p>";
 }
 ?>
 <h3><a href="http://fr.wikipedia.org/wiki/Format_de_donn%C3%A9es">Formats de fichier</a> autorisés</h3>

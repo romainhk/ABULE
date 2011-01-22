@@ -1,31 +1,15 @@
 <?php
 /*
- * Lister et sélectionner un fichier binaire dans la bdd
+ * Lister et sélectionner un fichier binaire
  */
-require_once('db.php');
-// anonymous function number
-$funcNum = $_GET['CKEditorFuncNum'] ;
-// instance name
-$CKEditor = $_GET['CKEditor'] ;
- 
-// Check the $_FILES array and save the file. Assign the correct path to some variable ($url).
-$url = '';
-// Usually you will assign here something only if file could not be uploaded.
-$message = '';
- 
-echo "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction($funcNum, '$url', '$message');</script>$CKEditor - $funcNum<br>\n";
+header('Content-Type: text/json'); 
 
-/*
-$req = 'SELECT * FROM fichier';
-$ret = mysql_query($req, $db)
-   or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-while($row = mysql_fetch_array($ret)) {
-    echo $row['nom']."<br>\n";
-}
- */
+$les_fichiers = array();
 foreach (scandir('uploads/') as $sd) {
     if (!preg_match('/^\./', $sd) and !preg_match('/^index/', $sd)) {
-        echo $sd.'<br>';
+        array_push($les_fichiers, $sd);
     }
 }
+
+echo json_encode($les_fichiers);
 ?>

@@ -22,13 +22,12 @@
 
 * page "erreurs.php" pour les longdesc ?
 
+* convertir redirection() en ajax/php (pour éviter les rechargements intempestifs en js)
+
 === Editeur
-* upload intégré à l'éditeur !!
+* upload intégré à l'éditeur ?
 
-* browser de fichiers !
-
-=== BDD
-* site_abule.fichier : alt, taille ? -> uploads/ plutôt ? !!
+* browser de fichiers ! (ajax/php)
 
 === Autre
 * LICENCE et méta-tags => (à valider)
