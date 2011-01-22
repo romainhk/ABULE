@@ -28,7 +28,7 @@ function redirection($page, $temps=1) {
 }
 
 // Fonction de convertion d'accents
-function retirer_accents ($s) {
+function retirer_accents($s) {
 	$pattern = array(
 		'/à/', '/À/', '/á/', '/Á/', '/â/', '/Â/', '/ã/', '/Ã/', '/ä/', '/Ä/', '/ç/', '/Ç/', 
 		'/é/', '/É/', '/è/', '/È/', '/ê/', '/Ê/', '/ë/', '/Ë/', 

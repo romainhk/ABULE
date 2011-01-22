@@ -12,4 +12,3 @@ host=
 * charger la base de données du site :
 ** avec phpmyadmin, créer une base de donnée "site_abule"
 ** puis importer le fichier "structure.sql"
-

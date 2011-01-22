@@ -103,6 +103,8 @@ if (count($avertissements) > 0) {
     -->
     <div class="menu" style="float:left;">
 		<span style="height:180px;display:block;"></span>
+        <?php 
+#require('menu.php'); ?>
         <h2><a href="?page=Accueil">Accueil</a></h2>
         <h2><a href="">Présentation de l´Association</a></h2>
         <h2>Événements</h2>
@@ -123,7 +125,8 @@ if (count($avertissements) > 0) {
         echo '<ul><li><a href="?page=\&action=lister">Liste des pages</a></li>';
         echo '<li><a href="?page=\&action=ajouter">Ajouter</a></li>';
         echo '<li><a href="?page=\&action=supprimer">Supprimer</a></li>';
-        echo '<li><a href="?page=\&action=uploader">Upload</a></li></ul>';
+        echo '<li><a href="?page=\&action=uploader">Upload</a></li>';
+        echo '<li><a href="?page=\&action=listup">Liste des fichiers</a></li></ul>';
     }
 ?>
         <h2><a href="?page=test">Test</a></h2>

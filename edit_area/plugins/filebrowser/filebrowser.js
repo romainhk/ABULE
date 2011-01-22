@@ -42,7 +42,7 @@ var EditArea_filebrowser = {
 
                 xhr.open("POST", "browser.php", true);
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");                  
-                xhr.send('');
+                xhr.send('json=ok');
 				return false;
 		}
 		return true;

@@ -22,6 +22,9 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'uploader':
         require('uploader.php');
         break;
+    case 'listup':
+        require('browser.php');
+        break;
     default:
         break;
     }
