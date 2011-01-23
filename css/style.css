@@ -131,6 +131,14 @@ p:first-letter {
     margin-left:1em;
 }
 
+dd {
+    font-weight: bold;
+}
+
+dl {
+    padding-left: 1em;
+}
+
 .bord {
     height:744px;
     margin:0px auto;

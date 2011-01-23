@@ -11,7 +11,7 @@ require('fonctions.php');
  */
 $page = 'Accueil';
 if (isset($_GET['page'])) {
-    $page = $_GET['page'];
+    $page = strtr($_GET['page'], "_", " ");
 }
 $action = 'lire';
 if (isset($_GET['action'])) {
@@ -104,7 +104,7 @@ if (count($avertissements) > 0) {
     <div class="menu" style="float:left;">
 		<span style="height:180px;display:block;"></span>
         <?php 
-#require('menu.php'); ?>
+require('menu.php'); ?><!--
         <h2><a href="?page=Accueil">Accueil</a></h2>
         <h2><a href="">Présentation de l´Association</a></h2>
         <h2>Événements</h2>
@@ -119,17 +119,8 @@ if (count($avertissements) > 0) {
         </ul>
         <h2><a href="">À découvrir</a></h2>
         <h2><a href="?page=Liens">Liens</a></h2>
-        <?php #PHP
-    if (isset($_SESSION['login'])) {
-        echo '<h2>Admin</h2>';
-        echo '<ul><li><a href="?page=\&action=lister">Liste des pages</a></li>';
-        echo '<li><a href="?page=\&action=ajouter">Ajouter</a></li>';
-        echo '<li><a href="?page=\&action=supprimer">Supprimer</a></li>';
-        echo '<li><a href="?page=\&action=uploader">Upload</a></li>';
-        echo '<li><a href="?page=\&action=listup">Liste des fichiers</a></li></ul>';
-    }
-?>
         <h2><a href="?page=test">Test</a></h2>
+-->
     </div>
     <div class="menu" style="float:right;">
 		<span style="height:43px;display:block;"></span>

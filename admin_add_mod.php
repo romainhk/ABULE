@@ -17,13 +17,28 @@ if (!strcmp($action, 'ajouter')) {
 <legend><?php echo ucfirst($action); ?> une page</legend>
 <ul>
 <?php
+    ## Nom, père et ordre
+    $ordre = 0;
+    $pere= '';
     if ($modification) {
         echo "<li>Nom de la page : « $page ».<input type=\"hidden\" name=\"nom\" value=\"$page\" />\n";
-        echo '<input type="hidden" name="modifier" value="foo" /></li>';
+        echo '<input type="hidden" name="modifier" value="foo" /></li>'."\n";
+        $ordre = bdd_get($db, 'ordre', $page);
+        $pere = menu_pere($db, $page);
     } else {
         echo '<li><label for="nom">Nom de la page :</label>'
-            ."\n    ".'<input type="text" name="nom" size="25" /></li>';
+            ."\n    ".'<input type="text" name="nom" size="25" /></li>'."\n";
     }
+    echo '<li>Père : <select name="pere" size="1">';
+    echo '<option value="'.MENU_SEUL.'">* Nouveau père</option>'."\n";
+    foreach (menu_les_peres($db) as $lp) {
+        if (!strcmp($pere, $lp)) {
+            $sel = ' selected="selected"';
+        } else { $sel = ''; }
+        echo '<option value="'.$lp.'"'.$sel.'>'.$lp.'</option>'."\n";
+    }
+    echo "</li>\n";
+    echo '<li>Ordre : <input type="text" name="ordre" size="2" maxlength="2" value="'.$ordre.'" /></li>';
     echo "\n";
 ?>
     <li><label for="contenu">Contenu :</label></li>
@@ -50,3 +65,12 @@ editAreaLoader.init({
     <input type="submit" value="<?php echo ucfirst($action); ?>" accesskey="g" /></div>
 </fieldset>
 </form>
+
+<h2>Aide</h2>
+<p>Les éléments d'un menu sont répartis selon deux niveaux : père et fils. Les pères avec fils n'ont pas de page propre.</p>
+<dl>
+    <dd>Père</dd>
+    <dt>L'élément parent.</dt>
+    <dd>Ordre</dd>
+    <dt>Les éléments seront classés du plus petit au plus grand.</dt>
+</dl>

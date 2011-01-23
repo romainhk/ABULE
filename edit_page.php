@@ -16,6 +16,14 @@ $contenu = "";
 if (isset($_POST['contenu'])) {
     $contenu = $_POST['contenu'];
 }
+$pere = "";
+if (isset($_POST['pere'])) {
+    $pere = $_POST['pere'];
+}
+$ordre = "";
+if (isset($_POST['ordre'])) {
+    $ordre = $_POST['ordre'];
+}
 $forcer = False;
 if (isset($_POST['modifier'])) {
     $forcer = True;
@@ -32,7 +40,7 @@ if ($ret) {
         $contenu = preg_replace('/(<a href=\"[^>]+)(>\s*<img )/', '$1 rel="lightbox"$2', $contenu);
 
         echo "Ajout de la page $nom avec : ".htmlentities($contenu).".<br/>\n";
-        $r = bdd_sauvegarder($db, $nom, $contenu, $forcer);
+        $r = bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer);
         if ($r) {
             die($r);
         }

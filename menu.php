@@ -1,12 +1,10 @@
 <?php
-require_once('db.php');
-generer_menu($db);
-
-if (file_exists('menu.html')) {
-    //require('menu.html');
-} else {
+if (!file_exists('uploads/menu.html')) {
+    require_once('db.php');
     // TODO générer le menu
+    generer_menu($db);
 }
+require('uploads/menu.html');
 
 if (isset($_SESSION['login'])) {
     echo '<h2>Admin</h2>';
