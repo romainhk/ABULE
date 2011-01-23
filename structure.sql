@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Dim 23 Janvier 2011 à 18:12
+-- Généré le : Dim 23 Janvier 2011 à 18:16
 -- Version du serveur: 5.1.49
 -- Version de PHP: 5.3.3-7
 
@@ -42,3 +42,22 @@ INSERT INTO `page` (`nom`, `fils`, `ordre`, `contenu`) VALUES
 ('Événements', 'Passé;;À venir', 2, NULL),
 ('Passé', NULL, 1, '&lt;h1&gt;Passé&lt;/h1&gt;\r\n'),
 ('À venir', NULL, 2, 'bbbbbbbb');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `utilisateurs`
+--
+
+CREATE TABLE IF NOT EXISTS `utilisateurs` (
+  `login` varchar(50) COLLATE utf8_bin NOT NULL,
+  `mdp` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'Mot de passe',
+  PRIMARY KEY (`login`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Contenu de la table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`login`, `mdp`) VALUES
+('admin', 'admin');
