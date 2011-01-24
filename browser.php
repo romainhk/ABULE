@@ -5,7 +5,7 @@
 $les_fichiers = array();
 $dossier_up = 'uploads/';
 foreach (scandir($dossier_up) as $sd) {
-    if (!preg_match('/^\./', $sd) and !preg_match('/^index/', $sd)) {
+    if (!preg_match('/^\./', $sd) and !preg_match('/.html$/', $sd)) {
         array_push($les_fichiers, $sd);
     }
 }

@@ -5,7 +5,7 @@
 require_once('db.php');
 
 // Ajoute un fichier à la BDD
-/*
+/* Remplacé par le le dossier "uploads/"
 function bdd_ajouter_fichier($db, $nom, $data) {
     $req = 'INSERT INTO fichier (nom, data) VALUES ("'.$nom.'", "'.$data.'")';
     $ret = mysql_query($req, $db);

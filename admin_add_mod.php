@@ -18,7 +18,7 @@ if (!strcmp($action, 'ajouter')) {
 <ul>
 <?php
     ## Nom, père et ordre
-    $ordre = 0;
+    $ordre = 1;
     $pere= '';
     if ($modification) {
         echo "<li>Nom de la page : « $page ».<input type=\"hidden\" name=\"nom\" value=\"$page\" />\n";

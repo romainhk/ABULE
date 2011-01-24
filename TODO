@@ -15,16 +15,12 @@
 
 * sécuriser l'accès à la bdd et "mycnf" (htaccess ?) !!!!
 
-* menu gauche statique !!! (à finir)
-
 * page php statique ou dynamique ? (au pire : bench)
 ** si statique, faire une page de maintenance pour forcer la maj
 
 * menu à droite : contact, news => quels news, quels flux ? !
 
 * convertir redirection() en ajax/php (pour éviter les rechargements intempestifs en js)
-
-* liste des pages : ajouter un lien "modifier" sur chacune + pere + ordre.
 
 * refonte : représenter le menu sous forme d'arbre
 

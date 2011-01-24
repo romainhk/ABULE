@@ -39,7 +39,7 @@ if ($ret) {
         $contenu = preg_replace('/(<a href=\"[^>]+) rel=\"lightbox\"(>\s*<img )/', '$1$2', $contenu);
         $contenu = preg_replace('/(<a href=\"[^>]+)(>\s*<img )/', '$1 rel="lightbox"$2', $contenu);
 
-        echo "Ajout de la page $nom avec : ".htmlentities($contenu).".<br/>\n";
+        #echo "Ajout de la page $nom avec : ".htmlentities($contenu).".<br/>\n";
         $r = bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer);
         if ($r) {
             die($r);
@@ -52,5 +52,5 @@ if ($ret) {
 }
 
 # L'ajout s'est bien passé
-redirection($nom, 100);
+redirection($nom, 10);
 ?>

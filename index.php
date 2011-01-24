@@ -18,8 +18,6 @@ if (isset($_GET['action'])) {
     $action = $_GET['action'];
 }
 
-//TODO inclure un menu.php ici qui génèrera le menu
-
 /* 
  * Sélection des feuilles de style à utiliser
  * Messages d'avertissements
@@ -103,7 +101,7 @@ if (count($avertissements) > 0) {
     -->
     <div class="menu" style="float:left;">
 		<span style="height:180px;display:block;"></span>
-        <?php 
+        <?php #PHP
 require('menu.php'); ?><!--
         <h2><a href="?page=Accueil">Accueil</a></h2>
         <h2><a href="">Présentation de l´Association</a></h2>

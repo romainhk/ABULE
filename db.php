@@ -24,16 +24,16 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
     $contenu = preg_replace("/<?php.*?>/", '', $contenu);
     $san_contenu = htmlspecialchars($contenu);
 
-    if (strcmp($pere, MENU_JOCKER)) {
+    if (strcmp($pere, MENU_SEUL)) {
         $fils = 'NULL';
     } else { 
-        $fils = MENU_JOCKER;
+        $fils = '"'.MENU_SEUL.'"';
     }
-    $req = 'INSERT INTO page (nom, fils, ordre, contenu) VALUES ("'.$nom.'", "'.$fils.'", "'.$ordre.'", "'.$san_contenu.'")';
+    $req = 'INSERT INTO page (nom, fils, ordre, contenu) VALUES ("'.$nom.'", '.$fils.', "'.$ordre.'", "'.$san_contenu.'")';
     $ret = mysql_query($req, $db);
     if (!$ret) {
         if (mysql_errno($db) == 1062 and $forcer) { # la page existe dégà
-            bdd_modifier($db, $nom, $san_contenu);
+            bdd_modifier($db, $nom, $pere, $fils, $ordre, $san_contenu);
         } else {
             return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
         }
@@ -44,36 +44,28 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
 }
 
 // Modifier une page dans la BDD
-function bdd_modifier($db, $nom, $contenu) {
-    // TODO : pere, ordre
-    $req = 'UPDATE page SET contenu="'.$contenu.'" WHERE nom="'.$nom.'"';
+function bdd_modifier($db, $nom, $pere, $fils, $ordre, $contenu) {
+    menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
+    $req = 'UPDATE page SET contenu="'.$contenu.'", fils='.$fils.', ordre="'.$ordre.'" WHERE nom="'.$nom.'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    menu_modifier_fils($db, $pere, $nom, 'ajouter');
 }
 
 // Récupérer une page depuis la BDD
 function bdd_charger($db, $nom) {
-    // TODO : bdd_get($db, 'contenu', $nom)
-    $req = 'SELECT contenu FROM page WHERE nom="'.$nom.'"';
-    $ret = mysql_query($req, $db)
-       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-    $f = mysql_fetch_row($ret);
-    if (isset($f[0])) {
-        return htmlspecialchars_decode($f[0]);
-    } else {
-        return FALSE;
-    }
+    $get = bdd_get($db, 'contenu', $nom);
+    return htmlspecialchars_decode($get);
 }
 
 // Donne la liste des pages connues
 function bdd_lister($db) {
     $r = array();
-    $req = 'SELECT nom FROM page';
+    $req = 'SELECT nom, fils, ordre FROM page ORDER BY ordre';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     while($row = mysql_fetch_array($ret)) {
-    //TODO tri alphabétique sans casse
-        array_push($r, $row[0]);
+        array_push($r, $row);
     }
     return $r;
 }
@@ -119,7 +111,7 @@ function menu_les_peres($db) {
 }
 
 // Mettre à jour le menu.html
-function generer_menu($db) {
+function menu_regenerer($db) {
     $elems = array();
     $les_peres = menu_les_peres($db);
     $req = 'SELECT nom, fils, ordre FROM page ORDER BY nom, ordre';
@@ -197,20 +189,17 @@ function menu_modifier_fils($db, $pere, $page, $modif='ajouter') {
         case 'retirer':
             $fils = explode(MENU_JOCKER, $les_fils);
             $fils = array_diff($fils, array($page));
-            $fils = implode(MENU_JOCKER, $les_fils);
-            print_r($les_fils);
-            if (sizeof($les_fils) == 0) {
+            $fils = implode(MENU_JOCKER, $fils);
+            if (count($les_fils) == 0) {
                 $fils = MENU_JOCKER;
             }
             break;
         }
         $req = 'UPDATE page SET fils="'.$fils.'" WHERE nom="'.$pere.'"';
-        echo $req;
         $ret = mysql_query($req, $db)
            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-        generer_menu($db);
-    } else {
-        return FALSE;
     }
+    menu_regenerer($db);
+    return 0;
 }
 ?>
