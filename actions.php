@@ -30,6 +30,10 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     }
 } else {
     # Pas d'action : simple chargement du contenu
+    if (isset($_SESSION['message'])) {
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
     if (isset($_SESSION['login'])) {
         echo "<span class=\"modifier\"><a href=\"?page=$page&action=modifier\">Modifier</a></span>\n";
     }

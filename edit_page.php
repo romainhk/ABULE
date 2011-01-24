@@ -10,7 +10,8 @@ require_once('fonctions.php');
 if (isset($_POST['nom']) and strcmp($_POST['nom'], '')) {
     $nom = $_POST['nom'];
 } else {
-    die("Nom de page inconnu");
+    $_SESSION['message'] = "Nom de page inconnu";
+    exit(1);
 }
 $contenu = "";
 if (isset($_POST['contenu'])) {
@@ -42,15 +43,14 @@ if ($ret) {
         #echo "Ajout de la page $nom avec : ".htmlentities($contenu).".<br/>\n";
         $r = bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer);
         if ($r) {
-            die($r);
+            $_SESSION['message'] = $r;
         }
     } else {
-        die("La page existe déjà");
+        $_SESSION['message'] = "La page « $nom » existe déjà";
     }
 } else {
-    die("Problème lors de l'ajout");
+    $_SESSION['message'] = "Problème lors de l'ajout";
 }
 
-# L'ajout s'est bien passé
-redirection($nom, 10);
+redirection($nom, 1);
 ?>

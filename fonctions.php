@@ -18,7 +18,7 @@ function charger_rss($nbmax) {
             } else break;
         }
         $ret = $ret."</ul>\n";
-    } else $ret = 'Erreur de lecture du flux RSS';
+    } else $ret = 'Erreur lors de la lecture du flux RSS';
     return $ret;
 }
 
