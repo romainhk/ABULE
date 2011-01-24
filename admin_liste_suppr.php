@@ -27,6 +27,7 @@ echo "<h1>Maintenance</h1>\n";
 
 if (!strcmp($action, 'lister')) {
     # Lister
+    echo "<p>Liste des pages existantes, ainsi que leur parenté et leur ordre d'affichage</p>\n";
     echo '<table cellspacing="5" cellpadding="2">'."\n";
     echo "<tr><th>Nom</th><th>Fils</th><th>Ordre</th></tr>\n";
     foreach ($liste as $l) {

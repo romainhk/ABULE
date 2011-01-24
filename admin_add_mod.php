@@ -70,7 +70,7 @@ editAreaLoader.init({
 <p>Les éléments d'un menu sont répartis selon deux niveaux : père et fils. Les pères avec fils n'ont pas de page propre.</p>
 <dl>
     <dd>Père</dd>
-    <dt>L'élément parent.</dt>
+    <dt>L'élément parent du menu.</dt>
     <dd>Ordre</dd>
-    <dt>Les éléments seront classés du plus petit au plus grand.</dt>
+    <dt>Les éléments seront classés du plus petit au plus grand. L'ordre est un nombre strictement positif ; si deux pages d'un même niveau ont le même ordre, un seul s'affichera.</dt>
 </dl>
