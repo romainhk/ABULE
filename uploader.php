@@ -88,7 +88,7 @@ if ($statut == 0) {
     echo "<p>Le fichier est maintenant accessible à l'adresse : <tt>$err</tt></p>";
 }
 ?>
-<h3><a href="http://fr.wikipedia.org/wiki/Format_de_donn%C3%A9es">Formats de fichier</a> autorisés</h3>
+<h4>Formats de fichier autorisés</h4>
 <ul>
     <li>Images : gif, jpeg, mng, png, svg, tiff.</li>
     <li>Archives : 7z, gzip, rar, zip.</li>

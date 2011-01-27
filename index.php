@@ -119,7 +119,9 @@ require('menu.php'); ?>
         <h2><a href="">À découvrir</a></h2>
         <h2><a href="?page=Liens">Liens</a></h2>
 -->
-    </div>
+    </div><!--
+## Menu droit
+    -->
     <div class="menu" style="float:right;">
 		<span style="height:43px;display:block;"></span>
         <div style="margin:1ex auto; width:140px; height:150px;">
@@ -135,7 +137,6 @@ require('menu.php'); ?>
         <h2>News rss</h2>
         <?php #PHP
 echo charger_rss(3); ?>
-        <h2>Connexion</h2>
         <?php #PHP
 require("membres.php"); ?>
     </div>
@@ -149,7 +150,7 @@ require("actions.php"); ?>
     -->
     <div class="pied">
         <a href="">Copyright</a> - <a href="?action=contacter">Contactez-nous</a>
-        <a href="mailto:labulecalais@gmail.com"><img src="images/mail.png" alt="mailto" height="18" /></a>
+        <a href="mailto:labulecalais@gmail.com"><img src="images/mail.png" alt="mailto" /></a>
     </div>
     <div style="text-align:center;">
         <a href="http://validator.w3.org/check?uri=referer"><img

@@ -7,8 +7,7 @@
 ** une légère pour IE et navigateurs css2.0 et inférieur
 *** sans dégradé, images jpg, sans horloge flash
 
-* style générique pour le corps : h2..., ol
-** classe "surligner" + bouton
+* classe "surligner" + bouton
 
 * dégradé dans la bannière ?
 
@@ -17,6 +16,7 @@
 *... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
 
 * sécuriser l'accès à la bdd et "mycnf" (htaccess ?) !!!!
+* crypter mots de passe
 
 * menu à droite : contact, news => quels news, quels flux ? !
 

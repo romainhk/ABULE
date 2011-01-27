@@ -95,6 +95,14 @@ function bdd_get($db, $champ, $nom) {
         }
     }
 }
+
+// Permet à un admin de changer son mot de passe
+function bdd_changer_mdp($db, $login, $mdp) {
+    $req = 'UPDATE utilisateurs SET mdp="'.$contenu.'" WHERE login="'.$login.'"';
+    $ret = mysql_query($req, $db)
+       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+}
+
 /*
  * Gestion du Menu     #######################
  */

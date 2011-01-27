@@ -7,16 +7,6 @@ body {
    /* background-repeat:no-repeat;*/
 }
 
-h2 {
-    font-weight:bolder;
-    font-size:large;
-}
-
-ul {
-    margin-left:1ex;
-    list-style-type:square;
-}
-
 /* **********
  * Bannière
  */
@@ -127,16 +117,35 @@ ul {
 /* **********
  * Corps
  */
-p:first-letter {
-    margin-left:1em;
+h2 {
+    font-weight:bolder;
+    font-size:large;
 }
 
-dd {
-    font-weight: bold;
+p:first-letter {
+    margin-left:1ex;
+}
+
+ul {
+    margin-left:1ex;
+    list-style-type:square;
+}
+
+ol {
+    margin-left:1ex;
 }
 
 dl {
     padding-left: 1em;
+}
+
+dt {
+    font-weight: bold;
+    margin-top: 0.7ex;
+}
+
+dd {
+    margin-top: 0.2ex;
 }
 
 .bord {
@@ -172,6 +181,29 @@ dl {
     color:white;
 }
 
+.corps h2 {
+    margin-top:1.8em;
+    text-align:center;
+    font-size:xx-large;
+}
+
+.corps h3 {
+    margin-top:1.5em;
+    margin-left:4em;
+    font-size:x-large;
+}
+
+.corps h4 {
+    margin-left:2em;
+    font-size:large;
+}
+
+.corps h5 {
+    margin-left:-0.2ex;
+    margin-bottom:0.2ex;
+    font-weight: bold;
+}
+
 .corps img {
     width:220px;
     margin:1ex;
@@ -198,6 +230,7 @@ dl {
 .pied a img {
     border:none;
     vertical-align:middle;
+    height:17px;
 }
 
     /* Lien "modifier"

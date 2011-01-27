@@ -29,7 +29,7 @@ if (!strcmp($action, 'ajouter')) {
         echo '<li><label for="nom">Nom de la page :</label>'
             ."\n    ".'<input type="text" name="nom" size="25" /></li>'."\n";
     }
-    echo '<li>Père : <select name="pere" size="1">';
+    echo '<li>Menu : <select name="pere" size="1">';
     echo '<option value="'.MENU_SEUL.'">* Nouveau père</option>'."\n";
     foreach (menu_les_peres($db) as $lp) {
         if (!strcmp($pere, $lp)) {
@@ -37,9 +37,9 @@ if (!strcmp($action, 'ajouter')) {
         } else { $sel = ''; }
         echo '<option value="'.$lp.'"'.$sel.'>'.$lp.'</option>'."\n";
     }
-    echo "</li>\n";
-    echo '<li>Ordre : <input type="text" name="ordre" size="2" maxlength="2" value="'.$ordre.'" /></li>';
-    echo "\n";
+    echo "</select>\n<span style=\"margin-left:5ex;\">ordre : ";
+    echo '<input type="text" name="ordre" size="2" maxlength="2" value="'.$ordre.'" />';
+    echo "</span></li>\n";
 ?>
     <li><label for="contenu">Contenu :</label></li>
 </ul>
@@ -66,11 +66,11 @@ editAreaLoader.init({
 </fieldset>
 </form>
 
-<h2>Aide</h2>
+<h3>Aide</h3>
 <p>Les éléments d'un menu sont répartis selon deux niveaux : père et fils. Les pères avec fils n'ont pas de page propre.</p>
 <dl>
-    <dd>Père</dd>
-    <dt>L'élément parent du menu.</dt>
-    <dd>Ordre</dd>
-    <dt>Les éléments seront classés du plus petit au plus grand. L'ordre est un nombre strictement positif ; si deux pages d'un même niveau ont le même ordre, un seul s'affichera.</dt>
+    <dt>Père</dt>
+    <dd>L'élément parent du menu.</dd>
+    <dt>Ordre</dt>
+    <dd>Les éléments seront classés du plus petit au plus grand. L'ordre est un nombre strictement positif ; si deux pages d'un même niveau ont le même ordre, un seul s'affichera.</dd>
 </dl>
