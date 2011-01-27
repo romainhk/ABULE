@@ -28,6 +28,6 @@ function horloge() {
 abule = new Object();
 abule.suppr = "";
 function conf_suppr() {
-    conf = window.confirm("Êtes-vous sûre de vouloir supprimer la page « "+abule.suppr+" » ?");
+    conf = window.confirm("Etes-vous sure de vouloir supprimer la page \""+abule.suppr+"\" ?");
     return conf;
 }

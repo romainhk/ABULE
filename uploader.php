@@ -23,7 +23,7 @@ function bdd_ajouter_fichier($db, $nom, $data) {
 }  */
 
 require_once('fonctions.php');
-$taille_max = 5000;
+$taille_max = 10240; // 10 Mo
 
 if (isset($_GET['statut'])) {
     $statut = $_GET['statut'];
@@ -80,7 +80,7 @@ if ($statut > 0) {
 ?>
 <form method="POST" action="uploader.php" enctype="multipart/form-data">
 <ul><li><input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $taille_max*1024; ?>">
-  <label for="nom">Fichier :</label> <input type="file" name="upload" size="40"></li></ul>
+<label for="nom">Fichier (taille maximum : <?php echo $taille_max/1024; ?> Mo) :</label> <input type="file" name="upload" size="40"></li></ul>
   <div style="text-align:right; padding-right:1em;"><input type="submit" name="envoyer" value="Envoyer le fichier"></div>
 </form>
 <?php

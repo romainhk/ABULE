@@ -195,6 +195,11 @@ dl {
     color:black;
 }
 
+.pied a img {
+    border:none;
+    vertical-align:middle;
+}
+
     /* Lien "modifier"
      */
 .modifier {

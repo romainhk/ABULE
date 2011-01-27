@@ -8,7 +8,9 @@ les informations de connexion à la base de données. Voici la structure de base
 user=
 password=
 host=
-* déclarer le dossier ABULE dans le daemon http (apache ou autre)
 * charger la base de données du site :
 ** avec phpmyadmin, créer une base de donnée "site_abule"
 ** puis importer le fichier "structure.sql"
+* déclarer le dossier ABULE dans le daemon http (apache ou autre)
+* déclarer le browscap.ini dans le php.ini : browscap=..../browscap.ini
+* autoriser le dossier "uploads/" en écriture

@@ -69,10 +69,10 @@ if (count($avertissements) > 0) {
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta name="Author" content="Steeve et Romain" />
-    <meta name="Copyright" content="L'ABULE" />
-    <meta name="Description" content="Site de l'ABULE, association de biologie de l'université du littoral pour l'écologie" />
-    <meta name="Keywords" lang="fr" content="association, biologie, calais, écologie, université" />
-    <meta name="Keywords" lang="en" content="association, biology, calais, ecology, university" />
+    <meta name="Copyright" content="L'A.B.U.L.E." />
+    <meta name="Description" content="Site de L'A.B.U.L.E., Association de Biologie de l'Université du Littoral pour l'Écologie" />
+    <meta name="Keywords" lang="fr" content="association, biologie, calais, écologie, université, ULCO, université du littoral" />
+    <meta name="Keywords" lang="en" content="association, biology, calais, ecology, university, ULCO, université du littoral" />
     <meta name="Rev" content="labulecalais@gmail.com" />
     <meta name="Revisit-after" content="17 days" />
     <meta name="Robots" content="all, follow, index" />
@@ -102,7 +102,8 @@ if (count($avertissements) > 0) {
     <div class="menu" style="float:left;">
 		<span style="height:180px;display:block;"></span>
         <?php #PHP
-require('menu.php'); ?><!--
+require('menu.php'); ?>
+<!--
         <h2><a href="?page=Accueil">Accueil</a></h2>
         <h2><a href="">Présentation de l´Association</a></h2>
         <h2>Événements</h2>
@@ -117,7 +118,6 @@ require('menu.php'); ?><!--
         </ul>
         <h2><a href="">À découvrir</a></h2>
         <h2><a href="?page=Liens">Liens</a></h2>
-        <h2><a href="?page=test">Test</a></h2>
 -->
     </div>
     <div class="menu" style="float:right;">
@@ -148,7 +148,8 @@ require("actions.php"); ?>
 ## Pied de page : © et messages d'erreur
     -->
     <div class="pied">
-        <a href="">Copyright</a> - <a href="">Contactez-nous</a>
+        <a href="">Copyright</a> - <a href="?action=contacter">Contactez-nous</a>
+        <a href="mailto:labulecalais@gmail.com"><img src="images/mail.png" alt="mailto" height="18" /></a>
     </div>
     <div style="text-align:center;">
         <a href="http://validator.w3.org/check?uri=referer"><img
