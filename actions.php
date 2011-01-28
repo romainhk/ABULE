@@ -29,7 +29,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         require('browser.php');
         break;
     case 'aide_html':
-        require('aide_html.php');
+        require('aide_html.html');
         break;
     default:
         break;

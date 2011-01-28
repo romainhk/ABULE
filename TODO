@@ -10,15 +10,10 @@
 * dégradé dans la bannière ?
 
 === PHP/js
-* vérifier que le navigateur web supporte css 3 :
-*... get_browser() -> browscat : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html
-
 * sécuriser l'accès à la bdd et "mycnf" (htaccess ?) !!!!
 * crypter mots de passe
 
 * menu à droite : contact, news => quels news, quels flux ? !
-
-* 1 horloge sur les 2
 
 * page "contact"
 

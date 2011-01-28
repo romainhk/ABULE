@@ -27,6 +27,7 @@ $styles = array( "style", "lightbox" ); //Les styles css à utiliser
 $browser = get_browser($_SERVER["HTTP_USER_AGENT"], FALSE);
 if ($browser->cssversion > 2) {
     array_push($styles, "style3");
+    $horloge = '';
 } else {
     array_push($styles, "style2");
     if ($browser->cssversion <= 1) {
@@ -42,6 +43,7 @@ if (!$browser->javascript) {
             "Le javascript est indispensable pour le mode administrateur.");
     }
 }
+$horloge_flash = (strstr($_SERVER['HTTP_ACCEPT'], 'application/x-shockwave-flash')) ? true : false;
 
 /*
  * Contenu html
@@ -123,13 +125,18 @@ require('menu.php'); ?>
 ## Menu droit
     -->
     <div class="menu" style="float:right;">
-		<span style="height:43px;display:block;"></span>
-        <div style="margin:1ex auto; width:140px; height:150px;">
-            <object type="application/x-shockwave-flash" data="http://www.clocklink.com/clocks/0018b-green.swf?TimeZone=France_Paris" width="140" height="150">
-            <param name="wmode" value="transparent" />
-            </object>
-        </div>
-        <span id="horloge"></span>
+        <?php #PHP
+## Horloge
+if ($horloge_flash) {
+	echo '<span style="height:43px;display:block;"></span>'."\n";
+    echo '  <div style="margin:1ex auto; width:140px; height:150px;">';
+    echo '  <object type="application/x-shockwave-flash" data="http://www.clocklink.com/clocks/0018b-green.swf?TimeZone=France_Paris" width="140" height="150">'."\n";
+    echo '    <param name="wmode" value="transparent" />';
+    echo '  </object>'."\n".'  </div>';
+} else {
+    echo '<span id="horloge"></span>';
+}
+?>
         <ul>
             <li><a href="">Contact</a></li>
             <li><a href="">Forum</a></li>

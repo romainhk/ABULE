@@ -13,4 +13,5 @@ host=
 ** puis importer le fichier "structure.sql"
 * déclarer le dossier ABULE dans le daemon http (apache ou autre)
 * déclarer le browscap.ini dans le php.ini : browscap=..../browscap.ini
+ (nécessaire pour la détection du navigateur : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html )
 * autoriser le dossier "uploads/" en écriture
