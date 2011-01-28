@@ -22,8 +22,9 @@
 
 * page "contact"
 
-* page d'aide sur l'html basique : hN, p, ibu, a, img, ul/ol/li
-** pb de la légende
+* renommer une page
+
+* pb de la légende d'une image
 
 + session : journal de connexion (pour vérification)
 + convertir redirection() en ajax/php (pour éviter les rechargements intempestifs en js)

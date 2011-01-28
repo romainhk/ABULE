@@ -28,6 +28,9 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'listup':
         require('browser.php');
         break;
+    case 'aide_html':
+        require('aide_html.php');
+        break;
     default:
         break;
     }

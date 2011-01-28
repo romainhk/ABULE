@@ -15,6 +15,7 @@ if (!strcmp($action, 'ajouter')) {
 <form method="post" action="edit_page.php">
 <fieldset>
 <legend><?php echo ucfirst($action); ?> une page</legend>
+<div style="float:right;"><a href="?action=aide_html">Aide html</a></div>
 <ul>
 <?php
     ## Nom, père et ordre
@@ -41,7 +42,7 @@ if (!strcmp($action, 'ajouter')) {
     echo '<input type="text" name="ordre" size="2" maxlength="2" value="'.$ordre.'" />';
     echo "</span></li>\n";
 ?>
-    <li><label for="contenu">Contenu :</label></li>
+    <li><label for="contenu">Contenu html :</label></li>
 </ul>
 <textarea cols="80" id="editeur" name="contenu" rows="12"><?php echo $prechargement; ?></textarea>
 <script language="javascript" type="text/javascript" src="edit_area/edit_area_full.js"></script>

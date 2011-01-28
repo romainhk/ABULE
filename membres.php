@@ -29,7 +29,7 @@ if (isset($_SESSION['login'])) {
     // Nom et bouton logout
     echo '<ul><li>Bonjour '.$_SESSION['login']." :</li>\n";
     echo '<li><a href="index.php?action=changer_mdp"><i>Changer son mot de passe</i></a></li>';
-    echo '<li><a href="index.php?action=logout"><b><i>Se déconnecter</i></b></a></li></ul>';
+    echo '<li><a href="index.php?action=logout"><b>Se déconnecter</b></a></li></ul>';
 } else {
     // Formulaire de connexion
     echo '<form class="connect" id="conn" method="post" action=""><ul>'."\n";
