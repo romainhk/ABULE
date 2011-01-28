@@ -215,6 +215,10 @@ dd {
     border:none;
 }
 
+.surligner {
+    background-color:#FFFF00;
+}
+
 
 .pied {
     margin:1ex 0 0.5ex;
