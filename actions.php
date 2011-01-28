@@ -19,6 +19,9 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         session_destroy();
         redirection($page);
         break;
+    case 'changer_mdp':
+        require('changer_mdp.php');
+        break;
     case 'uploader':
         require('uploader.php');
         break;
