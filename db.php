@@ -39,6 +39,7 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
         }
     } else {
         menu_modifier_fils($db, $pere, $nom, 'ajouter');
+        menu_regenerer($db);
     }
     return FALSE;
 }
@@ -50,6 +51,7 @@ function bdd_modifier($db, $nom, $pere, $fils, $ordre, $contenu) {
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     menu_modifier_fils($db, $pere, $nom, 'ajouter');
+    menu_regenerer($db);
 }
 
 // Récupérer une page depuis la BDD
@@ -77,10 +79,25 @@ function bdd_supprimer($db, $nom) {
         $ret = mysql_query($req, $db)
            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
         menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
+        menu_regenerer($db);
     } else die("Aucune page sélectionnée");
 }
 
-// Récupérer une page depuis la BDD
+// Renommer une page
+function bdd_renommer($db, $page, $nouv) {
+    $req = 'UPDATE page SET nom="'.$nouv.'" WHERE nom="'.$page.'"';
+    $ret = mysql_query($req, $db)
+       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    // Changer les parentés aussi
+    $pere = menu_pere($db, $page);
+    if (!empty($pere)) {
+        menu_modifier_fils($db, $pere, $page, 'retirer');
+        menu_modifier_fils($db, $pere, $nouv, 'ajouter');
+        menu_regenerer($db);
+    }
+}
+
+// Récupérer les infos d'une page
 function bdd_get($db, $champ, $nom) {
     global $les_champs;
     if (in_array($champ, $les_champs)) {
@@ -183,35 +200,37 @@ function menu_pere($db, $page) {
 
 // Ajoute/retire la page au pere
 function menu_modifier_fils($db, $pere, $page, $modif='ajouter') {
-    $req = 'SELECT fils FROM page WHERE nom="'.$pere.'"';
-    $ret = mysql_query($req, $db)
-       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-    $f = mysql_fetch_row($ret);
-    $les_fils = $f[0];
+    $les_fils = bdd_get($db, 'fils', $pere);
     if (isset($les_fils)) {
-        $fils = '';
+        $set = explode(MENU_JOCKER, $les_fils);
         switch($modif) {
         case 'ajouter':
-            if (sizeof($les_fils) == 0 || !strcmp($les_fils, MENU_SEUL) || !strcmp($les_fils, 'NULL')) {
-                $fils = $page;
+            if ( !strcmp($set[0], MENU_SEUL) || !strcmp($set[0], 'NULL') ) {
+                $set = $page;
             } else {
-                $fils = $les_fils.MENU_JOCKER.$page;
+                array_push($set, $page);
+#                $set = $les_fils.MENU_JOCKER.$page;
+                $set = implode(MENU_JOCKER, $set);
             }
             break;
         case 'retirer':
-            $fils = explode(MENU_JOCKER, $les_fils);
-            $fils = array_diff($fils, array($page));
-            $fils = implode(MENU_JOCKER, $fils);
-            if (count($les_fils) == 0) {
-                $fils = MENU_JOCKER;
+            $set = array_diff($set, array($page));
+            if (count($set) < 2) {
+                if (empty($set[0])) {
+                    $set = MENU_SEUL;
+                } else {
+                    $set = $set[0];
+                }
+            } else {
+                $set = implode(MENU_JOCKER, $set);
             }
             break;
         }
-        $req = 'UPDATE page SET fils="'.$fils.'" WHERE nom="'.$pere.'"';
+        $req = 'UPDATE page SET fils="'.$set.'" WHERE nom="'.$pere.'"';
         $ret = mysql_query($req, $db)
            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    } else {
     }
-    menu_regenerer($db);
     return 0;
 }
 ?>

@@ -10,6 +10,7 @@ if (!strcmp($action, 'ajouter')) {
     $modification = True;
     $prechargement = bdd_charger($db, $page);
 }
+
 ?>
 <h1>Édition</h1>
 <form method="post" action="edit_page.php">

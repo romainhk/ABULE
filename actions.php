@@ -11,6 +11,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         break;
     case 'lister':
     case 'supprimer':
+    case 'renommer':
         require('admin_liste_suppr.php');
         break;
     case 'logout':
