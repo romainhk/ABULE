@@ -57,11 +57,10 @@ editAreaLoader.init({
     ,min_width: 600
     ,min_height: 500
     ,word_wrap: true
-    ,end_toolbar: "|,filebrowser,surligner"
-    ,plugins: "filebrowser,surligner"
+    ,end_toolbar: "|,filebrowser,image,surligner"
+    ,plugins: "filebrowser,labule"
 });
 </script>
-<input type='button' onclick='editAreaLoader.insertTags("editeur", "<span class=\"surligner\">", "</span>");' value='Surligner' />
     <div style="text-align:right;">
     <input type="submit" value="<?php echo ucfirst($action); ?>" accesskey="g" /></div>
 </fieldset>

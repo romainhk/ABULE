@@ -1,12 +1,14 @@
 /*
  * Surligner un passage
  */  
-var EditArea_surligner = {
+var EditArea_labule = {
 	init: function(){	
 	}
 
 	,get_control_html: function(ctrl_name){
 		switch(ctrl_name){
+			case "image":
+				return parent.editAreaLoader.get_button_html('image', 'Nuvola_apps_package_graphics.png', 'image', false, this.baseURL);
 			case "surligner":
 				// Control id, button img, command
 				return parent.editAreaLoader.get_button_html('surligner', 'Nuvola_apps_kedit.png', 'surligner', false, this.baseURL);
@@ -25,6 +27,9 @@ var EditArea_surligner = {
 	,execCommand: function(cmd, param){
 		// Handle commands
 		switch(cmd){
+			case "image":
+                parent.editAreaLoader.insertTags('editeur', '<a href="COMME IMG" rel="lightbox"><img src="', '" alt="" /></a>');
+				return false;
 			case "surligner":
                 parent.editAreaLoader.insertTags('editeur', '<span class="surligner">', '</span>');
 				return false;
@@ -35,4 +40,4 @@ var EditArea_surligner = {
 	
 };
 
-editArea.add_plugin("surligner", EditArea_surligner);
+editArea.add_plugin("labule", EditArea_labule);
