@@ -42,9 +42,9 @@ body{
 .corps {
     font-family:"Howies Funhouse", cursive;
     background-color:white;
-	background-image:url('../images/incrustation_bambou.png'),url('../images/dbd.jpg'),url('../images/dbg.jpg'),url('../images/dhd.jpg'),url('../images/dhg.jpg'),url('../images/dh.jpg'),url('../images/dg.jpg'),url('../images/db.jpg'),url('../images/dd.jpg');
-    background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
-    background-position:right bottom,right bottom,left bottom,right top,left top,top,left,bottom,right;
+	background-image:url('../images/incrustation_bambou.png'),url('../images/corps.png');
+    background-repeat:no-repeat,repeat-x;
+    background-position:right bottom,left;
 }
 .corps h1 {
     font-family:"Qlassik B", sans-serif;
