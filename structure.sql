@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Ven 28 Janvier 2011 à 17:07
+-- Généré le : Sam 29 Janvier 2011 à 10:32
 -- Version du serveur: 5.1.49
 -- Version de PHP: 5.3.3-7
 
@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `site_abule`
+-- Base de données: `labulefr_site`
 --
 
 -- --------------------------------------------------------
@@ -46,18 +46,18 @@ INSERT INTO `page` (`nom`, `fils`, `ordre`, `contenu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateurs`
+-- Structure de la table `utilisateur`
 --
 
-CREATE TABLE IF NOT EXISTS `utilisateurs` (
+CREATE TABLE IF NOT EXISTS `utilisateur` (
   `login` varchar(50) COLLATE utf8_bin NOT NULL,
   `mdp` varchar(50) COLLATE utf8_bin NOT NULL COMMENT 'Mot de passe',
   PRIMARY KEY (`login`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Administrateurs';
 
 --
--- Contenu de la table `utilisateurs`
+-- Contenu de la table `utilisateur`
 --
 
-INSERT INTO `utilisateurs` (`login`, `mdp`) VALUES
+INSERT INTO `utilisateur` (`login`, `mdp`) VALUES
 ('admin', 'admin');

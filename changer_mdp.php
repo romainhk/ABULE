@@ -10,10 +10,12 @@ if (isset($_POST['submit'])) {
     }
 }
 
-if (isset($_SESSION['changer_mdp']) and empty($_SESSION['changer_mdp'])) {
-    echo '<p>Le mot de passe a bien été changé</p>';
-} else {
-    echo '<p>'.$_SESSION['changer_mdp'].'</p>';
+if (isset($_SESSION['changer_mdp'])) {
+    if (empty($_SESSION['changer_mdp'])) {
+        echo '<p>Le mot de passe a bien été changé</p>';
+    } else {
+        echo '<p>'.$_SESSION['changer_mdp'].'</p>';
+    }
 }
 unset($_SESSION['changer_mdp']);
 
