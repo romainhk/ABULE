@@ -9,9 +9,10 @@ user=
 password=
 host=
 * charger la base de données du site :
-** avec phpmyadmin, créer une base de donnée "site_abule"
+** avec phpmyadmin, créer une base de donnée "abulefr_site"
 ** puis importer le fichier "structure.sql"
 * déclarer le dossier ABULE dans le daemon http (apache ou autre)
 * déclarer le browscap.ini dans le php.ini : browscap=..../browscap.ini
- (nécessaire pour la détection du navigateur : http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html )
+ (nécessaire pour la détection du navigateur : 
+    http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html )
 * autoriser le dossier "uploads/" en écriture
