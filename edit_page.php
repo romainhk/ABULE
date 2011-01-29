@@ -36,7 +36,7 @@ $ret = mysql_query($req, $db);
 if ($ret) {
     $f = mysql_fetch_row($ret);
     if ($f[0] == 0 or $forcer) {
-        // Liens lightbox
+        // Retrait puis ajout des liens lightbox (du coup, tout le monde en aura un)
         $contenu = preg_replace('/(<a href=\"[^>]+) rel=\"lightbox\"(>\s*<img )/', '$1$2', $contenu);
         $contenu = preg_replace('/(<a href=\"[^>]+)(>\s*<img )/', '$1 rel="lightbox"$2', $contenu);
 

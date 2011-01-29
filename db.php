@@ -12,7 +12,7 @@ if (!$db) {
     die('Imposible de se connecter à la base : '.mysql_error($db));
 }
 
-mysql_select_db('site_abule', $db);
+mysql_select_db('labulefr_site', $db);
 mysql_query('SET NAMES UTF8', $db);
 
 /*
@@ -115,7 +115,7 @@ function bdd_get($db, $champ, $nom) {
 
 // Permet à un admin de changer son mot de passe
 function bdd_changer_mdp($db, $login, $mdp) {
-    $req = 'UPDATE utilisateurs SET mdp="'.$mdp.'" WHERE login="'.$login.'"';
+    $req = 'UPDATE utilisateur SET mdp="'.$mdp.'" WHERE login="'.$login.'"';
     $ret = mysql_query($req, $db);
     if ($ret) {
         return '';

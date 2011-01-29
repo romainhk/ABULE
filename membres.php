@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
     // Login
     $login = (isset($_POST['login'])) ? $_POST['login'] : '';
     $pass  = (isset($_POST['pass']))  ? $_POST['pass']  : '';
-    $sql = "SELECT login, mdp FROM utilisateurs WHERE login = '".addslashes($login)."'";
+    $sql = "SELECT login, mdp FROM utilisateur WHERE login = '".addslashes($login)."'";
     $req = mysql_query($sql) or die('Erreur SQL : <br />'.$sql);
 
     if (mysql_num_rows($req) > 0) {
