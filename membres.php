@@ -12,6 +12,7 @@ if (isset($_POST['submit'])) {
         $data = mysql_fetch_assoc($req);
         if ($pass == $data['mdp']) {
             $_SESSION['login'] = $login;
+            bdd_logger($db, 'Log-in : '.$login);
 
             #REDIRECTION
             if (isset($_GET['page'])) {
