@@ -27,9 +27,6 @@ body {
     float:right;
     width:38%;
 }
-.bannieredroite img {
-    -moz-transform:matrix(-1,0,0,1,0,0);
-}
 
 .superpose {
     position:absolute;
@@ -123,7 +120,7 @@ h2 {
 }
 
 p:first-letter {
-    margin-left:1ex;
+    padding-left:1ex;
 }
 
 ul {

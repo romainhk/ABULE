@@ -4,8 +4,8 @@
  */
 
 // Ouvre un flux rss et en fait une présentation
-function charger_rss($nbmax) {
-    if ($flux = simplexml_load_file('http://linuxfr.org/backend/~patrick_g/journal/rss20.rss')) {
+function charger_rss($url, $nbmax) {
+    if ($flux = simplexml_load_file($url)) {
         $ret = '<ul>';
         $donnee = $flux->channel;
         $i = 0;
@@ -18,7 +18,7 @@ function charger_rss($nbmax) {
             } else break;
         }
         $ret = $ret."</ul>\n";
-    } else $ret = 'Erreur lors de la lecture du flux RSS';
+    } else $ret = false;
     return $ret;
 }
 

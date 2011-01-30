@@ -16,7 +16,7 @@ mysql_select_db('labulefr_site', $db);
 mysql_query('SET NAMES UTF8', $db);
 
 /*
- * Fonction d'accès sur la BDD     #######################
+ * Fonction d'accès à la BDD     #######################
  */
 // Ajoute une page dans la BDD
 function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
@@ -38,6 +38,7 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
             return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
         }
     } else {
+        bdd_logger($db, 'Création de la page : '.$nom);
         menu_modifier_fils($db, $pere, $nom, 'ajouter');
         menu_regenerer($db);
     }
@@ -50,6 +51,7 @@ function bdd_modifier($db, $nom, $pere, $fils, $ordre, $contenu) {
     $req = 'UPDATE page SET contenu="'.$contenu.'", fils='.$fils.', ordre="'.$ordre.'" WHERE nom="'.$nom.'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    bdd_logger($db, 'Modification de la page : '.$nom);
     menu_modifier_fils($db, $pere, $nom, 'ajouter');
     menu_regenerer($db);
 }
@@ -78,6 +80,7 @@ function bdd_supprimer($db, $nom) {
         $req = 'DELETE FROM page WHERE nom="'.$nom.'"';
         $ret = mysql_query($req, $db)
            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+        bdd_logger($db, 'Suppression de la page : '.$nom);
         menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
         menu_regenerer($db);
     } else die("Aucune page sélectionnée");
@@ -91,6 +94,7 @@ function bdd_renommer($db, $page, $nouv) {
     // Changer les parentés aussi
     $pere = menu_pere($db, $page);
     if (!empty($pere)) {
+        bdd_logger($db, 'Renommage de la page : '.$page);
         menu_modifier_fils($db, $pere, $page, 'retirer');
         menu_modifier_fils($db, $pere, $nouv, 'ajouter');
         menu_regenerer($db);
@@ -113,15 +117,51 @@ function bdd_get($db, $champ, $nom) {
     }
 }
 
-// Permet à un admin de changer son mot de passe
-function bdd_changer_mdp($db, $login, $mdp) {
-    $req = 'UPDATE utilisateur SET mdp="'.$mdp.'" WHERE login="'.$login.'"';
+/*  Admin
+ */
+// Créer un nouvel admin
+function bdd_creer_admin($db, $login, $mdp) {
+    $req = 'INSERT INTO utilisateur (login, mdp) VALUES ("'.$login.'", "'.$mdp.'")';
     $ret = mysql_query($req, $db);
     if ($ret) {
         return '';
     } else {
         return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
     }
+}
+
+// Permet à un admin de changer son mot de passe
+function bdd_changer_mdp($db, $login, $mdp) {
+    $req = 'UPDATE utilisateur SET mdp="'.$mdp.'" WHERE login="'.$login.'"';
+    $ret = mysql_query($req, $db);
+    if ($ret) {
+        bdd_logger($db, $login.' a modifié son mot de passe');
+        return '';
+    } else {
+        return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
+    }
+}
+
+/*  Journal
+ */
+// Enregistre l'opération au journal
+function bdd_logger($db, $message) {
+    session_start();
+    $req = 'INSERT INTO log (login, message) VALUES ("'.$_SESSION['login'].'", "'.$message.'")';
+    $ret = mysql_query($req, $db);
+    return $ret;
+}
+
+// Journal des modifications récentes
+function bdd_journal($db, $nb=10) {
+    $r = array();
+    $req = 'SELECT * FROM log ORDER BY id LIMIT 0,'.$nb;
+    $ret = mysql_query($req, $db)
+       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    while($row = mysql_fetch_array($ret)) {
+        array_push($r, $row);
+    }
+    return $r;
 }
 
 /*
@@ -203,6 +243,7 @@ function menu_modifier_fils($db, $pere, $page, $modif='ajouter') {
     $les_fils = bdd_get($db, 'fils', $pere);
     if (isset($les_fils)) {
         $set = explode(MENU_JOCKER, $les_fils);
+        #echo $page.' : '.print_r($set).'<br>';
         switch($modif) {
         case 'ajouter':
             if ( !strcmp($set[0], MENU_SEUL) || !strcmp($set[0], 'NULL') ) {
@@ -215,7 +256,7 @@ function menu_modifier_fils($db, $pere, $page, $modif='ajouter') {
             break;
         case 'retirer':
             $set = array_diff($set, array($page));
-            if (count($set) < 2) {
+            if (count($set) < 1) {
                 if (empty($set[0])) {
                     $set = MENU_SEUL;
                 } else {

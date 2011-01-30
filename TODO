@@ -10,27 +10,20 @@
 * dégradé dans la bannière ?
 
 === PHP/js
-* sécuriser l'accès à la bdd et "mycnf" (htaccess ?) !!!!
-* crypter mots de passe
-
 * menu à droite : contact, news => quels news, quels flux ? !
 
 * page "contact"
 
-* pb de la légende d'une image
+* légende d'une image : js qui ajoute un niveau de div aux images munies d'un name
+http://www.hyjoo.com/sujet-38939.html
 
-+ session : journal de connexion (pour vérification)
 + convertir redirection() en ajax/php (pour éviter les rechargements intempestifs en js)
 + refonte : représenter le menu sous forme d'arbre
 
 === Editeur
-* browser de fichiers intégré à l'éditeur (ajax/php)
+* browser de fichiers intégré à l'éditeur (ajax/php) : plugin "filebrowser"
 
 + upload intégré à l'éditeur ?
-
-=== Autre
-* convertir LICENCE en html
-* page copyright
 
 === Images
 + mettre en français closelabel

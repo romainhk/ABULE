@@ -20,17 +20,17 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         session_destroy();
         redirection($page);
         break;
-    case 'changer_mdp':
-        require('changer_mdp.php');
-        break;
     case 'uploader':
-        require('uploader.php');
-        break;
-    case 'listup':
-        require('browser.php');
+    case 'changer_mdp':
+    case 'admin':
+        require("$action.php");
         break;
     case 'aide_html':
-        require('aide_html.html');
+    case 'copyright':
+        require("$action.html");
+        break;
+    case 'listerup':
+        require('browser.php');
         break;
     default:
         break;

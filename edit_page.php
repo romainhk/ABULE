@@ -54,3 +54,6 @@ if ($ret) {
 
 redirection($nom, 1);
 ?>
+<html>
+<body style="background-color:#85af43;"></body>
+</html>
