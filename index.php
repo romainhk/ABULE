@@ -140,7 +140,7 @@ if ($horloge_flash) {
 ?>
         <ul>
             <li><a href="">Contact</a></li>
-            <li><a href="">Forum</a></li>
+            <li><a href="/forum">Forum</a></li>
         </ul>
         <h2>News rss</h2>
         <?php #PHP

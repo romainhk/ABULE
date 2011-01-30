@@ -1,17 +1,18 @@
-Pour installer le site de l'ABULE
+Pour installer le site de L'ABULE
 * télécharger l'archive sur son dépôt publique :
 https://github.com/romainhk/ABULE
 * décompresser l'archive
-* créer un fichier "mycnf" au même niveau que le dossier ABULE ; celui-ci doit contenir 
-les informations de connexion à la base de données. Voici la structure de base du fichier :
+* charger la base de données du site :
+** avec phpmyadmin, créer une base de donnée "labulefr_site"
+** puis importer le fichier "structure.sql"
+* créer un fichier "mycnf" au dessus du répertoire du site ; celui-ci doit 
+contenir les informations de connexion à la base de données. 
+Voici la structure de base du fichier :
 [client]
 user=
 password=
 host=
-* charger la base de données du site :
-** avec phpmyadmin, créer une base de donnée "abulefr_site"
-** puis importer le fichier "structure.sql"
-* déclarer le dossier ABULE dans le daemon http (apache ou autre)
+* au besoin, déclarer le dossier ABULE dans le daemon http (apache ou autre)
 * déclarer le browscap.ini dans le php.ini : browscap=..../browscap.ini
  (nécessaire pour la détection du navigateur : 
     http://alexandre.alapetite.fr/doc-alex/php-local-browscap/index.en.html )

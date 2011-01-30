@@ -4,24 +4,6 @@
  */
 require_once('db.php');
 
-// Ajoute un fichier à la BDD
-/* Remplacé par le le dossier "uploads/"
-function bdd_ajouter_fichier($db, $nom, $data) {
-    $req = 'INSERT INTO fichier (nom, data) VALUES ("'.$nom.'", "'.$data.'")';
-    $ret = mysql_query($req, $db);
-    if (!$ret) {
-        if (mysql_errno($db) == 1062) { # la page existe dégà
-            $req = 'UPDATE fichier SET data="'.$contenu.'" WHERE nom="'.$nom.'"';
-            $ret = mysql_query($req, $db)
-                or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-            return $ret;
-        } else {
-            return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
-        }
-    }
-    return FALSE;
-}  */
-
 require_once('fonctions.php');
 $taille_max = 10240; // 10 Mo
 

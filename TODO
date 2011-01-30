@@ -24,14 +24,10 @@
 + refonte : représenter le menu sous forme d'arbre
 
 === Editeur
-* browser de fichiers intégré à l'éditeur (ajax/php)
+* browser de fichiers intégré à l'éditeur (ajax/php) : plugin "filebrowser"
 
 + upload intégré à l'éditeur ?
 
 === Images
 + mettre en français closelabel
-
-=== Archivage
-* journalier en local (sur une semaine) : mysqldump labulefr_site > dump.sql
-* exportation cryptée au mois
 
