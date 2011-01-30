@@ -11,7 +11,8 @@
 
 === PHP/js
 * sécuriser l'accès à la bdd et "mycnf" (htaccess ?) !!!!
-* crypter mots de passe
+
+* crypter l'échange de mot de passe
 
 * menu à droite : contact, news => quels news, quels flux ? !
 

@@ -32,6 +32,9 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'aide_html':
         require('aide_html.html');
         break;
+    case 'admin':
+        require('admin.php');
+        break;
     default:
         break;
     }

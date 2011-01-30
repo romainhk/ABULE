@@ -113,6 +113,17 @@ function bdd_get($db, $champ, $nom) {
     }
 }
 
+// Créer un nouvel admin
+function bdd_creer_admin($db, $login, $mdp) {
+    $req = 'INSERT INTO utilisateur (login, mdp) VALUES ("'.$login.'", "'.$mdp.'")';
+    $ret = mysql_query($req, $db);
+    if ($ret) {
+        return '';
+    } else {
+        return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
+    }
+}
+
 // Permet à un admin de changer son mot de passe
 function bdd_changer_mdp($db, $login, $mdp) {
     $req = 'UPDATE utilisateur SET mdp="'.$mdp.'" WHERE login="'.$login.'"';
