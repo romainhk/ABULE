@@ -31,7 +31,7 @@ body{
 .menu {
     font-family:"Qlassik", "DejaVu Sans Condensed", sans-serif;
     background-color:transparent;
-    background-image:url('../images/ecologie.gif'),url('../images/menufd.png');
+    background-image:url('../images/ecologie.png'),url('../images/menufd.png');
     background-repeat:no-repeat,repeat;
 	background-position:center 20px,top;
 }
