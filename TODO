@@ -29,10 +29,10 @@
 
 + upload intégré à l'éditeur ?
 
-=== Autre
-* convertir LICENCE en html
-* page copyright
-
 === Images
 + mettre en français closelabel
+
+=== Archivage
+* journalier en local (sur une semaine) : mysqldump labulefr_site > dump.sql
+* exportation cryptée au mois
 

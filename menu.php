@@ -13,7 +13,7 @@ if (isset($_SESSION['login'])) {
     echo '<li><a href="?page=\&action=renommer">Renommer</a></li>';
     echo '<li><a href="?page=\&action=lister">Liste des pages</a></li>';
     echo '<li><a href="?page=\&action=uploader">Upload</a></li>';
-    echo '<li><a href="?page=\&action=listup">Liste des fichiers</a></li>';
+    echo '<li><a href="?page=\&action=listerup">Liste des fichiers</a></li>';
     if (!strcmp($_SESSION['login'], 'admin')) {
         echo '<li><a href="?page=\&action=admin">Admin</a></li>';
     }

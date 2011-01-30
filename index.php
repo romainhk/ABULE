@@ -157,7 +157,7 @@ require("actions.php"); ?>
 ## Pied de page : © et messages d'erreur
     -->
     <div class="pied">
-        <a href="">Copyright</a> - <a href="?action=contacter">Contactez-nous</a>
+        <a href="?action=copyright">Copyright</a> - <a href="?action=contacter">Contactez-nous</a>
         <a href="mailto:labulecalais@gmail.com"><img src="images/mail.png" alt="mailto" /></a>
     </div>
     <div style="text-align:center;">

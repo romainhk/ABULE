@@ -123,7 +123,7 @@ h2 {
 }
 
 p:first-letter {
-    margin-left:1ex;
+    padding-left:1ex;
 }
 
 ul {
