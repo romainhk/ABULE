@@ -24,6 +24,9 @@ body{
     background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
     background-position:right bottom,left bottom,right top,left top,top,left,bottom,right;
 }
+.bannieredroite img {
+    -moz-transform:matrix(-1,0,0,1,0,0);
+}
 	
 .menu {
     font-family:"Qlassik", "DejaVu Sans Condensed", sans-serif;

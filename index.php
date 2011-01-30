@@ -28,7 +28,7 @@ if ($browser->cssversion > 2) {
     array_push($styles, "style3");
     $horloge = '';
 } else {
-    array_push($styles, "style2");
+    #array_push($styles, "style2");
     if ($browser->cssversion <= 1) {
         array_push($avertissements, 
             "Votre navigateur web (".$browser->browser.' '.$browser->version.") est trop ancien.");
@@ -139,12 +139,16 @@ if ($horloge_flash) {
 }
 ?>
         <ul>
-            <li><a href="">Contact</a></li>
+            <li><a href="?action=contacter">Contact</a></li>
             <li><a href="/forum">Forum</a></li>
         </ul>
-        <h2>News rss</h2>
         <?php #PHP
-echo charger_rss(3); ?>
+$c = charger_rss('http://linuxfr.org/backend/~patrick_g/journal/rss20.rss', 3);
+if ($c) {
+    echo '<h2>News rss</h2>'."\n";
+    echo $c;
+}
+?>
         <?php #PHP
 require("membres.php"); ?>
     </div>
