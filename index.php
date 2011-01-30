@@ -9,8 +9,10 @@ require('fonctions.php');
  * Passage de paramètres GET
  */
 $page = 'Accueil';
-if (isset($_GET['page'])) {
+if (isset($_GET['page']) && !empty($_GET['page'])) {
     $page = strtr($_GET['page'], "_", " ");
+} else if (isset($_GET['action'])) {
+    $page = 'Admin';
 }
 $action = 'lire';
 if (isset($_GET['action'])) {
