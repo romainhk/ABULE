@@ -39,6 +39,8 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
 } else if (!strcmp($action, 'copyright')) {
     # Pages sans besoin d'être loggé
     require("copyright.html");
+} else if (!strcmp($action, 'contacter')){
+	require("contact.php");
 } else {
     # Pas d'action : simple chargement du contenu
     if (isset($_SESSION['message'])) {
