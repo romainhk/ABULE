@@ -1,10 +1,4 @@
 === CSS
-* séparer les style sur plusieurs feuilles :
-** une générique css2.1 : style.css
-** une telle qu'on le veux (css3.0) : style3.css
-** une légère pour IE et navigateurs css2.0 et inférieur
-*** sans dégradé, images jpg, sans horloge flash
-
 * dégradé dans la bannière ?
 
 === PHP/js
