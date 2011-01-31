@@ -212,6 +212,14 @@ dd {
     border:none;
 }
 
+.legende {
+    float:left;
+}
+.legende p {
+    text-align:center;
+    font-size:x-small;
+}
+
 .surligner {
     background-color:#FFFF00;
 }

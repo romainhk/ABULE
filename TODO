@@ -1,6 +1,4 @@
 === CSS
-* bordure de chaque coté du site => 4% (à valider)
-
 * séparer les style sur plusieurs feuilles :
 ** une générique css2.1 : style.css
 ** une telle qu'on le veux (css3.0) : style3.css
@@ -14,17 +12,11 @@
 
 * page "contact"
 
-* légende d'une image : js qui ajoute un niveau de div aux images munies d'un name
-http://www.hyjoo.com/sujet-38939.html
-
 + convertir redirection() en ajax/php (pour éviter les rechargements intempestifs en js)
-+ refonte : représenter le menu sous forme d'arbre
++ refonte : représenter le menu sous forme d'arbre ?
 
 === Editeur
 * browser de fichiers intégré à l'éditeur (ajax/php) : plugin "filebrowser"
 
 + upload intégré à l'éditeur ?
-
-=== Images
-+ mettre en français closelabel
 

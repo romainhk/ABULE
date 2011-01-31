@@ -31,3 +31,29 @@ function conf_suppr() {
     conf = window.confirm("\u00CAtes-vous s\u00FBre de vouloir supprimer la page \u00AB "+abule.suppr+" \u00BB ?");
     return conf;
 }
+
+/*
+ * Ajoute une légende aux images munies d'un attribut "name"
+ */
+function img_avec_legende() {
+    var les_images = document.getElementsByTagName("img");
+    for each (img in les_images) {
+        if (img.nodeType != undefined) {
+            var name = img.getAttribute('name');
+            if ( name != null ) {
+                var a = img.parentNode;
+                if (a.nodeName == "A") {
+                    // Ajoute de la légende
+                    var b = a.cloneNode(true);
+                    var div = document.createElement('div');
+                    div.className = 'legende';
+                    div.appendChild(b);
+                    var n = document.createElement('p');
+                    n.innerHTML = name;
+                    div.appendChild(n);
+                    a.parentNode.replaceChild(div, a);
+                }
+            }
+        }
+    }
+}
