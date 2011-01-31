@@ -175,6 +175,10 @@ require("actions.php"); ?>
             style="border:0; width:88px; height:31px"
             src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
             alt="CSS Valide !" /></a>
+        <a href="http://www.gnu.org"><img
+            style="border:0; width:88px; height:31px"
+            src="images/gplv3-88x31.png"
+            alt="GNU/GPLv3" /></a>
         <?php #PHP
 echo $les_erreurs; ?>
     </div>

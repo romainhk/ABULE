@@ -4,6 +4,7 @@
  */
 require_once('fonctions.php');
 if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
+    # Actions nécessitant un log-in
     switch ($action) {
     case 'modifier':
     case 'ajouter':
@@ -35,6 +36,9 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     default:
         break;
     }
+} else if (!strcmp($action, 'copyright')) {
+    # Pages sans besoin d'être loggé
+    require("copyright.html");
 } else {
     # Pas d'action : simple chargement du contenu
     if (isset($_SESSION['message'])) {
