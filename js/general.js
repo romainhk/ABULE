@@ -39,7 +39,7 @@ function img_avec_legende() {
     var les_images = document.getElementsByTagName("img");
     for each (img in les_images) {
         if (img.nodeType != undefined) {
-            var name = img.getAttribute('name');
+            var name = img.getAttribute('title');
             if ( name != null ) {
                 var a = img.parentNode;
                 if (a.nodeName == "A") {

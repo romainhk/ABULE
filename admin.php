@@ -45,7 +45,8 @@ $journal .= '</table>'."\n";
 </div>
 </form>
 
-<h2>Journal</h2>
+<br/>
+<h1>Journal</h1>
 <?php #Journal
     echo $journal;
 ?>

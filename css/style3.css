@@ -19,15 +19,11 @@ body{
 }
 	
 .banniere {
-    background-color:white;
-	background-image:url('../images/dbd.jpg'),url('../images/dbg.jpg'),url('../images/dhd.jpg'),url('../images/dhg.jpg'),url('../images/dh.jpg'),url('../images/dg.jpg'),url('../images/db.jpg'),url('../images/dd.jpg');
-    background-repeat:no-repeat,no-repeat,no-repeat,no-repeat,repeat-x,repeat-y,repeat-x,repeat-y;
-    background-position:right bottom,left bottom,right top,left top,top,left,bottom,right;
 }
 .bannieredroite img {
     -moz-transform:matrix(-1,0,0,1,0,0);
 }
-	
+
 .menu {
     font-family:"Qlassik", "DejaVu Sans Condensed", sans-serif;
     background-color:transparent;

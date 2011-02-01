@@ -11,6 +11,7 @@ body {
  * Bannière
  */
 .banniere {
+    background-color:white;
     position:relative;
     margin:1ex 0;
     min-width:900px;
@@ -163,7 +164,7 @@ dd {
 }
 
 .corps h1 {
-    margin:0.2em 15% 0.8em;
+    margin:0.3em 15% 0.8em;
     padding:3px;
     border:4px outset #006600;
     background-color:#009900;

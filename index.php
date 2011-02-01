@@ -94,13 +94,13 @@ if (count($avertissements) > 0) {
     <div class="banniere">
         <div class="superpose">
             <div class="bannieregauche">
-                <img src="images/cote_bambou.png" alt="" height="200" />
+                <img src="images/cote_bambou.png" alt="" height="200px" />
             </div>
             <div class="bannieredroite">
-                <img src="images/cote_bambou.png" alt="" height="200" />
+                <img src="images/cote_bambou.png" alt="" height="200px" />
             </div>
         </div>
-        <img src="images/logo.png" alt="Logo de l'ABULE" height="200" width="250" style="text-align:center;" />
+        <img src="images/logo.png" alt="Logo de l'ABULE" height="200px" width="250px" style="text-align:center;" />
     </div><!--
 ## Menu gauche
     -->
@@ -167,6 +167,7 @@ require("actions.php"); ?>
         <a href="mailto:labulecalais@gmail.com"><img src="images/mail.png" alt="mailto" /></a>
     </div>
     <div style="text-align:center;">
+        <!-- La validation ne fonctionne pas pour les pages d'admin (à cause du session_start() certainement) -->
         <a href="http://validator.w3.org/check?uri=referer"><img
             style="border:0; width:88px; height:31px"
             src="http://www.w3.org/Icons/valid-xhtml10"

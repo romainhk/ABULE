@@ -44,7 +44,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         require("copyright.html");
         break;
     case 'contacter':
-        require("contact.php");
+        require("contacter.php");
         break;
     }
 } else {
