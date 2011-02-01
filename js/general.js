@@ -2,7 +2,7 @@
  * Horloge
  */
 calend = new Object();
-calend.lmois=new Array("janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre");
+calend.lmois=new Array("janvier","f\u00E9vrier","mars","avril","mai","juin","juillet","ao\u00FBt","septembre","octobre","novembre","d\u00E9cembre");
 calend.ljour=new Array("Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi");
 calend.maintenant = new Date();
 calend.year=calend.maintenant.getFullYear();
@@ -56,4 +56,24 @@ function img_avec_legende() {
             }
         }
     }
+}
+
+/*
+ * Formulaire de contact
+ */
+function verif_mail(){
+	var email=document.forms["contact"].elements["email"].value;
+	var valide1=email.indexOf('@');
+	var valide2=email.lastIndexOf('.');
+	var valide3=email.length-3;
+	if(valide1==-1||valide2<valide1||valide2>valide3) alert("Veuillez saisir une adresse email valide.");
+	else document.forms["contact"].submit();	
+}
+
+function efface(){
+	var mail="Votre message ici.";
+	var test=document.forms["contact"].elements["mail"].value.indexOf(mail);
+	if(test==0){
+		document.forms["contact"].elements["mail"].value="";
+	}
 }

@@ -24,6 +24,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'uploader':
     case 'changer_mdp':
     case 'admin':
+    case 'contacter':
         require("$action.php");
         break;
     case 'aide_html':
@@ -36,11 +37,16 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     default:
         break;
     }
-} else if (!strcmp($action, 'copyright')) {
-    # Pages sans besoin d'être loggé
-    require("copyright.html");
-} else if (!strcmp($action, 'contacter')){
-	require("contact.php");
+} else if (strcmp($action, 'lire')) {
+    # Actions aussi possible sans besoin d'être loggé
+    switch ($action) {
+    case 'copyright':
+        require("copyright.html");
+        break;
+    case 'contacter':
+        require("contact.php");
+        break;
+    }
 } else {
     # Pas d'action : simple chargement du contenu
     if (isset($_SESSION['message'])) {
