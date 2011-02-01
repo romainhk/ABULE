@@ -280,3 +280,20 @@ input[type="submit"] {
     font-weight:600;
 }
 
+.contact {
+    width:91%;
+    margin:auto;
+}
+.contact ul {
+    list-style:none;
+    margin-left:0;
+}
+.contact li {
+    margin-bottom:1.1ex;
+}
+.contact li ul {
+    margin-top:1ex;
+}
+.contact input[type="button"] {
+    margin-top:1.5ex;
+}
