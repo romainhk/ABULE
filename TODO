@@ -1,8 +1,6 @@
 === PHP/js
 * menu à droite : contact, news => quels news, quels flux ? !
 
-* page "contact"
-
 + convertir redirection() en ajax/php (pour éviter les rechargements intempestifs en js)
 + refonte : représenter le menu sous forme d'arbre ?
 

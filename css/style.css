@@ -48,6 +48,7 @@ body {
     font-family:sans-serif;
     font-size:medium;
     color:#009900;
+    background-color:transparent;
 }
 
 .menu img { /* Le logo du menu */
@@ -160,6 +161,7 @@ dd {
     font-size:medium;
     text-align:left;
     color:#003300;
+    background-color:white;
     overflow:auto;
 }
 
