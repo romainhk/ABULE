@@ -1,11 +1,26 @@
 === PHP/js
-* menu à droite : contact, news => quels news, quels flux ? !
+* news : pouvoir créer des annonces : titre + page cible (générer un rss)
 
-+ convertir redirection() en ajax/php (pour éviter les rechargements intempestifs en js)
-+ refonte : représenter le menu sous forme d'arbre ?
+* contact : 
+** retirer celui en bas
+** clarifier les mailto
+
+* compléter le bandeau du bas, ou le retirer
+
+* possibilitées de galerie d'images
+
+* pouvoir faire des sous-pages (masquées dans le menu)
+** restructurer la bdd page en 2 tables :
+:page (nom, contenu, niveau, ordre) et
+:relation (nom, fils)
+
+* pouvoir aligner les images à gauche ou à droite.
+
+* revoir la couleur de "incrustation bambou"
 
 === Editeur
 * browser de fichiers intégré à l'éditeur (ajax/php) : plugin "filebrowser"
 
-+ upload intégré à l'éditeur ?
+=== Forum
+* installer un phpbb
 
