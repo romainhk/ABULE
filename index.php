@@ -129,9 +129,9 @@ if ($horloge_flash) {
 ?>
         <h2>Contact</h2>
         <ul>
-            <li><a href="?action=contacter">Formulaire</a></li>
             <li><a href="mailto:labulecalais@gmail.com">labule <img src="images/mail.png" alt="mailto" /></a></li>
             <li><a href="mailto:administrateur@gmail.com">administrateurs <img src="images/mail.png" alt="mailto" /></a></li>
+            <li><a href="?action=contacter">Formulaire de contact</a></li>
             <li><a href="/forum">Forum</a></li>
         </ul>
         <?php #PHP

@@ -25,14 +25,15 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'changer_mdp':
     case 'admin':
     case 'contacter':
+    case 'news':
         require("$action.php");
+        break;
+    case 'listerup':
+        require('browser.php');
         break;
     case 'aide_html':
     case 'copyright':
         require("$action.html");
-        break;
-    case 'listerup':
-        require('browser.php');
         break;
     default:
         break;
