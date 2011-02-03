@@ -59,6 +59,15 @@ body {
     text-align:center;
 }
 
+.menu a img { /* Images cliquables : contact */
+    display:inline;
+    border:none;
+    margin:0;
+    vertical-align:top;
+    height:17px;
+    width:17px;
+}
+
 .menu h2 {
     margin:10px;
     border:4px outset #003300;
@@ -230,19 +239,17 @@ dd {
 
 .pied {
     margin:1ex 0 0.5ex;
-    padding:1px 1ex;
+    padding:1px 0.8ex;
     border:1px solid #663300;
     background-color:white;
     font-family:sans-serif;
     font-size:x-small;
-    text-align:right;
+    /*text-align:right;*/
     color:black;
 }
 
-.pied a img {
-    border:none;
-    vertical-align:middle;
-    height:17px;
+.pied table {
+    width:100%;
 }
 
     /* Lien "modifier"

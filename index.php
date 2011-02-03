@@ -89,7 +89,7 @@ if (count($avertissements) > 0) {
     <script type="text/javascript" src="js/lightbox.js"></script>
   </head>
 
-  <body onload="horloge();img_avec_legende()">
+  <body onload="horloge();img_avec_legende();">
   <div style="margin:0 4%">
     <div class="banniere">
         <div class="superpose">
@@ -102,34 +102,21 @@ if (count($avertissements) > 0) {
         </div>
         <img src="images/logo.png" alt="Logo de l'ABULE" height="200px" width="250px" style="text-align:center;" />
     </div><!--
+
 ## Menu gauche
     -->
     <div class="menu" style="float:left;">
 		<span style="height:180px;display:block;"></span>
         <?php #PHP
 require('menu.php'); ?>
-<!--
-        <h2><a href="?page=Accueil">Accueil</a></h2>
-        <h2><a href="">Présentation de l´Association</a></h2>
-        <h2>Événements</h2>
-        <ul>
-            <li><a href="http://www.archive.org">Passé</a></li>
-            <li><a href="">À venir</a></li>
-        </ul>
-        <h2>Nos services</h2>
-        <ul>
-            <li><a href="">Bourse aux livres</a></li>
-            <li><a href="">Liste de stage</a></li>
-        </ul>
-        <h2><a href="">À découvrir</a></h2>
-        <h2><a href="?page=Liens">Liens</a></h2>
--->
     </div><!--
+
 ## Menu droit
+
     -->
     <div class="menu" style="float:right;">
         <?php #PHP
-## Horloge
+# Horloge
 if ($horloge_flash) {
 	echo '<span style="height:43px;display:block;"></span>'."\n";
     echo '  <div style="margin:1ex auto; width:140px; height:150px;">';
@@ -140,14 +127,17 @@ if ($horloge_flash) {
     echo '<span id="horloge"></span>';
 }
 ?>
+        <h2>Contact</h2>
         <ul>
-            <li><a href="?action=contacter">Contact</a></li>
+            <li><a href="?action=contacter">Formulaire</a></li>
+            <li><a href="mailto:labulecalais@gmail.com">labule <img src="images/mail.png" alt="mailto" /></a></li>
+            <li><a href="mailto:administrateur@gmail.com">administrateurs <img src="images/mail.png" alt="mailto" /></a></li>
             <li><a href="/forum">Forum</a></li>
         </ul>
         <?php #PHP
 $c = charger_rss('http://linuxfr.org/backend/~patrick_g/journal/rss20.rss', 3);
 if ($c) {
-    echo '<h2>News rss</h2>'."\n";
+    echo '<h2>News</h2>'."\n";
     echo $c;
 }
 ?>
@@ -155,16 +145,20 @@ if ($c) {
 require("membres.php"); ?>
     </div>
     <div class="bord">
-        <div class="corps">
-        <?php #PHP
+        <div class="corps"><!--
+
+## Corps
+-->     <?php #PHP
 require("actions.php"); ?>
         </div>
     </div><!--
 ## Pied de page : © et messages d'erreur
     -->
     <div class="pied">
-        <a href="?action=copyright">Copyright</a> - <a href="?action=contacter">Contactez-nous</a>
-        <a href="mailto:labulecalais@gmail.com"><img src="images/mail.png" alt="mailto" /></a>
+    <table><tr>
+        <td align="left">Association de Biologie de l'Université du Littoral pour l'Écologie</td>
+        <td align="right"><a href="?action=copyright">Copyright</a></td>
+    </tr></table>
     </div>
     <div style="text-align:center;">
         <!-- La validation ne fonctionne pas pour les pages d'admin (à cause du session_start() certainement) -->
