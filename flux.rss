@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+	<channel xml:id="news">
+		<title>Nouveaut&#xE9;es</title> 
+		<link>http://labule.fr</link>
+		<description>Les nouveaut&#xE9;es concerant L&#xB4;A.B.U.L.E.</description>
+        <language>fr</language>
+	</channel>
+</rss>

@@ -1,12 +1,21 @@
 === PHP/js
-* news : pouvoir créer des annonces : titre + page cible (générer un rss)
-
 * possibilitées de galerie d'images
 
-* pouvoir faire des sous-pages (masquées dans le menu)
+* pouvoir faire des sous-sous-pages (3 niveaux, le dernier masqué dans le menu)
 ** restructurer la bdd page en 2 tables :
 :page (nom, contenu, niveau, ordre) et
 :relation (nom, fils)
+** re-écrire:
+*bdd_lister
+*bdd_sauvegarder , bdd_modifier
+*bdd_get, bdd_charge
+*bdd_supprimer
+*bdd_renommer
+*menu_les_peres
+*menu_pere
+*menu_regenerer
+*menu_ordonne
+*menu_modifier_fils
 
 * pouvoir aligner les images à gauche ou à droite.
 

@@ -83,6 +83,7 @@ if (count($avertissements) > 0) {
     <meta name="Robots" content="all, follow, index" />
 <?php echo $les_styles; ?>
     <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="alternate" type="application/rss+xml" title="Flux RSS" href="flux.rss" />
     <script type="text/javascript" src="js/general.js"></script>
     <script type="text/javascript" src="js/prototype.js"></script>
     <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
@@ -129,13 +130,13 @@ if ($horloge_flash) {
 ?>
         <h2>Contact</h2>
         <ul>
-            <li><a href="mailto:labulecalais@gmail.com">labule <img src="images/mail.png" alt="mailto" /></a></li>
-            <li><a href="mailto:administrateur@gmail.com">administrateurs <img src="images/mail.png" alt="mailto" /></a></li>
+            <li><a href="mailto:labulecalais@gmail.com"><img src="images/mail.png" alt="mailto" /> L&#180;A.B.U.L.E.</a></li>
+            <li><a href="mailto:administrateur@gmail.com"><img src="images/mail.png" alt="mailto" /> Administrateurs</a></li>
             <li><a href="?action=contacter">Formulaire de contact</a></li>
             <li><a href="/forum">Forum</a></li>
         </ul>
         <?php #PHP
-$c = charger_rss('http://linuxfr.org/backend/~patrick_g/journal/rss20.rss', 3);
+$c = charger_rss('flux.rss', 3);
 if ($c) {
     echo '<h2>News</h2>'."\n";
     echo $c;

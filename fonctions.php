@@ -11,10 +11,7 @@ function charger_rss($url, $nbmax) {
         $i = 0;
         foreach($donnee->item as $val) {
             if ( $i < $nbmax ) {
-                #$ret = $ret.'<li>'.date("d/m/Y",strtotime($val->pubDate))
-                $ret = $ret.'<li>'.date("d/m",strtotime($val->pubDate))
-                    .' - <a href="'.$val->link.'">'.$val->title."</a></li>\n";
-              //$ret = $ret.'<br/>'.$val->description.'</li>';
+                $ret = $ret.'<li>'.$val->pubDate.' &#183; <a href="'.$val->link.'">'.$val->title."</a></li>\n";
                 $i++;
             } else break;
         }
