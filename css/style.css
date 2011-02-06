@@ -304,3 +304,8 @@ input[type="submit"] {
 .contact input[type="button"] {
     margin-top:1.5ex;
 }
+
+.form_news {
+    margin:1ex auto;
+    min-width:80%;
+}

@@ -35,18 +35,23 @@ if (isset($_POST['titre']) and isset($_POST['cible']) and !empty($_POST['cible']
 ?>
 <h1>Publier une news</h1>
 <form id="news" method="post" action="">
-<ul>
-    <li><label for="titre">Titre de la news : </label>
-        <input type="text" id="titre" name="titre" size="25" /></li>
-    <li><label for="cible">Page cible : </label>
-<?php
+<table class="form_news"><tr>
+    <td><label for="titre">Titre de la news : </label></td>
+    <td><input type="text" id="titre" name="titre" size="35" /></td>
+</tr><tr>
+    <td><label for="cible">Page cible : </label></td>
+    <td><?php #PHP
+
     echo '<select name="cible" size="1">';
     echo '<option selected="selected" value="">...</option>'."\n";
     foreach ($liste as $l) {
         echo '<option value="'.$l['nom'].'">'.$l['nom']."</option>\n";
     }
     echo "</select>\n";
-?>
-</ul>
-    <input type="submit" id="submit" name="submit" value="Changer" />
+?> 
+    </td>
+</tr><tr>
+    <td colspan="2" style="text-align:right;">
+        <input type="submit" id="submit" name="submit" value="Créer la news" /></td>
+</tr></table>
 </form>
