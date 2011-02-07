@@ -23,37 +23,37 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
     // $forcer permet de forcer la mise à jour si la page existe déjà
     $contenu = preg_replace("/<?php.*?>/", '', $contenu);
     $san_contenu = htmlspecialchars($contenu);
-
-    if (strcmp($pere, MENU_SEUL)) {
-        $fils = 'NULL';
-    } else { 
-        $fils = '"'.MENU_SEUL.'"';
+    if (!empty($pere)) {
+        $niveau = bdd_get($db, 'niveau', $pere) + 1;
+    } else {
+        $niveau = 1;
     }
-    $req = 'INSERT INTO page (nom, fils, ordre, contenu) VALUES ("'.$nom.'", '.$fils.', "'.$ordre.'", "'.$san_contenu.'")';
+
+    $req = 'INSERT INTO page (nom, niveau, ordre, contenu) VALUES ("'.$nom.'", '.$niveau.', "'.$ordre.'", "'.$san_contenu.'")';
     $ret = mysql_query($req, $db);
     if (!$ret) {
         if (mysql_errno($db) == 1062 and $forcer) { # la page existe dégà
-            bdd_modifier($db, $nom, $pere, $fils, $ordre, $san_contenu);
+            bdd_modifier($db, $nom, $pere, $niveau, $ordre, $san_contenu);
         } else {
             return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
         }
     } else {
         bdd_logger($db, 'Création de la page : '.$nom);
-        menu_modifier_fils($db, $pere, $nom, 'ajouter');
-        menu_regenerer($db);
+      #  menu_modifier_fils($db, $pere, $nom, 'ajouter');
+      #  menu_regenerer($db);
     }
     return FALSE;
 }
 
 // Modifier une page dans la BDD
-function bdd_modifier($db, $nom, $pere, $fils, $ordre, $contenu) {
+function bdd_modifier($db, $nom, $pere, $niveau, $ordre, $contenu) {
     menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
-    $req = 'UPDATE page SET contenu="'.$contenu.'", fils='.$fils.', ordre="'.$ordre.'" WHERE nom="'.$nom.'"';
+    $req = 'UPDATE page SET contenu="'.$contenu.'", niveau='.$niveau.', ordre="'.$ordre.'" WHERE nom="'.$nom.'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     bdd_logger($db, 'Modification de la page : '.$nom);
-    menu_modifier_fils($db, $pere, $nom, 'ajouter');
-    menu_regenerer($db);
+ #   menu_modifier_fils($db, $pere, $nom, 'ajouter');
+ #   menu_regenerer($db);
 }
 
 // Récupérer une page depuis la BDD
@@ -227,7 +227,7 @@ function menu_ordonne($db, $tab) {
 
 // Donne le père d'une page
 function menu_pere($db, $page) {
-    $req = 'SELECT nom FROM page WHERE fils LIKE "%'.$page.'%"';
+    $req = 'SELECT page FROM parente WHERE fils LIKE "%'.$page.'%"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     $f = mysql_fetch_row($ret);

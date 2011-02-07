@@ -32,7 +32,7 @@ if (!strcmp($action, 'ajouter')) {
             ."\n    ".'<input type="text" name="nom" size="25" /></li>'."\n";
     }
     echo '<li>Menu : <select name="pere" size="1">';
-    echo '<option value="'.MENU_SEUL.'">* Nouveau père</option>'."\n";
+    echo '<option value="">* Nouvelle section</option>'."\n";
     foreach (menu_les_peres($db) as $lp) {
         if (!strcmp($pere, $lp)) {
             $sel = ' selected="selected"';
