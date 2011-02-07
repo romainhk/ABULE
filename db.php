@@ -2,9 +2,9 @@
 /*
  * Connexion à la base de données
  */
-define("MENU_JOCKER", ";;");	// Séparateur utilisé dans la colonne page.fils
-define("MENU_SEUL", "***");	    // Indicateur utilisé dans la colonne page.fils pour dire qu'un père n'a pas de fils
-$les_champs = array( 'fils', 'ordre', 'contenu' );   // Les champs accessibles de la table "page"
+#define("MENU_JOCKER", ";;");	// Séparateur utilisé dans la colonne page.fils
+#define("MENU_SEUL", "***");	    // Indicateur utilisé dans la colonne page.fils pour dire qu'un père n'a pas de fils
+$les_champs = array( 'niveau', 'ordre', 'contenu' );   // Les champs accessibles de la table "page"
 $mycnf = parse_ini_file("../mycnf");
 $db = mysql_connect($mycnf['host'], $mycnf['user'], $mycnf['password']);
 unset($mycnf);
@@ -65,7 +65,7 @@ function bdd_charger($db, $nom) {
 // Donne la liste des pages connues
 function bdd_lister($db) {
     $r = array();
-    $req = 'SELECT nom, fils, ordre FROM page ORDER BY ordre';
+    $req = 'SELECT nom, niveau, ordre FROM page';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     while($row = mysql_fetch_array($ret)) {
@@ -170,7 +170,7 @@ function bdd_journal($db, $nb=10) {
 // Liste des éléments pères du menu
 function menu_les_peres($db) {
     $pere = array();
-    $req = 'SELECT nom, ordre FROM page WHERE fils IS NOT NULL ORDER BY ordre ASC';
+    $req = 'SELECT nom, ordre FROM page WHERE niveau=1 ORDER BY ordre ASC';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     while ($row = mysql_fetch_array($ret)) {

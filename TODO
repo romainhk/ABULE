@@ -2,16 +2,10 @@
 * possibilitées de galerie d'images
 
 * pouvoir faire des sous-sous-pages (3 niveaux, le dernier masqué dans le menu)
-** restructurer la bdd page en 2 tables :
-:page (nom, contenu, niveau, ordre) et
-:relation (nom, fils)
 ** re-écrire:
-*bdd_lister
 *bdd_sauvegarder , bdd_modifier
-*bdd_get, bdd_charge
 *bdd_supprimer
 *bdd_renommer
-*menu_les_peres
 *menu_pere
 *menu_regenerer
 *menu_ordonne

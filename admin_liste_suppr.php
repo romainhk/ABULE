@@ -4,20 +4,6 @@
  */
 require_once('db.php');
 
-// Rend lisible la colonne page.fils
-function liste_fils($val) {
-    switch ($val) {
-    case MENU_SEUL:
-        return "<i>Père seul</i>";
-        break;
-    case '':
-        #return "<i>Fils</i>";
-        return "";
-        break;
-    default;
-        return implode(' / ', explode(MENU_JOCKER, $val));
-    }
-}
 $liste = bdd_lister($db);
 
 if (isset($_POST['nouveau'])) {
@@ -41,10 +27,10 @@ if (!strcmp($action, 'lister')) {
     # Lister
     echo "<p>Liste des pages existantes, ainsi que leur parenté et leur ordre d'affichage.</p>\n";
     echo '<table cellspacing="5" cellpadding="2">'."\n";
-    echo "<tr><th>Nom</th><th>Fils</th><th>Ordre</th></tr>\n";
+    echo "<tr><th>Nom</th><th>Niveau</th><th>Ordre</th></tr>\n";
     foreach ($liste as $l) {
         echo '<tr><td><a href="?page='.strtr($l['nom'], " ", "_").'">'.$l['nom'].'</a></td>';
-        echo '<td>'.liste_fils($l['fils']).'</td><td>'.$l['ordre']."</td></tr>\n";
+        echo '<td>'.$l['niveau'].'</td><td>'.$l['ordre']."</td></tr>\n";
     }
     echo "</table>\n";
 } else if (!strcmp($action, 'supprimer')) {
