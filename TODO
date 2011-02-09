@@ -3,10 +3,6 @@
 
 * pouvoir faire des sous-sous-pages (3 niveaux, le dernier masqué dans le menu)
 ** re-écrire:
-*bdd_supprimer
-*bdd_renommer
-*menu_regenerer
-*menu_ordonne
 *menu_modifier_fils
 
 * pouvoir aligner les images à gauche ou à droite.
