@@ -101,6 +101,14 @@ function bdd_renommer($db, $page, $nouv) {
     }
 }
 
+// Déplacer une page
+function bdd_deplacer($db, $page, $nvpere, $ordre) {
+    if ($pere !=1) {
+        bdd_logger($db, 'Déplacement de la page '.$page.' sous '.$nvpere);
+    }
+    return "pas pret";
+}
+
 // Récupérer les infos d'une page
 function bdd_get($db, $champ, $nom) {
     global $les_champs;

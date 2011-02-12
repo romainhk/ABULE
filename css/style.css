@@ -244,7 +244,6 @@ dd {
     background-color:white;
     font-family:sans-serif;
     font-size:x-small;
-    /*text-align:right;*/
     color:black;
 }
 
@@ -258,6 +257,7 @@ dd {
     font-size:x-small;
     float:right;
     margin:0.4ex;
+    text-align:right;
 }
 .modifier a {
     color:#009900;

@@ -1,6 +1,6 @@
 <?php
 /*
- * Lister, supprimer ou renommer des articles
+ * Lister, supprimer, renommer ou déplacer des articles
  */
 require_once('db.php');
 
@@ -10,19 +10,24 @@ if (isset($_POST['nouveau'])) {
     if (!empty($_POST['nouveau']) and isset($_POST['page'])) {
         $page = $_POST['page'];
         $nouveau = $_POST['nouveau'];
-        // Le nom existe déjà ?
         if (!in_array($nouveau, $liste)) {
             bdd_renommer($db, $page, $nouveau);
         } else {
             echo '<p>Impossible de renommer : ce nom est déjà utilisé.</p>';
         }
     }
+} else if (isset($_POST['deplacer']) and !empty($_POST['deplacer']) and isset($_POST['page'])) {
+    $nvpere = $_POST['deplacer'];
+    $page   = $_POST['page'];
+    $ordre  = $_POST['ordre'];
+    echo $nvpere.'***'.$page.'******'.$ordre;
+    #bdd_deplacer($db, $page, $nvpere, $ordre);
 } else if (isset($_POST['nom']) and !empty($_POST['nom'])) {
     bdd_supprimer($db, $_POST['nom']);
 }
 
 echo "<h1>Maintenance</h1>\n";
-
+// Formulaires
 if (!strcmp($action, 'lister')) {
     # Lister
     echo "<p>Liste des pages existantes, ainsi que leur parenté et leur ordre d'affichage.</p>\n";
@@ -61,6 +66,29 @@ if (!strcmp($action, 'lister')) {
     echo '</li></ul>';
     echo '<div style="text-align:right;"><input type="submit" value="Renommer" /></div>';
     echo "</fieldset>\n";
+} else if (!strcmp($action, 'deplacer')) {
+    # Déplacer
+    echo '<form action="" method="post">'."\n";
+    echo "<fieldset><legend>Déplacer</legend>\n";
+    echo '<ul><li><label for="page">Page à déplacer : « '.$page.' ».</label>';
+    echo '<input type="hidden" name="nom" value="'.$page.'" />';
+    echo '</li><li><label for="deplacer">Nouveau père : </label>';
+    echo '<select name="deplacer" size="1">';
+    echo '<option value="">* Nouveau pere</option>'."\n";
+    $pere = menu_pere($db, $page);
+    foreach (menu_les_peres($db) as $lp) {
+        if (!strcmp($pere, $lp)) {
+            $sel = ' selected="selected"';
+        } else { $sel = ''; }
+        echo '<option value="'.$lp.'"'.$sel.'>'.$lp.'</option>'."\n";
+    }
+    echo "</select>\n<span style=\"margin-left:5ex;\">ordre : ";
+    $ordre = bdd_get($db, 'ordre', $page);
+    echo '<input type="text" name="ordre" size="2" maxlength="2" value="'.$ordre.'" />';
+    echo '</li></ul>';
+    echo '<div style="text-align:right;"><input type="submit" value="Déplacer" /></div>';
+    echo "</fieldset>\n";
+
 } else {
     echo '<p>Paramètre "'.$action.'" inconnu</p>';
 }

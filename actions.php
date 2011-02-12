@@ -13,6 +13,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'lister':
     case 'supprimer':
     case 'renommer':
+    case 'deplacer':
         require('admin_liste_suppr.php');
         break;
     case 'logout':
@@ -55,7 +56,8 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         unset($_SESSION['message']);
     }
     if (isset($_SESSION['login'])) {
-        echo "<span class=\"modifier\"><a href=\"?page=$page&action=modifier\">Modifier</a></span>\n";
+        echo "<div class=\"modifier\"><a href=\"?page=$page&action=deplacer\">Déplacer</a><br />";
+        echo "<a href=\"?page=$page&action=modifier\">Modifier</a></div>\n";
     }
     $c = bdd_charger($db, $page);
     if ($c) {
