@@ -2,9 +2,8 @@
 * possibilitées de galerie d'images
 
 * pouvoir faire des sous-sous-pages (3 niveaux, le dernier masqué dans le menu)
-** re-écrire:
-*menu_modifier_fils
-* régression : ordre des éléments du menu
+** tester le niveau 3
+* pouvoir déplacer une page
 
 * pouvoir aligner les images à gauche ou à droite.
 

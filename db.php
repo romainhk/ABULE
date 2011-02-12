@@ -39,7 +39,7 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
         }
     } else {
         bdd_logger($db, 'Création de la page : '.$nom);
-      #  menu_modifier_fils($db, $pere, $nom, 'ajouter');
+        menu_modifier_fils($db, $pere, $nom, 'ajouter');
         menu_regenerer($db);
     }
     return FALSE;
@@ -52,7 +52,7 @@ function bdd_modifier($db, $nom, $pere, $niveau, $ordre, $contenu) {
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     bdd_logger($db, 'Modification de la page : '.$nom);
- #   menu_modifier_fils($db, $pere, $nom, 'ajouter');
+    menu_modifier_fils($db, $pere, $nom, 'ajouter');
     menu_regenerer($db);
 }
 
@@ -81,7 +81,7 @@ function bdd_supprimer($db, $nom) {
         $ret = mysql_query($req, $db)
            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
         bdd_logger($db, 'Suppression de la page : '.$nom);
-        #menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
+        menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
         menu_regenerer($db);
     } else die("Aucune page sélectionnée");
 }
@@ -95,8 +95,8 @@ function bdd_renommer($db, $page, $nouv) {
     $pere = menu_pere($db, $page);
     if (!empty($pere)) {
         bdd_logger($db, 'Renommage de la page : '.$page);
-        #menu_modifier_fils($db, $pere, $page, 'retirer');
-        #menu_modifier_fils($db, $pere, $nouv, 'ajouter');
+        menu_modifier_fils($db, $pere, $page, 'retirer');
+        menu_modifier_fils($db, $pere, $nouv, 'ajouter');
         menu_regenerer($db);
     }
 }
@@ -182,8 +182,9 @@ function menu_les_peres($db) {
 // Mettre à jour le menu.html
 function menu_regenerer($db) {
     $elems = array();
-    $req = 'SELECT nom, niveau, ordre, p.fils as fils FROM page LEFT JOIN parente as p '
-        .'ON p.page=page.nom WHERE niveau=1 ORDER BY ordre';
+    $req = 'SELECT page.nom, page.ordre, f.ordre as ordfils, p.fils as fils FROM page'
+        .' LEFT JOIN parente as p ON p.page=page.nom LEFT JOIN page as f'
+        .' ON f.nom=p.fils WHERE page.niveau=1 ORDER BY page.ordre, f.ordre';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     while ($row = mysql_fetch_assoc($ret)) {
@@ -227,38 +228,15 @@ function menu_pere($db, $page) {
 
 // Ajoute/retire la page au pere
 function menu_modifier_fils($db, $pere, $page, $modif='ajouter') {
-    $les_fils = bdd_get($db, 'fils', $pere);
-    if (isset($les_fils)) {
-        $set = explode(MENU_JOCKER, $les_fils);
-        #echo $page.' : '.print_r($set).'<br>';
-        switch($modif) {
-        case 'ajouter':
-            if ( !strcmp($set[0], MENU_SEUL) || !strcmp($set[0], 'NULL') ) {
-                $set = $page;
-            } else {
-                array_push($set, $page);
-#                $set = $les_fils.MENU_JOCKER.$page;
-                $set = implode(MENU_JOCKER, $set);
-            }
-            break;
-        case 'retirer':
-            $set = array_diff($set, array($page));
-            if (count($set) < 1) {
-                if (empty($set[0])) {
-                    $set = MENU_SEUL;
-                } else {
-                    $set = $set[0];
-                }
-            } else {
-                $set = implode(MENU_JOCKER, $set);
-            }
-            break;
-        }
-        $req = 'UPDATE page SET fils="'.$set.'" WHERE nom="'.$pere.'"';
-        $ret = mysql_query($req, $db)
-           or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-    } else {
+    switch($modif) {
+    case 'ajouter':
+        $req = 'INSERT INTO parente(page, fils) VALUES ("'.$pere.'", "'.$page.'")';
+        break;
+    case 'retirer':
+        $req = 'DELETE FROM parente WHERE page="'.$pere.'" AND fils="'.$page.'"';
+        break;
     }
-    return 0;
+    $ret = mysql_query($req, $db)
+       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
 }
 ?>
