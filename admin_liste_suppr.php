@@ -20,8 +20,7 @@ if (isset($_POST['nouveau'])) {
     $nvpere = $_POST['deplacer'];
     $page   = $_POST['page'];
     $ordre  = $_POST['ordre'];
-    echo $nvpere.'***'.$page.'******'.$ordre;
-    #bdd_deplacer($db, $page, $nvpere, $ordre);
+    bdd_deplacer($db, $page, $nvpere, $ordre);
 } else if (isset($_POST['nom']) and !empty($_POST['nom'])) {
     bdd_supprimer($db, $_POST['nom']);
 }
@@ -71,7 +70,7 @@ if (!strcmp($action, 'lister')) {
     echo '<form action="" method="post">'."\n";
     echo "<fieldset><legend>Déplacer</legend>\n";
     echo '<ul><li><label for="page">Page à déplacer : « '.$page.' ».</label>';
-    echo '<input type="hidden" name="nom" value="'.$page.'" />';
+    echo '<input type="hidden" name="page" value="'.$page.'" />';
     echo '</li><li><label for="deplacer">Nouveau père : </label>';
     echo '<select name="deplacer" size="1">';
     echo '<option value="">* Nouveau pere</option>'."\n";

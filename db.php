@@ -103,10 +103,17 @@ function bdd_renommer($db, $page, $nouv) {
 
 // Déplacer une page
 function bdd_deplacer($db, $page, $nvpere, $ordre) {
-    if ($pere !=1) {
-        bdd_logger($db, 'Déplacement de la page '.$page.' sous '.$nvpere);
+    $pere = menu_pere($db, $page);
+    $niveau = bdd_get($db, 'niveau', $pere) + 1;
+    if ($niveau > 0 && $niveau < 4) {
+        bdd_logger($db, 'Déplacement de '.$page.' sous '.$nvpere);
+        $req = 'UPDATE page SET niveau="'.$niveau.'" WHERE nom="'.$page.'"';
+        $ret = mysql_query($req, $db)
+           or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+        menu_modifier_fils($db, $pere,   $page, 'retirer');
+        menu_modifier_fils($db, $nvpere, $page, 'ajouter');
+        menu_regenerer($db);
     }
-    return "pas pret";
 }
 
 // Récupérer les infos d'une page
@@ -163,7 +170,7 @@ function bdd_logger($db, $message) {
 // Journal des modifications récentes
 function bdd_journal($db, $nb=10) {
     $r = array();
-    $req = 'SELECT * FROM log ORDER BY id LIMIT 0,'.$nb;
+    $req = 'SELECT * FROM log ORDER BY id DESC LIMIT 0,'.$nb;
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     while($row = mysql_fetch_array($ret)) {
