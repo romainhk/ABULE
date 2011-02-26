@@ -28,7 +28,9 @@ var EditArea_labule = {
 		// Handle commands
 		switch(cmd){
 			case "image":
-                parent.editAreaLoader.insertTags('editeur', '<a href="COMME IMG" rel="lightbox"><img src="', '" alt="" /></a>');
+                parent.editAreaLoader.insertTags('editeur', \
+                        '<a href="COMME IMG" rel="lightbox"><img class="img_droite" src="', \
+                        '" alt="" title="" /></a>');
 				return false;
 			case "surligner":
                 parent.editAreaLoader.insertTags('editeur', '<span class="surligner">', '</span>');

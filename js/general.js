@@ -46,7 +46,8 @@ function img_avec_legende() {
                     // Ajoute de la légende
                     var b = a.cloneNode(true);
                     var div = document.createElement('div');
-                    div.className = 'legende';
+                    var cote = img.className.split("_")[1];
+                    div.className = 'legende_' + cote;
                     div.appendChild(b);
                     var n = document.createElement('p');
                     n.innerHTML = name;

@@ -216,18 +216,28 @@ dd {
 .corps img {
     width:220px;
     margin:1ex;
-    float:left;
     vertical-align:top;
 }
-
 .corps a img {
     border:none;
 }
 
-.legende {
+.img_gauche {
     float:left;
 }
-.legende p {
+.img_droite {
+    float:right;
+}
+
+.legende_gauche {
+    margin:1ex;
+    float:left;
+}
+.legende_droite {
+    margin:1ex;
+    float:right;
+}
+.legende_gauche p, .legende_droite p {
     text-align:center;
     font-size:x-small;
 }
