@@ -3,13 +3,14 @@
 
 * pouvoir faire des sous-sous-pages (3 niveaux, le dernier masqué dans le menu)
 ** tester le niveau 3
-* bien ordonner la liste des pages
 
 * revoir la couleur de "incrustation bambou"
 
 * simplifier le menu d'administration :
 ** fusionner les pages "supprimer" et "renommer" ?
 ** fusionner les pages "upload" et "liste des uploads" ?
+
+* simplifier "ordre" : on mode admin, il suffirait de déplacer les éléments du menu à la souris
 
 === Editeur
 * browser de fichiers intégré à l'éditeur (ajax/php) : plugin "filebrowser"

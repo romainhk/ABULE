@@ -33,12 +33,7 @@ if (!strcmp($action, 'ajouter')) {
     }
     echo '<li>Menu : <select name="pere" size="1">';
     echo '<option value="">* Nouvelle section</option>'."\n";
-    foreach (menu_les_peres($db) as $lp) {
-        if (!strcmp($pere, $lp)) {
-            $sel = ' selected="selected"';
-        } else { $sel = ''; }
-        echo '<option value="'.$lp.'"'.$sel.'>'.$lp.'</option>'."\n";
-    }
+    option_parente($pere);
     echo "</select>\n<span style=\"margin-left:5ex;\">ordre : ";
     echo '<input type="text" name="ordre" size="2" maxlength="2" value="'.$ordre.'" />';
     echo "</span></li>\n";

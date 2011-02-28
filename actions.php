@@ -62,6 +62,15 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     $c = bdd_charger($db, $page);
     if ($c) {
         echo $c;
+        if (bdd_get($db, 'niveau', $page) == 2) {
+            $filles = menu_les_fils($db, $page);
+            if (count($filles) > 0) {
+                # Ajouter aussi les pages filles
+                foreach ($filles as $f) {
+                    echo '<h1>'.$f.'</h1>';
+                }
+            }
+        }
     } else {
         echo "<p>Impossible de charger la page « $page ». Redirection en cours...</p>\n";
         redirection('Accueil', 500);

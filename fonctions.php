@@ -2,6 +2,7 @@
 /*
  * Fonctions générales utiles
  */
+require_once('db.php');
 
 // Ouvre un flux rss et en fait une présentation
 function charger_rss($url, $nbmax) {
@@ -40,5 +41,19 @@ function retirer_accents($s) {
 		'o', 'O', 'o', 'O',	'o', 'O', 'o', 'O',
 		'u', 'U', 'u', 'U',	'u', 'U', 'u', 'U',	'y', 'Y', 'y');
 	return preg_replace($pattern, $replace, $s);
+}
+
+function option_parente($pere) {
+    global $db;
+    foreach (menu_ordonne($db, NULL, 1) as $lp) {
+        $niveau = $lp['niveau'];
+        if ( in_array($niveau, array(1, 2)) ) {
+            $nom = $lp['nom'];
+            if (!strcmp($pere, $nom)) {
+                $sel = ' selected="selected"';
+            } else { $sel = ''; }
+            echo '<option value="'.$nom.'"'.$sel.'>'.$niveau.'# '.$nom.'</option>'."\n";
+        }
+    }
 }
 ?>

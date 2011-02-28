@@ -2,8 +2,6 @@
 /*
  * Connexion à la base de données
  */
-#define("MENU_JOCKER", ";;");	// Séparateur utilisé dans la colonne page.fils
-#define("MENU_SEUL", "***");	    // Indicateur utilisé dans la colonne page.fils pour dire qu'un père n'a pas de fils
 $les_champs = array( 'niveau', 'ordre', 'contenu' );   // Les champs accessibles de la table "page"
 $mycnf = parse_ini_file("../mycnf");
 $db = mysql_connect($mycnf['host'], $mycnf['user'], $mycnf['password']);
@@ -132,6 +130,18 @@ function bdd_get($db, $champ, $nom) {
     }
 }
 
+// Liste des fils d'une page
+function menu_les_fils($db, $page) {
+    $fils = array();
+    $req = 'SELECT fils, niveau, ordre FROM parente as p, page WHERE page="'.$page.'" AND p.fils=page.nom ORDER BY ordre ASC';
+    $ret = mysql_query($req, $db)
+       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    while ($row = mysql_fetch_array($ret)) {
+        array_push($fils, array('nom' => $row['fils'], 'niveau' => $row['niveau'], 'ordre' => $row['ordre']));
+    }
+    return $fils;
+}
+
 /*  Admin
  */
 // Créer un nouvel admin
@@ -183,15 +193,20 @@ function bdd_journal($db, $nb=10) {
  * Gestion du Menu     #######################
  */
 // Liste des éléments pères du menu
-function menu_les_peres($db) {
-    $pere = array();
-    $req = 'SELECT nom, ordre FROM page WHERE niveau=1 ORDER BY ordre ASC';
+function menu_les_peres($db, $niveaux) {
+    $peres = array();
+    $niveau = 'niveau='.array_pop($niveaux);
+    foreach ($niveaux as $n) {
+        $niveau = $niveau.' OR niveau='.$n;
+    }
+    $req = 'SELECT nom, ordre, niveau FROM page WHERE '.$niveau.' ORDER BY ordre ASC';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     while ($row = mysql_fetch_array($ret)) {
-        array_push($pere, $row['nom']);
+        $pair = array('nom' => $row['nom'], 'niveau' => $row['niveau'], 'ordre' => $row['ordre']);
+        array_push($peres, $pair);
     }
-    return $pere;
+    return $peres;
 }
 
 // Mettre à jour le menu.html
@@ -239,6 +254,23 @@ function menu_pere($db, $page) {
     } else {
         return '';
     }
+}
+
+// Donne une liste ordonnée des pages
+function menu_ordonne($db, $peres, $niveau) {
+    if ((!isset($peres) or empty($peres)) && $niveau == 1) {
+        $peres = menu_les_peres($db, array(1));
+    }
+    $rep = array();
+    foreach ($peres as $l) {
+        array_push($rep, array('nom' => $l['nom'], 'niveau' => $l['niveau'], 'ordre' => $l['ordre']));
+        if ($niveau < 3) {
+            foreach (menu_ordonne($db, menu_les_fils($db, $l['nom']), $niveau+1) as $m) {
+                array_push($rep, $m);
+            }
+        }
+    }
+    return $rep;
 }
 
 // Ajoute/retire la page au pere

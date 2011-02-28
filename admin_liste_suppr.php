@@ -2,9 +2,8 @@
 /*
  * Lister, supprimer, renommer ou déplacer des articles
  */
-require_once('db.php');
 
-$liste = bdd_lister($db);
+$liste = menu_ordonne($db, NULL, 1);
 
 if (isset($_POST['nouveau'])) {
     if (!empty($_POST['nouveau']) and isset($_POST['page'])) {
@@ -33,7 +32,8 @@ if (!strcmp($action, 'lister')) {
     echo '<table cellspacing="5" cellpadding="2">'."\n";
     echo "<tr><th>Nom</th><th>Niveau</th><th>Ordre</th></tr>\n";
     foreach ($liste as $l) {
-        echo '<tr><td><a href="?page='.strtr($l['nom'], " ", "_").'">'.$l['nom'].'</a></td>';
+        echo '<tr><td>'.str_repeat('&nbsp;&nbsp;', $l['niveau']-1);
+        echo '<a href="?page='.strtr($l['nom'], " ", "_").'">'.$l['nom'].'</a></td>';
         echo '<td>'.$l['niveau'].'</td><td>'.$l['ordre']."</td></tr>\n";
     }
     echo "</table>\n";
@@ -74,13 +74,7 @@ if (!strcmp($action, 'lister')) {
     echo '</li><li><label for="deplacer">Nouveau père : </label>';
     echo '<select name="deplacer" size="1">';
     echo '<option value="">* Nouveau pere</option>'."\n";
-    $pere = menu_pere($db, $page);
-    foreach (menu_les_peres($db) as $lp) {
-        if (!strcmp($pere, $lp)) {
-            $sel = ' selected="selected"';
-        } else { $sel = ''; }
-        echo '<option value="'.$lp.'"'.$sel.'>'.$lp.'</option>'."\n";
-    }
+    option_parente(menu_pere($db, $page));
     echo "</select>\n<span style=\"margin-left:5ex;\">ordre : ";
     $ordre = bdd_get($db, 'ordre', $page);
     echo '<input type="text" name="ordre" size="2" maxlength="2" value="'.$ordre.'" />';

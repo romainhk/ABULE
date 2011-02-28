@@ -22,7 +22,7 @@ if (isset($_SESSION['creer_admin'])) {
 unset($_SESSION['creer_admin']);
 
 ## Journal des modifs
-$lim = 15;
+$lim = 20;
 $journal = '<p>Journal des '.$lim.' derniers événements.</p>'."\n";
 $journal .= '<table border="1" cellpadding="5" cellspacing="3">'."\n";
 $journal .= '<tr><th>Login</th><th>Date/Heure</th><th>Action</th></tr>'."\n";
