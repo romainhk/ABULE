@@ -3,12 +3,12 @@
  * Lister, supprimer, renommer ou déplacer des articles
  */
 
-$liste = menu_ordonne($db, NULL, 1);
 
 if (isset($_POST['nouveau'])) {
     if (!empty($_POST['nouveau']) and isset($_POST['page'])) {
         $page = $_POST['page'];
         $nouveau = $_POST['nouveau'];
+        $liste = menu_ordonne($db, NULL, 1);
         if (!in_array($nouveau, $liste)) {
             bdd_renommer($db, $page, $nouveau);
         } else {
@@ -31,12 +31,11 @@ if (!strcmp($action, 'lister')) {
     echo "<p>Liste des pages existantes, ainsi que leur parenté et leur ordre d'affichage.</p>\n";
     echo '<table cellspacing="5" cellpadding="2">'."\n";
     echo "<tr><th>Nom</th><th>Ordre</th></tr>\n";
-    #echo "<tr><th>Nom</th><th>Niveau</th><th>Ordre</th></tr>\n";
+    $liste = menu_ordonne($db, NULL, 1);
     foreach ($liste as $l) {
         echo '<tr><td>'.str_repeat('&nbsp;&nbsp;&nbsp;', $l['niveau']-1);
         echo '<a href="?page='.strtr($l['nom'], " ", "_").'">'.$l['nom'].'</a></td>';
         echo '<td>'.$l['ordre']."</td></tr>\n";
-        #echo '<td>'.$l['niveau'].'</td><td>'.$l['ordre']."</td></tr>\n";
     }
     echo "</table>\n";
 } else if (!strcmp($action, 'supprimer')) {
@@ -45,9 +44,7 @@ if (!strcmp($action, 'lister')) {
     echo "<fieldset><legend>Choisissez une page</legend>\n";
     echo '<select name="nom" size="1" onChange="abule.suppr=this.value">';
     echo '<option selected="selected" value="">...</option>'."\n";
-    foreach ($liste as $l) {
-        echo '<option value="'.$l['nom'].'">'.$l['nom']."</option>\n";
-    }
+    option_parente();
     echo "</select>\n";
     echo '<input type="submit" value="Supprimer" />';
     echo "</fieldset>\n";
@@ -58,9 +55,7 @@ if (!strcmp($action, 'lister')) {
     echo '<ul><li><label for="page">Page à renommer : </label>';
     echo '<select name="page" size="1">';
     echo '<option selected="selected" value="">...</option>'."\n";
-    foreach ($liste as $l) {
-        echo '<option value="'.$l['nom'].'">'.$l['nom']."</option>\n";
-    }
+    option_parente();
     echo "</select>\n";
     echo '</li><li><label for="nouveau">Nouveau nom : </label>';
     echo '<input type="text" name="nouveau" size="25" maxlength="50" />';

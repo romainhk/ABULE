@@ -1,7 +1,5 @@
 <?php
 define("FICHIER_RSS", "flux.rss");
-$liste = bdd_lister($db);
-
 // Ajoute un élément au flux rss
 function ajouter_news($fichier, $titre, $cible){
 	$element_channel = $fichier->getElementById("news");
@@ -35,18 +33,17 @@ if (isset($_POST['titre']) and isset($_POST['cible']) and !empty($_POST['cible']
 ?>
 <h1>Publier une news</h1>
 <form id="news" method="post" action="">
+<fieldset><legend>Flux RSS</legend>
 <table class="form_news"><tr>
     <td><label for="titre">Titre de la news : </label></td>
-    <td><input type="text" id="titre" name="titre" size="35" /></td>
+    <td><input type="text" id="titre" name="titre" size="45" /></td>
 </tr><tr>
-    <td><label for="cible">Page cible : </label></td>
+    <td><label for="cible">Page ciblée : </label></td>
     <td><?php #PHP
 
     echo '<select name="cible" size="1">';
     echo '<option selected="selected" value="">...</option>'."\n";
-    foreach ($liste as $l) {
-        echo '<option value="'.$l['nom'].'">'.$l['nom']."</option>\n";
-    }
+    option_parente();
     echo "</select>\n";
 ?> 
     </td>
@@ -54,4 +51,5 @@ if (isset($_POST['titre']) and isset($_POST['cible']) and !empty($_POST['cible']
     <td colspan="2" style="text-align:right;">
         <input type="submit" id="submit" name="submit" value="Créer la news" /></td>
 </tr></table>
+</fieldset>
 </form>
