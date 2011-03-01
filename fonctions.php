@@ -58,6 +58,7 @@ function option_parente($pere) {
     }
 }
 
+// Le lien modifier/déplacer
 function lien_modifier($page) {
     $ret =  "<div class=\"modifier\"><a href=\"?page=$page&action=deplacer\">Déplacer</a><br />";
     $ret .= "<a href=\"?page=$page&action=modifier\">Modifier</a></div>\n";

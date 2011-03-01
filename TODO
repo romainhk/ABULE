@@ -1,9 +1,6 @@
 === PHP/js
 * possibilitées de galerie d'images
 
-* ajouter : vérifier que "nom" n'est pas vide en js
-* supprimer : empêcher la suppression d'une page ayant des fils
-
 * revoir la couleur de "incrustation bambou"
 
 * simplifier le menu d'administration :

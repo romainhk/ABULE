@@ -3,6 +3,12 @@
  * Gestion des actions disponibles pour l'index et inclusion du corps
  */
 require_once('fonctions.php');
+
+# Messages en attente
+if (isset($_SESSION['message'])) {
+    echo '<p class="message">Avertissement : '.$_SESSION['message'].".</p>\n";
+    unset($_SESSION['message']);
+}
 if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     # Actions nécessitant un log-in
     switch ($action) {
@@ -51,10 +57,6 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     }
 } else {
     # Pas d'action : simple chargement du contenu
-    if (isset($_SESSION['message'])) {
-        echo $_SESSION['message'];
-        unset($_SESSION['message']);
-    }
     if (isset($_SESSION['login'])) {
         echo lien_modifier($page);
     }
@@ -70,7 +72,12 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
                     if (isset($_SESSION['login'])) {
                         echo lien_modifier($nom);
                     }
-                    echo bdd_charger($db, $nom);
+                    $d = bdd_charger($db, $nom);
+                    if ($d) {
+                        echo $d;
+                    } else {
+                        echo "<p>Impossible de charger la sous-page « $page ».</p>\n";
+                    }
                 }
             }
         }

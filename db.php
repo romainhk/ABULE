@@ -75,12 +75,20 @@ function bdd_lister($db) {
 // Supprime une page
 function bdd_supprimer($db, $nom) {
     if (strcmp($nom, '')) {
-        $req = 'DELETE FROM page WHERE nom="'.$nom.'"';
+        $req = 'SELECT COUNT(*) FROM parente WHERE page="'.$nom.'"';
         $ret = mysql_query($req, $db)
-           or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-        bdd_logger($db, 'Suppression de la page : '.$nom);
-        menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
-        menu_regenerer($db);
+            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+        $r = mysql_fetch_row($ret);
+        if ($r[0] == 0) {
+            $req = 'DELETE FROM page WHERE nom="'.$nom.'"';
+            $ret = mysql_query($req, $db)
+               or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+            bdd_logger($db, 'Suppression de la page : '.$nom);
+            menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
+            menu_regenerer($db);
+        } else {
+            echo "Impossible de supprimer la page $nom ; celle-ci a encore des fils.";
+        }
     } else die("Aucune page sélectionnée");
 }
 

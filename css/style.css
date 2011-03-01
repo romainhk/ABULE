@@ -213,6 +213,15 @@ dd {
     font-weight: bold;
 }
 
+.surligner {
+    background-color:#FFFF00;
+}
+
+.message {
+    color:#CC0000;
+}
+
+    /* Images */
 .corps img {
     width:220px;
     margin:1ex;
@@ -242,11 +251,7 @@ dd {
     font-size:x-small;
 }
 
-.surligner {
-    background-color:#FFFF00;
-}
-
-
+    /* Pied */
 .pied {
     margin:1ex 0 0.5ex;
     padding:1px 0.8ex;
@@ -261,8 +266,7 @@ dd {
     width:100%;
 }
 
-    /* Lien "modifier"
-     */
+    /* Lien "modifier" */
 .modifier {
     font-size:x-small;
     float:right;
