@@ -43,6 +43,7 @@ function retirer_accents($s) {
 	return preg_replace($pattern, $replace, $s);
 }
 
+// Liste d'option trié par parenté
 function option_parente($pere) {
     global $db;
     foreach (menu_ordonne($db, NULL, 1) as $lp) {
@@ -55,5 +56,11 @@ function option_parente($pere) {
             echo '<option value="'.$nom.'"'.$sel.'>'.$niveau.'# '.$nom.'</option>'."\n";
         }
     }
+}
+
+function lien_modifier($page) {
+    $ret =  "<div class=\"modifier\"><a href=\"?page=$page&action=deplacer\">Déplacer</a><br />";
+    $ret .= "<a href=\"?page=$page&action=modifier\">Modifier</a></div>\n";
+    return $ret;
 }
 ?>

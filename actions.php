@@ -56,8 +56,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         unset($_SESSION['message']);
     }
     if (isset($_SESSION['login'])) {
-        echo "<div class=\"modifier\"><a href=\"?page=$page&action=deplacer\">Déplacer</a><br />";
-        echo "<a href=\"?page=$page&action=modifier\">Modifier</a></div>\n";
+        echo lien_modifier($page);
     }
     $c = bdd_charger($db, $page);
     if ($c) {
@@ -67,7 +66,11 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
             if (count($filles) > 0) {
                 # Ajouter aussi les pages filles
                 foreach ($filles as $f) {
-                    echo '<h1>'.$f.'</h1>';
+                    $nom = $f['nom'];
+                    if (isset($_SESSION['login'])) {
+                        echo lien_modifier($nom);
+                    }
+                    echo bdd_charger($db, $nom);
                 }
             }
         }

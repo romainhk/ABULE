@@ -30,11 +30,13 @@ if (!strcmp($action, 'lister')) {
     # Lister
     echo "<p>Liste des pages existantes, ainsi que leur parenté et leur ordre d'affichage.</p>\n";
     echo '<table cellspacing="5" cellpadding="2">'."\n";
-    echo "<tr><th>Nom</th><th>Niveau</th><th>Ordre</th></tr>\n";
+    echo "<tr><th>Nom</th><th>Ordre</th></tr>\n";
+    #echo "<tr><th>Nom</th><th>Niveau</th><th>Ordre</th></tr>\n";
     foreach ($liste as $l) {
-        echo '<tr><td>'.str_repeat('&nbsp;&nbsp;', $l['niveau']-1);
+        echo '<tr><td>'.str_repeat('&nbsp;&nbsp;&nbsp;', $l['niveau']-1);
         echo '<a href="?page='.strtr($l['nom'], " ", "_").'">'.$l['nom'].'</a></td>';
-        echo '<td>'.$l['niveau'].'</td><td>'.$l['ordre']."</td></tr>\n";
+        echo '<td>'.$l['ordre']."</td></tr>\n";
+        #echo '<td>'.$l['niveau'].'</td><td>'.$l['ordre']."</td></tr>\n";
     }
     echo "</table>\n";
 } else if (!strcmp($action, 'supprimer')) {

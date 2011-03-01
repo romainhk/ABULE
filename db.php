@@ -102,10 +102,10 @@ function bdd_renommer($db, $page, $nouv) {
 // Déplacer une page
 function bdd_deplacer($db, $page, $nvpere, $ordre) {
     $pere = menu_pere($db, $page);
-    $niveau = bdd_get($db, 'niveau', $pere) + 1;
+    $niveau = bdd_get($db, 'niveau', $nvpere) + 1;
     if ($niveau > 0 && $niveau < 4) {
         bdd_logger($db, 'Déplacement de '.$page.' sous '.$nvpere);
-        $req = 'UPDATE page SET niveau="'.$niveau.'" WHERE nom="'.$page.'"';
+        $req = 'UPDATE page SET niveau='.$niveau.', ordre='.$ordre.' WHERE nom="'.$page.'"';
         $ret = mysql_query($req, $db)
            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
         menu_modifier_fils($db, $pere,   $page, 'retirer');
