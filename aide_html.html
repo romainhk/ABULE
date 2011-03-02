@@ -33,7 +33,7 @@
         </ul></li>
 </ul>
 
-<h4>Trois formattages spécifiques au site de L´A.B.U.L.E.</h4>
+<h4>Formattages spécifiques au site de L´A.B.U.L.E.</h4>
 <dl>
     <dt>surlignage</dt>
     <dd>il suffit de placer un <tt>&#60;span class="surligner">...&#60;/span></tt> sur le passage à surligner. Un bouton est d'ailleurs prévu à cette effet.</dd>
@@ -41,6 +41,14 @@
     <dd>pour aligner une image à gauche ou à droite, il suffit de préciser la classe adéquate : <tt>img_gauche</tt> ou <tt>img_droite</tt>.</dd>
     <dt>légende des images</dt>
     <dd>pour appliquer une légende à une image, il suffit d'ajouter un attribut "title" à l'image. Exemple : <tt>&#60;img alt="..." src="...jpg" title="ma légende" /></tt></dd>
+    <dt>images cliquable</dt>
+    <dd>il faut mettre une balise lien (a) autour de l'image avec comme attribut rel "lightbox" : <tt>&#60;a href="..." rel="lightbox">&#60;img ... />&#60;/a></tt><br />Un bouton est prévu à cet effet.</dd>
+    <dt>galerie d'images</dt>
+    <dd>il faut mettre une balise lien (a) autour de chaque image avec comme attribut rel "lightbox[NOMDELAGALERIE]" : <pre>
+&#60;a href="..." rel="lightbox[MA_GALERIE]">&#60;img ... />&#60;/a>
+&#60;a href="..." rel="lightbox[MA_GALERIE]">&#60;img ... />&#60;/a>...
+</pre>Un bouton est prévu à cet effet.</dd>
+    <dd></dd>
 </dl>
 
 <h3>Exemples</h3>

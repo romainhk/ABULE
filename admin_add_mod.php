@@ -55,7 +55,7 @@ editAreaLoader.init({
     ,min_height: 500
     ,word_wrap: true
     //,end_toolbar: "|,filebrowser,image,surligner"
-    ,end_toolbar: "|,image,surligner"
+    ,end_toolbar: "|,image,galerie,surligner"
     ,plugins: "filebrowser,labule"
 });
 </script>
