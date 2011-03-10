@@ -44,11 +44,11 @@ function retirer_accents($s) {
 }
 
 // Liste d'option triée par parenté, $pere est selectionné
-function option_parente($pere='') {
+function option_parente($pere='', $niveaux=array(1,2)) {
     global $db;
     foreach (menu_ordonne($db, NULL, 1) as $lp) {
         $niveau = $lp['niveau'];
-        if ( in_array($niveau, array(1, 2)) ) {
+        if ( in_array($niveau, $niveaux) ) {
             $nom = $lp['nom'];
             if (!strcmp($pere, $nom)) {
                 $sel = ' selected="selected"';

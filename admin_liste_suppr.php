@@ -44,7 +44,7 @@ if (!strcmp($action, 'lister')) {
     echo "<fieldset><legend>Choisissez une page</legend>\n";
     echo '<select name="nom" size="1" onChange="abule.suppr=this.value">';
     echo '<option selected="selected" value="">...</option>'."\n";
-    option_parente();
+    option_parente('', array(1,2,3));
     echo "</select>\n";
     echo '<input type="submit" value="Supprimer" />';
     echo "</fieldset>\n";
@@ -55,7 +55,7 @@ if (!strcmp($action, 'lister')) {
     echo '<ul><li><label for="page">Page à renommer : </label>';
     echo '<select name="page" size="1">';
     echo '<option selected="selected" value="">...</option>'."\n";
-    option_parente();
+    option_parente('', array(1,2,3));
     echo "</select>\n";
     echo '</li><li><label for="nouveau">Nouveau nom : </label>';
     echo '<input type="text" name="nouveau" size="25" maxlength="50" />';

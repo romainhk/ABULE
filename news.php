@@ -43,7 +43,7 @@ if (isset($_POST['titre']) and isset($_POST['cible']) and !empty($_POST['cible']
 
     echo '<select name="cible" size="1">';
     echo '<option selected="selected" value="">...</option>'."\n";
-    option_parente();
+    option_parente('', array(1,2,3));
     echo "</select>\n";
 ?> 
     </td>
