@@ -6,7 +6,7 @@ require_once('fonctions.php');
 
 # Messages en attente
 if (isset($_SESSION['message'])) {
-    echo '<p class="message">Avertissement : '.$_SESSION['message'].".</p>\n";
+    echo message('Avertissement : '.$_SESSION['message']);
     unset($_SESSION['message']);
 }
 if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
@@ -76,13 +76,13 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
                     if ($d) {
                         echo $d;
                     } else {
-                        echo "<p>Impossible de charger la sous-page « $page ».</p>\n";
+                        echo message("Impossible de charger la sous-page « $page »");
                     }
                 }
             }
         }
     } else {
-        echo "<p>Impossible de charger la page « $page ». Redirection en cours...</p>\n";
+        echo message("Impossible de charger la page « $page ». Redirection en cours...");
         redirection('Accueil', 500);
     }
 }

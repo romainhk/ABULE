@@ -55,19 +55,20 @@ if (isset($_FILES['upload']) and !empty($_FILES['upload'])) {
 }
 
 // Formulaire d'envoi
-echo "<h1>Upload de fichier</h1>\n";
+echo "<h1>Hébergement de fichier</h1>\n";
 if ($statut > 0) {
-    echo "<p>".$les_statut[$statut]." : $err.</p>";
+    echo message($les_statut[$statut]." : $err");
 }
 ?>
 <form method="POST" action="uploader.php" enctype="multipart/form-data">
+<fieldset><legend>Envoie de fichier</legend>
 <ul><li><input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $taille_max*1024; ?>">
 <label for="nom">Fichier (taille maximum : <?php echo $taille_max/1024; ?> Mo) :</label> <input type="file" name="upload" size="40"></li></ul>
   <div style="text-align:right; padding-right:1em;"><input type="submit" name="envoyer" value="Envoyer le fichier"></div>
 </form>
 <?php
 if ($statut == 0) {
-    echo "<p>Le fichier est maintenant accessible à l'adresse : <tt>$err</tt></p>";
+    echo message("Le fichier est maintenant accessible à l'adresse : <tt>$err</tt> ");
 }
 ?>
 <h4>Formats de fichier autorisés</h4>

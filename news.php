@@ -34,7 +34,7 @@ if (isset($_POST['titre']) and isset($_POST['cible']) and !empty($_POST['cible']
 <h1>Publier une news</h1>
 <form id="news" method="post" action="">
 <fieldset><legend>Flux RSS</legend>
-<table class="form_news"><tr>
+<table class="form_table"><tr>
     <td><label for="titre">Titre de la news : </label></td>
     <td><input type="text" id="titre" name="titre" size="45" /></td>
 </tr><tr>

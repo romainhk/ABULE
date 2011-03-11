@@ -64,4 +64,21 @@ function lien_modifier($page) {
     $ret .= "<a href=\"?page=$page&action=modifier\">Modifier</a></div>\n";
     return $ret;
 }
+
+// Affiche un message d'avertissement/d'erreur
+// Niveaux :
+//    1) Avertissement / Notification
+//    2) Message important
+function message($mess, $niveau=2) {
+    switch ($niveau) {
+    case 1:
+        $class = 'message_avertissement';
+        break;
+    case 2;
+    default:
+        $class = 'message_important';
+        break;
+    }
+    return '<p class="'.$class.'">'.$mess.".</p>\n";
+}
 ?>

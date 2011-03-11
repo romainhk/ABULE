@@ -3,7 +3,6 @@
  * Lister, supprimer, renommer ou déplacer des articles
  */
 
-
 if (isset($_POST['nouveau'])) {
     if (!empty($_POST['nouveau']) and isset($_POST['page'])) {
         $page = $_POST['page'];
@@ -12,7 +11,7 @@ if (isset($_POST['nouveau'])) {
         if (!in_array($nouveau, $liste)) {
             bdd_renommer($db, $page, $nouveau);
         } else {
-            echo '<p>Impossible de renommer : ce nom est déjà utilisé.</p>';
+            echo message('Impossible de renommer : ce nom est déjà utilisé');
         }
     }
 } else if (isset($_POST['deplacer']) and !empty($_POST['deplacer']) and isset($_POST['page'])) {
@@ -28,7 +27,7 @@ echo "<h1>Maintenance</h1>\n";
 // Formulaires
 if (!strcmp($action, 'lister')) {
     # Lister
-    echo "<p>Liste des pages existantes, ainsi que leur parenté et leur ordre d'affichage.</p>\n";
+    echo "<p>Liste classée des pages existantes.</p>\n";
     echo '<table cellspacing="5" cellpadding="2">'."\n";
     echo "<tr><th>Nom</th><th>Ordre</th></tr>\n";
     $liste = menu_ordonne($db, NULL, 1);
@@ -41,7 +40,7 @@ if (!strcmp($action, 'lister')) {
 } else if (!strcmp($action, 'supprimer')) {
     # Supprimer
     echo '<form action="" method="post" onSubmit="return conf_suppr();">'."\n";
-    echo "<fieldset><legend>Choisissez une page</legend>\n";
+    echo "<fieldset><legend>SUpprimer une page</legend>\n";
     echo '<select name="nom" size="1" onChange="abule.suppr=this.value">';
     echo '<option selected="selected" value="">...</option>'."\n";
     option_parente('', array(1,2,3));
@@ -51,7 +50,7 @@ if (!strcmp($action, 'lister')) {
 } else if (!strcmp($action, 'renommer')) {
     # Renommer
     echo '<form action="" method="post">'."\n";
-    echo "<fieldset><legend>Renommer</legend>\n";
+    echo "<fieldset><legend>Renommer une page</legend>\n";
     echo '<ul><li><label for="page">Page à renommer : </label>';
     echo '<select name="page" size="1">';
     echo '<option selected="selected" value="">...</option>'."\n";
@@ -65,7 +64,7 @@ if (!strcmp($action, 'lister')) {
 } else if (!strcmp($action, 'deplacer')) {
     # Déplacer
     echo '<form action="" method="post">'."\n";
-    echo "<fieldset><legend>Déplacer</legend>\n";
+    echo "<fieldset><legend>Déplacer une page</legend>\n";
     echo '<ul><li><label for="page">Page à déplacer : « '.$page.' ».</label>';
     echo '<input type="hidden" name="page" value="'.$page.'" />';
     echo '</li><li><label for="deplacer">Nouveau père : </label>';

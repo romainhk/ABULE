@@ -131,7 +131,7 @@ if ($horloge_flash) {
         <h2>Contact</h2>
         <ul>
             <li><a href="mailto:labulecalais@gmail.com"><img src="images/mail.png" alt="mailto" /> L&#180;A.B.U.L.E.</a></li>
-            <li><a href="mailto:administrateur@gmail.com"><img src="images/mail.png" alt="mailto" /> Administrateurs</a></li>
+            <li><a href="mailto:administrateur@labule.fr"><img src="images/mail.png" alt="mailto" /> Administrateurs</a></li>
             <li><a href="?action=contacter">Formulaire de contact</a></li>
             <!--<li><a href="/forum">Forum</a></li>-->
         </ul>

@@ -217,8 +217,11 @@ dd {
     background-color:#FFFF00;
 }
 
-.message {
+.message_important {
     color:#CC0000;
+}
+.message_avertissement {
+    color:#880000;
 }
 
     /* Images */
@@ -319,7 +322,7 @@ input[type="submit"] {
     margin-top:1.5ex;
 }
 
-.form_news {
+.form_table {
     margin:1ex auto;
     min-width:80%;
 }

@@ -8,15 +8,15 @@ if (isset($_POST['creer_admin'])) {
         $pass  = $_POST['pass'];
         $_SESSION['creer_admin'] = bdd_creer_admin($db, $nom, $pass);
     } else {
-        echo '<p>Impossible de lire le formulaire.</p>';
+        echo message('Impossible de lire le formulaire');
     }
 }
 
 if (isset($_SESSION['creer_admin'])) {
     if (empty($_SESSION['creer_admin'])) {
-        echo '<p>Admin créé</p>';
+        echo message('Admin créé', 1);
     } else {
-        echo '<p>'.$_SESSION['creer_admin'].'</p>';
+        echo message($_SESSION['creer_admin']);
     }
 }
 unset($_SESSION['creer_admin']);
@@ -34,15 +34,16 @@ $journal .= '</table>'."\n";
 
 ?>
 <form id="creer_admin" method="post" action="">
-<ul><li>
-    <label for="nom">Login du nouvel admin : </label>
-    <input type="nom" id="nom" name="nom" size="25" /></li>
-    <li><label for="pass">Son mot de passe : </label>
-    <input type="password" id="pass" name="pass" size="25" /></li>
-</ul>
-<div style="text-align:center;">
-    <input type="submit" id="creer_admin" name="creer_admin" value="Créer l'admin" />
-</div>
+<table class="form_table"><tr>
+    <td><label for="nom">Login du nouvel admin : </label></td>
+    <td><input type="nom" id="nom" name="nom" size="25" /></td>
+</tr><tr>
+    <td><label for="pass">Son mot de passe : </label></td>
+    <td><input type="password" id="pass" name="pass" size="25" /></td>
+</tr><tr>
+    <td colspan="2" style="text-align:right;">
+    <input type="submit" id="creer_admin" name="creer_admin" value="Créer l'admin" /></td>
+</tr></table>
 </form>
 
 <br/>
