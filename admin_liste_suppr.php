@@ -40,7 +40,7 @@ if (!strcmp($action, 'lister')) {
 } else if (!strcmp($action, 'supprimer')) {
     # Supprimer
     echo '<form action="" method="post" onSubmit="return conf_suppr();">'."\n";
-    echo "<fieldset><legend>SUpprimer une page</legend>\n";
+    echo "<fieldset><legend>Supprimer une page</legend>\n";
     echo '<select name="nom" size="1" onChange="abule.suppr=this.value">';
     echo '<option selected="selected" value="">...</option>'."\n";
     option_parente('', array(1,2,3));

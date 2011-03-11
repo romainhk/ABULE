@@ -24,7 +24,7 @@ unset($_SESSION['creer_admin']);
 ## Journal des modifs
 $lim = 20;
 $journal = '<p>Journal des '.$lim.' derniers événements.</p>'."\n";
-$journal .= '<table border="1" cellpadding="5" cellspacing="3">'."\n";
+$journal .= '<table border="1" cellpadding="5" cellspacing="3" style="margin:0 auto;">'."\n";
 $journal .= '<tr><th>Login</th><th>Date/Heure</th><th>Action</th></tr>'."\n";
 $liste = bdd_journal($db, $lim);
 foreach ($liste as $l) {

@@ -166,7 +166,7 @@ function bdd_creer_admin($db, $login, $mdp) {
 
 // Permet à un admin de changer son mot de passe
 function bdd_changer_mdp($db, $login, $mdp) {
-    $req = 'UPDATE utilisateur SET mdp="'.$mdp.'" WHERE login="'.$login.'"';
+    $req = 'UPDATE utilisateur SET mdp="'.sha1($mdp).'" WHERE login="'.$login.'"';
     $ret = mysql_query($req, $db);
     if ($ret) {
         bdd_logger($db, $login.' a modifié son mot de passe');

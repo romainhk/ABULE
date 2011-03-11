@@ -33,7 +33,7 @@ unset($_SESSION['changer_mdp']);
         <td><label for="pass">Nouveau mot de passe : </label></td>
         <td><input type="password" id="pass" name="pass" size="25" /></td>
     </tr><tr>
-        <td><label for="passconf">Confirmer le mot de passe : </label></td>
+        <td><label for="passconf">Confirmation : </label></td>
         <td><input type="password" id="passconf" name="passconf" size="25" /></td>
     </tr><tr>
         <td colspan="2" style="text-align:right;">

@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
 
     if (mysql_num_rows($req) > 0) {
         $data = mysql_fetch_assoc($req);
+        $pass = sha1($pass);
         if ($pass == $data['mdp']) {
             $_SESSION['login'] = $login;
             bdd_logger($db, 'Log-in : '.$login);
