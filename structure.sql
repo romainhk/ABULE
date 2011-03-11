@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Jeu 10 Mars 2011 à 10:30
+-- Généré le : Ven 11 Mars 2011 à 11:06
 -- Version du serveur: 5.1.56
 -- Version de PHP: 5.3.5-1
 
@@ -106,4 +106,4 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`login`, `mdp`) VALUES
-('admin', 'admin');
+('admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');

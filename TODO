@@ -1,10 +1,6 @@
 === PHP/js
 * revoir la couleur de "incrustation bambou"
 
-* simplifier le menu d'administration :
-** fusionner les pages "supprimer" et "renommer" ?
-** fusionner les pages "upload" et "liste des uploads" ?
-
 * simplifier "ordre" : en mode admin, il suffirait de déplacer les éléments du menu à la souris
 
 * sur la table parente : parfois, ajout d'un "fils" de niveau 1 avec "page" vide !? (accueil, nos services)
