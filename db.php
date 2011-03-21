@@ -60,19 +60,6 @@ function bdd_charger($db, $nom) {
     return htmlspecialchars_decode($get);
 }
 
-// Donne la liste des pages connues
-//DEPRECATED : 20110301
-/*function bdd_lister($db) {
-    $r = array();
-    $req = 'SELECT nom, niveau, ordre FROM page';
-    $ret = mysql_query($req, $db)
-       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-    while($row = mysql_fetch_array($ret)) {
-        array_push($r, $row);
-    }
-    return $r;
-}*/
-
 // Supprime une page
 function bdd_supprimer($db, $nom) {
     if (strcmp($nom, '')) {

@@ -4,8 +4,8 @@
  */
 require_once('fonctions.php');
 
-# Messages en attente
 if (isset($_SESSION['message'])) {
+    # Messages en attente
     echo message('Avertissement : '.$_SESSION['message']);
     unset($_SESSION['message']);
 }
@@ -61,7 +61,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         echo lien_modifier($page);
     }
     $c = bdd_charger($db, $page);
-    if ($c) {
+    if (is_string($c)) {
         echo $c;
         if (bdd_get($db, 'niveau', $page) == 2) {
             $filles = menu_les_fils($db, $page);
@@ -73,7 +73,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
                         echo lien_modifier($nom);
                     }
                     $d = bdd_charger($db, $nom);
-                    if ($d) {
+                    if (is_string($d)) {
                         echo $d;
                     } else {
                         echo message("Impossible de charger la sous-page « $page »");
