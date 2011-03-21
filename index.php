@@ -26,23 +26,27 @@ if (isset($_GET['action'])) {
 $avertissements = array(); //Avertissements/Erreurs à reporter à l'usager
 $styles = array( "style", "lightbox" ); //Les styles css à utiliser
 $browser = get_browser($_SERVER["HTTP_USER_AGENT"], FALSE);
-if ($browser->cssversion > 2) {
-    array_push($styles, "style3");
-    $horloge = '';
+if (is_object($browser)) {
+    if ($browser->cssversion > 2) {
+        array_push($styles, "style3");
+    } else {
+        #array_push($styles, "style2");
+        if ($browser->cssversion <= 1) {
+            array_push($avertissements, 
+                "Votre navigateur web (".$browser->browser.' '.$browser->version.") est trop ancien");
+        }
+    }
+    if (!$browser->javascript) {
+        array_push($avertissements, 
+            "Le javascript n'est pas activé ; certains éléments s'afficheront mal ou pas du tout");
+        if (isset($_SESSION['login'])) {
+            array_push($avertissements, 
+                "Le javascript est indispensable pour le mode administrateur");
+        }
+    }
 } else {
-    #array_push($styles, "style2");
-    if ($browser->cssversion <= 1) {
-        array_push($avertissements, 
-            "Votre navigateur web (".$browser->browser.' '.$browser->version.") est trop ancien.");
-    }
-}
-if (!$browser->javascript) {
     array_push($avertissements, 
-        "Le javascript n'est pas activé ; certains éléments s'afficheront mal ou pas du tout.");
-    if (isset($_SESSION['login'])) {
-        array_push($avertissements, 
-            "Le javascript est indispensable pour le mode administrateur.");
-    }
+        "Détection du navigateur impossible");
 }
 $horloge_flash = (strstr($_SERVER['HTTP_ACCEPT'], 'application/x-shockwave-flash')) ? true : false;
 
@@ -59,7 +63,7 @@ $les_erreurs = "";
 if (count($avertissements) > 0) {
     foreach ($avertissements as $av) {
         $les_erreurs = $les_erreurs.str_repeat(" ",8).'<img src="images/important.png" alt="'
-            .$av.'" style="height:31px;" />'."\n";
+            .$av.'" title="'.$av.'" style="height:31px;" />'."\n";
     }
 }
 
@@ -90,7 +94,7 @@ if (count($avertissements) > 0) {
     <script type="text/javascript" src="js/lightbox.js"></script>
   </head>
 
-  <body onload="horloge();img_avec_legende();">
+  <body onload="horloge();img_avec_legende();boite_deroulante();">
   <div style="margin:0 4%">
     <div class="banniere">
         <div class="superpose">
@@ -137,7 +141,7 @@ if ($horloge_flash) {
         </ul>
         <?php #PHP
 $c = charger_rss('flux.rss', 3);
-if ($c) {
+if (is_string($c)) {
     echo '<h2>News</h2>'."\n";
     echo $c;
 }

@@ -67,14 +67,17 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
             $filles = menu_les_fils($db, $page);
             if (count($filles) > 0) {
                 # Ajouter aussi les pages filles
+                $index = 1;
                 foreach ($filles as $f) {
                     $nom = $f['nom'];
-                    if (isset($_SESSION['login'])) {
-                        echo lien_modifier($nom);
-                    }
                     $d = bdd_charger($db, $nom);
                     if (is_string($d)) {
-                        echo $d;
+                        echo '<div class="boite" id="boite_'.$index.'"><div class="boite_titre">'.$nom.'</div><div class="boite_contenu" id="contenu_'.$index.'">';
+                        if (isset($_SESSION['login'])) {
+                            echo lien_modifier($nom);
+                        }
+                        echo $d.'</div></div>'."\n";
+                        $index++;
                     } else {
                         echo message("Impossible de charger la sous-page « $page »");
                     }

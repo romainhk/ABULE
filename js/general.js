@@ -77,3 +77,60 @@ function efface(){
 		document.forms["contact"].elements["mess"].value="";
 	}
 }
+
+/*
+ * Boite déroulante
+ */
+var boite_deroulante_enrouler = '[enrouler]';
+var boite_deroulante_derouler  = '[d\u00E9rouler]'; 
+
+// Enroule / Déroule une boite
+function toggle_boite_deroulante(index) {
+    var toggle = document.getElementById("toggle_" + index);
+    var contenu = document.getElementById("contenu_" + index);
+
+    if (!toggle || !contenu) return; 
+    if (toggle.innerHTML == boite_deroulante_enrouler) {
+        contenu.style.display = 'none';
+        toggle.innerHTML = boite_deroulante_derouler;
+    } else {
+        contenu.style.display = 'block';
+        toggle.innerHTML = boite_deroulante_enrouler;
+    }
+}
+
+// Créer les boites déroulantes
+function boite_deroulante(Element){
+    if(!Element) Element = document;
+    var divs = Element.getElementsByTagName("div");
+    var bd_index = 0;
+    for(var i=0,l=divs.length;i<l;i++){
+        if(hasClass(divs[i], "boite")){
+            var boite = divs[i];
+            bd_index++;
+
+            var boite_toggle = document.createElement("a");
+            boite_toggle.className = 'boite_toggle';
+            boite_toggle.id = 'toggle_' + bd_index;
+            boite_toggle.href = 'javascript:toggle_boite_deroulante(' + bd_index + ');';
+            boite_toggle.innerHTML = boite_deroulante_derouler;
+ 
+            boite.insertBefore( boite_toggle, boite.firstChild );
+            var contenu = document.getElementById("contenu_" + bd_index);
+            contenu.style.display = 'none';
+        }
+    }
+}
+
+/*
+ * Récupéré depuis wikipédia
+ */
+function hasClass(node, className) {
+    var haystack = node.className;
+    if(!haystack) return false;
+    if (className === haystack) {
+        return true;
+    }
+    return (" " + haystack + " ").indexOf(" " + className + " ") > -1;
+}
+
