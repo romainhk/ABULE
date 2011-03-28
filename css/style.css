@@ -256,7 +256,7 @@ dd {
 
     /* Boite déroulante */
 .boite {
-    margin:0;
+    margin:1ex 0;
     padding:0;
     border:1px solid #AAAAAA;
     border-collapse:collapse;

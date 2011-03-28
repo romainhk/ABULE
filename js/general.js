@@ -81,8 +81,8 @@ function efface(){
 /*
  * Boite déroulante
  */
-var boite_deroulante_enrouler = '[enrouler]';
-var boite_deroulante_derouler  = '[d\u00E9rouler]'; 
+var boite_deroulante_enrouler = '\u21B0';
+var boite_deroulante_derouler  = 'ouvrir \u21B4';
 
 // Enroule / Déroule une boite
 function toggle_boite_deroulante(index) {
