@@ -21,6 +21,7 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
     // $forcer permet de forcer la mise à jour si la page existe déjà
     $contenu = preg_replace("/<?php.*?>/", '', $contenu);
     $san_contenu = htmlspecialchars($contenu);
+    //$nom = urlencode($nom);
     if (!empty($pere)) {
         $niveau = bdd_get($db, 'niveau', $pere) + 1;
     } else {
@@ -37,7 +38,9 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
         }
     } else {
         bdd_logger($db, 'Création de la page : '.$nom);
-        menu_modifier_fils($db, $pere, $nom, 'ajouter');
+        if ($niveau > 1) {
+            menu_modifier_fils($db, $pere, $nom, 'ajouter');
+        }
         menu_regenerer($db);
     }
     return FALSE;
@@ -271,15 +274,17 @@ function menu_ordonne($db, $peres, $niveau) {
 
 // Ajoute/retire la page au pere
 function menu_modifier_fils($db, $pere, $page, $modif='ajouter') {
-    switch($modif) {
-    case 'ajouter':
-        $req = 'INSERT INTO parente(page, fils) VALUES ("'.$pere.'", "'.$page.'")';
-        break;
-    case 'retirer':
-        $req = 'DELETE FROM parente WHERE page="'.$pere.'" AND fils="'.$page.'"';
-        break;
+    if (!empty($pere)) {
+        switch($modif) {
+        case 'ajouter':
+            $req = 'INSERT INTO parente(page, fils) VALUES ("'.$pere.'", "'.$page.'")';
+            break;
+        case 'retirer':
+            $req = 'DELETE FROM parente WHERE page="'.$pere.'" AND fils="'.$page.'"';
+            break;
+        }
+        $ret = mysql_query($req, $db)
+           or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     }
-    $ret = mysql_query($req, $db)
-       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
 }
 ?>

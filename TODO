@@ -3,8 +3,6 @@
 
 * simplifier "ordre" : en mode admin, il suffirait de déplacer les éléments du menu à la souris
 
-* sur la table parente : parfois, ajout d'un "fils" de niveau 1 avec "page" vide !? (accueil, nos services)
-
 * sousous-page : inclure le contenu sous forme de lien ou de boite déroulante
 
 * browscap.ini : inactif en local ; vérifier s'il fonctionne en ligne

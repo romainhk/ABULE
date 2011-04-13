@@ -79,6 +79,6 @@ function message($mess, $niveau=2) {
         $class = 'message_important';
         break;
     }
-    return '<p class="'.$class.'">'.$mess.".</p>\n";
+    return "\n".'<p class="'.$class.'">'.$mess.".</p>\n";
 }
 ?>

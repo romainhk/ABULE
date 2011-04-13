@@ -52,7 +52,7 @@ if ($ret) {
         $_SESSION['message'] = "La page « $nom » existe déjà";
     }
 } else {
-    $_SESSION['message'] = "Problème lors de l'ajout";
+    $_SESSION['message'] = "Problème lors de l'ajout de $nom à $pere ($ordre)";
 }
 
 redirection($nom, 1);
