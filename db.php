@@ -27,7 +27,7 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
         $niveau = 1;
     }
 
-    $req = 'INSERT INTO page (nom, niveau, ordre, contenu) VALUES ("'.$nom.'", '.$niveau.', "'.$ordre.'", "'.$san_contenu.'")';
+    $req = 'INSERT INTO page (nom, niveau, ordre, contenu) VALUES ("'.$nom.'", '.$niveau.', '.$ordre.', "'.$san_contenu.'")';
     $ret = mysql_query($req, $db);
     if (!$ret) {
         if (mysql_errno($db) == 1062 and $forcer) { # la page existe dégà
@@ -46,7 +46,7 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
 // Modifier une page dans la BDD
 function bdd_modifier($db, $nom, $pere, $niveau, $ordre, $contenu) {
     menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
-    $req = 'UPDATE page SET contenu="'.$contenu.'", niveau='.$niveau.', ordre="'.$ordre.'" WHERE nom="'.$nom.'"';
+    $req = 'UPDATE page SET contenu="'.$contenu.'", niveau='.$niveau.', ordre='.$ordre.' WHERE nom="'.$nom.'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     bdd_logger($db, 'Modification de la page : '.$nom);

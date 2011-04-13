@@ -25,6 +25,9 @@ if (isset($_POST['pere'])) {
 $ordre = "";
 if (isset($_POST['ordre'])) {
     $ordre = $_POST['ordre'];
+    if (!is_int($ordre) or $ordre > 100 or $ordre < 1) {
+        $ordre = 1;
+    }
 }
 $forcer = False;
 if (isset($_POST['modifier'])) {
