@@ -23,7 +23,7 @@ function charger_rss($url, $nbmax) {
 
 // Ajoute une redirection javascript à la page
 function redirection($page, $temps=1) {
-    echo '<script language="javascript">setTimeout("document.location.replace(\'index.php?page='.$page.'\')", '.$temps.');</script>';
+    echo '<script language="javascript">setTimeout("document.location.replace(\'index.php?page='.protect_url($page).'\')", '.$temps.');</script>';
 }
 
 // Fonction de convertion d'accents
@@ -53,15 +53,21 @@ function option_parente($pere='', $niveaux=array(1,2)) {
             if (!strcmp($pere, $nom)) {
                 $sel = ' selected="selected"';
             } else { $sel = ''; }
-            echo '<option value="'.$nom.'"'.$sel.'>'.str_repeat('#', $niveau-1).' '.$nom.'</option>'."\n";
+            echo '<option value="'.urlencode($nom).'"'.$sel.'>'.str_repeat('#', $niveau-1).' '.$nom.'</option>'."\n";
         }
     }
 }
 
+// Protège une url des quotes
+function protect_url($mot) {
+    return preg_replace("/ /", '%20', preg_replace("/'/", '%27', preg_replace('/"/', '%22', stripslashes($mot))));
+}
+
 // Le lien modifier/déplacer
 function lien_modifier($page) {
-    $ret =  "<div class=\"modifier\"><a href=\"?page=$page&action=deplacer\">Déplacer</a><br />\n";
-    $ret .= "<a href=\"?page=$page&action=modifier\">Modifier</a></div>\n";
+    $page = protect_url($page);
+    $ret  = '<div class="modifier"><a href="?page='.$page.'&action=deplacer">Déplacer</a>'."<br />\n";
+    $ret .= '<a href="?page='.$page.'&action=modifier">Modifier</a></div>'."\n";
     return $ret;
 }
 
@@ -81,4 +87,5 @@ function message($mess, $niveau=2) {
     }
     return "\n".'<p class="'.$class.'">'.$mess.".</p>\n";
 }
+
 ?>

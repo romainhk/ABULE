@@ -60,10 +60,10 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     if (isset($_SESSION['login'])) {
         echo lien_modifier($page);
     }
-    $c = bdd_charger($db, $page);
+    $c = bdd_charger($db, stripslashes($page));
     if (is_string($c)) {
         echo $c;
-        if (bdd_get($db, 'niveau', $page) == 2) {
+        if (bdd_get($db, 'niveau', stripslashes($page)) == 2) {
             $filles = menu_les_fils($db, $page);
             if (count($filles) > 0) {
                 # Ajouter aussi les pages filles

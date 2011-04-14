@@ -8,7 +8,7 @@ require_once('fonctions.php');
 session_start();
 # Paramètres
 if (isset($_POST['nom']) and strcmp($_POST['nom'], '')) {
-    $nom = $_POST['nom'];
+    $nom = urldecode($_POST['nom']);
 } else {
     $_SESSION['message'] = "Nom de page inconnu";
     redirection('Accueil', 1);
@@ -20,7 +20,7 @@ if (isset($_POST['contenu'])) {
 }
 $pere = "";
 if (isset($_POST['pere'])) {
-    $pere = $_POST['pere'];
+    $pere = urldecode($_POST['pere']);
 }
 $ordre = "";
 if (isset($_POST['ordre'])) {
@@ -35,7 +35,7 @@ if (isset($_POST['modifier'])) {
 }
 
 # Traitement
-$req = 'SELECT COUNT(nom) FROM page WHERE nom="'.$nom.'"';
+$req = 'SELECT COUNT(nom) FROM page WHERE nom="'.addslashes($nom).'"';
 $ret = mysql_query($req, $db);
 if ($ret) {
     $f = mysql_fetch_row($ret);
@@ -55,7 +55,7 @@ if ($ret) {
     $_SESSION['message'] = "Problème lors de l'ajout de $nom à $pere ($ordre)";
 }
 
-redirection($nom, 1);
+redirection($nom, 5000);
 ?>
 <html>
 <body style="background-color:#85af43;"></body>

@@ -2,10 +2,11 @@
 /*
  * Lister, supprimer, renommer ou déplacer des articles
  */
+define("JOCKER_NVPERE", "###jocker_nvpere###");
 
 if (isset($_POST['nouveau'])) {
     if (!empty($_POST['nouveau']) and isset($_POST['page'])) {
-        $page = $_POST['page'];
+        $page = urldecode($_POST['page']);
         $nouveau = $_POST['nouveau'];
         $liste = menu_ordonne($db, NULL, 1);
         if (!in_array($nouveau, $liste)) {
@@ -15,12 +16,16 @@ if (isset($_POST['nouveau'])) {
         }
     }
 } else if (isset($_POST['deplacer']) and !empty($_POST['deplacer']) and isset($_POST['page'])) {
-    $nvpere = $_POST['deplacer'];
-    $page   = $_POST['page'];
+    if (!strcmp($_POST['deplacer'], JOCKER_NVPERE)) {
+        $nvpere = "";
+    } else {
+        $nvpere = urldecode($_POST['deplacer']);
+    }
+    $page = urldecode($_POST['page']);
     $ordre  = $_POST['ordre'];
     bdd_deplacer($db, $page, $nvpere, $ordre);
 } else if (isset($_POST['nom']) and !empty($_POST['nom'])) {
-    bdd_supprimer($db, $_POST['nom']);
+    bdd_supprimer($db, urldecode($_POST['nom']));
 }
 
 echo "<h1>Maintenance</h1>\n";
@@ -33,7 +38,7 @@ if (!strcmp($action, 'lister')) {
     $liste = menu_ordonne($db, NULL, 1);
     foreach ($liste as $l) {
         echo '<tr><td>'.str_repeat('&nbsp;&nbsp;&nbsp;', $l['niveau']-1);
-        echo '<a href="?page='.strtr($l['nom'], " ", "_").'">'.$l['nom'].'</a></td>';
+        echo '<a href="?page='.protect_url($l['nom']).'">'.$l['nom'].'</a></td>';
         echo '<td>'.$l['ordre']."</td></tr>\n";
     }
     echo "</table>\n";
@@ -65,14 +70,14 @@ if (!strcmp($action, 'lister')) {
     # Déplacer
     echo '<form action="" method="post">'."\n";
     echo "<fieldset><legend>Déplacer une page</legend>\n";
-    echo '<ul><li><label for="page">Page à déplacer : « '.$page.' ».</label>';
-    echo '<input type="hidden" name="page" value="'.$page.'" />';
+    echo '<ul><li><label for="page">Page à déplacer : « '.stripslashes($page).' ».</label>';
+    echo '<input type="hidden" name="page" value="'.protect_url($page).'" />';
     echo '</li><li><label for="deplacer">Nouveau père : </label>';
     echo '<select name="deplacer" size="1">';
-    echo '<option value="">* Nouveau pere</option>'."\n";
+    echo '<option value="'.JOCKER_NVPERE.'">* Nouveau pere</option>'."\n";
     option_parente(menu_pere($db, $page));
     echo "</select>\n<span style=\"margin-left:5ex;\">ordre : ";
-    $ordre = bdd_get($db, 'ordre', $page);
+    $ordre = bdd_get($db, 'ordre', stripslashes($page));
     echo '<input type="text" name="ordre" size="2" maxlength="2" value="'.$ordre.'" />';
     echo '</li></ul>';
     echo '<div style="text-align:right;"><input type="submit" value="Déplacer" /></div>';

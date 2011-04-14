@@ -21,14 +21,13 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
     // $forcer permet de forcer la mise à jour si la page existe déjà
     $contenu = preg_replace("/<?php.*?>/", '', $contenu);
     $san_contenu = htmlspecialchars($contenu);
-    //$nom = urlencode($nom);
     if (!empty($pere)) {
         $niveau = bdd_get($db, 'niveau', $pere) + 1;
     } else {
         $niveau = 1;
     }
 
-    $req = 'INSERT INTO page (nom, niveau, ordre, contenu) VALUES ("'.$nom.'", '.$niveau.', '.$ordre.', "'.$san_contenu.'")';
+    $req = 'INSERT INTO page (nom, niveau, ordre, contenu) VALUES ("'.addslashes($nom).'", '.$niveau.', '.$ordre.', "'.$san_contenu.'")';
     $ret = mysql_query($req, $db);
     if (!$ret) {
         if (mysql_errno($db) == 1062 and $forcer) { # la page existe dégà
@@ -49,7 +48,7 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
 // Modifier une page dans la BDD
 function bdd_modifier($db, $nom, $pere, $niveau, $ordre, $contenu) {
     menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
-    $req = 'UPDATE page SET contenu="'.$contenu.'", niveau='.$niveau.', ordre='.$ordre.' WHERE nom="'.$nom.'"';
+    $req = 'UPDATE page SET contenu="'.$contenu.'", niveau='.$niveau.', ordre='.$ordre.' WHERE nom="'.addslashes($nom).'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     bdd_logger($db, 'Modification de la page : '.$nom);
@@ -63,15 +62,15 @@ function bdd_charger($db, $nom) {
     return htmlspecialchars_decode($get);
 }
 
-// Supprime une page
+// Supprimer une page
 function bdd_supprimer($db, $nom) {
     if (strcmp($nom, '')) {
-        $req = 'SELECT COUNT(*) FROM parente WHERE page="'.$nom.'"';
+        $req = 'SELECT COUNT(*) FROM parente WHERE page="'.addslashes($nom).'"';
         $ret = mysql_query($req, $db)
             or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
         $r = mysql_fetch_row($ret);
         if ($r[0] == 0) {
-            $req = 'DELETE FROM page WHERE nom="'.$nom.'"';
+            $req = 'DELETE FROM page WHERE nom="'.addslashes($nom).'"';
             $ret = mysql_query($req, $db)
                or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
             bdd_logger($db, 'Suppression de la page : '.$nom);
@@ -85,28 +84,28 @@ function bdd_supprimer($db, $nom) {
 
 // Renommer une page
 function bdd_renommer($db, $page, $nouv) {
-    $req = 'UPDATE page SET nom="'.$nouv.'" WHERE nom="'.$page.'"';
+    $req = 'UPDATE page SET nom="'.addslashes($nouv).'" WHERE nom="'.addslashes($page).'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    bdd_logger($db, 'Renommage de la page : '.$page);
     // Changer les parentés aussi
     $pere = menu_pere($db, $page);
     if (!empty($pere)) {
-        bdd_logger($db, 'Renommage de la page : '.$page);
         menu_modifier_fils($db, $pere, $page, 'retirer');
         menu_modifier_fils($db, $pere, $nouv, 'ajouter');
-        menu_regenerer($db);
     }
+    menu_regenerer($db);
 }
 
 // Déplacer une page
 function bdd_deplacer($db, $page, $nvpere, $ordre) {
-    $pere = menu_pere($db, $page);
     $niveau = bdd_get($db, 'niveau', $nvpere) + 1;
     if ($niveau > 0 && $niveau < 4) {
-        bdd_logger($db, 'Déplacement de '.$page.' sous '.$nvpere);
-        $req = 'UPDATE page SET niveau='.$niveau.', ordre='.$ordre.' WHERE nom="'.$page.'"';
+        $req = 'UPDATE page SET niveau='.$niveau.', ordre='.$ordre.' WHERE nom="'.addslashes($page).'"';
         $ret = mysql_query($req, $db)
            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+        bdd_logger($db, 'Déplacement de '.$page.' sous '.$nvpere);
+        $pere = menu_pere($db, $page);
         menu_modifier_fils($db, $pere,   $page, 'retirer');
         menu_modifier_fils($db, $nvpere, $page, 'ajouter');
         menu_regenerer($db);
@@ -117,7 +116,7 @@ function bdd_deplacer($db, $page, $nvpere, $ordre) {
 function bdd_get($db, $champ, $nom) {
     global $les_champs;
     if (in_array($champ, $les_champs)) {
-        $req = 'SELECT '.$champ.' FROM page WHERE nom="'.$nom.'"';
+        $req = 'SELECT '.$champ.' FROM page WHERE nom="'.addslashes($nom).'"';
         $ret = mysql_query($req, $db)
            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
         $f = mysql_fetch_row($ret);
@@ -132,7 +131,7 @@ function bdd_get($db, $champ, $nom) {
 // Liste des fils d'une page
 function menu_les_fils($db, $page) {
     $fils = array();
-    $req = 'SELECT fils, niveau, ordre FROM parente as p, page WHERE page="'.$page.'" AND p.fils=page.nom ORDER BY ordre ASC';
+    $req = 'SELECT fils, niveau, ordre FROM parente as p, page WHERE page="'.addslashes($page).'" AND p.fils=page.nom ORDER BY ordre ASC';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     while ($row = mysql_fetch_array($ret)) {
@@ -171,7 +170,7 @@ function bdd_changer_mdp($db, $login, $mdp) {
 // Enregistre l'opération au journal
 function bdd_logger($db, $message) {
     session_start();
-    $req = 'INSERT INTO log (login, message) VALUES ("'.$_SESSION['login'].'", "'.$message.'")';
+    $req = 'INSERT INTO log (login, message) VALUES ("'.$_SESSION['login'].'", "'.addslashes($message).'")';
     $ret = mysql_query($req, $db);
     return $ret;
 }
@@ -215,26 +214,22 @@ function menu_regenerer($db) {
         .' LEFT JOIN parente as p ON p.page=page.nom LEFT JOIN page as f'
         .' ON f.nom=p.fils WHERE page.niveau=1 ORDER BY page.ordre, f.ordre';
     $ret = mysql_query($req, $db)
-       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+
+    $menu = '';
     while ($row = mysql_fetch_assoc($ret)) {
         $nom = $row['nom'];
-        if (!isset($elems[$nom])) {
-            $elems[$nom] = array();
-        }
-        array_push($elems[$nom], $row['fils']);
-    }
-    $menu = '';
-    foreach ($elems as $cle => $lp) {
-        if (isset($lp[0])) {
-            $menu .= '<h2>'.$cle."</h2>\n<ul>";
-            foreach ($lp as $sm) {
-                $menu .= '<li><a href="?page='.strtr($sm, " ", "_").'">'.$sm."</a></li>\n";
+        if (!in_array($nom, $elems)) {
+            if (count($elems) > 0) {
+                $menu .= "</ul>\n";
             }
-            $menu .= "</ul>\n";
-        } else {
-            $menu .= '<h2><a href="?page='.strtr($cle, " ", "_").'">'.$cle."</a></h2>\n";
+            array_push($elems, $nom);
+            $menu .= '<h2><a href="?page='.protect_url($nom).'">'.$nom."</a></h2>\n<ul>";
         }
+        $fils = $row['fils'];
+        $menu .= '<li><a href="?page='.protect_url($fils).'">'.$fils."</a></li>\n";
     }
+    $menu .= "</ul>";
 
     // Écriture
     $fmenu = fopen('uploads/menu.html', 'w');
@@ -244,7 +239,7 @@ function menu_regenerer($db) {
 
 // Donne le père d'une page
 function menu_pere($db, $page) {
-    $req = 'SELECT page FROM parente WHERE fils LIKE "%'.$page.'%"';
+    $req = 'SELECT page FROM parente WHERE fils LIKE "%'.addslashes($page).'%" ESCAPE "\\\\"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     $f = mysql_fetch_row($ret);
@@ -277,10 +272,10 @@ function menu_modifier_fils($db, $pere, $page, $modif='ajouter') {
     if (!empty($pere)) {
         switch($modif) {
         case 'ajouter':
-            $req = 'INSERT INTO parente(page, fils) VALUES ("'.$pere.'", "'.$page.'")';
+            $req = 'INSERT INTO parente(page, fils) VALUES ("'.addslashes($pere).'", "'.addslashes($page).'")';
             break;
         case 'retirer':
-            $req = 'DELETE FROM parente WHERE page="'.$pere.'" AND fils="'.$page.'"';
+            $req = 'DELETE FROM parente WHERE page="'.addslashes($pere).'" AND fils="'.addslashes($page).'"';
             break;
         }
         $ret = mysql_query($req, $db)

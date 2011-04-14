@@ -10,7 +10,8 @@ require('fonctions.php');
  */
 $page = 'Accueil';
 if (isset($_GET['page']) && !empty($_GET['page'])) {
-    $page = strtr($_GET['page'], "_", " ");
+    $page = addslashes($_GET['page']);
+    #$page = $_GET['page'];
 } else if (isset($_GET['action'])) {
     $page = 'Admin';
 }
@@ -73,7 +74,7 @@ if (count($avertissements) > 0) {
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
   <head>
-    <title>L´ABULE<?php echo " · $page"; ?></title>
+    <title>L´ABULE<?php echo " · ".stripslashes($page); ?></title>
     <meta http-equiv="Content-language" content="fr" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
