@@ -55,7 +55,7 @@ if ($ret) {
     $_SESSION['message'] = "Problème lors de l'ajout de $nom à $pere ($ordre)";
 }
 
-redirection($nom, 5000);
+redirection($nom, 1);
 ?>
 <html>
 <body style="background-color:#85af43;"></body>

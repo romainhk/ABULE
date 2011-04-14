@@ -5,7 +5,7 @@
 
 * sousous-page : inclure le contenu sous forme de lien ou de boite déroulante
 
-* option_parente() : pouvoir exclure un élément 
+* option_parente() : pouvoir exclure un élément pour éviter des boucles 
 
 === Editeur
 * browser de fichiers intégré à l'éditeur (ajax/php) : plugin "filebrowser"

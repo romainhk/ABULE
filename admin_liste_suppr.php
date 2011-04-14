@@ -70,14 +70,14 @@ if (!strcmp($action, 'lister')) {
     # Déplacer
     echo '<form action="" method="post">'."\n";
     echo "<fieldset><legend>Déplacer une page</legend>\n";
-    echo '<ul><li><label for="page">Page à déplacer : « '.stripslashes($page).' ».</label>';
+    echo '<ul><li><label for="page">Page à déplacer : « '.$page.' ».</label>';
     echo '<input type="hidden" name="page" value="'.protect_url($page).'" />';
     echo '</li><li><label for="deplacer">Nouveau père : </label>';
     echo '<select name="deplacer" size="1">';
     echo '<option value="'.JOCKER_NVPERE.'">* Nouveau pere</option>'."\n";
     option_parente(menu_pere($db, $page));
     echo "</select>\n<span style=\"margin-left:5ex;\">ordre : ";
-    $ordre = bdd_get($db, 'ordre', stripslashes($page));
+    $ordre = bdd_get($db, 'ordre', $page);
     echo '<input type="text" name="ordre" size="2" maxlength="2" value="'.$ordre.'" />';
     echo '</li></ul>';
     echo '<div style="text-align:right;"><input type="submit" value="Déplacer" /></div>';

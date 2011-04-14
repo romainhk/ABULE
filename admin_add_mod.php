@@ -8,7 +8,7 @@ if (!strcmp($action, 'ajouter')) {
     $prechargement = '&lt;h1&gt;Titre de la page&lt;/h1&gt;&#10;&lt;p&gt;Contenu de la page...&lt;/p&gt;';
 } else {
     $modification = True;
-    $prechargement = bdd_charger($db, stripslashes($page));
+    $prechargement = bdd_charger($db, $page);
 }
 
 ?>
@@ -23,9 +23,9 @@ if (!strcmp($action, 'ajouter')) {
     $ordre = 1;
     $pere= '';
     if ($modification) {
-        echo "<li>Nom de la page : « ".stripslashes($page).' ».<input type="hidden" name="nom" value="'.protect_url($page)."\" />\n";
+        echo "<li>Nom de la page : « ".$page.' ».<input type="hidden" name="nom" value="'.protect_url($page)."\" />\n";
         echo '<input type="hidden" name="modifier" value="foo" /></li>'."\n";
-        $ordre = bdd_get($db, 'ordre', stripslashes($page));
+        $ordre = bdd_get($db, 'ordre', $page);
         $pere = menu_pere($db, $page);
     } else {
         echo '<li><label for="nom">Nom de la page :</label>'
