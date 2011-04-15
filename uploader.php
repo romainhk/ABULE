@@ -49,6 +49,7 @@ if (isset($_FILES['upload']) and !empty($_FILES['upload'])) {
         } else {
             # Upload réussi !
             $statut = 0;
+            bdd_logger($db, 'Upload du fichier : '.$nom);
         }
     }
     redirection("&action=uploader&statut=$statut&err=$err", 1);
