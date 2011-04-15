@@ -36,7 +36,7 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
             return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
         }
     } else {
-        bdd_logger($db, 'Création de la page : '.$nom);
+        bdd_logger($db, 'Ajout de : '.$nom);
         if ($niveau > 1) {
             menu_modifier_fils($db, $pere, $nom, 'ajouter');
         }
@@ -51,7 +51,7 @@ function bdd_modifier($db, $nom, $pere, $niveau, $ordre, $contenu) {
     $req = 'UPDATE page SET contenu="'.$contenu.'", niveau='.$niveau.', ordre='.$ordre.' WHERE nom="'.addslashes($nom).'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-    bdd_logger($db, 'Modification de la page : '.$nom);
+    bdd_logger($db, 'Modification de : '.$nom);
     menu_modifier_fils($db, $pere, $nom, 'ajouter');
     menu_regenerer($db);
 }
@@ -73,7 +73,7 @@ function bdd_supprimer($db, $nom) {
             $req = 'DELETE FROM page WHERE nom="'.addslashes($nom).'"';
             $ret = mysql_query($req, $db)
                or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-            bdd_logger($db, 'Suppression de la page : '.$nom);
+            bdd_logger($db, 'Suppression de : '.$nom);
             menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
             menu_regenerer($db);
         } else {
@@ -87,7 +87,7 @@ function bdd_renommer($db, $page, $nouv) {
     $req = 'UPDATE page SET nom="'.addslashes($nouv).'" WHERE nom="'.addslashes($page).'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-    bdd_logger($db, 'Renommage de la page : '.$page);
+    bdd_logger($db, 'Renommage de '.$page.' en : '.$nouv);
     // Changer les parentés aussi
     $pere = menu_pere($db, $page);
     if (!empty($pere)) {
