@@ -360,7 +360,7 @@ input[type="submit"] {
     .banniere {display:none;}
     .menu {display:none;}
     .bord {border:none; width:auto; height:auto;}
-    .corps {height:auto;}
+    .corps {height:auto; overflow:visible;}
     .modifier {display:none;}
     .boite_contenu {display:block;}
     .boite_toggle {display:none;}
