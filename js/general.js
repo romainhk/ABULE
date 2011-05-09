@@ -118,7 +118,6 @@ function boite_deroulante(Element){
  
             boite.insertBefore( boite_toggle, boite.firstChild );
             var contenu = document.getElementById("contenu_" + bd_index);
-            contenu.style.display = 'none';
         }
     }
 }

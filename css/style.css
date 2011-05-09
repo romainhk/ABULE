@@ -275,6 +275,9 @@ dd {
     float:right;
     padding:3px;
 }
+.boite_contenu {
+    display:none;
+}
 
     /* Pied */
 .pied {
@@ -357,6 +360,10 @@ input[type="submit"] {
     .banniere {display:none;}
     .menu {display:none;}
     .bord {border:none; width:auto;}
+    .modifier {display:none;}
+    /*.boite {border:none;}*/
+    .boite_contenu {display:block;}
+    .boite_toggle {display:none;}
     .valid {display:none;}
 }
 
