@@ -165,7 +165,7 @@ require("actions.php"); ?>
         <td align="right"><a href="?action=copyright">Copyright</a></td>
     </tr></table>
     </div>
-    <div style="text-align:center;">
+    <div class="valid" style="text-align:center;">
         <!-- La validation ne fonctionne pas pour les pages d'admin (à cause du session_start() certainement) -->
         <a href="http://validator.w3.org/check?uri=referer"><img
             style="border:0; width:88px; height:31px"
