@@ -11,6 +11,15 @@ if (isset($_POST['creer_admin'])) {
         echo message('Impossible de lire le formulaire de création');
     }
 }
+if (isset($_SESSION['creer_admin'])) {
+    if (empty($_SESSION['creer_admin'])) {
+        echo message('Admin "'.$_SESSION['creer_admin'].'" créé', 1);
+    } else {
+        echo message($_SESSION['creer_admin']);
+    }
+}
+unset($_SESSION['creer_admin']);
+
 ## Supprimer un compte
 if (isset($_POST['supprimer_admin'])) {
     if (isset($_POST['nom'])) {
@@ -21,17 +30,9 @@ if (isset($_POST['supprimer_admin'])) {
     }
 }
 
-if (isset($_SESSION['creer_admin'])) {
-    if (empty($_SESSION['creer_admin'])) {
-        echo message('Admin créé', 1);
-    } else {
-        echo message($_SESSION['creer_admin']);
-    }
-}
-unset($_SESSION['creer_admin']);
 if (isset($_SESSION['supprimer_admin'])) {
     if (empty($_SESSION['supprimer_admin'])) {
-        echo message('Admin supprimé', 1);
+        echo message('Admin "'.$_SESSION['supprimer_admin'].'" supprimé', 1);
     } else {
         echo message($_SESSION['supprimer_admin']);
     }
@@ -62,10 +63,10 @@ $journal .= '</table>'."\n";
     <input type="submit" id="creer_admin" name="creer_admin" value="Créer l'admin" /></td>
 </tr></table>
 </form>
-
+<hr width="30%">
 <form id="supprimer_admin" method="post" action="">
 <table class="form_table"><tr>
-    <td><label for="nom">Login de l'admin : </label></td>
+    <td><label for="nom">Login de l'admin à supprimer : </label></td>
     <td><select name="nom" size="1">
 <?php
 foreach (bdd_liste_admin($db) as $nom) {
