@@ -153,6 +153,32 @@ function bdd_creer_admin($db, $login, $mdp) {
     }
 }
 
+// Supprimer un admin
+function bdd_supprimer_admin($db, $login) {
+    $req = 'DELETE FROM utilisateur WHERE login="'.$login.'"';
+    $ret = mysql_query($req, $db);
+    if ($ret) {
+        return '';
+    } else {
+        return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
+    }
+}
+
+// Liste des admins
+function bdd_liste_admin($db) {
+    $req = 'SELECT login FROM utilisateur';
+    $ret = mysql_query($req, $db);
+    if ($ret) {
+        $r = array();
+        while($row = mysql_fetch_array($ret)) {
+            array_push($r, $row['login']);
+        }
+        return $r;
+    } else {
+        return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
+    }
+}
+
 // Permet à un admin de changer son mot de passe
 function bdd_changer_mdp($db, $login, $mdp) {
     $req = 'UPDATE utilisateur SET mdp="'.sha1($mdp).'" WHERE login="'.$login.'"';

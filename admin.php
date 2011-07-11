@@ -1,5 +1,5 @@
 <?php
-echo '<h1>Ajouter un admin</h1>'."\n";
+echo '<h1>Gestion des admins</h1>'."\n";
 
 ## Création d'un compte
 if (isset($_POST['creer_admin'])) {
@@ -8,7 +8,16 @@ if (isset($_POST['creer_admin'])) {
         $pass  = $_POST['pass'];
         $_SESSION['creer_admin'] = bdd_creer_admin($db, $nom, $pass);
     } else {
-        echo message('Impossible de lire le formulaire');
+        echo message('Impossible de lire le formulaire de création');
+    }
+}
+## Supprimer un compte
+if (isset($_POST['supprimer_admin'])) {
+    if (isset($_POST['nom'])) {
+        $nom   = $_POST['nom'];
+        $_SESSION['supprimer_admin'] = bdd_supprimer_admin($db, $nom);
+    } else {
+        echo message('Impossible de lire le formulaire de suppression');
     }
 }
 
@@ -20,6 +29,14 @@ if (isset($_SESSION['creer_admin'])) {
     }
 }
 unset($_SESSION['creer_admin']);
+if (isset($_SESSION['supprimer_admin'])) {
+    if (empty($_SESSION['supprimer_admin'])) {
+        echo message('Admin supprimé', 1);
+    } else {
+        echo message($_SESSION['supprimer_admin']);
+    }
+}
+unset($_SESSION['supprimer_admin']);
 
 ## Journal des modifs
 $lim = 20;
@@ -43,6 +60,24 @@ $journal .= '</table>'."\n";
 </tr><tr>
     <td colspan="2" style="text-align:right;">
     <input type="submit" id="creer_admin" name="creer_admin" value="Créer l'admin" /></td>
+</tr></table>
+</form>
+
+<form id="supprimer_admin" method="post" action="">
+<table class="form_table"><tr>
+    <td><label for="nom">Login de l'admin : </label></td>
+    <td><select name="nom" size="1">
+<?php
+foreach (bdd_liste_admin($db) as $nom) {
+    echo $nom;
+    if (strcmp($nom,"admin")) {
+        echo '<option value="'.urlencode($nom).'">'.$nom.'</option>'."\n";
+    }
+}
+?></select></td>
+</tr><tr>
+    <td colspan="2" style="text-align:right;">
+    <input type="submit" id="supprimer_admin" name="supprimer_admin" value="Supprimer l'admin" /></td>
 </tr></table>
 </form>
 
