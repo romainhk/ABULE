@@ -14,8 +14,9 @@ if (isset($_GET['err']) and !empty($_GET['err'])) {
     $err = $_GET['err'];
 } else { $err = ''; }
 $les_statut = array( 'Ok',
-        "Problème lors de l'upload",
+        "Problème non spécifique lors de l'upload",
         "Format de fichier non autorisée",
+        "Problème lors de l'envoi",
         "Fichier plus grand que $taille_max ko",
         "Problème lors de la création du fichier" );
 
@@ -32,25 +33,28 @@ if (isset($_FILES['upload']) and !empty($_FILES['upload'])) {
     $tmp_name = $upload['tmp_name'];
     $erreur = $upload['error'];
 
-    if ($erreur != UPLOAD_ERR_OK) {
-        $statut = 1;
-        $err = $erreur;
-    } else if (!in_array($type, $extensions)) {
-        $statut = 2;
-        $err = $type;
-    } else if ($taille > $taille_max) {
-        $statut = 3;
-        $err = $taille;
-    } else {
+    if ($erreur == UPLOAD_ERR_OK) {
         $path = $dossier.retirer_accents(basename($nom));
         $err = $path;
         if (!move_uploaded_file($tmp_name, getcwd().'/'.$path)) {
-            $statut = 4;
+            $statut = 5;
         } else {
             # Upload réussi !
             $statut = 0;
             bdd_logger($db, 'Upload du fichier : '.$nom);
         }
+    } else if ($taille > $taille_max || $erreur == UPLOAD_ERR_INI_SIZE || $erreur == UPLOAD_ERR_FORM_SIZE) {
+        $statut = 4;
+        $err = $taille;
+    } else if ($erreur == UPLOAD_ERR_PARTIAL || $erreur == UPLOAD_ERR_NO_FILE) {
+        $statut = 3;
+        $err = $erreur;
+    } else if (!in_array($type, $extensions) || $erreur == UPLOAD_ERR_EXTENSION) {
+        $statut = 2;
+        $err = $type;
+    } else {
+        $statut = 1;
+        $err = $erreur;
     }
     redirection("&action=uploader&statut=$statut&err=$err", 1);
 }

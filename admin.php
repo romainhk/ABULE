@@ -4,19 +4,15 @@ echo '<h1>Gestion des admins</h1>'."\n";
 ## Création d'un compte
 if (isset($_POST['creer_admin'])) {
     if (isset($_POST['pass']) && isset($_POST['nom'])) {
-        $nom   = $_POST['nom'];
-        $pass  = $_POST['pass'];
+        $nom  = $_POST['nom'];
+        $pass = $_POST['pass'];
         $_SESSION['creer_admin'] = bdd_creer_admin($db, $nom, $pass);
     } else {
         echo message('Impossible de lire le formulaire de création');
     }
 }
 if (isset($_SESSION['creer_admin'])) {
-    if (empty($_SESSION['creer_admin'])) {
-        echo message('Admin "'.$_SESSION['creer_admin'].'" créé', 1);
-    } else {
-        echo message($_SESSION['creer_admin']);
-    }
+    echo message($_SESSION['creer_admin'], 1);
 }
 unset($_SESSION['creer_admin']);
 
@@ -31,11 +27,7 @@ if (isset($_POST['supprimer_admin'])) {
 }
 
 if (isset($_SESSION['supprimer_admin'])) {
-    if (empty($_SESSION['supprimer_admin'])) {
-        echo message('Admin "'.$_SESSION['supprimer_admin'].'" supprimé', 1);
-    } else {
-        echo message($_SESSION['supprimer_admin']);
-    }
+    echo message($_SESSION['supprimer_admin'], 1);
 }
 unset($_SESSION['supprimer_admin']);
 

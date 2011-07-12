@@ -144,10 +144,10 @@ function menu_les_fils($db, $page) {
  */
 // Créer un nouvel admin
 function bdd_creer_admin($db, $login, $mdp) {
-    $req = 'INSERT INTO utilisateur (login, mdp) VALUES ("'.$login.'", "'.$mdp.'")';
+    $req = 'INSERT INTO utilisateur (login, mdp) VALUES ("'.$login.'", "'.sha1($mdp).'")';
     $ret = mysql_query($req, $db);
     if ($ret) {
-        return $login;
+        return "Admin ".$login." créé";
     } else {
         return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
     }
@@ -158,7 +158,7 @@ function bdd_supprimer_admin($db, $login) {
     $req = 'DELETE FROM utilisateur WHERE login="'.$login.'"';
     $ret = mysql_query($req, $db);
     if ($ret) {
-        return $login;
+        return "Admin ".$login." supprimé";
     } else {
         return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
     }
