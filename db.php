@@ -145,27 +145,31 @@ function menu_les_fils($db, $page) {
  */
 // Créer un nouvel utilisateur
 function bdd_creer_utilisateur($db, $login, $mdp, $admin=0) {
-    if ($admin != 1) { $admin = 0; }
-    $req = 'INSERT INTO utilisateur (login, mdp, admin) VALUES ("'.$login.'", "'.sha1($mdp).'", "'.$admin.'")';
-    $ret = mysql_query($req, $db);
-    if ($ret) {
-        if ($admin) { $mode = "Administrateur ";
-        } else {      $mode = "Utilisateur "; }
-        return $mode.$login." créé";
-    } else {
-        return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
-    }
+    if ($_SESSION['admin']) {
+        if ($admin != 1) { $admin = 0; }
+        $req = 'INSERT INTO utilisateur (login, mdp, admin) VALUES ("'.$login.'", "'.sha1($mdp).'", "'.$admin.'")';
+        $ret = mysql_query($req, $db);
+        if ($ret) {
+            if ($admin) { $mode = "Administrateur ";
+            } else {      $mode = "Utilisateur "; }
+            return $mode.$login." créé";
+        } else {
+            return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
+        }
+    } else { return "Création de compte interdite avec ce compte"; }
 }
 
 // Supprimer un admin
 function bdd_supprimer_utilisateur($db, $login) {
-    $req = 'DELETE FROM utilisateur WHERE login="'.$login.'"';
-    $ret = mysql_query($req, $db);
-    if ($ret) {
-        return "Utilisateur ".$login." supprimé";
-    } else {
-        return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
-    }
+    if ($_SESSION['admin']) {
+        $req = 'DELETE FROM utilisateur WHERE login="'.$login.'"';
+        $ret = mysql_query($req, $db);
+        if ($ret) {
+            return "Utilisateur ".$login." supprimé";
+        } else {
+            return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
+        }
+    } else { return "Suppression de compte interdite avec ce compte"; }
 }
 
 // Liste des admins

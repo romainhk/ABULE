@@ -62,7 +62,7 @@ $journal .= '</table>'."\n";
 <hr width="30%">
 <form id="supprimer_admin" method="post" action="">
 <table class="form_table"><tr>
-    <td><label for="nom">Login de l'admin à supprimer : </label></td>
+    <td><label for="nom">Login de l'utilisateur à supprimer : </label></td>
     <td><select name="nom" size="1">
 <?php
 foreach (bdd_liste_utilisateur($db) as $nom) {
