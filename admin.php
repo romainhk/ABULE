@@ -52,11 +52,11 @@ $journal .= '</table>'."\n";
     <td><label for="pass">Son mot de passe : </label></td>
     <td><input type="password" id="pass" name="pass" size="25" /></td>
 </tr><tr>
-    <td><label for="admin">Administrateur ?<br />(création/suppression de comptes) : </label></td>
+    <td><label for="admin">Administrateur ?<br />(peut créer/supprimer des comptes) : </label></td>
     <td><input type="checkbox" name="admin" value="1" /></td>
 </tr><tr>
     <td colspan="2" style="text-align:right;">
-    <input type="submit" id="creer_admin" name="creer_admin" value="Créer l'admin" /></td>
+    <input type="submit" id="creer_admin" name="creer_admin" value="Créer l'utilisateur" /></td>
 </tr></table>
 </form>
 <hr width="30%">
@@ -74,7 +74,7 @@ foreach (bdd_liste_utilisateur($db) as $nom) {
 ?></select></td>
 </tr><tr>
     <td colspan="2" style="text-align:right;">
-    <input type="submit" id="supprimer_admin" name="supprimer_admin" value="Supprimer l'admin" /></td>
+    <input type="submit" id="supprimer_admin" name="supprimer_admin" value="Supprimer l'utilisateur" /></td>
 </tr></table>
 </form>
 

@@ -153,6 +153,7 @@ function bdd_creer_utilisateur($db, $login, $mdp, $admin=0) {
             if ($admin) { $mode = "Administrateur ";
             } else {      $mode = "Utilisateur "; }
             return $mode.$login." créé";
+            bdd_logger($db, 'Création du compte '.strtolower($mode).' '.$login);
         } else {
             return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
         }
@@ -166,6 +167,7 @@ function bdd_supprimer_utilisateur($db, $login) {
         $ret = mysql_query($req, $db);
         if ($ret) {
             return "Utilisateur ".$login." supprimé";
+            bdd_logger($db, 'Suppression du compte '.$login);
         } else {
             return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
         }
