@@ -6,7 +6,7 @@ if (!file_exists('uploads/menu.html')) {
 require('uploads/menu.html');
 
 if (isset($_SESSION['login'])) {
-    if (!strcmp($_SESSION['login'], 'admin')) {
+    if ($_SESSION['admin'] == 1) {
         echo '<h2><a href="?page=&action=admin">Admin*</a></h2>';
     } else {
         echo '<h2>Admin</h2>'."\n";

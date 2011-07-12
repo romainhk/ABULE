@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
     // Login
     $login = (isset($_POST['login'])) ? $_POST['login'] : '';
     $pass  = (isset($_POST['pass']))  ? $_POST['pass']  : '';
-    $sql = "SELECT login, mdp FROM utilisateur WHERE login = '".addslashes($login)."'";
+    $sql = "SELECT login, mdp, admin FROM utilisateur WHERE login='".addslashes($login)."'";
     $req = mysql_query($sql) or die('Erreur SQL : <br />'.$sql);
 
     if (mysql_num_rows($req) > 0) {
@@ -13,6 +13,7 @@ if (isset($_POST['submit'])) {
         $pass = sha1($pass);
         if ($pass == $data['mdp']) {
             $_SESSION['login'] = $login;
+            $_SESSION['admin'] = $data['admin'];
             bdd_logger($db, 'Log-in : '.$login);
 
             #REDIRECTION

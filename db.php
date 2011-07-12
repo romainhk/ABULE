@@ -140,32 +140,36 @@ function menu_les_fils($db, $page) {
     return $fils;
 }
 
-/*  Admin
+/*
+ *  Admin et utilisateurs
  */
-// Créer un nouvel admin
-function bdd_creer_admin($db, $login, $mdp) {
-    $req = 'INSERT INTO utilisateur (login, mdp) VALUES ("'.$login.'", "'.sha1($mdp).'")';
+// Créer un nouvel utilisateur
+function bdd_creer_utilisateur($db, $login, $mdp, $admin=0) {
+    if ($admin != 1) { $admin = 0; }
+    $req = 'INSERT INTO utilisateur (login, mdp, admin) VALUES ("'.$login.'", "'.sha1($mdp).'", "'.$admin.'")';
     $ret = mysql_query($req, $db);
     if ($ret) {
-        return "Admin ".$login." créé";
+        if ($admin) { $mode = "Administrateur ";
+        } else {      $mode = "Utilisateur "; }
+        return $mode.$login." créé";
     } else {
         return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
     }
 }
 
 // Supprimer un admin
-function bdd_supprimer_admin($db, $login) {
+function bdd_supprimer_utilisateur($db, $login) {
     $req = 'DELETE FROM utilisateur WHERE login="'.$login.'"';
     $ret = mysql_query($req, $db);
     if ($ret) {
-        return "Admin ".$login." supprimé";
+        return "Utilisateur ".$login." supprimé";
     } else {
         return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
     }
 }
 
 // Liste des admins
-function bdd_liste_admin($db) {
+function bdd_liste_utilisateur($db) {
     $req = 'SELECT login FROM utilisateur';
     $ret = mysql_query($req, $db);
     if ($ret) {
