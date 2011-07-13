@@ -240,6 +240,9 @@ dd {
 .img_droite {
     float:right;
 }
+.img_droite {
+    margin:1ex auto;
+}
 
 .legende_gauche {
     margin:1ex;
@@ -249,7 +252,11 @@ dd {
     margin:1ex;
     float:right;
 }
-.legende_gauche p, .legende_droite p {
+.legende_centre {
+    margin:1ex;
+    text-align:center;
+}
+.legende_gauche p, .legende_droite p, .legende_centre p {
     text-align:center;
     font-size:x-small;
 }
