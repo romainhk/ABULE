@@ -34,27 +34,28 @@ function conf_suppr() {
 }
 
 /*
- * Ajoute une légende aux images munies d'un attribut "name"
+ * Ajoute une légende aux images munies d'un attribut "title"
  */
 function img_avec_legende() {
     var les_images = document.getElementsByTagName("img");
     for each (img in les_images) {
         if (img.nodeType != undefined) {
-            var name = img.getAttribute('title');
-            if ( name != null ) {
-                var a = img.parentNode;
-                if (a.nodeName == "A") {
-                    // Ajoute de la légende
-                    var b = a.cloneNode(true);
-                    var div = document.createElement('div');
-                    var cote = img.className.split("_")[1];
-                    div.className = 'legende_' + cote;
-                    div.appendChild(b);
-                    var n = document.createElement('p');
-                    n.innerHTML = name;
-                    div.appendChild(n);
-                    a.parentNode.replaceChild(div, a);
-                }
+            var title = img.getAttribute('title');
+            if ( title == null ) {
+                title = ''
+            }
+            var a = img.parentNode;
+            if (a.nodeName == "A") {
+                // Ajoute de la légende
+                var b = a.cloneNode(true);
+                var div = document.createElement('div');
+                var cote = img.className.split("_")[1];
+                div.className = 'legende_' + cote;
+                div.appendChild(b);
+                var n = document.createElement('p');
+                n.innerHTML = title;
+                div.appendChild(n);
+                a.parentNode.replaceChild(div, a);
             }
         }
     }
