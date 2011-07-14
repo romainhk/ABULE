@@ -41,21 +41,20 @@ function img_avec_legende() {
     for each (img in les_images) {
         if (img.nodeType != undefined) {
             var title = img.getAttribute('title');
-            if ( title == null ) {
-                title = ''
-            }
-            var a = img.parentNode;
-            if (a.nodeName == "A") {
-                // Ajoute de la légende
-                var b = a.cloneNode(true);
-                var div = document.createElement('div');
-                var cote = img.className.split("_")[1];
-                div.className = 'legende_' + cote;
-                div.appendChild(b);
-                var n = document.createElement('p');
-                n.innerHTML = title;
-                div.appendChild(n);
-                a.parentNode.replaceChild(div, a);
+            if ( title != null ) {
+                var a = img.parentNode;
+                if (a.nodeName == "A") {
+                    // Ajoute de la légende
+                    var b = a.cloneNode(true);
+                    var div = document.createElement('div');
+                    var cote = img.className.split("_")[1];
+                    div.className = 'legende_' + cote;
+                    div.appendChild(b);
+                    var n = document.createElement('p');
+                    n.innerHTML = title;
+                    div.appendChild(n);
+                    a.parentNode.replaceChild(div, a);
+                }
             }
         }
     }

@@ -241,7 +241,7 @@ dd {
     float:right;
 }
 .img_centre {
-    margin:0.5ex auto;
+    margin:.5ex auto !important;
 }
 
 .legende_gauche {
@@ -259,6 +259,7 @@ dd {
 .legende_gauche p, .legende_droite p, .legende_centre p {
     text-align:center;
     font-size:x-small;
+    margin-top:.2ex;
 }
 
     /* Boite déroulante */
