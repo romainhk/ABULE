@@ -94,7 +94,7 @@ if (count($avertissements) > 0) {
     <script type="text/javascript" src="js/lightbox.js"></script>
   </head>
 
-  <body onload="horloge();img_avec_legende();boite_deroulante();">
+  <body onload="horloge();alignement_des_images();boite_deroulante();">
   <div style="margin:0 4%">
     <div class="banniere">
         <div class="superpose">

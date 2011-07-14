@@ -36,14 +36,15 @@ function conf_suppr() {
 /*
  * Ajoute une légende aux images munies d'un attribut "title"
  */
-function img_avec_legende() {
+function alignement_des_images() {
     var les_images = document.getElementsByTagName("img");
     for each (img in les_images) {
         if (img.nodeType != undefined) {
-            var title = img.getAttribute('title');
-            if ( title != null ) {
-                var a = img.parentNode;
-                if (a.nodeName == "A") {
+            var a = img.parentNode;
+            if (a.nodeName == "A") {
+                if (img.className.search(/^img_/) != -1) {
+                    var title = img.getAttribute('title');
+                    if ( title == null ) { title = ''}
                     // Ajoute de la légende
                     var b = a.cloneNode(true);
                     var div = document.createElement('div');
