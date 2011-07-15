@@ -30,10 +30,15 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
     $req = 'INSERT INTO page (nom, niveau, ordre, contenu) VALUES ("'.addslashes($nom).'", '.$niveau.', '.$ordre.', "'.$san_contenu.'")';
     $ret = mysql_query($req, $db);
     if (!$ret) {
-        if (mysql_errno($db) == 1062 and $forcer) { # la page existe dégà
-            bdd_modifier($db, $nom, $pere, $niveau, $ordre, $san_contenu);
+        if (mysql_errno($db) == 1062 and $forcer) {
+            $s = bdd_modifier($db, $nom, $pere, $niveau, $ordre, $san_contenu);
+            if ($s) { return $s; }
         } else {
-            return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
+            if (!$forcer) { # la page existe dégà
+                return "La page «".$nom."» existe déjà. Ajout interrompu";
+            } else {
+                return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
+            }
         }
     } else {
         bdd_logger($db, 'Ajout de : '.$nom);
@@ -47,13 +52,16 @@ function bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer=FALSE) {
 
 // Modifier une page dans la BDD
 function bdd_modifier($db, $nom, $pere, $niveau, $ordre, $contenu) {
-    menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
     $req = 'UPDATE page SET contenu="'.$contenu.'", niveau='.$niveau.', ordre='.$ordre.' WHERE nom="'.addslashes($nom).'"';
-    $ret = mysql_query($req, $db)
-       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    $ret = mysql_query($req, $db);
+    if (!$ret) {
+       return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db);
+    }
     bdd_logger($db, 'Modification de : '.$nom);
-    menu_modifier_fils($db, $pere, $nom, 'ajouter');
+    menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
+    menu_modifier_fils($db, $pere,                $nom, 'ajouter');
     menu_regenerer($db);
+    return FALSE;
 }
 
 // Récupérer une page depuis la BDD
@@ -305,6 +313,7 @@ function menu_ordonne($db, $peres, $niveau) {
 
 // Ajoute/retire la page au pere
 function menu_modifier_fils($db, $pere, $page, $modif='ajouter') {
+    #echo $pere."****".$page.'----'.$modif;
     if (!empty($pere)) {
         switch($modif) {
         case 'ajouter':

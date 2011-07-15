@@ -20,11 +20,11 @@ if (isset($_POST['contenu'])) {
 }
 $pere = "";
 if (isset($_POST['pere'])) {
-    $pere = urldecode($_POST['pere']);
+    $pere = stripslashes(urldecode($_POST['pere']));
 }
 $ordre = "";
 if (isset($_POST['ordre'])) {
-    $ordre = $_POST['ordre'];
+    $ordre = intval($_POST['ordre']);
     if (!is_int($ordre) or $ordre > 100 or $ordre < 1) {
         $ordre = 1;
     }
@@ -35,24 +35,11 @@ if (isset($_POST['modifier'])) {
 }
 
 # Traitement
-$req = 'SELECT COUNT(nom) FROM page WHERE nom="'.addslashes($nom).'"';
-$ret = mysql_query($req, $db);
-if ($ret) {
-    $f = mysql_fetch_row($ret);
-    if ($f[0] == 0 or $forcer) {
-        // Retrait puis ajout des liens lightbox (du coup, tout le monde en aura un)
-        $contenu = preg_replace('/(<a href=\"[^>]+) rel=\"lightbox\"(>\s*<img )/', '$1$2', $contenu);
-        $contenu = preg_replace('/(<a href=\"[^>]+)(>\s*<img )/', '$1 rel="lightbox"$2', $contenu);
-
-        $r = bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer);
-        if ($r) {
-            $_SESSION['message'] = $r;
-        }
-    } else {
-        $_SESSION['message'] = "La page « $nom » existe déjà";
-    }
-} else {
-    $_SESSION['message'] = "Problème lors de l'ajout de $nom à $pere ($ordre)";
+$contenu = preg_replace('/(<a href=\"[^>]+) rel=\"lightbox\"(>\s*<img )/', '$1$2', $contenu);
+$contenu = preg_replace('/(<a href=\"[^>]+)(>\s*<img )/', '$1 rel="lightbox"$2', $contenu);
+$r = bdd_sauvegarder($db, $nom, $pere, $ordre, $contenu, $forcer);
+if ($r) {
+    $_SESSION['message'] = $r;
 }
 
 redirection($nom, 1);
