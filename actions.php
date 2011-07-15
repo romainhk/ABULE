@@ -69,7 +69,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
                 # Ajouter aussi les pages filles
                 $index = 1;
                 foreach ($filles as $f) {
-                    $nom = $f['nom'];
+                    $nom = stripslashes($f['nom']);
                     $d = bdd_charger($db, $nom);
                     if (is_string($d)) {
                         echo '<div class="boite" id="boite_'.$index.'"><div class="boite_titre">'.$nom.'</div><div class="boite_contenu" id="contenu_'.$index.'">';
