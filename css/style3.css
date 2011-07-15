@@ -49,3 +49,6 @@ body{
     font-family:"Howies Funhouse", sans-serif;
 }
 
+.boite {
+    border-radius:3px;
+}

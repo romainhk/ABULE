@@ -10,7 +10,7 @@ require('fonctions.php');
  */
 $page = 'Accueil';
 if (isset($_GET['page']) && !empty($_GET['page'])) {
-    $page = $_GET['page'];
+    $page = stripslashes($_GET['page']);
 } else if (isset($_GET['action'])) {
     $page = 'Admin';
 }

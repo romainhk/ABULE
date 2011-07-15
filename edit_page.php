@@ -8,7 +8,7 @@ require_once('fonctions.php');
 session_start();
 # Paramètres
 if (isset($_POST['nom']) and strcmp($_POST['nom'], '')) {
-    $nom = urldecode($_POST['nom']);
+    $nom = stripslashes(urldecode($_POST['nom']));
 } else {
     $_SESSION['message'] = "Nom de page inconnu";
     redirection('Accueil', 1);
