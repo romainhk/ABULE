@@ -296,7 +296,7 @@ function menu_regenerer($db) {
             array_push($elems, $nom);
             $menu .= '<h2><a href="?page='.protect_url($nom).'">'.$nom."</a></h2>\n<ul>";
             if (!strcmp($nom, 'Événements')) { # Lien "Archive" pour les événements
-                $menu .= "<li><a href=\"?action=archives\">Archives</a></li>\n";
+                $menu .= "<li><a href=\"?page=Archives&action=archives\">Archives</a></li>\n";
             }
         }
         $fils = $row['fils'];

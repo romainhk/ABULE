@@ -22,7 +22,7 @@ unset($_SESSION['archivage']);
 <form id="archive" method="post" action="">
 <fieldset><legend>Archiver une page</legend>
 <table class="form_table"><tr>
-    <td><label for="titre">Nom de la page :</label></td>
+    <td><label for="titre">L'événement :</label></td>
     <td><?php
     echo '<select name="nom" size="1">';
     echo '<option selected="selected" value="">...</option>'."\n";
@@ -30,8 +30,8 @@ unset($_SESSION['archivage']);
     echo "</select>\n";
 ?></td>
 </tr><tr>
-    <td><label for="annee">Année (<i>YYYY</i>) :</label></td>
-    <td><input type="text" id="annee" name="annee" size="4" /></td>
+    <td><label for="annee">L'année :</label></td>
+    <td><input type="text" id="annee" name="annee" size="4" value="<?php echo strftime("%Y"); ?>" /></td>
 </tr><tr>
     <td colspan="2" style="text-align:right;">
         <input type="submit" id="submit" name="submit" value="Archiver la page" /></td>

@@ -5,9 +5,7 @@ date_default_timezone_set('Europe/Paris');
 require('db.php');
 require('fonctions.php');
 
-/*
- * Passage de paramètres GET
- */
+/*  $page  et  $action  */
 $page = 'Accueil';
 if (isset($_GET['page']) && !empty($_GET['page'])) {
     $page = stripslashes($_GET['page']);
@@ -117,7 +115,6 @@ require('menu.php'); ?>
     </div><!--
 
 ## Menu droit
-
     -->
     <div class="menu" style="float:right;">
         <?php #PHP
