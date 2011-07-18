@@ -4,7 +4,7 @@
  */
 require_once('fonctions.php');
 
-function archives() {
+function archives() { # Lire les archives
     global $db;
     echo "<h1>Archive des événements</h1>\n";
     $index = 1;
@@ -34,13 +34,14 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     switch ($action) {
     case 'modifier':
     case 'ajouter':
-        require('admin_add_mod.php');
+        require('edition.php');
         break;
     case 'lister':
     case 'supprimer':
     case 'renommer':
     case 'deplacer':
-        require('admin_liste_suppr.php');
+    case 'archiver':
+        require('maintenance.php');
         break;
     case 'logout':
         // Fermeture de la session
@@ -49,13 +50,12 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         redirection($page);
         break;
     case 'uploader':
+    case 'listerup':
     case 'changer_mdp':
     case 'admin':
     case 'contacter':
-    case 'listerup':
     case 'news':
-    case 'archiver':
-        require("$action.php");
+        require("actions/$action.php");
         break;
     case 'aide_html':
     case 'copyright':
@@ -77,7 +77,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         archives();
         break;
     case 'contacter':
-        require("contacter.php");
+        require("actions/contacter.php");
         break;
     }
 } else {

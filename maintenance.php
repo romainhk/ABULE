@@ -1,6 +1,7 @@
 <?php
-/*
- * Lister, supprimer, renommer ou déplacer des articles
+/* 
+ * !!! Maintenance du site !!!
+ * Lister, supprimer, renommer, déplacer ou archiver des articles
  */
 define("JOCKER_NVPERE", "###jocker_nvpere###");
 
@@ -26,7 +27,23 @@ if (isset($_POST['nouveau'])) {
     bdd_deplacer($db, $page, $nvpere, $ordre);
 } else if (isset($_POST['nom']) and !empty($_POST['nom'])) {
     bdd_supprimer($db, urldecode($_POST['nom']));
+} else if (isset($_POST['nom']) and isset($_POST['annee']) and !empty($_POST['nom'])) {
+    $nom   = urldecode($_POST['nom']);
+    $annee = intval($_POST['annee']);
+    if ($annee < 2000 || $annee > 2100) {
+        $_SESSION['archivage'] = 'Année "'.$annee.'" non valide';
+    } else {
+        $ret = bdd_archiver($db, $nom, $annee);
+        if ($ret) { $_SESSION['archivage'] = $ret; }
+    }
 }
+
+/* $_SESSION
+ */
+if (isset($_SESSION['archivage'])) {
+    echo message($_SESSION['archivage'], 1);
+}
+unset($_SESSION['archivage']);
 
 echo "<h1>Maintenance</h1>\n";
 // Formulaires
@@ -82,8 +99,25 @@ if (!strcmp($action, 'lister')) {
     echo '</li></ul>';
     echo '<div style="text-align:right;"><input type="submit" value="Déplacer" /></div>';
     echo "</fieldset>\n";
-
+} else if (!strcmp($action, 'archiver')) {
+    # Archiver
+    echo '<form id="archive" method="post" action="">';
+    echo '<fieldset><legend>Archiver une page</legend>';
+    echo '<table class="form_table"><tr>';
+    echo '<td><label for="titre">Événement :</label></td>';
+    echo '<td><select name="nom" size="1">';
+    echo '<option selected="selected" value="">...</option>'."\n";
+    option_parente('', 'Événements', array(2,3));
+    echo "</select>\n</td>";
+    echo '</tr><tr>';
+    echo '<td><label for="annee">Année :</label></td>';
+    echo '<td><input type="text" id="annee" name="annee" size="4" maxlength="4" value="'.strftime("%Y").'" /></td>';
+    echo '</tr><tr>';
+    echo '<td colspan="2" style="text-align:right;">';
+    echo '<input type="submit" id="submit" name="submit" value="Archiver la page" /></td>';
+    echo '</tr></table></fieldset>';
 } else {
     echo '<p>Paramètre "'.$action.'" inconnu</p>';
 }
+echo '</form>';
 ?>

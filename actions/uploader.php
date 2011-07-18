@@ -65,7 +65,7 @@ if ($statut > 0) {
     echo message($les_statut[$statut]." : $err");
 }
 ?>
-<form method="POST" action="uploader.php" enctype="multipart/form-data">
+<form method="POST" action="" enctype="multipart/form-data">
 <fieldset><legend>Envoie de fichier</legend>
 <ul><li><input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $taille_max*1024; ?>">
 <label for="nom">Fichier (taille maximum : <?php echo $taille_max/1024; ?> Mo) :</label> <input type="file" name="upload" size="40"></li></ul>
