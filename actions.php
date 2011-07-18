@@ -4,6 +4,26 @@
  */
 require_once('fonctions.php');
 
+function archives() {
+    global $db;
+    echo "<h1>Archive des événements</h1>\n";
+    $index = 1;
+    $archives = bdd_les_archives($db);
+    $lannee = 0;
+    foreach ($archives as $a) {
+        $nom   = $a['nom'];
+        $annee = $a['annee'];
+        $cont  = $a['contenu'];
+        if ($annee != $lannee) { 
+            echo "<h3>Annee $annee</h3>\n";
+            $lannee = $annee;
+        }
+        echo '<div class="boite" id="boite_'.$index.'"><div class="boite_titre">'.stripslashes($nom).'</div><div class="boite_contenu" id="contenu_'.$index.'">';
+        echo $cont.'</div></div>'."\n";
+        $index++;
+    }
+}
+
 if (isset($_SESSION['message'])) {
     # Messages en attente
     echo message('Avertissement : '.$_SESSION['message']);
@@ -32,15 +52,17 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'changer_mdp':
     case 'admin':
     case 'contacter':
-    case 'news':
-        require("$action.php");
-        break;
     case 'listerup':
-        require('browser.php');
+    case 'news':
+    case 'archiver':
+        require("$action.php");
         break;
     case 'aide_html':
     case 'copyright':
         require("$action.html");
+        break;
+    case 'archives':
+        archives();
         break;
     default:
         break;
@@ -50,6 +72,9 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     switch ($action) {
     case 'copyright':
         require("copyright.html");
+        break;
+    case 'archives':
+        archives();
         break;
     case 'contacter':
         require("contacter.php");

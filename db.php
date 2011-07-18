@@ -73,21 +73,18 @@ function bdd_charger($db, $nom) {
 // Supprimer une page
 function bdd_supprimer($db, $nom) {
     if (strcmp($nom, '')) {
-        $req = 'SELECT COUNT(*) FROM parente WHERE page="'.addslashes($nom).'"';
-        $ret = mysql_query($req, $db)
-            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-        $r = mysql_fetch_row($ret);
-        if ($r[0] == 0) {
+        if (bdd_get($db, 'niveau', $nom)) { # On vérifie que la page existe
             $req = 'DELETE FROM page WHERE nom="'.addslashes($nom).'"';
             $ret = mysql_query($req, $db)
                or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
             bdd_logger($db, 'Suppression de : '.$nom);
             menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
             menu_regenerer($db);
+            return FALSE;
         } else {
-            echo "Impossible de supprimer la page $nom ; celle-ci a encore des fils.";
+            return "Impossible de supprimer la page $nom ; celle-ci a encore des fils.";
         }
-    } else die("Aucune page sélectionnée");
+    } else return "Aucune page sélectionnée";
 }
 
 // Renommer une page
@@ -118,6 +115,35 @@ function bdd_deplacer($db, $page, $nvpere, $ordre) {
         menu_modifier_fils($db, $nvpere, $page, 'ajouter');
         menu_regenerer($db);
     }
+}
+
+// Archiver une page
+function bdd_archiver($db, $nom, $annee) {
+    if (bdd_get($db, 'niveau', $nom)) {
+        $contenu = bdd_charger($db, $nom);
+        $req = 'INSERT INTO archives (nom, annee, contenu) VALUES ("'.addslashes($nom).'", '.$annee.', "'.$contenu.'")';
+        $ret = mysql_query($req, $db);
+        if (!$ret) { return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db); }
+        $ret = bdd_supprimer($db, $nom);
+        if ($ret) { return $ret; }
+        bdd_logger($db, 'Archivage de '.$nom.' ('.$annee.')');
+        menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
+        menu_regenerer($db);
+    } else {
+        return 'Page "'.$nom.'" inexistante';
+    }
+    return FALSE;
+}
+
+// Donne les archives
+function bdd_les_archives($db, $nom) {
+    $arch = array();
+    $req = 'SELECT nom, annee, contenu FROM archives ORDER BY annee';
+    $ret = mysql_query($req, $db);
+    while ($row = mysql_fetch_array($ret)) {
+        array_push($arch, array('nom' => $row['nom'], 'annee' => $row['annee'], 'contenu' => $row['contenu']));
+    }
+    return $arch;
 }
 
 // Récupérer les infos d'une page
@@ -269,6 +295,9 @@ function menu_regenerer($db) {
             }
             array_push($elems, $nom);
             $menu .= '<h2><a href="?page='.protect_url($nom).'">'.$nom."</a></h2>\n<ul>";
+            if (!strcmp($nom, 'Événements')) { # Lien "Archive" pour les événements
+                $menu .= "<li><a href=\"?action=archives\">Archives</a></li>\n";
+            }
         }
         $fils = $row['fils'];
         $menu .= '<li><a href="?page='.protect_url($fils).'">'.$fils."</a></li>\n";

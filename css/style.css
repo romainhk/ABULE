@@ -268,7 +268,7 @@ dd {
     padding:0;
     border:1px solid #AAAAAA;
     border-collapse:collapse;
- 
+    -moz-border-radius:3px;
 }
 .boite_titre {
     font-size:115%;

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Mar 12 Juillet 2011 à 10:57
+-- Généré le : Lun 18 Juillet 2011 à 16:08
 -- Version du serveur: 5.1.57
--- Version de PHP: 5.3.6-12
+-- Version de PHP: 5.3.6-13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,6 +23,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `archives`
+--
+
+CREATE TABLE IF NOT EXISTS `archives` (
+  `nom` varchar(50) NOT NULL,
+  `annee` year(4) NOT NULL,
+  `contenu` mediumtext NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `log`
 --
 
@@ -32,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `log` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `message` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='journal des modifications' AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='journal des modifications' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -60,8 +72,7 @@ INSERT INTO `page` (`nom`, `niveau`, `ordre`, `contenu`) VALUES
 ('Trousse à dissection', 2, 20, '&lt;h1&gt;Trousse à dissection&lt;/h1&gt;\r\n&lt;h2&gt;En construction&lt;/h2&gt;'),
 ('Événements', 1, 22, '&lt;h1&gt;Événements&lt;/h1&gt;'),
 ('Passé', 2, 10, '&lt;h1&gt;Passé&lt;/h1&gt;\r\n&lt;h2&gt;En construction&lt;/h2&gt;'),
-('À venir', 2, 30, '&lt;h1&gt;À venir&lt;/h1&gt;\r\n&lt;h2&gt;En construction&lt;/h2&gt;'),
-('Test', 3, 1, '&lt;h1&gt;Test&lt;/h1&gt;\r\n&lt;p&gt;Contenu de la sous-page déroulante...&lt;/p&gt;\r\n&lt;ul&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;sedfgosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;seqoixcvesosin&lt;/li&gt;\r\n&lt;li&gt;seqoissdfssfosin&lt;/li&gt;\r\n&lt;li&gt;seqoxcvfosin&lt;/li&gt;\r\n&lt;li&gt;sedfgosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;seqoixcvesosin&lt;/li&gt;\r\n&lt;li&gt;seqoissdfssfosin&lt;/li&gt;\r\n&lt;li&gt;seqoxcvfosin&lt;/li&gt;\r\n&lt;li&gt;sedfgosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;seqoixcvesosin&lt;/li&gt;\r\n&lt;li&gt;seqoissdfssfosin&lt;/li&gt;\r\n&lt;li&gt;seqoxcvfosin&lt;/li&gt;\r\n&lt;li&gt;szezfosin&lt;/li&gt;\r\n&lt;li&gt;seqoinfosin&lt;/li&gt;\r\n&lt;li&gt;dernier&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p&gt;Test taille&lt;/p&gt;');
+('À venir', 2, 30, '&lt;h1&gt;À venir&lt;/h1&gt;\r\n&lt;h2&gt;En construction&lt;/h2&gt;');
 
 -- --------------------------------------------------------
 
@@ -84,8 +95,7 @@ INSERT INTO `parente` (`page`, `fils`) VALUES
 ('Événements', 'À venir'),
 ('Événements', 'En cours'),
 ('Nos Services', 'Bourse aux livres'),
-('Nos Services', 'Trousse à dissection'),
-('Passé', 'Test');
+('Nos Services', 'Trousse à dissection');
 
 -- --------------------------------------------------------
 
@@ -105,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`login`, `mdp`, `admin`) VALUES
-('admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1),
+('admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
