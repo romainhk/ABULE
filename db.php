@@ -93,11 +93,17 @@ function bdd_renommer($db, $page, $nouv) {
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
     bdd_logger($db, 'Renommage de '.$page.' en : '.$nouv);
-    // Changer les parentés aussi
+    // Remplacement par le nouveau père
     $pere = menu_pere($db, $page);
     if (!empty($pere)) {
         menu_modifier_fils($db, $pere, $page, 'retirer');
         menu_modifier_fils($db, $pere, $nouv, 'ajouter');
+    }
+    // Renommage pour les fils aussi
+    $lf = menu_les_fils($db, $page);
+    while ($f = array_pop($lf)) {
+        menu_modifier_fils($db, $page, $f['nom'], 'retirer');
+        menu_modifier_fils($db, $nouv, $f['nom'], 'ajouter');
     }
     menu_regenerer($db);
 }
@@ -136,7 +142,7 @@ function bdd_archiver($db, $nom, $annee) {
 }
 
 // Donne les archives
-function bdd_les_archives($db, $nom) {
+function bdd_les_archives($db) {
     $arch = array();
     $req = 'SELECT nom, annee, contenu FROM archives ORDER BY annee';
     $ret = mysql_query($req, $db);
@@ -260,23 +266,6 @@ function bdd_journal($db, $nb=10) {
 /*
  * Gestion du Menu     #######################
  */
-// Liste des éléments pères du menu
-function menu_les_peres($db, $niveaux) {
-    $peres = array();
-    $niveau = 'niveau='.array_pop($niveaux);
-    foreach ($niveaux as $n) {
-        $niveau = $niveau.' OR niveau='.$n;
-    }
-    $req = 'SELECT nom, ordre, niveau FROM page WHERE '.$niveau.' ORDER BY ordre ASC';
-    $ret = mysql_query($req, $db)
-       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-    while ($row = mysql_fetch_array($ret)) {
-        $pair = array('nom' => $row['nom'], 'niveau' => $row['niveau'], 'ordre' => $row['ordre']);
-        array_push($peres, $pair);
-    }
-    return $peres;
-}
-
 // Mettre à jour le menu.html
 function menu_regenerer($db) {
     $elems = array();
@@ -323,6 +312,23 @@ function menu_pere($db, $page) {
     }
 }
 
+// Liste des éléments pères du menu
+function menu_les_peres($db, $niveaux) {
+    $peres = array();
+    $niveau = 'niveau='.array_pop($niveaux);
+    foreach ($niveaux as $n) {
+        $niveau = $niveau.' OR niveau='.$n;
+    }
+    $req = 'SELECT nom, ordre, niveau FROM page WHERE '.$niveau.' ORDER BY ordre ASC';
+    $ret = mysql_query($req, $db)
+       or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
+    while ($row = mysql_fetch_array($ret)) {
+        $pair = array('nom' => $row['nom'], 'niveau' => $row['niveau'], 'ordre' => $row['ordre']);
+        array_push($peres, $pair);
+    }
+    return $peres;
+}
+
 // Donne une liste ordonnée des pages
 function menu_ordonne($db, $peres, $niveau) {
     if ((!isset($peres) or empty($peres)) && $niveau == 1) {
@@ -342,7 +348,7 @@ function menu_ordonne($db, $peres, $niveau) {
 
 // Ajoute/retire la page au pere
 function menu_modifier_fils($db, $pere, $page, $modif='ajouter') {
-    #echo $pere."****".$page.'----'.$modif;
+    #echo $pere."****".$page.'----'.$modif.'<br/>';
     if (!empty($pere)) {
         switch($modif) {
         case 'ajouter':
