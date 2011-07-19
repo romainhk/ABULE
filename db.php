@@ -82,7 +82,7 @@ function bdd_supprimer($db, $nom) {
             menu_regenerer($db);
             return FALSE;
         } else {
-            return "Impossible de supprimer la page $nom ; celle-ci a encore des fils.";
+            return "Impossible de supprimer la page $nom";
         }
     } else return "Aucune page sélectionnée";
 }
@@ -92,7 +92,7 @@ function bdd_renommer($db, $page, $nouv) {
     $req = 'UPDATE page SET nom="'.addslashes($nouv).'" WHERE nom="'.addslashes($page).'"';
     $ret = mysql_query($req, $db)
        or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-    bdd_logger($db, 'Renommage de '.$page.' en : '.$nouv);
+    bdd_logger($db, 'Renommage de "'.$page.'" en : '.$nouv);
     // Remplacement par le nouveau père
     $pere = menu_pere($db, $page);
     if (!empty($pere)) {
@@ -115,7 +115,7 @@ function bdd_deplacer($db, $page, $nvpere, $ordre) {
         $req = 'UPDATE page SET niveau='.$niveau.', ordre='.$ordre.' WHERE nom="'.addslashes($page).'"';
         $ret = mysql_query($req, $db)
            or die("Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db));
-        bdd_logger($db, 'Déplacement de '.$page.' sous '.$nvpere);
+        bdd_logger($db, 'Déplacement de "'.$page.'" sous : '.$nvpere);
         $pere = menu_pere($db, $page);
         menu_modifier_fils($db, $pere,   $page, 'retirer');
         menu_modifier_fils($db, $nvpere, $page, 'ajouter');
@@ -132,7 +132,7 @@ function bdd_archiver($db, $nom, $annee) {
         if (!$ret) { return "Erreur dans la requête ".mysql_errno($db)." : ".mysql_error($db); }
         $ret = bdd_supprimer($db, $nom);
         if ($ret) { return $ret; }
-        bdd_logger($db, 'Archivage de '.$nom.' ('.$annee.')');
+        bdd_logger($db, 'Archivage de "'.$nom.'" ('.$annee.')');
         menu_modifier_fils($db, menu_pere($db, $nom), $nom, 'retirer');
         menu_regenerer($db);
     } else {

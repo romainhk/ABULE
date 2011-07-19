@@ -37,18 +37,6 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         require('edition.php');
         break;
     case 'lister':
-    case 'supprimer':
-    case 'renommer':
-    case 'deplacer':
-    case 'archiver':
-        require('maintenance.php');
-        break;
-    case 'logout':
-        // Fermeture de la session
-        $_SESSION = array();
-        session_destroy();
-        redirection($page);
-        break;
     case 'uploader':
     case 'listerup':
     case 'changer_mdp':
@@ -57,12 +45,21 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'news':
         require("actions/$action.php");
         break;
+    case 'maintenance':
+    case 'deplacer':
+        require('maintenance.php');
+        break;
     case 'aide_html':
     case 'copyright':
         require("$action.html");
         break;
     case 'archives':
         archives();
+        break;
+    case 'logout':  // Fermeture de la session
+        $_SESSION = array();
+        session_destroy();
+        redirection($page);
         break;
     default:
         break;

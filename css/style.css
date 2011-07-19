@@ -357,7 +357,7 @@ input[type="submit"] {
 
 .form_table {
     margin:1ex auto;
-    min-width:80%;
+    width:90%;
 }
 
 /*

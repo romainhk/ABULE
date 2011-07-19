@@ -63,13 +63,11 @@ $journal .= '</table>'."\n";
 <form id="supprimer_admin" method="post" action="">
 <table class="form_table"><tr>
     <td><label for="nom">Login de l'utilisateur à supprimer : </label></td>
-    <td><select name="nom" size="1">
+    <td style="text-align:left;"><select name="nom" size="1">
 <?php
 foreach (bdd_liste_utilisateur($db) as $nom) {
     echo $nom;
-    if (strcmp($nom,"admin")) {
-        echo '<option value="'.urlencode($nom).'">'.$nom.'</option>'."\n";
-    }
+    echo '<option value="'.urlencode($nom).'">'.$nom.'</option>'."\n";
 }
 ?></select></td>
 </tr><tr>
