@@ -1,7 +1,7 @@
 <?php
 /* 
  * !!! Maintenance du site !!!
- * Supprimer, renommer, déplacer ou archiver des articles
+ * Déplacer, renommer, supprimer ou archiver des articles
  */
 define("JOCKER_NVPERE", "##jocker_nvpere##");
 $ret = FALSE;
@@ -53,18 +53,7 @@ if (isset($_SESSION['maintenance'])) {
     echo message($_SESSION['maintenance'], 1);
 }
 unset($_SESSION['maintenance']);
-/*
-} else if (!strcmp($action, 'supprimer')) {
-    # Supprimer
-    echo '<form action="" method="post" onSubmit="return conf_suppr();">'."\n";
-    echo "<fieldset><legend>Supprimer une page</legend>\n";
-    echo '<select name="nom" size="1" onChange="abule.suppr=this.value">';
-    echo '<option selected="selected" value="">...</option>'."\n";
-    option_parente('', '', array(1,2,3));
-    echo "</select>\n";
-    echo '<input type="submit" value="Supprimer" />';
-    echo "</fieldset>\n";
- */
+
 ?>
 <h1>Maintenance</h1>
 
@@ -116,11 +105,11 @@ if (!strcmp($action, "deplacer")) {
 </fieldset>
 
 <!-- Supprimer -->
-<form action="" method="post" onSubmit="<?php echo "return conf_suppr();" ?>">
+<form action="" method="post">
 <fieldset><legend>Supprimer une page</legend>
 <table class="form_table">
     <tr><td>
-        <select name="supprimer" size="1" onChange="abule.suppr=this.value">
+        <select name="supprimer" size="1">
         <option selected="selected" value="">...</option>
 <?php
     option_parente('', '', array(1,2,3));

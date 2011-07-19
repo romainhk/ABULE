@@ -36,6 +36,10 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'ajouter':
         require('edition.php');
         break;
+    case 'maintenance':
+    case 'deplacer':
+        require('maintenance.php');
+        break;
     case 'lister':
     case 'uploader':
     case 'listerup':
@@ -44,10 +48,6 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'contacter':
     case 'news':
         require("actions/$action.php");
-        break;
-    case 'maintenance':
-    case 'deplacer':
-        require('maintenance.php');
         break;
     case 'aide_html':
     case 'copyright':
@@ -83,7 +83,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         echo lien_modifier($page);
     }
     $c = bdd_charger($db, $page);
-    if (is_string($c)) {
+    if ($c && is_string($c)) {
         echo $c;
         if (bdd_get($db, 'niveau', $page) == 2) {
             $filles = menu_les_fils($db, $page);
@@ -107,8 +107,8 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
             }
         }
     } else {
-        echo message("Impossible de charger la page « $page ». Redirection en cours...");
-        redirection('Accueil', 500);
+        echo message("Impossible de charger la page « $page ». Redirection en cours...", 2);
+        redirection('Accueil', 1000);
     }
 }
 ?>

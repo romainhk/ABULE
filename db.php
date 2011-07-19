@@ -162,10 +162,9 @@ function bdd_get($db, $champ, $nom) {
         $f = mysql_fetch_row($ret);
         if (isset($f[0])) {
             return $f[0];
-        } else {
-            return FALSE;
         }
     }
+    return FALSE;
 }
 
 // Liste des fils d'une page

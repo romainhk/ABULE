@@ -24,7 +24,6 @@ function horloge() {
 
 /*
  * Confirmation de la suppression d'une page
- */
 abule = new Object();
 abule.suppr = "";
 function conf_suppr() {
@@ -32,6 +31,7 @@ function conf_suppr() {
     conf = window.confirm("\u00CAtes-vous s\u00FBre de vouloir supprimer la page \u00AB "+l+" \u00BB ?");
     return conf;
 }
+ */
 
 /*
  * Ajoute une légende aux images munies d'un attribut "title"
