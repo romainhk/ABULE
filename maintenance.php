@@ -138,7 +138,7 @@ if (!strcmp($action, "deplacer")) {
         <td><input type="text" id="annee" name="annee" size="4" maxlength="4" value="<?php echo strftime("%Y"); ?>" /></td>
     </tr><tr>
         <td colspan="2" style="text-align:right;">
-        <input type="submit" id="submit" name="submit" value="Archiver la page" /></td>
+        <input type="submit" id="submit" name="submit" value="Archiver" /></td>
     </tr>
 </table>
 </fieldset>

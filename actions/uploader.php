@@ -67,9 +67,15 @@ if ($statut > 0) {
 ?>
 <form method="POST" action="" enctype="multipart/form-data">
 <fieldset><legend>Envoie de fichier</legend>
-<ul><li><input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $taille_max*1024; ?>">
-<label for="nom">Fichier (taille maximum : <?php echo $taille_max/1024; ?> Mo) :</label> <input type="file" name="upload" size="40"></li></ul>
-  <div style="text-align:right; padding-right:1em;"><input type="submit" name="envoyer" value="Envoyer le fichier"></div>
+<table class="form_table">
+    <tr>
+        <td><input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $taille_max*1024; ?>"></td>
+        <td><label for="nom">Fichier (taille maximum : <?php echo $taille_max/1024; ?> Mo) :</label> <input type="file" name="upload" size="40"></td>
+    </tr><tr>
+        <td colspan="2" style="text-align:right;">
+        <input type="submit" name="envoyer" value="Envoyer le fichier"></td>
+    </tr>
+</table>
 </form>
 <?php
 if ($statut == 0) {
