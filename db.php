@@ -142,12 +142,24 @@ function bdd_archiver($db, $nom, $annee) {
 }
 
 // Donne les archives
-function bdd_les_archives($db) {
+function bdd_les_archives($db, $annee=0) {
     $arch = array();
-    $req = 'SELECT nom, annee, contenu FROM archives ORDER BY annee';
+    $where = '';
+    if ($annee != 0) { $where = "WHERE annee=$annee"; }
+    $req = "SELECT nom, annee, contenu FROM archives $where ORDER BY annee";
     $ret = mysql_query($req, $db);
     while ($row = mysql_fetch_array($ret)) {
         array_push($arch, array('nom' => $row['nom'], 'annee' => $row['annee'], 'contenu' => $row['contenu']));
+    }
+    return $arch;
+}
+// Donne les annees présentes dans les archives
+function bdd_les_annees_en_archive($db) {
+    $arch = array();
+    $req = "SELECT DISTINCT annee FROM archives ORDER BY annee";
+    $ret = mysql_query($req, $db);
+    while ($row = mysql_fetch_row($ret)) {
+        array_push($arch, $row[0]);
     }
     return $arch;
 }
@@ -283,9 +295,6 @@ function menu_regenerer($db) {
             }
             array_push($elems, $nom);
             $menu .= '<h2><a href="?page='.protect_url($nom).'">'.$nom."</a></h2>\n<ul>";
-            if (!strcmp($nom, 'Événements')) { # Lien "Archive" pour les événements
-                $menu .= "<li><a href=\"?page=Archives&action=archives\">Archives</a></li>\n";
-            }
         }
         $fils = $row['fils'];
         $menu .= '<li><a href="?page='.protect_url($fils).'">'.$fils."</a></li>\n";

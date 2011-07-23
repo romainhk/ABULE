@@ -147,7 +147,7 @@ if (is_string($c)) {
 require("membres.php"); ?>
     </div>
     <div class="bord">
-        <div class="corps"><!--
+        <div id="corps" class="corps"><!--
 
 ## Corps
 -->     <?php #PHP

@@ -4,24 +4,16 @@
  */
 require_once('fonctions.php');
 
-function archives() { # Lire les archives
+function lien_archives() {
     global $db;
-    echo "<h1>Archive des événements</h1>\n";
-    $index = 1;
-    $archives = bdd_les_archives($db);
-    $lannee = 0;
+    $r  = "<table class=\"archive\">\n<tr>";
+    $r .= "<th scope=\"row\">Archives :</th>\n";
+    $archives = bdd_les_annees_en_archive($db);
     foreach ($archives as $a) {
-        $nom   = $a['nom'];
-        $annee = $a['annee'];
-        $cont  = $a['contenu'];
-        if ($annee != $lannee) { 
-            echo "<h3>Annee $annee</h3>\n";
-            $lannee = $annee;
-        }
-        echo '<div class="boite" id="boite_'.$index.'"><div class="boite_titre">'.stripslashes($nom).'</div><div class="boite_contenu" id="contenu_'.$index.'">';
-        echo $cont.'</div></div>'."\n";
-        $index++;
+        $r .= "<td><a onclick=\"demander_archives(lire_archives, $a);\">$a</a></td><td>&#x2022;</td>\n";
     }
+    $r .= "<td><a href=\"index.php?page=Passé\">Retour</a></td>\n";
+    return $r."</tr></table>\n";
 }
 
 if (isset($_SESSION['message'])) {
@@ -53,9 +45,6 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'copyright':
         require("$action.html");
         break;
-    case 'archives':
-        archives();
-        break;
     case 'logout':  // Fermeture de la session
         $_SESSION = array();
         session_destroy();
@@ -70,9 +59,6 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     case 'copyright':
         require("copyright.html");
         break;
-    case 'archives':
-        archives();
-        break;
     case 'contacter':
         require("actions/contacter.php");
         break;
@@ -85,25 +71,15 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     $c = bdd_charger($db, $page);
     if ($c && is_string($c)) {
         echo $c;
+        $index_bd = 1;
+        if (!strcmp($page, 'Passé')) {
+            echo lien_archives();
+        }
         if (bdd_get($db, 'niveau', $page) == 2) {
             $filles = menu_les_fils($db, $page);
             if (count($filles) > 0) {
                 # Ajouter aussi les pages filles
-                $index = 1;
-                foreach ($filles as $f) {
-                    $nom = $f['nom'];
-                    $d = bdd_charger($db, $nom);
-                    if (is_string($d)) {
-                        echo '<div class="boite" id="boite_'.$index.'"><div class="boite_titre">'.stripslashes($nom).'</div><div class="boite_contenu" id="contenu_'.$index.'">';
-                        if (isset($_SESSION['login'])) {
-                            echo lien_modifier($nom);
-                        }
-                        echo $d.'</div></div>'."\n";
-                        $index++;
-                    } else {
-                        echo message("Impossible de charger la sous-page « $page »");
-                    }
-                }
+                echo pages_filles($filles);
             }
         }
     } else {

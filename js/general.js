@@ -23,17 +23,6 @@ function horloge() {
 }
 
 /*
- * Confirmation de la suppression d'une page
-abule = new Object();
-abule.suppr = "";
-function conf_suppr() {
-    var l = decodeURI(abule.suppr).replace(/\+/, " ");
-    conf = window.confirm("\u00CAtes-vous s\u00FBre de vouloir supprimer la page \u00AB "+l+" \u00BB ?");
-    return conf;
-}
- */
-
-/*
  * Ajoute une légende aux images munies d'un attribut "title"
  */
 function alignement_des_images() {
@@ -133,5 +122,56 @@ function hasClass(node, className) {
         return true;
     }
     return (" " + haystack + " ").indexOf(" " + className + " ") > -1;
+}
+
+/*
+ * Ajax
+ */
+var xhr = null;
+function getXMLHttpRequest() {
+	if (window.XMLHttpRequest || window.ActiveXObject) {
+		if (window.ActiveXObject) {
+			try {
+				xhr = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch(e) {
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+		} else {
+			xhr = new XMLHttpRequest(); 
+		}
+	} else {
+		alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+		return null;
+	}
+	
+	return xhr;
+}
+
+function demander_archives(callback, annee) {
+    if (xhr && xhr.readyState != 0) {
+		xhr.abort();
+	}
+	xhr = getXMLHttpRequest();
+	
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+			callback(xhr.responseText);
+		}
+	};
+
+	xhr.open("GET", "archives.php?annee=" + annee, true);
+	xhr.send(null);
+}
+
+function lire_archives(sData) {
+    var filles = document.getElementById("filles");
+    if (filles) {
+        filles.parentNode.removeChild(filles);
+    }
+    var corps = document.getElementById("corps");
+    if (!corps) { return ; }
+    corps.innerHTML = corps.innerHTML + sData;
+    alignement_des_images();
+    boite_deroulante();
 }
 

@@ -216,6 +216,9 @@ dd {
 .surligner {
     background-color:#FFFF00;
 }
+.sousligner {
+    text-decoration:underline;
+}
 
 .message_important {
     color:#CC0000;
@@ -314,6 +317,21 @@ dd {
 }
 .modifier a:visited {
     color:#009900;
+}
+    /* Archives */
+.archive {
+    padding:0;
+    margin:0.5ex auto;
+}
+.archive td {
+    text-align:center;
+}
+.archive td a {
+    color:#009900;
+}
+.archive td a:hover {
+    font-style:italic;
+    text-decoration:underline;
 }
 
 /*

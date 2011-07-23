@@ -90,4 +90,26 @@ function message($mess, $niveau=2) {
     return "\n<p class=\"$class\">$mess</p>\n";
 }
 
+// Charger les pages filles en boite déroulante
+function pages_filles($filles) {
+    global $db;
+    global $index_bd;
+    $r = "<div id=\"filles\">\n";
+    foreach ($filles as $f) {
+        $nom = $f['nom'];
+        $d = bdd_charger($db, $nom);
+        if (is_string($d)) {
+            $r .= '<div class="boite" id="boite_'.$index_bd.'"><div class="boite_titre">'.stripslashes($nom).'</div><div class="boite_contenu" id="contenu_'.$index_bd.'">';
+            if (isset($_SESSION['login'])) {
+                $r .= lien_modifier($nom);
+            }
+            $r .= $d.'</div></div>'."\n";
+            $index_bd++;
+        } else {
+            $r .= message("Impossible de charger la sous-page « $page »");
+        }
+    }
+    return $r."</div>\n";
+}
+
 ?>
