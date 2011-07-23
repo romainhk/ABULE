@@ -1,0 +1,6 @@
+/*
+ * Propriété non CSS3 pour gecko
+ */
+.boite {
+    -moz-border-radius:4px;
+}

@@ -26,12 +26,14 @@ $styles = array( "style", "lightbox" ); //Les styles css à utiliser
 $browser = get_browser($_SERVER["HTTP_USER_AGENT"], FALSE);
 if (is_object($browser)) {
     if ($browser->cssversion > 2) {
-        array_push($styles, "style3");
+        array_push($styles, "style_plus");
     } else {
-        #array_push($styles, "style2");
         if ($browser->cssversion <= 1) {
             array_push($avertissements, 
                 "Votre navigateur web (".$browser->browser.' '.$browser->version.") est trop ancien");
+        }
+        if (!strcmp($browser->browser, "Firefox")) {
+            array_push($styles, "gecko");
         }
     }
     if (!$browser->javascript) {

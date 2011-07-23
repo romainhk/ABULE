@@ -1,3 +1,6 @@
+/*
+ * CSS3
+ */
 @font-face {
     font-family:"Qlassik";
     src:url('../polices/Qlassik_TB.ttf');
@@ -11,13 +14,6 @@
     src:url('../polices/Howie_s_Funhouse.ttf');
 }
 
-body{
-    background-position:center top;
-    background-image:url('../images/fond.jpg'),url('../images/fd.jpg');
-    background-attachment:fixed;
-	background-repeat:no-repeat,repeat-x;
-}
-	
 .bannieredroite img {
     -moz-transform:matrix(-1,0,0,1,0,0);
 }
@@ -50,5 +46,5 @@ body{
 }
 
 .boite {
-    border-radius:3px;
+    border-radius:4px;
 }

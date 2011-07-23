@@ -3,8 +3,10 @@
 body {
     margin:0;
     background-color:#85af43;
+    background:url('../images/fond.jpg') center top;
+    background-attachment:fixed;
+	background-repeat:no-repeat;
     color:#003300;
-   /* background-repeat:no-repeat;*/
 }
 
 /* **********
@@ -49,6 +51,7 @@ body {
     font-size:medium;
     color:#009900;
     background-color:transparent;
+    background:url('../images/menufd.png') top repeat;
 }
 
 .menu img { /* Le logo du menu */
@@ -172,6 +175,7 @@ dd {
     color:#003300;
     background-color:white;
     overflow:auto;
+    background:url('../images/corps.png') top repeat;
 }
 
 .corps h1 {
