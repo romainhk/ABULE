@@ -1,4 +1,8 @@
 <?php
+/*
+ * ### Changer mot de passe
+ * Formulaire pour changer de mot de passe
+ */
 echo '<h1>Mot de passe</h1>'."\n";
 
 if (isset($_POST['submit'])) {

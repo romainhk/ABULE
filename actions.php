@@ -1,5 +1,6 @@
 <?php
 /*
+ * ### Actions
  * Gestion des actions disponibles pour l'index et inclusion du corps
  */
 require_once('fonctions.php');
@@ -12,7 +13,7 @@ function lien_archives() {
     foreach ($archives as $a) {
         $r .= "<td><a onclick=\"demander_archives(lire_archives, $a);\">$a</a></td><td>&#x2022;</td>\n";
     }
-    $r .= "<td><a href=\"index.php?page=Passé\">Retour</a></td>\n";
+    $r .= "<td><a href=\"index.php?page=Passés\">Retour</a></td>\n";
     return $r."</tr></table>\n";
 }
 
@@ -54,7 +55,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
         break;
     }
 } else if (strcmp($action, 'lire')) {
-    # Actions aussi possible sans besoin d'être loggé
+    # Actions possible sans besoin d'être loggé
     switch ($action) {
     case 'copyright':
         require("copyright.html");
@@ -72,7 +73,7 @@ if (strcmp($action, 'lire') and isset($_SESSION['login'])) {
     if ($c && is_string($c)) {
         echo $c;
         $index_bd = 1;
-        if (!strcmp($page, 'Passé')) {
+        if (!strcmp($page, 'Passés')) {
             echo lien_archives();
         }
         if (bdd_get($db, 'niveau', $page) == 2) {

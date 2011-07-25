@@ -1,4 +1,8 @@
 <?php
+/*
+ * ### Membres
+ * Boite de connection et ouverture de session
+ */
 #start() et destroy() sont dans index.php
 
 if (isset($_POST['submit'])) {

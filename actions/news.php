@@ -1,4 +1,8 @@
 <?php
+/*
+ * ### News
+ * Créer des news rss
+ */
 define("FICHIER_RSS", "flux.rss");
 // Ajoute un élément au flux rss
 function ajouter_news($fichier, $titre, $cible){

@@ -1,4 +1,8 @@
 <?php
+/*
+ * ### Menu
+ * Génère et charge le menu ; ajoute les actions d'administration
+ */
 if (!file_exists('uploads/menu.html')) {
     require_once('db.php');
     menu_regenerer($db);

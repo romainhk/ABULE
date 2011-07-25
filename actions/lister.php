@@ -1,13 +1,20 @@
-<h1>Liste des pages</h1>
-<p>Liste classée des pages existantes.</p>
 <?php
-    echo '<table cellspacing="5" cellpadding="2">'."\n";
-    echo "<tr><th>Nom</th><th>Ordre</th></tr>\n";
+/*
+ * ### Lister
+ * Liste des pages
+ */
+?>
+<h1>Liste des pages</h1>
+<p>Liste des pages existantes, classée par numéro d'ordre.</p>
+<?php
+    echo '<table cellspacing="5" cellpadding="2" style="margin:1ex;">'."\n";
+    echo '<tr><th style="text-align:center;">Nom de la page</th><th>Ordre</th></tr>'."\n";
     $liste = menu_ordonne($db, NULL, 1);
     foreach ($liste as $l) {
-        echo '<tr><td>'.str_repeat('&nbsp;&nbsp;&nbsp;', $l['niveau']-1);
+        $decalage = ($l['niveau']-1)*5;
+        echo '<tr><td style="padding-left:'.$decalage.'ex;">';
         echo '<a href="?page='.protect_url($l['nom']).'">'.$l['nom'].'</a></td>';
-        echo '<td>'.$l['ordre']."</td></tr>\n";
+        echo '<td style="padding-left:2ex;">'.$l['ordre']."</td></tr>\n";
     }
     echo "</table>\n";
 ?>

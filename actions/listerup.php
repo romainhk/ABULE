@@ -1,6 +1,7 @@
 <?php
 /*
- * Lister des fichiers présent sur le serveur
+ * ### Lister upload
+ * Lister les fichiers présent sur le serveur
  */
 $les_fichiers = array();
 $dossier_up = 'uploads/';

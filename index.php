@@ -146,7 +146,7 @@ if (is_string($c)) {
 }
 ?>
         <?php #PHP
-require("membres.php"); ?>
+require("actions/membres.php"); ?>
     </div>
     <div class="bord">
         <div id="corps" class="corps"><!--

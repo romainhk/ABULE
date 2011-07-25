@@ -1,6 +1,7 @@
 <?php
 /*
- * Uploader un fichier
+ * ### Uploader
+ * Formulaire d'envoi de fichier sur le serveur
  */
 require_once('db.php');
 

@@ -1,4 +1,8 @@
 <?php
+/*
+ * ###Admin
+ * Actions disponibles pour les super-admins
+ */
 echo '<h1>Gestion des utilisateurs</h1>'."\n";
 
 ## Création d'un compte
