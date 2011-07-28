@@ -359,11 +359,14 @@ input[type="submit"] {
     font-weight:600;
 }
 
+/* Contact
+ */
 .contact {
-    width:91%;
+    padding:0 2ex;
     margin:auto;
 }
 .contact ul {
+    padding:0;
     list-style:none;
     margin-left:0;
 }

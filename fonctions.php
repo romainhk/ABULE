@@ -99,7 +99,9 @@ function pages_filles($filles) {
         $nom = $f['nom'];
         $d = bdd_charger($db, $nom);
         if (is_string($d)) {
-            $r .= '<div class="boite" id="boite_'.$index_bd.'"><div class="boite_titre">'.stripslashes($nom).'</div><div class="boite_contenu" id="contenu_'.$index_bd.'">';
+            $r .= '<div class="boite" id="boite_'.$index_bd.'">';
+            $r .= '<div class="boite_titre">'.stripslashes($nom).'&nbsp;(<a href="index.php?page='.stripslashes($nom).'" title="Lien vers la sous-page">&gt;</a>)</div>';
+            $r .= '<div class="boite_contenu" id="contenu_'.$index_bd.'">';
             if (isset($_SESSION['login'])) {
                 $r .= lien_modifier($nom);
             }

@@ -14,7 +14,8 @@
         $decalage = ($l['niveau']-1)*5;
         echo '<tr><td style="padding-left:'.$decalage.'ex;">';
         echo '<a href="?page='.protect_url($l['nom']).'">'.$l['nom'].'</a></td>';
-        echo '<td style="padding-left:2ex;">'.$l['ordre']."</td></tr>\n";
+        echo '<td style="text-align:right;">'.$l['ordre'];
+        echo str_repeat('&nbsp;&nbsp;&nbsp;', 3-$l['niveau'])."</td></tr>\n";
     }
     echo "</table>\n";
 ?>

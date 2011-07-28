@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
         if ($pass == $data['mdp']) {
             $_SESSION['login'] = $login;
             $_SESSION['admin'] = $data['admin'];
-            bdd_logger($db, 'Log-in : '.$login);
+            //bdd_logger($db, 'Log-in : '.$login);
 
             #REDIRECTION
             if (isset($_GET['page'])) {

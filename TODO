@@ -4,7 +4,6 @@
 * simplifier "ordre" : en mode admin, il suffirait de déplacer les éléments du menu à la souris
 
 * Tester sous IE :
-** abscence de fond
 ** bouton ouvrir/fermer absent
 
 * double barre de navigation : couper la bannière et menus fixes ?

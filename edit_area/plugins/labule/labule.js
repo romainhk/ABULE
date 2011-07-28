@@ -31,7 +31,7 @@ var EditArea_labule = {
 		switch(cmd){
 			case "image":
                 parent.editAreaLoader.insertTags('editeur', 
-                        '<a href="COMME IMG" rel="lightbox"><img class="img_droite" src="', 
+                        '<a href="COMME IMG" rel="lightbox" title=""><img class="img_droite" src="', 
                         '" alt="" title="" /></a>');
 				return false;
 			case "galerie":
