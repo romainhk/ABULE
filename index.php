@@ -20,10 +20,11 @@ if (isset($_GET['action'])) {
 /* 
  * Sélection des feuilles de style à utiliser
  * Messages d'avertissements
+ * TODO : mettre en cache la liste des styles utilisés
  */
 $avertissements = array(); //Avertissements/Erreurs à reporter à l'usager
 $styles = array( "style", "lightbox" ); //Les styles css à utiliser
-$browser = get_browser($_SERVER["HTTP_USER_AGENT"], FALSE);
+$browser = php_get_browser($_SERVER["HTTP_USER_AGENT"], FALSE);
 if (is_object($browser)) {
     if ($browser->cssversion > 2) {
         array_push($styles, "style_plus");
